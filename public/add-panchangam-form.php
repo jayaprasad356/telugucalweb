@@ -1,0 +1,240 @@
+<?php
+include_once('includes/functions.php');
+$function = new functions;
+include_once('includes/custom-functions.php');
+$fn = new custom_functions;
+
+?>
+<?php
+if (isset($_POST['btnAdd'])) {
+
+        $date = $db->escapeString(($_POST['date']));
+        $time1= $db->escapeString($_POST['time1']);
+        $time2 = $db->escapeString($_POST['time2']);
+        $time3 = $db->escapeString($_POST['time3']);
+        $time4= $db->escapeString($_POST['time4']);
+        $info= $db->escapeString($_POST['info']);
+
+        
+        if (empty($date)) {
+            $error['date'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($time1)) {
+            $error['time1'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($time2)) {
+            $error['time2'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($time3)) {
+            $error['time3'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($time4)) {
+            $error['time4'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($info)) {
+            $error['info'] = " <span class='label label-danger'>Required!</span>";
+        }
+       
+       
+       if (!empty($date) && !empty($time1) && !empty($time2) && !empty($time3) && !empty($time4) && !empty($info)) {
+         
+            $sql_query = "INSERT INTO panchangam (date,time1,time2,time3,time4,info)VALUES('$date','$time1','$time2','$time3','$time4','$info')";
+            $db->sql($sql_query);
+            $result = $db->getResult();
+            if (!empty($result)) {
+                $result = 0;
+            } else {
+                $result = 1;
+            }
+
+            if ($result == 1) {
+                $sql = "SELECT id FROM panchangam ORDER BY id DESC LIMIT 1";
+                $db->sql($sql);
+                $res = $db->getResult();
+                $panchangam_id = $res[0]['id'];
+                for ($i = 0; $i < count($_POST['title']); $i++) {
+    
+                    $title = $db->escapeString(($_POST['title'][$i]));
+                    $description = $db->escapeString(($_POST['description'][$i]));
+                    $sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$panchangam_id','$title','$description')";
+                    $db->sql($sql);
+                    $panchangam_variant_result = $db->getResult();
+                }
+                if (!empty($panchangam_variant_result)) {
+                    $panchangam_variant_result = 0;
+                } else {
+                    $panchangam_variant_result = 1;
+                }
+                
+                $error['add_panchangam'] = "<section class='content-header'>
+                                                <span class='label label-success'>Panchangam Added Successfully</span> </section>";
+            } else {
+                $error['add_panchangam'] = " <span class='label label-danger'>Failed</span>";
+            }
+            }
+        }
+?>
+<section class="content-header">
+    <h1>Add Panchangam <small><a href='panchangam.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Panchangam</a></small></h1>
+
+    <?php echo isset($error['add_panchangam']) ? $error['add_panchangam'] : ''; ?>
+    <ol class="breadcrumb">
+        <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
+    </ol>
+    <hr />
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+           
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form name="add_product" method="post" enctype="multipart/form-data">
+                    <div class="box-body">
+                           <div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Date</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
+                                            <input type="date" class="form-control" name="date" required>
+                                    </div>
+                                </div>
+                            </div>
+                             <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Time 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['time1']) ? $error['time1'] : ''; ?>
+                                            <input type="time" class="form-control" name="time1" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Time 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['time2']) ? $error['time2'] : ''; ?>
+                                            <input type="time" class="form-control" name="time2" required>
+                                    </div>
+
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Time 3</label> <i class="text-danger asterik">*</i><?php echo isset($error['time3']) ? $error['time3'] : ''; ?>
+                                            <input type="time" class="form-control" name="time3" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Time 4</label> <i class="text-danger asterik">*</i><?php echo isset($error['time4']) ? $error['time4'] : ''; ?>
+                                            <input type="time" class="form-control" name="time4" required>
+                                    </div>
+
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                            <label for="exampleInputEmail1">Info</label> <i class="text-danger asterik">*</i><?php echo isset($error['info']) ? $error['info'] : ''; ?>
+                                            <input type="text" class="form-control" name="info" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="packate_div"  >
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group packate_div">
+                                        <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
+                                        <input type="text" class="form-control" name="title[]" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group packate_div">
+                                        <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
+                                        <input type="text" class="form-control" name="description[]" required />
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-1">
+                                    <label>Tab</label>
+                                 <a class="add_packate_variation" title="Add variation of product" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                </div>
+                                <div id="variations">
+                                </div>
+                            </div>
+                        <br>
+
+         
+                    </div>
+                  
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" name="btnAdd">Add</button>
+                        <input type="reset" onClick="refreshPage()" class="btn-warning btn" value="Clear" />
+                    </div>
+
+                </form>
+
+            </div><!-- /.box -->
+        </div>
+    </div>
+</section>
+
+<div class="separator"> </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script>
+    $('#add_panchangam').validate({
+
+        ignore: [],
+        debug: false,
+        rules: {
+            date: "required",
+            info: "required",
+            time1: "required",
+            time2: "required",
+        }
+    });
+    $('#btnClear').on('click', function() {
+        for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].setData('');
+        }
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var max_fields = 8;
+        var wrapper = $("#packate_div");
+        var add_button = $(".add_packate_variation");
+
+        var x = 1;
+        $(add_button).click(function (e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                x++;
+                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="title[]" required /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<input type="text" class="form-control" name="description[]" required /></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+            }
+            else{
+                alert('You Reached the limits')
+            }
+        });
+
+        $(wrapper).on("click", ".remove", function (e) {
+            e.preventDefault();
+            $(this).closest('.row').remove();
+            x--;
+        })
+    });
+</script>
+
+<!--code for page clear-->
+<script>
+    function refreshPage(){
+    window.location.reload();
+} 
+</script>
+
+<?php $db->disconnect(); ?>
