@@ -38,40 +38,53 @@ if (isset($_POST['btnAdd'])) {
        
        if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($info)) {
          
-            $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,info)VALUES('$date','$sunrise','$sunset','$moonrise','$moonset','$info')";
-            $db->sql($sql_query);
-            $result = $db->getResult();
-            if (!empty($result)) {
-                $result = 0;
-            } else {
-                $result = 1;
-            }
+            $sql = "SELECT * FROM panchangam WHERE date = '$date'";
+            $db->sql($sql);
+            $res = $db->getResult();
+            $num = $db->numRows($res);
+            if ($num >= 1){   
+                $error['add_panchangam'] = " <span class='label label-danger'>Panchangam already in this date</span>";
 
-            if ($result == 1) {
-                $sql = "SELECT id FROM panchangam ORDER BY id DESC LIMIT 1";
-                $db->sql($sql);
-                $res = $db->getResult();
-                $panchangam_id = $res[0]['id'];
-                for ($i = 0; $i < count($_POST['title']); $i++) {
-    
-                    $title = $db->escapeString(($_POST['title'][$i]));
-                    $description = $db->escapeString(($_POST['description'][$i]));
-                    $sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$panchangam_id','$title','$description')";
-                    $db->sql($sql);
-                    $panchangam_variant_result = $db->getResult();
-                }
-                if (!empty($panchangam_variant_result)) {
-                    $panchangam_variant_result = 0;
+
+            }
+            else{
+                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,info)VALUES('$date','$sunrise','$sunset','$moonrise','$moonset','$info')";
+                $db->sql($sql_query);
+                $result = $db->getResult();
+                if (!empty($result)) {
+                    $result = 0;
                 } else {
-                    $panchangam_variant_result = 1;
+                    $result = 1;
+                }
+    
+                if ($result == 1) {
+                    $sql = "SELECT id FROM panchangam ORDER BY id DESC LIMIT 1";
+                    $db->sql($sql);
+                    $res = $db->getResult();
+                    $panchangam_id = $res[0]['id'];
+                    for ($i = 0; $i < count($_POST['title']); $i++) {
+        
+                        $title = $db->escapeString(($_POST['title'][$i]));
+                        $description = $db->escapeString(($_POST['description'][$i]));
+                        $sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$panchangam_id','$title','$description')";
+                        $db->sql($sql);
+                        $panchangam_variant_result = $db->getResult();
+                    }
+                    if (!empty($panchangam_variant_result)) {
+                        $panchangam_variant_result = 0;
+                    } else {
+                        $panchangam_variant_result = 1;
+                    }
+                    
+                    $error['add_panchangam'] = "<section class='content-header'>
+                                                    <span class='label label-success'>Panchangam Added Successfully</span> </section>";
+                } else {
+                    $error['add_panchangam'] = " <span class='label label-danger'>Failed</span>";
+                }
                 }
                 
-                $error['add_panchangam'] = "<section class='content-header'>
-                                                <span class='label label-success'>Panchangam Added Successfully</span> </section>";
-            } else {
-                $error['add_panchangam'] = " <span class='label label-danger'>Failed</span>";
             }
-            }
+
         }
 ?>
 <section class="content-header">
@@ -108,11 +121,11 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
+                                            <label for="exampleInputEmail1">Sunrise</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
                                             <input type="time" class="form-control" name="sunrise" required>
                                     </div>
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunset']) ? $error['sunset'] : ''; ?>
+                                            <label for="exampleInputEmail1">Sunset</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunset']) ? $error['sunset'] : ''; ?>
                                             <input type="time" class="form-control" name="sunset" required>
                                     </div>
 
@@ -122,11 +135,11 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 3</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonrise']) ? $error['moonrise'] : ''; ?>
+                                            <label for="exampleInputEmail1">Moonrise</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonrise']) ? $error['moonrise'] : ''; ?>
                                             <input type="time" class="form-control" name="moonrise" required>
                                     </div>
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 4</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonset']) ? $error['moonset'] : ''; ?>
+                                            <label for="exampleInputEmail1">Moonset</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonset']) ? $error['moonset'] : ''; ?>
                                             <input type="time" class="form-control" name="moonset" required>
                                     </div>
 

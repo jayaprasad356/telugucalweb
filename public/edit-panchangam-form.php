@@ -72,8 +72,12 @@ if (isset($_POST['btnEdit'])) {
 					for ($i = 0; $i < count($_POST['insert_title']); $i++) {
 						$title = $db->escapeString(($_POST['insert_title'][$i]));
 						$description = $db->escapeString(($_POST['insert_description'][$i]));
-						$sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$ID','$title','$description')";
-						$db->sql($sql);
+						if (!empty($title) || !empty($description)) {
+							$sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$ID','$title','$description')";
+							$db->sql($sql);
+
+						}
+
 
 					}
 
@@ -142,11 +146,11 @@ if (isset($_POST['btnCancel'])) { ?>
 						   <div class="row">
 							    <div class="form-group">
 									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Time 1</label><i class="text-danger asterik">*</i>
+										<label for="exampleInputEmail1">Sunrise</label><i class="text-danger asterik">*</i>
 										<input type="time" class="form-control" name="sunrise" value="<?php echo $res[0]['sunrise']; ?>">
 									 </div>
 									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Time 2</label><i class="text-danger asterik">*</i>
+										<label for="exampleInputEmail1">Sunset</label><i class="text-danger asterik">*</i>
 										<input type="time" class="form-control" name="sunset" value="<?php echo $res[0]['sunset']; ?>">
 									 </div>
 								</div>
@@ -155,11 +159,11 @@ if (isset($_POST['btnCancel'])) { ?>
 						   <div class="row">
 							    <div class="form-group">
 									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Time 3</label><i class="text-danger asterik">*</i>
+										<label for="exampleInputEmail1">Moonrise</label><i class="text-danger asterik">*</i>
 										<input type="time" class="form-control" name="moonrise" value="<?php echo $res[0]['moonrise']; ?>">
 									 </div>
 									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Time 4</label><i class="text-danger asterik">*</i>
+										<label for="exampleInputEmail1">Moonset</label><i class="text-danger asterik">*</i>
 										<input type="time" class="form-control" name="moonset" value="<?php echo $res[0]['moonset']; ?>">
 									 </div>
 								</div>

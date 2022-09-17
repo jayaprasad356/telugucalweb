@@ -29,10 +29,10 @@ if ($num >= 1){
     foreach ($res as $row) {
         $temp['id'] = $row['id'];
         $temp['date'] = $row['date'];
-        $temp['time1'] = $row['time1'];
-        $temp['time2'] = $row['time2'];
-        $temp['time3'] = $row['time3'];
-        $temp['time4'] = $row['time4'];
+        $temp['sunrise'] = $row['sunrise'];
+        $temp['sunset'] = $row['sunset'];
+        $temp['moonrise'] = $row['moonrise'];
+        $temp['moonset'] = $row['moonset'];
         $temp['info'] = $row['info'];
         $id = $row['id'];
         $sql = "SELECT * FROM `panchangam_variant` WHERE panchangam_id ='$id'";

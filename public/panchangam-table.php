@@ -24,10 +24,10 @@
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
                                     <th data-field="date" data-sortable="true">Date</th>
-                                    <th  data-field="sunrise" data-sortable="true">Time 1</th>
-                                    <th  data-field="sunset" data-sortable="true"> Time 2</th>
-                                    <th  data-field="moonrise" data-sortable="true"> Time 3</th>
-                                    <th  data-field="moonset" data-sortable="true"> Time 4</th>
+                                    <th  data-field="sunrise" data-sortable="true">Sunrise</th>
+                                    <th  data-field="sunset" data-sortable="true"> Sunset</th>
+                                    <th  data-field="moonrise" data-sortable="true"> Moonrise</th>
+                                    <th  data-field="moonset" data-sortable="true"> Moonset</th>
                                     <th  data-field="info" data-sortable="true">Info</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
