@@ -120,7 +120,12 @@ if (isset($_POST['btnCancel'])) { ?>
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header with-border">
-				</div><!-- /.box-header -->
+				</div>
+				<div class="box-header">
+                    <?php echo isset($error['cancelable']) ? '<span class="label label-danger">Till status is required.</span>' : ''; ?>
+                </div>
+				
+				<!-- /.box-header -->
 				<!-- form start -->
 				<form id="edit_panchangam_form" method="post" enctype="multipart/form-data">
 					<div class="box-body">
@@ -177,7 +182,7 @@ if (isset($_POST['btnCancel'])) { ?>
 								?>
 								<div id="packate_div">
 									<div class="row">
-									<input type="hidden" class="form-control" name="panchangam_variant_id[]" id="panchangam_variant_id" value='<?= $row['id']; ?>' />
+									    <input type="hidden" class="form-control" name="panchangam_variant_id[]" id="panchangam_variant_id" value='<?= $row['id']; ?>' />
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
@@ -204,16 +209,15 @@ if (isset($_POST['btnCancel'])) { ?>
 											<?php } ?>
 									</div>
 									<?php $i++; } ?> 
-											</div>
 								</div>
-					
+					<hr>
 						</div><!-- /.box-body -->
                        
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary" name="btnEdit">Update</button>					
 					</div>
+				</div><!-- /.box -->
 				</form>
-			</div><!-- /.box -->
 		</div>
 	</div>
 </section>
