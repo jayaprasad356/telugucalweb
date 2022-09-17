@@ -9,36 +9,36 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
 
         $date = $db->escapeString(($_POST['date']));
-        $time1= $db->escapeString($_POST['time1']);
-        $time2 = $db->escapeString($_POST['time2']);
-        $time3 = $db->escapeString($_POST['time3']);
-        $time4= $db->escapeString($_POST['time4']);
+        $sunrise= $db->escapeString($_POST['sunrise']);
+        $sunset = $db->escapeString($_POST['sunset']);
+        $moonrise = $db->escapeString($_POST['moonrise']);
+        $moonset= $db->escapeString($_POST['moonset']);
         $info= $db->escapeString($_POST['info']);
 
         
         if (empty($date)) {
             $error['date'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($time1)) {
-            $error['time1'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($sunrise)) {
+            $error['sunrise'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($time2)) {
-            $error['time2'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($sunset)) {
+            $error['sunset'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($time3)) {
-            $error['time3'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($moonrise)) {
+            $error['moonrise'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($time4)) {
-            $error['time4'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($moonset)) {
+            $error['moonset'] = " <span class='label label-danger'>Required!</span>";
         }
         if (empty($info)) {
             $error['info'] = " <span class='label label-danger'>Required!</span>";
         }
        
        
-       if (!empty($date) && !empty($time1) && !empty($time2) && !empty($time3) && !empty($time4) && !empty($info)) {
+       if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($info)) {
          
-            $sql_query = "INSERT INTO panchangam (date,time1,time2,time3,time4,info)VALUES('$date','$time1','$time2','$time3','$time4','$info')";
+            $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,info)VALUES('$date','$sunrise','$sunset','$moonrise','$moonset','$info')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -108,12 +108,12 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['time1']) ? $error['time1'] : ''; ?>
-                                            <input type="time" class="form-control" name="time1" required>
+                                            <label for="exampleInputEmail1">Time 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
+                                            <input type="time" class="form-control" name="sunrise" required>
                                     </div>
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['time2']) ? $error['time2'] : ''; ?>
-                                            <input type="time" class="form-control" name="time2" required>
+                                            <label for="exampleInputEmail1">Time 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunset']) ? $error['sunset'] : ''; ?>
+                                            <input type="time" class="form-control" name="sunset" required>
                                     </div>
 
                                  </div>
@@ -122,12 +122,12 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 3</label> <i class="text-danger asterik">*</i><?php echo isset($error['time3']) ? $error['time3'] : ''; ?>
-                                            <input type="time" class="form-control" name="time3" required>
+                                            <label for="exampleInputEmail1">Time 3</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonrise']) ? $error['moonrise'] : ''; ?>
+                                            <input type="time" class="form-control" name="moonrise" required>
                                     </div>
                                     <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Time 4</label> <i class="text-danger asterik">*</i><?php echo isset($error['time4']) ? $error['time4'] : ''; ?>
-                                            <input type="time" class="form-control" name="time4" required>
+                                            <label for="exampleInputEmail1">Time 4</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonset']) ? $error['moonset'] : ''; ?>
+                                            <input type="time" class="form-control" name="moonset" required>
                                     </div>
 
                                  </div>
@@ -159,7 +159,7 @@ if (isset($_POST['btnAdd'])) {
                                
                                 <div class="col-md-1">
                                     <label>Tab</label>
-                                 <a class="add_packate_variation" title="Add variation of product" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                 <a class="add_packate_variation" title="Add variation of panchangam" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
                                 </div>
                                 <div id="variations">
                                 </div>
@@ -193,8 +193,8 @@ if (isset($_POST['btnAdd'])) {
         rules: {
             date: "required",
             info: "required",
-            time1: "required",
-            time2: "required",
+            sunrise: "required",
+            sunset: "required",
         }
     });
     $('#btnClear').on('click', function() {
