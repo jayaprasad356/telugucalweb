@@ -40,7 +40,7 @@ if (isset($_POST['btnLogin'])) {
             
         }
         else{
-            $error['failed'] = "<span class='label label-danger'>Invalid Email or Password!</span>";
+            $error['failed'] = "<span class='label label-danger'>Invalid Username or Password!</span>";
         }
     }
 }
@@ -64,7 +64,7 @@ if (isset($_POST['btnLogin'])) {
             <form method="post" enctype="multipart/form-data">
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email :</label>
+                        <label for="exampleInputEmail1">Username :</label>
                         <input type="text" name="email" class="form-control" value="<?= defined('ALLOW_MODIFICATION') && ALLOW_MODIFICATION == 0 ? 'admin' : '' ?>" required>
                     </div>
                     <div class="form-group">
