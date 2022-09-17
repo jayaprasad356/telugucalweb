@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2022 at 12:09 PM
+-- Generation Time: Sep 17, 2022 at 10:52 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,16 +24,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `festivals`
+--
+
+CREATE TABLE `festivals` (
+  `id` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  `festival` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `festivals`
+--
+
+INSERT INTO `festivals` (`id`, `date`, `festival`) VALUES
+(1, '2022-09-07', 'Diwali'),
+(2, '2022-10-08', 'Pongal'),
+(3, '2022-10-10', 'sambavam');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `panchangam`
 --
 
 CREATE TABLE `panchangam` (
   `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
-  `time1` time DEFAULT NULL,
-  `time2` time DEFAULT NULL,
-  `time3` time DEFAULT NULL,
-  `time4` time DEFAULT NULL,
+  `sunrise` text DEFAULT NULL,
+  `sunset` text DEFAULT NULL,
+  `moonrise` text DEFAULT NULL,
+  `moonset` text DEFAULT NULL,
   `info` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,8 +62,8 @@ CREATE TABLE `panchangam` (
 -- Dumping data for table `panchangam`
 --
 
-INSERT INTO `panchangam` (`id`, `date`, `time1`, `time2`, `time3`, `time4`, `info`) VALUES
-(1, '2022-09-17', '00:55:00', '12:57:00', '18:00:00', '05:59:00', 'Diwali');
+INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonset`, `info`) VALUES
+(1, '2022-09-07', '13:25', '13:25', '13:26', '13:27', 'Diwali');
 
 -- --------------------------------------------------------
 
@@ -63,12 +84,18 @@ CREATE TABLE `panchangam_variant` (
 
 INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`) VALUES
 (1, 1, 'test ', 'it is a try'),
-(2, 1, 'Welcome', 'You can visit here'),
-(3, 1, 'test2', 'check');
+(2, 1, 'test 2', 'jkk'),
+(3, 1, 'test3', 'jkk');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `festivals`
+--
+ALTER TABLE `festivals`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `panchangam`
@@ -85,6 +112,12 @@ ALTER TABLE `panchangam_variant`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `festivals`
+--
+ALTER TABLE `festivals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `panchangam`

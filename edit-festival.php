@@ -24,12 +24,12 @@
 <?php include "header.php";?>
 <html>
 <head>
-<title>Edit Rental Category | - Dashboard</title>
+<title>Edit Festival | - Dashboard</title>
 </head>
 </body>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <?php include('public/edit-rental_category-form.php'); ?>
+        <?php include('public/edit-festival-form.php'); ?>
       </div><!-- /.content-wrapper -->
   </body>
 </html>
