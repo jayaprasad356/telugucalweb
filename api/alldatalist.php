@@ -20,10 +20,10 @@ $rows = array();
 foreach ($res as $row) {
     $temp['id'] = $row['id'];
     $temp['date'] = $row['date'];
-    $temp['sunrise'] = $row['sunrise'];
-    $temp['sunset'] = $row['sunset'];
-    $temp['moonrise'] = $row['moonrise'];
-    $temp['moonset'] = $row['moonset'];
+    $temp['sunrise'] = date('h:i a', strtotime($row['sunrise']));
+    $temp['sunset'] = date('h:i a', strtotime($row['sunset']));
+    $temp['moonrise'] = date('h:i a', strtotime($row['moonrise']));
+    $temp['moonset'] = date('h:i a', strtotime($row['moonset']));
     $temp['info'] = $row['info'];
     $rows[] = $temp;
 }
