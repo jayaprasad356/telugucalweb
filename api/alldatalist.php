@@ -17,6 +17,7 @@ $sql = "SELECT * FROM `panchangam`";
 $db->sql($sql);
 $res = $db->getResult();
 $rows = array();
+$temp = array();
 foreach ($res as $row) {
     $temp['id'] = $row['id'];
     $temp['date'] = $row['date'];
@@ -30,10 +31,13 @@ foreach ($res as $row) {
 $response['success'] = true;
 $response['message'] = "Panchangam List Successfullty";
 $response['panchangam_list'] = $rows;
+
+unset($temp);
 $sql = "SELECT * FROM `panchangam_variant`";
 $db->sql($sql);
 $res = $db->getResult();
 $rows = array();
+$temp = array();
 foreach ($res as $row) {
     $temp['id'] = $row['id'];
     $temp['panchangam_id'] = $row['panchangam_id'];
@@ -42,5 +46,18 @@ foreach ($res as $row) {
     $rows[] = $temp;
 }
 $response['panchangam_tab_list'] = $rows;
+unset($temp);
+$sql = "SELECT * FROM `festivals`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['date'] = $row['date'];
+    $temp['festival'] = $row['festival'];
+    $rows[] = $temp;
+}
+$response['festivals_list'] = $rows;
 print_r(json_encode($response));
 ?>
