@@ -83,6 +83,32 @@ if (isset($_POST['bulk_upload']) && $_POST['bulk_upload'] == 1) {
             $count1++;
         }
         fclose($file);
+        $file = fopen($filename, "r");
+        while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE) {
+            // print_r($emapData);
+            if ($count1 != 0) {
+                $emapData[0] = trim($db->escapeString($emapData[0]));
+                $emapData[1] = trim($db->escapeString($emapData[1]));          
+                $emapData[2] = trim($db->escapeString($emapData[2]));
+                $emapData[3] = trim($db->escapeString($emapData[3]));
+                $emapData[4] = trim($db->escapeString($emapData[4]));
+                $data = array(
+                    'date'=>$emapData[0],
+                    'sunrise'=>$emapData[1],
+                    'sunset' => $emapData[2],
+                    'moonrise' => $emapData[3],
+                    'moonset' => $emapData[4],
+                   
+                );
+                $db->insert('panchangam', $data);
+                
+
+
+            }
+
+            $count1++;
+        }
+        fclose($file);
         echo "<p class='alert alert-success'>CSV file is successfully imported!</p><br>";
     } else {
         echo "<p class='alert alert-danger'>Invalid file format! Please upload data in CSV file!</p><br>";
