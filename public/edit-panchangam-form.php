@@ -21,7 +21,6 @@ if (isset($_POST['btnEdit'])) {
 	$sunset = $db->escapeString($_POST['sunset']);
 	$moonrise = $db->escapeString($_POST['moonrise']);
 	$moonset= $db->escapeString($_POST['moonset']);
-	$info= $db->escapeString($_POST['info']);
 
 	
 	if (empty($date)) {
@@ -39,14 +38,11 @@ if (isset($_POST['btnEdit'])) {
 	if (empty($moonset)) {
 		$error['moonset'] = " <span class='label label-danger'>Required!</span>";
 	}
-	if (empty($info)) {
-		$error['info'] = " <span class='label label-danger'>Required!</span>";
-	}
+	
    
-   
-   if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($info))
+   if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset))
     {
-             $sql_query = "UPDATE panchangam SET date='$date',sunrise='$sunrise',sunset='$sunset',moonrise='$moonrise',moonset='$moonset',info='$info' WHERE id =  $ID";
+             $sql_query = "UPDATE panchangam SET date='$date',sunrise='$sunrise',sunset='$sunset',moonrise='$moonrise',moonset='$moonset' WHERE id =  $ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -169,16 +165,6 @@ if (isset($_POST['btnCancel'])) { ?>
 								</div>
 						   </div>
 						   <br>
-						   <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-10">
-                                            <label for="exampleInputEmail1">Info</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="info" value="<?php echo $res[0]['info']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-						   
 						 <div id="variations">
 							<?php
 							$i=0;
@@ -196,7 +182,7 @@ if (isset($_POST['btnCancel'])) { ?>
 										<div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> Description</label> <i class="text-danger asterik">*</i>
-												<input type="text" class="form-control" name="description[]" value="<?php echo $row['description'] ?>" required/>
+												<textarea type="text" rows="2" class="form-control" name="description[]" required><?php echo $row['description'] ?></textarea>
 											</div>
 										</div>
 
@@ -241,7 +227,7 @@ if (isset($_POST['btnCancel'])) { ?>
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-				$(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="insert_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<input type="text" class="form-control" name="insert_description[]" /></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+				$(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="insert_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             } else {
                 alert('You Reached the limits')
             }

@@ -25,7 +25,6 @@ foreach ($res as $row) {
     $temp['sunset'] = date('h:i a', strtotime($row['sunset']));
     $temp['moonrise'] = date('h:i a', strtotime($row['moonrise']));
     $temp['moonset'] = date('h:i a', strtotime($row['moonset']));
-    $temp['info'] = $row['info'];
     $rows[] = $temp;
 }
 $response['success'] = true;

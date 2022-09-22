@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2022 at 10:52 AM
+-- Generation Time: Sep 22, 2022 at 10:55 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -51,19 +51,19 @@ INSERT INTO `festivals` (`id`, `date`, `festival`) VALUES
 CREATE TABLE `panchangam` (
   `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
-  `sunrise` text DEFAULT NULL,
-  `sunset` text DEFAULT NULL,
-  `moonrise` text DEFAULT NULL,
-  `moonset` text DEFAULT NULL,
-  `info` text DEFAULT NULL
+  `sunrise` time DEFAULT NULL,
+  `sunset` time DEFAULT NULL,
+  `moonrise` time DEFAULT NULL,
+  `moonset` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `panchangam`
 --
 
-INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonset`, `info`) VALUES
-(1, '2022-09-07', '13:25', '13:25', '13:26', '13:27', 'Diwali');
+INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonset`) VALUES
+(1, '2022-09-16', '12:21:00', '15:23:00', '05:20:00', '02:24:00'),
+(2, '2022-10-08', '11:35:00', '14:00:00', '11:48:00', '22:40:00');
 
 -- --------------------------------------------------------
 
@@ -83,9 +83,7 @@ CREATE TABLE `panchangam_variant` (
 --
 
 INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`) VALUES
-(1, 1, 'test ', 'it is a try'),
-(2, 1, 'test 2', 'jkk'),
-(3, 1, 'test3', 'jkk');
+(1, 1, 'test ', 'This is your special day to enjoy lot\nhappy journey');
 
 --
 -- Indexes for dumped tables
@@ -123,13 +121,13 @@ ALTER TABLE `festivals`
 -- AUTO_INCREMENT for table `panchangam`
 --
 ALTER TABLE `panchangam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `panchangam_variant`
 --
 ALTER TABLE `panchangam_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

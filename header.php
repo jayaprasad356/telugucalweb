@@ -164,11 +164,18 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="bulk-panchangam-upload.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Bulk Upload Panchangam</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="festivals.php">
                         <i class="fa fa-calendar"></i>
                         <span>Festivals</span>
                     </a>
                 </li>
+             
              
               
             </ul>

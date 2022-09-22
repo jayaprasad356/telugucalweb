@@ -4,6 +4,9 @@ $function = new functions;
 include_once('includes/custom-functions.php');
 $fn = new custom_functions;
 
+$date = new DateTime;
+$date->format('h:i:s a');
+
 ?>
 <?php
 if (isset($_POST['btnAdd'])) {
@@ -13,7 +16,6 @@ if (isset($_POST['btnAdd'])) {
         $sunset = $db->escapeString($_POST['sunset']);
         $moonrise = $db->escapeString($_POST['moonrise']);
         $moonset= $db->escapeString($_POST['moonset']);
-        $info= $db->escapeString($_POST['info']);
 
         
         if (empty($date)) {
@@ -31,12 +33,9 @@ if (isset($_POST['btnAdd'])) {
         if (empty($moonset)) {
             $error['moonset'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($info)) {
-            $error['info'] = " <span class='label label-danger'>Required!</span>";
-        }
        
        
-       if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($info)) {
+       if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset)) {
          
             $sql = "SELECT * FROM panchangam WHERE date = '$date'";
             $db->sql($sql);
@@ -48,7 +47,7 @@ if (isset($_POST['btnAdd'])) {
 
             }
             else{
-                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,info)VALUES('$date','$sunrise','$sunset','$moonrise','$moonset','$info')";
+                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset)VALUES('$date','$sunrise','$sunset','$moonrise','$moonset')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -146,15 +145,6 @@ if (isset($_POST['btnAdd'])) {
                                  </div>
                             </div>
                             <br>
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-10">
-                                            <label for="exampleInputEmail1">Info</label> <i class="text-danger asterik">*</i><?php echo isset($error['info']) ? $error['info'] : ''; ?>
-                                            <input type="text" class="form-control" name="info" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
                             <div id="packate_div"  >
                             <div class="row">
                                 <div class="col-md-4">
@@ -166,7 +156,7 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="col-md-4">
                                     <div class="form-group packate_div">
                                         <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
-                                        <input type="text" class="form-control" name="description[]" required />
+                                        <textarea type="text" rows="2" class="form-control" name="description[]" required></textarea>
                                     </div>
                                 </div>
                                
@@ -205,7 +195,6 @@ if (isset($_POST['btnAdd'])) {
         debug: false,
         rules: {
             date: "required",
-            info: "required",
             sunrise: "required",
             sunset: "required",
         }
@@ -228,7 +217,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="title[]" required /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<input type="text" class="form-control" name="description[]" required /></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="title[]" required /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="description[]" required></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             }
             else{
                 alert('You Reached the limits')

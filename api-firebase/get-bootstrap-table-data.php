@@ -212,11 +212,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'panchangam') {
         $operate = ' <a href="edit-panchangam.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['date'] = $row['date'];
-        $tempRow['sunrise'] = $row['sunrise'];
-        $tempRow['sunset'] = $row['sunset'];
-        $tempRow['moonrise'] = $row['moonrise'];
-        $tempRow['moonset'] = $row['moonset'];
-        $tempRow['info'] = $row['info'];
+        $tempRow['sunrise'] = date('h:i a', strtotime($row['sunrise']));
+        $tempRow['sunset'] = date('h:i a', strtotime($row['sunset']));
+        $tempRow['moonrise'] = date('h:i a', strtotime($row['moonrise']));
+        $tempRow['moonset'] = date('h:i a', strtotime($row['moonset']));
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
