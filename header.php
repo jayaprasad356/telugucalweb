@@ -172,7 +172,7 @@ $fn = new custom_functions;
                 <li class="treeview">
                     <a href="bulk-panchangam-tab-upload.php">
                         <i class="fa fa-calendar"></i>
-                        <span>Bulk Upload Panchangam Tab</span>
+                        <span>Upload Panchangam Tab</span>
                     </a>
                 </li>
                 <li class="treeview">

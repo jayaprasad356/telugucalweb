@@ -12,7 +12,7 @@ $function = new functions;
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 <section class="content-header">
-    <h1>Bulk Upload<small></small></h1>
+    <h1>Bulk Upload Panchngam Tab<small></small></h1>
 
 </section>
 <!-- Main content -->
