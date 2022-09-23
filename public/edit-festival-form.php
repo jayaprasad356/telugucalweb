@@ -104,12 +104,11 @@ if (isset($_POST['btnCancel'])) { ?>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                             <label for="exampleInputEmail1">Festival</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="festival" value="<?php echo $res[0]['festival']; ?>">
+                                            <textarea type="text" rows="3" class="form-control" name="festival"><?php echo $res[0]['festival']; ?></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <hr>
-						   
+                            <br>		   
 						
 						</div><!-- /.box-body -->
                        

@@ -76,7 +76,7 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-12">
                                             <label for="exampleInputEmail1">Festival</label> <i class="text-danger asterik">*</i><?php echo isset($error['festival']) ? $error['festival'] : ''; ?>
-                                            <input type="text" class="form-control" name="festival" required>
+                                            <textarea  type="text" rows="3" class="form-control" name="festival" required></textarea>
                                     </div>
                                  </div>
                             </div>

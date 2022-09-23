@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 10:55 AM
+-- Generation Time: Sep 23, 2022 at 09:01 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,7 +40,7 @@ CREATE TABLE `festivals` (
 INSERT INTO `festivals` (`id`, `date`, `festival`) VALUES
 (1, '2022-09-07', 'Diwali'),
 (2, '2022-10-08', 'Pongal'),
-(3, '2022-10-10', 'sambavam');
+(3, '2022-10-10', 'sambavam seiyalama');
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,8 @@ CREATE TABLE `panchangam_variant` (
 --
 
 INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`) VALUES
-(1, 1, 'test ', 'This is your special day to enjoy lot\nhappy journey');
+(1, 1, 'test ', 'This is your special day to enjoy lot\nhappy journey'),
+(4, 2, 'Hello Users', 'Everyone got succees');
 
 --
 -- Indexes for dumped tables
@@ -127,7 +128,7 @@ ALTER TABLE `panchangam`
 -- AUTO_INCREMENT for table `panchangam_variant`
 --
 ALTER TABLE `panchangam_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

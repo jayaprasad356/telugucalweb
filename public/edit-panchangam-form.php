@@ -200,7 +200,7 @@ if (isset($_POST['btnCancel'])) { ?>
 									</div>
 									<?php $i++; } ?> 
 								</div>
-					<hr>
+					<br>
 						</div><!-- /.box-body -->
                        
 					<div class="box-footer">
