@@ -12,7 +12,7 @@ $function = new functions;
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 <section class="content-header">
-    <h1>Bulk Upload Panchngam Tab<small></small></h1>
+    <h1>Bulk Upload Panchangam<small></small></h1>
 
 </section>
 <!-- Main content -->
@@ -57,7 +57,7 @@ $function = new functions;
                         <button type="submit" class="btn btn-primary" id="submit_btn" name="btnAdd">Upload</button>
                         <!-- <input type="reset" class="btn-warning btn" value="Clear" /> -->
 
-                        <a class='btn btn-info' id='sample' href='#' download> <em class='fa fa-download'></em> Download Sample File</a>
+                        <a class='btn btn-info'  href='library/panchangam_form.csv' download> <em class='fa fa-download'></em> Download Sample File</a>
                     
                     </div>
                     <div class="form-group">
@@ -76,31 +76,7 @@ $function = new functions;
         var type = $('#type').val();
         $("#type1").val(type);
     });
-    $('.box-footer > #sample').click(function(e) {
-        e.preventDefault(); //stop the browser from following
-        //whenever you click off an input element
-        // type1 = $("#type1").val();
-        // if (type1 != 'products' ) {
-        //   alert('Please select type.');
-        // }
-        // if (type1 == 'products') {
-        window.location.href = 'library/panchangam_form.csv';
-        // } 
-
-    });
-    $('.box-footer > #instructions').click(function(e) {
-
-        e.preventDefault(); //stop the browser from following
-        //whenever you click off an input element
-        // type2 = $("#type1").val();
-        // if (type2 != 'products' ) {
-        //   alert('Please select type.');
-        // }
-        // if (type2 == 'products') {
-        window.location.href = 'library/products.txt';
-        // } 
-
-    });
+ 
 </script>
 
 <script>

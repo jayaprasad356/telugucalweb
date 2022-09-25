@@ -58,5 +58,31 @@ foreach ($res as $row) {
     $rows[] = $temp;
 }
 $response['festivals_list'] = $rows;
+unset($temp);
+$sql = "SELECT * FROM `muhurtham`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['muhurtham'] = $row['muhurtham'];
+    $rows[] = $temp;
+}
+$response['muhurtham_list'] = $rows;
+unset($temp);
+$sql = "SELECT * FROM `muhurtham_tab`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['muhurtham_id'] = $row['muhurtham_id'];
+    $temp['title'] = $row['title'];
+    $temp['description'] = $row['description'];
+    $rows[] = $temp;
+}
+$response['muhurtham_tab_list'] = $rows;
 print_r(json_encode($response));
 ?>

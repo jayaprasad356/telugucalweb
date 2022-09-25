@@ -181,6 +181,18 @@ $fn = new custom_functions;
                         <span>Festivals</span>
                     </a>
                 </li>
+                <li class="treeview">
+                    <a href="muhurtham.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Muhurtham</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="muhurtham-tab.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Muhurtham tab</span>
+                    </a>
+                </li>
              
              
               

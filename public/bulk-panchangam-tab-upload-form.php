@@ -48,9 +48,10 @@ $function = new functions;
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary" id="submit_btn" name="btnAdd">Upload</button>
                         <!-- <input type="reset" class="btn-warning btn" value="Clear" /> -->
-
-                        <a class='btn btn-info' id='sample' href='#' download> <em class='fa fa-download'></em> Download Sample File</a>
+                        <a class='btn btn-info'  href='library/panchangam-tab_form.csv' download> <em class='fa fa-download'></em> Download Sample File</a>
                     
+
+                        
                     </div>
                     <div class="form-group">
 
