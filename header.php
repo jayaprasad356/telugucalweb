@@ -193,6 +193,18 @@ $fn = new custom_functions;
                         <span>Muhurtham tab</span>
                     </a>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Horoscope</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="daily.php"><i class="fa fa-angle-right"></i>Daily</a></li>
+                        <li><a href="Monthly.php"><i class="fa fa-angle-right"></i>Monthly</a></li>
+                        <li><a href="yearly.php"><i class="fa fa-angle-right"></i>Yearly</a></li>
+                    </ul>
+                </li>
              
              
               
