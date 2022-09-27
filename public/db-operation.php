@@ -22,7 +22,59 @@ if (isset($_POST['delete_variant'])) {
         echo 0;
     }
 }
+if (isset($_POST['week'])) {
+    $year = $db->escapeString(($_POST['year']));
+    $month = $db->escapeString(($_POST['month']));
+    if(!empty($year) && !empty($month)){
+        $month = $month.' 25 2010';
+        $month = date('m', strtotime($month));
+        $list=array();
+        $week=array();
+      
+        for($d=1; $d<=31; $d++)
+        {
+            $time=mktime(12, 0, 0, $month, $d, $year);          
+            if (date('m', $time)==$month){
+                $list[]=date('Y-m-d', $time);
+                $value = getStartAndEndDate(date("W", strtotime(date('Y-m-d', $time))),$year);
+                if(!in_array($value, $week)){
+                  $week[] = $value;
+        
+                }
+                 
+        
+            }      
+        
+        }
+        
+        for($i=0; $i<=count($week) - 1; $i++)
+        { 
+            echo "<option value= " . $week[$i] . " >" . $week[$i]. "</option>";
 
+        }
+        
+
+    }else{
+        echo "";
+
+
+    }
+
+
+    
+}
+function getStartAndEndDate($week, $year) {
+    $dto = new DateTime();
+    $dto->setISODate($year, $week);
+    $ret['week_start'] = $dto->format('M-d,Y');
+    $startdate = $dto->format('M-d,Y');
+    $dto->modify('+6 days');
+    $ret['week_end'] = $dto->format('Y-m-d');
+    $enddate = $dto->format('M-d,Y');
+    $result = $startdate.'_to_'.$enddate;
+    
+    return $result;
+  }
 if (isset($_POST['bulk_upload']) && $_POST['bulk_upload'] == 1) {
     $count = 0;
     $count1 = 0;
