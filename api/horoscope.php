@@ -63,7 +63,7 @@ if ($_POST['type'] == 'Monthly'){
 
 }
 if ($_POST['type'] == 'Yearly'){
-    $month = date('F');
+    $year = date('Y');
     $rasi = $db->escapeString($_POST['rasi']);
     $sql = "SELECT * FROM `yearly_horoscope` WHERE year = '$year' AND rasi = '$rasi'";
     $db->sql($sql);
@@ -71,7 +71,7 @@ if ($_POST['type'] == 'Yearly'){
     $num = $db->numRows($res);
     if($num>=1){
         $response['success'] = true;
-        $response['message'] = "Monthly List Successfullty";
+        $response['message'] = "Yearly List Successfullty";
         $response['data'] = $res;
         print_r(json_encode($response));
 
