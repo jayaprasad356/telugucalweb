@@ -202,7 +202,7 @@ $fn = new custom_functions;
                     <ul class="treeview-menu">
                         <li><a href="daily.php"><i class="fa fa-angle-right"></i>Daily</a></li>
                         <li><a href="weekly.php"><i class="fa fa-angle-right"></i>Weekly</a></li>
-                        <li><a href="Monthly.php"><i class="fa fa-angle-right"></i>Monthly</a></li>
+                        <li><a href="monthly.php"><i class="fa fa-angle-right"></i>Monthly</a></li>
                         <li><a href="yearly.php"><i class="fa fa-angle-right"></i>Yearly</a></li>
                     </ul>
                 </li>
