@@ -43,8 +43,6 @@ if (isset($_POST['btnAdd'])) {
             $num = $db->numRows($res);
             if ($num >= 1){   
                 $error['add_panchangam'] = " <span class='label label-danger'>Panchangam already in this date</span>";
-
-
             }
             else{
                 $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset)VALUES('$date','$sunrise','$sunset','$moonrise','$moonset')";
@@ -146,33 +144,30 @@ if (isset($_POST['btnAdd'])) {
                             </div>
                             <br>
                             <div id="packate_div"  >
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group packate_div">
-                                        <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
-                                        <input type="text" class="form-control" name="title[]" required />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="title[]" required />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group packate_div">
-                                        <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
-                                        <textarea type="text" rows="2" class="form-control" name="description[]" required></textarea>
+                                    <div class="col-md-4">
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
+                                            <textarea type="text" rows="2" class="form-control" name="description[]" required></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                               
-                                <div class="col-md-1">
-                                    <label>Tab</label>
-                                 <a class="add_packate_variation" title="Add variation of panchangam" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
-                                </div>
-                                <div id="variations">
+                                
+                                    <div class="col-md-1">
+                                        <label>Tab</label>
+                                        <a class="add_packate_variation" title="Add variation of panchangam" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                    </div>
+                                    <div id="variations">
+                                    </div>
                                 </div>
                             </div>
-                        <br>
-
-         
                     </div>
-                  
-                    <!-- /.box-body -->
+                   <!-- /.box-body -->
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary" name="btnAdd">Add</button>
@@ -180,7 +175,6 @@ if (isset($_POST['btnAdd'])) {
                     </div>
 
                 </form>
-
             </div><!-- /.box -->
         </div>
     </div>

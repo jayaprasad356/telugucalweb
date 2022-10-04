@@ -13,39 +13,35 @@ if (isset($_GET['id'])) {
     return false;
     exit(0);
 }
+$category_data = array();
+$sql = "select id,name from poojalu order by id asc";
+$db->sql($sql);
+$category_data = $db->getResult();
+$sql = "select * from poojalu_submenu";
+$db->sql($sql);
+$subcategory = $db->getResult();
 
 if (isset($_POST['btnEdit'])) {
 
-	$date = $db->escapeString(($_POST['date']));
-	$sunrise= $db->escapeString($_POST['sunrise']);
-	$sunset = $db->escapeString($_POST['sunset']);
-	$moonrise = $db->escapeString($_POST['moonrise']);
-	$moonset= $db->escapeString($_POST['moonset']);
+
+	$poojalu_id = $db->escapeString(($_POST['poojalu_id']));
+	$subcategory_id = $db->escapeString(($_POST['subcategory_id']));
+	$error = array();
 
 	
-	if (empty($date)) {
-		$error['date'] = " <span class='label label-danger'>Required!</span>";
+	if (empty($poojalu_id)) {
+		$error['poojalu_id'] = " <span class='label label-danger'>Required!</span>";
 	}
-	if (empty($sunrise)) {
-		$error['sunrise'] = " <span class='label label-danger'>Required!</span>";
+	if (empty($subcategory_id)) {
+		$error['subcategory_id'] = " <span class='label label-danger'>Required!</span>";
 	}
-	if (empty($sunset)) {
-		$error['sunset'] = " <span class='label label-danger'>Required!</span>";
-	}
-	if (empty($moonrise)) {
-		$error['moonrise'] = " <span class='label label-danger'>Required!</span>";
-	}
-	if (empty($moonset)) {
-		$error['moonset'] = " <span class='label label-danger'>Required!</span>";
-	}
-	
    
-   if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset))
-    {
-             $sql_query = "UPDATE panchangam SET date='$date',sunrise='$sunrise',sunset='$sunset',moonrise='$moonrise',moonset='$moonset' WHERE id =  $ID";
-			 $db->sql($sql_query);
-			 $res = $db->getResult();
-             $update_result = $db->getResult();
+   
+   if (!empty($poojalu_id) && !empty($subcategory_id)) {
+				$sql_query = "UPDATE poojalu_tab SET poojalu_id='$poojalu_id',subcategory_id='$subcategory_id' WHERE id =$ID";
+				$db->sql($sql_query);
+				$res = $db->getResult();
+				$update_result = $db->getResult();
 			if (!empty($update_result)) {
 				$update_result = 0;
 			} else {
@@ -53,12 +49,13 @@ if (isset($_POST['btnEdit'])) {
 			}
 
 			// check update result
-			if ($update_result == 1) {
+			if ($update_result == 1)
+			{
 				for ($i = 0; $i < count($_POST['title']); $i++) {
-					$panchangam_id = $db->escapeString(($_POST['panchangam_variant_id'][$i]));
+					$poojalu_tab_id = $db->escapeString(($_POST['poojalu_tab_variant_id'][$i]));
 					$title = $db->escapeString(($_POST['title'][$i]));
 					$description = $db->escapeString(($_POST['description'][$i]));
-					$sql = "UPDATE panchangam_variant SET title='$title',description='$description' WHERE id = $panchangam_id";
+					$sql = "UPDATE poojalu_tab_variant SET title='$title',description='$description' WHERE id =$poojalu_tab_id";
 					$db->sql($sql);
 
 				}
@@ -69,44 +66,40 @@ if (isset($_POST['btnEdit'])) {
 						$title = $db->escapeString(($_POST['insert_title'][$i]));
 						$description = $db->escapeString(($_POST['insert_description'][$i]));
 						if (!empty($title) || !empty($description)) {
-							$sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$ID','$title','$description')";
+							$sql = "INSERT INTO poojalu_tab_variant (poojalu_tab_id,title,description) VALUES('$ID','$title','$description')";
 							$db->sql($sql);
 
 						}
-
-
 					}
-
 				}
-
-			$error['update_panchangam'] = " <section class='content-header'><span class='label label-success'>Panchangam updated Successfully</span></section>";
+					$error['update_poojalutab'] = " <section class='content-header'><span class='label label-success'>Poojalu Tab updated Successfully</span></section>";
 			} else {
-				$error['update_panchangam'] = " <span class='label label-danger'>Failed to update</span>";
+				$error['update_poojalutab'] = " <span class='label label-danger'>Failed to update</span>";
 			}
-		}
+			}
 	} 
 
 
 // create array variable to store previous data
 $data = array();
 
-$sql_query = "SELECT * FROM panchangam WHERE id =" . $ID;
+$sql_query = "SELECT * FROM poojalu_tab WHERE id =" . $ID;
 $db->sql($sql_query);
 $res = $db->getResult();
 
-$sql_query = "SELECT * FROM panchangam_variant WHERE panchangam_id =" . $ID;
+$sql_query = "SELECT * FROM poojalu_tab_variant WHERE poojalu_tab_id =" . $ID;
 $db->sql($sql_query);
 $resslot = $db->getResult();
 
 if (isset($_POST['btnCancel'])) { ?>
 	<script>
-		window.location.href = "panchangam.php";
+		window.location.href = "poojalu_tab.php";
 	</script>
 <?php } ?>
 <section class="content-header">
 	<h1>
-		Edit Panchangam<small><a href='panchangam.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Panchangam</a></small></h1>
-	<small><?php echo isset($error['update_panchangam']) ? $error['update_panchangam'] : ''; ?></small>
+		Edit Poojalu Tab<small><a href='poojalu_tab.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Poojalu Tab</a></small></h1>
+	<small><?php echo isset($error['update_poojalutab']) ? $error['update_poojalutab'] : ''; ?></small>
 	<ol class="breadcrumb">
 		<li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
 	</ol>
@@ -115,7 +108,7 @@ if (isset($_POST['btnCancel'])) { ?>
 	<!-- Main row -->
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-10">
 		
 			<!-- general form elements -->
 			<div class="box box-primary">
@@ -127,52 +120,41 @@ if (isset($_POST['btnCancel'])) { ?>
 				
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form id="edit_panchangam_form" method="post" enctype="multipart/form-data">
+				<form id="edit_poojalu_tab_form" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						   <div class="row">
 							    <div class="form-group">
+								    <div class="col-md-5">
+									      <label for="">Select Poojalu</label> <i class="text-danger asterik">*</i>
+                                                <select id='poojalu_id' name="poojalu_id" class='form-control' required>
+                                                <?php
+                                                foreach ($category_data as $row) { ?>
+                                                    <option value="<?php echo $row['id']; ?>" <?= ($row['id'] == $res[0]['poojalu_id']) ? "selected" : ""; ?>><?php echo $row['name']; ?></option>
+                                                <?php }
+                                            ?>
+                                          </select>
+                                    </div>
 									<div class='col-md-6'>
-									          <label for="exampleInputEmail1">Date</label> <i class="text-danger asterik">*</i>
-											  <input type="date" class="form-control" name="date" value="<?php echo $res[0]['date']; ?>">
+                                           <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
+                                                <select id='subcategory_id' name="subcategory_id" class='form-control' required>
 
+                                                <?php foreach ($subcategory as $subcategories) { ?>
+                                                    <option value="<?= $subcategories['id']; ?>" <?= $res[0]['subcategory_id'] == $subcategories['id'] ? 'selected' : '' ?>><?= $subcategories['name']; ?></option>
+                                                <?php }
+                                                 ?>
+                                                </select>
 									</div>
 								</div>
 						   </div>
 						   <br>
-						   <div class="row">
-							    <div class="form-group">
-									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Sunrise</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="sunrise" value="<?php echo $res[0]['sunrise']; ?>">
-									 </div>
-									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Sunset</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="sunset" value="<?php echo $res[0]['sunset']; ?>">
-									 </div>
-								</div>
-						   </div>
-						   <br>
-						   <div class="row">
-							    <div class="form-group">
-									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Moonrise</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="moonrise" value="<?php echo $res[0]['moonrise']; ?>">
-									 </div>
-									 <div class="col-md-4">
-										<label for="exampleInputEmail1">Moonset</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="moonset" value="<?php echo $res[0]['moonset']; ?>">
-									 </div>
-								</div>
-						   </div>
-						   <br>
-						 <div id="variations">
+						   <div id="variations">
 							<?php
 							$i=0;
 							foreach ($resslot as $row) {
 								?>
 								<div id="packate_div">
 									<div class="row">
-									    <input type="hidden" class="form-control" name="panchangam_variant_id[]" id="panchangam_variant_id" value='<?= $row['id']; ?>' />
+									    <input type="hidden" class="form-control" name="poojalu_tab_variant_id[]" id="poojalu_tab_variant_id" value='<?= $row['id']; ?>' />
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
@@ -189,7 +171,7 @@ if (isset($_POST['btnCancel'])) { ?>
 										<?php if ($i == 0) { ?>
 												<div class='col-md-1'>
 													<label>Tab</label>
-													<a id="add_packate_variation" title='Add variation of panchangam' style='cursor: pointer;color:white;'><button class="btn btn-warning">Add more</button></a>
+													<a id="add_packate_variation" title='Add variation' style='cursor: pointer;color:white;'><button class="btn btn-warning">Add more</button></a>
 												</div>
 											<?php } else { ?>
 												<div class="col-md-1">
@@ -201,7 +183,10 @@ if (isset($_POST['btnCancel'])) { ?>
 								</div>
 								<?php $i++; 
 							} ?> 
-					</div><!-- /.box-body -->
+						
+						
+						</div>
+						<!-- /.box-body -->
                        
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary" name="btnEdit">Update</button>					
@@ -214,8 +199,18 @@ if (isset($_POST['btnCancel'])) { ?>
 </section>
 
 <div class="separator"> </div>
-<?php $db->disconnect(); ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script>
+     $(document).on('change', '#poojalu_id', function() {
+        $.ajax({
+            url: 'public/db-operation.php',
+            method: 'POST',
+            data: 'poojalu_id=' + $('#poojalu_id').val() + '&find_subcategory=1',
+            success: function(data) {
+                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
+            }
+        });
+    });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -246,7 +241,7 @@ if (isset($_POST['btnCancel'])) { ?>
     $(document).on('click', '.remove_variation', function() {
         if ($(this).data('id') == 'data_delete') {
             if (confirm('Are you sure? Want to delete this row')) {
-                var id = $(this).closest('div.row').find("input[id='panchangam_variant_id']").val();
+                var id = $(this).closest('div.row').find("input[id='poojalu_tab_variant_id']").val();
                 $.ajax({
                     url: 'public/db-operation.php',
                     type: "post",
@@ -265,4 +260,4 @@ if (isset($_POST['btnCancel'])) { ?>
         }
     });
 </script>
-
+<?php $db->disconnect(); ?>

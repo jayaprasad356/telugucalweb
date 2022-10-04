@@ -22,6 +22,86 @@ if (isset($_POST['delete_variant'])) {
         echo 0;
     }
 }
+//yearly horoscope variant
+if (isset($_POST['delete_variant'])) {
+    $yearly_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM yearly_horoscope_variant WHERE id = $yearly_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
+
+//poojalu tab variant
+if (isset($_POST['delete_variant'])) {
+    $tab_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM poojalu_tab_variant WHERE id = $tab_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
+
+//get subcategories by category
+if (isset($_POST['change_category'])) {
+        if ($_POST['poojalu_id'] == '') {
+            $sql = "SELECT * FROM poojalu_submenu";
+        } else {
+            $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
+            $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
+        }
+
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Sub Category is added--</option>";
+    }
+}
+
+if (isset($_POST['category'])) {
+    if ($_POST['poojalu_id'] == '') {
+        $sql = "SELECT * FROM poojalu_submenu";
+    } else {
+        $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
+        $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
+    }
+
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Subcategory is added--</option>";
+    }
+} 
+
+if (isset($_POST['find_subcategory'])) {
+        $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
+        $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
+        $db->sql($sql);
+        $res = $db->getResult();
+        if (!empty($res)) {
+            foreach ($res as $row) {
+                echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+            }
+        } else {
+            echo "<option value=''>--No SubCategory is added--</option>";
+        }
+}
+
+
 if (isset($_POST['week'])) {
     $year = $db->escapeString(($_POST['year']));
     $month = $db->escapeString(($_POST['month']));

@@ -94,6 +94,15 @@ $fn = new custom_functions;
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" integrity="sha256-tBxlolRHP9uMsEFKVk+hk//ekOlXOixLKvye5W2WR5c=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js" integrity="sha256-CtKylYan+AJuoH8jrMht1+1PMhMqrKnB8K5g012WN5I=" crossorigin="anonymous"></script>
+
+    <!--styleing input -->
+    <script src= "https://code.jquery.com/jquery-3.2.1.min.js"> </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
 </head>
 
 <body class="hold-transition skin-blue fixed sidebar-mini">
@@ -204,6 +213,17 @@ $fn = new custom_functions;
                         <li><a href="weekly.php"><i class="fa fa-angle-right"></i>Weekly</a></li>
                         <li><a href="monthly.php"><i class="fa fa-angle-right"></i>Monthly</a></li>
                         <li><a href="yearly.php"><i class="fa fa-angle-right"></i>Yearly</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bullseye"></i>
+                        <span>Poojalu</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="poojalu.php"><i class="fa fa-angle-right"></i>Poojalu</a></li>
+                        <li><a href="poojalu_submenu.php"><i class="fa fa-angle-right"></i>Poojalu Submenu</a></li>
+                        <li><a href="poojalu_tab.php"><i class="fa fa-angle-right"></i>Poojalu Tab</a></li>
                     </ul>
                 </li>
              

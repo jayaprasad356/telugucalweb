@@ -7,21 +7,15 @@ $fn = new custom_functions;
 ?>
 <?php
 if (isset($_POST['btnAdd'])) {
-
-        $rasi= $db->escapeString($_POST['rasi']);
-        $year= $db->escapeString($_POST['year']);
         
+        $poojalu_id = $db->escapeString(($_POST['poojalu_id']));
+        $subcategory_id = $db->escapeString(($_POST['subcategory_id']));
+
      
-        if (empty($rasi)) {
-            $error['rasi'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($year)) {
-            $error['year'] = " <span class='label label-danger'>Required!</span>";
-        }
        
-       if ( !empty($rasi) && !empty($year))
-        {
-                $sql_query = "INSERT INTO yearly_horoscope (rasi,year)VALUES('$rasi','$year')";
+       if (!empty($poojalu_id) && !empty($subcategory_id)) {
+         
+                $sql_query = "INSERT INTO poojalu_tab (poojalu_id,subcategory_id)VALUES('$poojalu_id','$subcategory_id')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -30,37 +24,36 @@ if (isset($_POST['btnAdd'])) {
                     $result = 1;
                 }
                 if ($result == 1) {
-                    $sql = "SELECT id FROM yearly_horoscope ORDER BY id DESC LIMIT 1";
+                    $sql = "SELECT id FROM poojalu_tab ORDER BY id DESC LIMIT 1";
                     $db->sql($sql);
                     $res = $db->getResult();
-                    $yearly_horoscope_id = $res[0]['id'];
+                    $poojalu_tab_id = $res[0]['id'];
                     for ($i = 0; $i < count($_POST['title']); $i++) {
-        
+
                         $title = $db->escapeString(($_POST['title'][$i]));
                         $description = $db->escapeString(($_POST['description'][$i]));
-                        $sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id,title,description) VALUES('$yearly_horoscope_id','$title','$description')";
+                        $sql = "INSERT INTO poojalu_tab_variant (poojalu_tab_id,title,description) VALUES('$poojalu_tab_id','$title','$description')";
                         $db->sql($sql);
-                        $yearly_horoscope_variant_result = $db->getResult();
+                        $tab_result = $db->getResult();
                     }
-                    if (!empty($yearly_horoscope_variant_result)) {
-                        $yearly_horoscope_variant_result = 0;
+                    if (!empty($tab_result)) {
+                        $tab_result = 0;
                     } else {
-                        $yearly_horoscope_variant_result = 1;
+                        $tab_result = 1;
                     }
                     
-                    $error['add_year_horoscope'] = "<section class='content-header'>
-                                                    <span class='label label-success'>Yearly Horoscope Added Successfully</span> </section>";
+                    $error['add_poojalu_tab'] = "<section class='content-header'>
+                                                    <span class='label label-success'>Poojalu Tab Added Successfully</span> </section>";
                 } else {
-                    $error['add_year_horoscope'] = " <span class='label label-danger'>Failed</span>";
+                    $error['add_poojalu_tab'] = " <span class='label label-danger'>Failed</span>";
                 }
-                }
-                
-            }
+        }
+        }
 ?>
 <section class="content-header">
-    <h1>Add Yearly Horoscope <small><a href='yearly.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Yearly Horoscope</a></small></h1>
+    <h1>Add Poojalu Tab<small><a href='poojalu_tab.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Poojalu Tab</a></small></h1>
 
-    <?php echo isset($error['add_year_horoscope']) ? $error['add_year_horoscope'] : ''; ?>
+    <?php echo isset($error['add_poojalu_tab']) ? $error['add_poojalu_tab'] : ''; ?>
     <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
     </ol>
@@ -77,36 +70,28 @@ if (isset($_POST['btnAdd'])) {
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form name="add_yearly_horoscope_form" method="post" enctype="multipart/form-data">
+                <form name="add_poojalu_tab_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-6'>
-                                        <label for="">Rasi</label> <i class="text-danger asterik">*</i>
-                                        <select id='rasi' name="rasi" class='form-control' required>
-                                            <option value="">Select</option>
+                                    <div class="col-md-5">
+                                        <label for="">Poojalu</label> <i class="text-danger asterik">*</i>
+                                        <select id='poojalu_id' name="poojalu_id" class='form-control' required>
+                                            <option value="">--select--</option>
                                                 <?php
-                                                $sql = "SELECT * FROM `rasi_names`";
+                                                $sql = "SELECT id,name FROM `poojalu`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
                                                 ?>
-                                                    <option value='<?= $value['rasi'] ?>'><?= $value['rasi'] ?></option>
+                                                    <option value='<?= $value['id'] ?>'><?= $value['name'] ?></option>
                                             <?php } ?>
-                                            </select>
+                                        </select>
                                     </div>
-                                    <div class='col-md-6'>
-                                        <label for="">Year</label> <i class="text-danger asterik">*</i>
-                                        <select id='year' name="year" class='form-control' required>
-                                            <option value="">Select Year</option>
-                                                <?php
-                                                $sql = "SELECT * FROM `years`";
-                                                $db->sql($sql);
-                                                $result = $db->getResult();
-                                                foreach ($result as $value) {
-                                                ?>
-                                                    <option value='<?= $value['year'] ?>'><?= $value['year'] ?></option>
-                                            <?php } ?>
+                                    <div class="col-md-6">
+                                        <label for="">Sub Category</label> <i class="text-danger asterik">*</i>
+                                        <select id='subcategory_id' name="subcategory_id" class='form-control' required>
+                                            <option value="">--select subcategory--</option>
                                         </select>
                                     </div>
                                 </div>
@@ -129,13 +114,14 @@ if (isset($_POST['btnAdd'])) {
                                 
                                     <div class="col-md-1">
                                         <label>Tab</label>
-                                        <a class="add_packate_variation" title="Add variation of yearly horoscope" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                        <a class="add_packate_variation" title="Add variation" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
                                     </div>
                                     <div id="variations">
                                     </div>
                                 </div>
                             </div>
-                    </div>
+         
+                    </div>  
                     <!-- /.box-body -->
 
                     <div class="box-footer">
@@ -144,6 +130,7 @@ if (isset($_POST['btnAdd'])) {
                     </div>
 
                 </form>
+
             </div>
             <!-- /.box -->
         </div>
@@ -153,13 +140,13 @@ if (isset($_POST['btnAdd'])) {
 <div class="separator"> </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script>
-    $('#add_yearly_horoscope_form').validate({
+    $('#add_poojalu_tab_form').validate({
 
         ignore: [],
         debug: false,
         rules: {
-            year: "required",
-            rasi: "required",
+            poojalu:"required",
+            subcategory: "required",
         }
     });
     $('#btnClear').on('click', function() {
@@ -193,6 +180,19 @@ if (isset($_POST['btnAdd'])) {
             $(this).closest('.row').remove();
             x--;
         })
+    });
+</script>
+
+<script>
+     $(document).on('change', '#poojalu_id', function() {
+        $.ajax({
+            url: "public/db-operation.php",
+            data: "poojalu_id=" + $('#poojalu_id').val() + "&change_category=1",
+            method: "POST",
+            success: function(data) {
+                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
+            }
+        });
     });
 </script>
 

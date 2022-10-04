@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2022 at 10:04 AM
+-- Generation Time: Oct 04, 2022 at 12:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -247,6 +247,85 @@ INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `poojalu`
+--
+
+CREATE TABLE `poojalu` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `poojalu`
+--
+
+INSERT INTO `poojalu` (`id`, `name`, `image`) VALUES
+(1, 'Aaitha poojalu', 'upload/poojalu/1664872627.3071.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `poojalu_submenu`
+--
+
+CREATE TABLE `poojalu_submenu` (
+  `id` int(11) NOT NULL,
+  `poojalu_id` int(11) DEFAULT NULL,
+  `name` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `poojalu_submenu`
+--
+
+INSERT INTO `poojalu_submenu` (`id`, `poojalu_id`, `name`, `image`) VALUES
+(1, 1, 'submenu1', 'upload/poojalu_submenu/5899-2022-10-04.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `poojalu_tab`
+--
+
+CREATE TABLE `poojalu_tab` (
+  `id` int(11) NOT NULL,
+  `poojalu_id` int(11) DEFAULT NULL,
+  `subcategory_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `poojalu_tab`
+--
+
+INSERT INTO `poojalu_tab` (`id`, `poojalu_id`, `subcategory_id`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `poojalu_tab_variant`
+--
+
+CREATE TABLE `poojalu_tab_variant` (
+  `id` int(11) NOT NULL,
+  `poojalu_tab_id` int(11) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `poojalu_tab_variant`
+--
+
+INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `title`, `description`) VALUES
+(1, 1, 'bnm', 'wde'),
+(5, 1, 'kjijw', ' dwnkl');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rasi_names`
 --
 
@@ -282,16 +361,35 @@ INSERT INTO `rasi_names` (`id`, `rasi`) VALUES
 CREATE TABLE `yearly_horoscope` (
   `id` int(11) NOT NULL,
   `rasi` text DEFAULT NULL,
-  `year` year(4) DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `year` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `yearly_horoscope`
 --
 
-INSERT INTO `yearly_horoscope` (`id`, `rasi`, `year`, `description`) VALUES
-(1, 'Mesham', 2021, 'you can see the yearly horoscope here!!!');
+INSERT INTO `yearly_horoscope` (`id`, `rasi`, `year`) VALUES
+(1, 'Vruschikam', 2024);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `yearly_horoscope_variant`
+--
+
+CREATE TABLE `yearly_horoscope_variant` (
+  `id` int(11) NOT NULL,
+  `yearly_horoscope_id` int(11) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `yearly_horoscope_variant`
+--
+
+INSERT INTO `yearly_horoscope_variant` (`id`, `yearly_horoscope_id`, `title`, `description`) VALUES
+(1, 1, 'test ', 'hello everyone');
 
 -- --------------------------------------------------------
 
@@ -368,6 +466,30 @@ ALTER TABLE `panchangam_variant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `poojalu`
+--
+ALTER TABLE `poojalu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `poojalu_submenu`
+--
+ALTER TABLE `poojalu_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `poojalu_tab`
+--
+ALTER TABLE `poojalu_tab`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `poojalu_tab_variant`
+--
+ALTER TABLE `poojalu_tab_variant`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rasi_names`
 --
 ALTER TABLE `rasi_names`
@@ -377,6 +499,12 @@ ALTER TABLE `rasi_names`
 -- Indexes for table `yearly_horoscope`
 --
 ALTER TABLE `yearly_horoscope`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `yearly_horoscope_variant`
+--
+ALTER TABLE `yearly_horoscope_variant`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -435,7 +563,31 @@ ALTER TABLE `panchangam`
 -- AUTO_INCREMENT for table `panchangam_variant`
 --
 ALTER TABLE `panchangam_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT for table `poojalu`
+--
+ALTER TABLE `poojalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `poojalu_submenu`
+--
+ALTER TABLE `poojalu_submenu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `poojalu_tab`
+--
+ALTER TABLE `poojalu_tab`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `poojalu_tab_variant`
+--
+ALTER TABLE `poojalu_tab_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `rasi_names`
@@ -448,6 +600,12 @@ ALTER TABLE `rasi_names`
 --
 ALTER TABLE `yearly_horoscope`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `yearly_horoscope_variant`
+--
+ALTER TABLE `yearly_horoscope_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `years`

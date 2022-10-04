@@ -395,7 +395,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'yearly_horoscope') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR rasi like '%" . $search . "%' OR year like '%" . $search . "%' OR description like '%" . $search . "%'";
+        $where .= "WHERE id like '%" . $search . "%' OR rasi like '%" . $search . "%' OR year like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -426,7 +426,190 @@ if (isset($_GET['table']) && $_GET['table'] == 'yearly_horoscope') {
         $tempRow['id'] = $row['id'];
         $tempRow['rasi'] = $row['rasi'];
         $tempRow['year'] = $row['year'];
-        $tempRow['description'] = $row['description'];
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+
+//poojalu table goes here
+if (isset($_GET['table']) && $_GET['table'] == 'poojalu') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR name like '%" . $search . "%' ";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `poojalu` ";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM poojalu " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+
+        
+        $operate = ' <a href="edit-poojalu.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['name'] = $row['name'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+
+//poojalu sbmenu table goes here
+if (isset($_GET['table']) && $_GET['table'] == 'poojalu_submenu') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR name like '%" . $search . "%' OR poojalu like '%" . $search . "%' ";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `poojalu_submenu` ";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM poojalu_submenu " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+
+        
+        $operate = ' <a href="edit-poojalu_submenu.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['poojalu_id'] = $row['poojalu_id'];
+        $tempRow['name'] = $row['name'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+
+//poojalu tab table goes here
+if (isset($_GET['table']) && $_GET['table'] == 'poojalu_tab') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR poojalu like '%" . $search . "%' OR category like '%" . $search . "%' ";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `poojalu_tab` ";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM poojalu_tab " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+
+        
+        $operate = ' <a href="edit-poojalu_tab.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['poojalu_id'] = $row['poojalu_id'];
+        $tempRow['subcategory_id'] = $row['subcategory_id'];
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
