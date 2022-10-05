@@ -32,12 +32,10 @@ if (isset($_POST['btnEdit'])) {
 	if (empty($poojalu_id)) {
 		$error['poojalu_id'] = " <span class='label label-danger'>Required!</span>";
 	}
-	if (empty($subcategory_id)) {
-		$error['subcategory_id'] = " <span class='label label-danger'>Required!</span>";
-	}
+
    
    
-   if (!empty($poojalu_id) && !empty($subcategory_id)) {
+   if (!empty($poojalu_id)) {
 				$sql_query = "UPDATE poojalu_tab SET poojalu_id='$poojalu_id',subcategory_id='$subcategory_id' WHERE id =$ID";
 				$db->sql($sql_query);
 				$res = $db->getResult();
@@ -136,13 +134,14 @@ if (isset($_POST['btnCancel'])) { ?>
                                     </div>
 									<div class='col-md-6'>
                                            <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
-                                                <select id='subcategory_id' name="subcategory_id" class='form-control' required>
+										   <select id='subcategory_id' name="subcategory_id" class='form-control' required>
 
                                                 <?php foreach ($subcategory as $subcategories) { ?>
                                                     <option value="<?= $subcategories['id']; ?>" <?= $res[0]['subcategory_id'] == $subcategories['id'] ? 'selected' : '' ?>><?= $subcategories['name']; ?></option>
                                                 <?php }
                                                  ?>
                                                 </select>
+
 									</div>
 								</div>
 						   </div>
@@ -199,19 +198,9 @@ if (isset($_POST['btnCancel'])) { ?>
 </section>
 
 <div class="separator"> </div>
-<script>
-     $(document).on('change', '#poojalu_id', function() {
-        $.ajax({
-            url: 'public/db-operation.php',
-            method: 'POST',
-            data: 'poojalu_id=' + $('#poojalu_id').val() + '&find_subcategory=1',
-            success: function(data) {
-                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
-            }
-        });
-    });
-</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
     $(document).ready(function () {
         var max_fields = 7;
@@ -258,6 +247,11 @@ if (isset($_POST['btnCancel'])) { ?>
         } else {
             $(this).closest('.row').remove();
         }
+    });
+</script>
+<script>
+     $(document).on('change', '#poojalu_id', function() {
+		$('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + "<option value='0'>No Subcategory</option>");
     });
 </script>
 <?php $db->disconnect(); ?>

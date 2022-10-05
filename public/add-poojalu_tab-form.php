@@ -13,7 +13,7 @@ if (isset($_POST['btnAdd'])) {
 
      
        
-       if (!empty($poojalu_id) && !empty($subcategory_id)) {
+       if (!empty($poojalu_id)) {
          
                 $sql_query = "INSERT INTO poojalu_tab (poojalu_id,subcategory_id)VALUES('$poojalu_id','$subcategory_id')";
                 $db->sql($sql_query);
@@ -190,7 +190,7 @@ if (isset($_POST['btnAdd'])) {
             data: "poojalu_id=" + $('#poojalu_id').val() + "&change_category=1",
             method: "POST",
             success: function(data) {
-                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
+                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + "<option value='0'>No Subcategory</option>" + data);
             }
         });
     });

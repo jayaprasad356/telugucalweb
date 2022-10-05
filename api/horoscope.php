@@ -70,9 +70,22 @@ if ($_POST['type'] == 'Yearly'){
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $id = $row['id'];
+            $temp['id'] = $row['id'];
+            $temp['rasi'] = $row['rasi'];
+            $temp['year'] = $row['year'];
+            $sql = "SELECT * FROM `yearly_horoscope_variant` WHERE id = '$id'";
+            $db->sql($sql);
+            $res = $db->getResult();
+            $temp['yearly_horoscope_variant'] = $res;
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Yearly List Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }

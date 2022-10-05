@@ -50,12 +50,8 @@ if (isset($_POST['delete_variant'])) {
 
 //get subcategories by category
 if (isset($_POST['change_category'])) {
-        if ($_POST['poojalu_id'] == '') {
-            $sql = "SELECT * FROM poojalu_submenu";
-        } else {
-            $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
-            $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
-        }
+    $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
+    $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
 
     $db->sql($sql);
     $res = $db->getResult();
@@ -88,17 +84,7 @@ if (isset($_POST['category'])) {
 } 
 
 if (isset($_POST['find_subcategory'])) {
-        $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
-        $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
-        $db->sql($sql);
-        $res = $db->getResult();
-        if (!empty($res)) {
-            foreach ($res as $row) {
-                echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
-            }
-        } else {
-            echo "<option value=''>--No SubCategory is added--</option>";
-        }
+    echo "<option value=''>--No SubCategory is added--</option>";
 }
 
 

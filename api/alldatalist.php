@@ -84,5 +84,47 @@ foreach ($res as $row) {
     $rows[] = $temp;
 }
 $response['muhurtham_tab_list'] = $rows;
+unset($temp);
+$sql = "SELECT * FROM `poojalu`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['name'] = $row['name'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $rows[] = $temp;
+}
+$response['poojalu_list'] = $rows;
+unset($temp);
+$sql = "SELECT * FROM `poojalu_submenu`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['poojalu_id'] = $row['poojalu_id'];
+    $temp['name'] = $row['name'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $rows[] = $temp;
+}
+$response['poojalu_sub_menu_list'] = $rows;
+unset($temp);
+$sql = "SELECT *,pt.id AS id FROM `poojalu_tab` pt,`poojalu_tab_variant` ptv WHERE ptv.poojalu_tab_id = pt.id";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['poojalu_id'] = $row['poojalu_id'];
+    $temp['subcategory_id'] = $row['subcategory_id'];
+    $temp['title'] = $row['title'];
+    $temp['description'] = $row['description'];
+    $rows[] = $temp;
+}
+$response['poojalu_tab_list'] = $rows;
 print_r(json_encode($response));
 ?>
