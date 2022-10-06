@@ -48,11 +48,28 @@ if (isset($_POST['delete_variant'])) {
     }
 }
 
-//get subcategories by category
-if (isset($_POST['change_category'])) {
-    $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
-    $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
+//Grahalu tab variant
+if (isset($_POST['delete_variant'])) {
+    $grahalu_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM grahalu_tab_variant WHERE id = $grahalu_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
 
+//get subcategories by category for poojalu tab
+if (isset($_POST['change_poojalu'])) {
+    if ($_POST['poojalu_id'] == '') {
+        $sql = "SELECT * FROM poojalu_submenu";
+    }
+    else{
+        $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
+        $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
+    }
     $db->sql($sql);
     $res = $db->getResult();
     if (!empty($res)) {
@@ -64,7 +81,7 @@ if (isset($_POST['change_category'])) {
     }
 }
 
-if (isset($_POST['category'])) {
+if (isset($_POST['poojalu'])) {
     if ($_POST['poojalu_id'] == '') {
         $sql = "SELECT * FROM poojalu_submenu";
     } else {
@@ -84,9 +101,74 @@ if (isset($_POST['category'])) {
 } 
 
 if (isset($_POST['find_subcategory'])) {
-    echo "<option value=''>--No SubCategory is added--</option>";
+    $poojalu_id = $db->escapeString($fn->xss_clean($_POST['poojalu_id']));
+    $sql = "SELECT * FROM poojalu_submenu WHERE poojalu_id=" . $poojalu_id;
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Sub Category is added--</option>";
+    }
+}
+//end subcategories by category for poojalu tab
+
+
+//get subcategories by category for grahalu tab
+if (isset($_POST['change_grahalu'])) {
+    if ($_POST['grahalu_id'] == '') {
+        $sql = "SELECT * FROM grahalu_submenu";
+    }
+    else{
+        $grahalu_id = $db->escapeString($fn->xss_clean($_POST['grahalu_id']));
+        $sql = "SELECT * FROM grahalu_submenu WHERE grahalu_id=" . $grahalu_id;
+    }
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Sub Category is added--</option>";
+    }
 }
 
+if (isset($_POST['grahalu'])) {
+    if ($_POST['grahalu_id'] == '') {
+        $sql = "SELECT * FROM grahalu_submenu";
+    } else {
+        $grahalu_id = $db->escapeString($fn->xss_clean($_POST['grahalu_id']));
+        $sql = "SELECT * FROM grahalu_submenu WHERE grahalu_id=" . $grahalu_id;
+    }
+
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Subcategory is added--</option>";
+    }
+} 
+
+if (isset($_POST['find_grahalusubcategory'])) {
+    $grahalu_id = $db->escapeString($fn->xss_clean($_POST['grahalu_id']));
+    $sql = "SELECT * FROM grahalu_submenu WHERE grahalu_id=" . $grahalu_id;
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Sub Category is added--</option>";
+    }
+}
+///-<--end of subcategories for grahalu tab-->>//
 
 if (isset($_POST['week'])) {
     $year = $db->escapeString(($_POST['year']));

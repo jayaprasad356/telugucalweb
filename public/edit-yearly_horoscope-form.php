@@ -17,19 +17,14 @@ if (isset($_GET['id'])) {
 if (isset($_POST['btnEdit'])) {
 
 	$rasi= $db->escapeString($_POST['rasi']);
-	$year= $db->escapeString($_POST['year']);
-	
+	$year= $db->escapeString($_POST['year']);	
+	$title= $db->escapeString($_POST['title']);
+	$description= $db->escapeString($_POST['description']);
 
-	if (empty($rasi)) {
-		$error['rasi'] = " <span class='label label-danger'>Required!</span>";
-	}
-	if (empty($year)) {
-		$error['year'] = " <span class='label label-danger'>Required!</span>";
-	}
 
-	if ( !empty($rasi) && !empty($year))
+	if ( !empty($rasi) && !empty($year)&& !empty($title)&& !empty($description))
 	{
-             $sql_query = "UPDATE yearly_horoscope SET rasi='$rasi',year='$year' WHERE id =$ID";
+             $sql_query = "UPDATE yearly_horoscope SET rasi='$rasi',year='$year',title='$title',description='$description' WHERE id =$ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -42,22 +37,22 @@ if (isset($_POST['btnEdit'])) {
 			// check update result
 			if ($update_result == 1)
 		   {
-				for ($i = 0; $i < count($_POST['title']); $i++) {
+				for ($i = 0; $i < count($_POST['sub_title']); $i++) {
 					$yearly_horoscope_id = $db->escapeString(($_POST['yearly_horoscope_variant_id'][$i]));
-					$title = $db->escapeString(($_POST['title'][$i]));
-					$description = $db->escapeString(($_POST['description'][$i]));
-					$sql = "UPDATE yearly_horoscope_variant SET title='$title',description='$description' WHERE id =$yearly_horoscope_id";
+					$sub_title = $db->escapeString(($_POST['sub_title'][$i]));
+					$sub_description = $db->escapeString(($_POST['sub_description'][$i]));
+					$sql = "UPDATE yearly_horoscope_variant SET sub_title='$sub_title',sub_description='$sub_description' WHERE id =$yearly_horoscope_id";
 					$db->sql($sql);
 
 				}
 				if (
-					isset($_POST['insert_title']) && isset($_POST['insert_description'])
+					isset($_POST['insert_sub_title']) && isset($_POST['insert_sub_description'])
 				) {
-					for ($i = 0; $i < count($_POST['insert_title']); $i++) {
-						$title = $db->escapeString(($_POST['insert_title'][$i]));
-						$description = $db->escapeString(($_POST['insert_description'][$i]));
-						if (!empty($title) || !empty($description)) {
-							$sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id,title,description) VALUES('$ID','$title','$description')";
+					for ($i = 0; $i < count($_POST['insert_sub_title']); $i++) {
+						$sub_title = $db->escapeString(($_POST['insert_sub_title'][$i]));
+						$sub_description = $db->escapeString(($_POST['insert_sub_description'][$i]));
+						if (!empty($sub_title) || !empty($sub_description)) {
+							$sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id,sub_title,sub_description) VALUES('$ID','$sub_title','$sub_description')";
 							$db->sql($sql);
 
 						}
@@ -146,6 +141,19 @@ if (isset($_POST['btnCancel'])) { ?>
                                 </div>
                             </div>
                             <br>
+							<div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label for="">Title</label> <i class="text-danger asterik">*</i>
+                                        <input type="text" class="form-control" name="title" value="<?php echo $res[0]['title']; ?>" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Description</label> <i class="text-danger asterik">*</i>
+                                        <textarea type="text" rows="2" class="form-control" name="description"><?php echo $res[0]['description']; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
 							<div id="variations">
 							<?php
 							$i=0;
@@ -156,26 +164,26 @@ if (isset($_POST['btnCancel'])) { ?>
 									    <input type="hidden" class="form-control" name="yearly_horoscope_variant_id[]" id="yearly_horoscope_variant_id" value='<?= $row['id']; ?>' />
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
-												<input type="text" class="form-control" name="title[]" value="<?php echo $row['title'] ?>" required/>
+												<label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
+												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" required/>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1"> Description</label> <i class="text-danger asterik">*</i>
-												<textarea type="text" rows="2" class="form-control" name="description[]" required><?php echo $row['description'] ?></textarea>
+												<label for="exampleInputEmail1"> Sub Description</label> <i class="text-danger asterik">*</i>
+												<textarea type="text" rows="2" class="form-control" name="sub_description[]" required><?php echo $row['sub_description'] ?></textarea>
 											</div>
 										</div>
 
 										<?php if ($i == 0) { ?>
 												<div class='col-md-1'>
 													<label>Tab</label>
-													<a id="add_packate_variation" title='Add variation of panchangam' style='cursor: pointer;color:white;'><button class="btn btn-warning">Add more</button></a>
+													<a id="add_packate_variation" title='Add variation of horoscope' style='cursor: pointer;color:white;'><button class="btn btn-warning">Add more</button></a>
 												</div>
 											<?php } else { ?>
 												<div class="col-md-1">
 													<label>Tab</label>
-													<a class="remove_variation text-danger" data-id="data_delete" title="Remove variation of panchangam" style="cursor: pointer;color:white;"><button class="btn btn-danger">Remove</button></a>
+													<a class="remove_variation text-danger" data-id="data_delete" title="Remove variation of horoscope" style="cursor: pointer;color:white;"><button class="btn btn-danger">Remove</button></a>
 												</div>
 											<?php } ?>
 									</div>
@@ -208,7 +216,7 @@ if (isset($_POST['btnCancel'])) { ?>
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-				$(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="insert_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+				$(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub Title</label>' +'<input type="text" class="form-control" name="insert_sub_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="sub_description">Sub Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             } else {
                 alert('You Reached the limits')
             }

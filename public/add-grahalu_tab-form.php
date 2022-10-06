@@ -7,20 +7,18 @@ $fn = new custom_functions;
 ?>
 <?php
 if (isset($_POST['btnAdd'])) {
-
-        $rasi= $db->escapeString($_POST['rasi']);
-        $year= $db->escapeString($_POST['year']);
-        $description= $db->escapeString($_POST['description']);
-        $title= $db->escapeString($_POST['title']);
-        $error = array();
-
         
-     
-        if (empty($rasi)) {
-            $error['rasi'] = " <span class='label label-danger'>Required!</span>";
+        $grahalu_id = $db->escapeString(($_POST['grahalu_id']));
+        $subcategory_id = $db->escapeString(($_POST['subcategory_id']));
+        $title = $db->escapeString(($_POST['title']));
+        $description = $db->escapeString(($_POST['description']));
+
+
+        if (empty($grahalu_id)) {
+            $error['grahalu_id'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($year)) {
-            $error['year'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($subcategory_id)) {
+            $error['subcategory_id'] = " <span class='label label-danger'>Required!</span>";
         }
         if (empty($title)) {
             $error['title'] = " <span class='label label-danger'>Required!</span>";
@@ -28,9 +26,11 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
-       if ( !empty($rasi) && !empty($year) && !empty($title) && !empty($description))
-        {
-                $sql_query = "INSERT INTO yearly_horoscope (rasi,year,title,description)VALUES('$rasi','$year','$title','$description')";
+     
+       
+       if (!empty($grahalu_id) && !empty($subcategory_id)&& !empty($title)&& !empty($description)) {
+         
+                $sql_query = "INSERT INTO grahalu_tab (grahalu_id,subcategory_id,title,description)VALUES('$grahalu_id','$subcategory_id','$title','$description')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -39,37 +39,36 @@ if (isset($_POST['btnAdd'])) {
                     $result = 1;
                 }
                 if ($result == 1) {
-                    $sql = "SELECT id FROM yearly_horoscope ORDER BY id DESC LIMIT 1";
+                    $sql = "SELECT id FROM grahalu_tab ORDER BY id DESC LIMIT 1";
                     $db->sql($sql);
                     $res = $db->getResult();
-                    $yearly_horoscope_id = $res[0]['id'];
+                    $grahalu_tab_id = $res[0]['id'];
                     for ($i = 0; $i < count($_POST['sub_title']); $i++) {
-        
+
                         $sub_title = $db->escapeString(($_POST['sub_title'][$i]));
                         $sub_description = $db->escapeString(($_POST['sub_description'][$i]));
-                        $sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id,sub_title,sub_description) VALUES('$yearly_horoscope_id','$sub_title','$sub_description')";
+                        $sql = "INSERT INTO grahalu_tab_variant (grahalu_tab_id,sub_title,sub_description) VALUES('$grahalu_tab_id','$sub_title','$sub_description')";
                         $db->sql($sql);
-                        $yearly_horoscope_variant_result = $db->getResult();
+                        $tab_result = $db->getResult();
                     }
-                    if (!empty($yearly_horoscope_variant_result)) {
-                        $yearly_horoscope_variant_result = 0;
+                    if (!empty($tab_result)) {
+                        $tab_result = 0;
                     } else {
-                        $yearly_horoscope_variant_result = 1;
+                        $tab_result = 1;
                     }
                     
-                    $error['add_year_horoscope'] = "<section class='content-header'>
-                                                    <span class='label label-success'>Yearly Horoscope Added Successfully</span> </section>";
+                    $error['add_grahalu_tab'] = "<section class='content-header'>
+                                                    <span class='label label-success'>Grahalu Tab Added Successfully</span> </section>";
                 } else {
-                    $error['add_year_horoscope'] = " <span class='label label-danger'>Failed</span>";
+                    $error['add_grahalu_tab'] = " <span class='label label-danger'>Failed</span>";
                 }
-                }
-                
-            }
+        }
+        }
 ?>
 <section class="content-header">
-    <h1>Add Yearly Horoscope <small><a href='yearly.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Yearly Horoscope</a></small></h1>
+    <h1>Add Grahalu Tab<small><a href='grahalu_tab.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Grahalu Tab</a></small></h1>
 
-    <?php echo isset($error['add_year_horoscope']) ? $error['add_year_horoscope'] : ''; ?>
+    <?php echo isset($error['add_grahalu_tab']) ? $error['add_grahalu_tab'] : ''; ?>
     <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
     </ol>
@@ -86,36 +85,28 @@ if (isset($_POST['btnAdd'])) {
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form name="add_yearly_horoscope_form" method="post" enctype="multipart/form-data">
+                <form name="add_grahalu_tab_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-6'>
-                                        <label for="">Rasi</label> <i class="text-danger asterik">*</i>
-                                        <select id='rasi' name="rasi" class='form-control' required>
-                                            <option value="">Select</option>
+                                    <div class="col-md-5">
+                                        <label for="">Grahalu</label> <i class="text-danger asterik">*</i>
+                                        <select id='grahalu_id' name="grahalu_id" class='form-control' required>
+                                            <option value="">--select--</option>
                                                 <?php
-                                                $sql = "SELECT * FROM `rasi_names`";
+                                                $sql = "SELECT id,name FROM `grahalu`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
                                                 ?>
-                                                    <option value='<?= $value['rasi'] ?>'><?= $value['rasi'] ?></option>
+                                                    <option value='<?= $value['id'] ?>'><?= $value['name'] ?></option>
                                             <?php } ?>
-                                            </select>
+                                        </select>
                                     </div>
-                                    <div class='col-md-6'>
-                                        <label for="">Year</label> <i class="text-danger asterik">*</i>
-                                        <select id='year' name="year" class='form-control' required>
-                                            <option value="">Select Year</option>
-                                                <?php
-                                                $sql = "SELECT * FROM `years`";
-                                                $db->sql($sql);
-                                                $result = $db->getResult();
-                                                foreach ($result as $value) {
-                                                ?>
-                                                    <option value='<?= $value['year'] ?>'><?= $value['year'] ?></option>
-                                            <?php } ?>
+                                    <div class="col-md-6">
+                                        <label for="">Sub Category</label> <i class="text-danger asterik">*</i>
+                                        <select id='subcategory_id' name="subcategory_id" class='form-control' required>
+                                            <option value="">--select subcategory--</option>
                                         </select>
                                     </div>
                                 </div>
@@ -144,20 +135,21 @@ if (isset($_POST['btnAdd'])) {
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Description</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Sub description</label> <i class="text-danger asterik">*</i>
                                             <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
                                         </div>
                                     </div>
                                 
                                     <div class="col-md-1">
                                         <label>Tab</label>
-                                        <a class="add_packate_variation" title="Add variation of yearly horoscope" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                        <a class="add_packate_variation" title="Add variation" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
                                     </div>
                                     <div id="variations">
                                     </div>
                                 </div>
                             </div>
-                    </div>
+         
+                    </div>  
                     <!-- /.box-body -->
 
                     <div class="box-footer">
@@ -166,6 +158,7 @@ if (isset($_POST['btnAdd'])) {
                     </div>
 
                 </form>
+
             </div>
             <!-- /.box -->
         </div>
@@ -175,13 +168,13 @@ if (isset($_POST['btnAdd'])) {
 <div class="separator"> </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script>
-    $('#add_yearly_horoscope_form').validate({
+    $('#add_grahalu_tab_form').validate({
 
         ignore: [],
         debug: false,
         rules: {
-            year: "required",
-            rasi: "required",
+            grahalu_id:"required",
+            subcategory_id: "required",
             title="required",
             description="required",
         }
@@ -205,7 +198,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub title</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-6"><div class="form-group"><label for="sub_description">Sub description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub Title</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-6"><div class="form-group"><label for="sub_description">Sub description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             }
             else{
                 alert('You Reached the limits')
@@ -217,6 +210,18 @@ if (isset($_POST['btnAdd'])) {
             $(this).closest('.row').remove();
             x--;
         })
+    });
+</script>
+<script>
+     $(document).on('change', '#grahalu_id', function() {
+        $.ajax({
+            url: "public/db-operation.php",
+            data: "grahalu_id=" + $('#grahalu_id').val() + "&change_grahalu=1",
+            method: "POST",
+            success: function(data) {
+                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
+            }
+        });
     });
 </script>
 

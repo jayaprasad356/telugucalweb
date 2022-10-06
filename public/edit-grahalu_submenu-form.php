@@ -17,27 +17,27 @@ if (isset($_GET['id'])) {
 if (isset($_POST['btnEdit'])) {
 
 
-	$poojalu = $db->escapeString(($_POST['poojalu']));
+	$grahalu = $db->escapeString(($_POST['grahalu']));
 	$name = $db->escapeString(($_POST['name']));
 	$error = array();
 
 	
-	if (empty($poojalu)) {
-		$error['poojalu'] = " <span class='label label-danger'>Required!</span>";
+	if (empty($grahalu)) {
+		$error['grahalu'] = " <span class='label label-danger'>Required!</span>";
 	}
 	if (empty($name)) {
 		$error['name'] = " <span class='label label-danger'>Required!</span>";
 	}
    
    
-   if (!empty($name) && !empty($poojalu)) {
+   if (!empty($name) && !empty($grahalu)) {
 		if ($_FILES['image']['size'] != 0 && $_FILES['image']['error'] == 0 && !empty($_FILES['image'])) {
 			//image isn't empty and update the image
 			$old_image = $db->escapeString($_POST['old_image']);
 			$extension = pathinfo($_FILES["image"]["name"])['extension'];
 	
 			$result = $fn->validate_image($_FILES["image"]);
-			$target_path = 'upload/poojalu_submenu/';
+			$target_path = 'upload/grahalu_submenu/';
 			
 			$filename = microtime(true) . '.' . strtolower($extension);
 			$full_path = $target_path . "" . $filename;
@@ -49,12 +49,12 @@ if (isset($_POST['btnEdit'])) {
 			if (!empty($old_image)) {
 				unlink($old_image);
 			}
-			$upload_image = 'upload/poojalu_submenu/' . $filename;
-			$sql = "UPDATE poojalu_submenu SET `image`='" . $upload_image . "' WHERE `id`=" . $ID;
+			$upload_image = 'upload/grahalu_submenu/' . $filename;
+			$sql = "UPDATE grahalu_submenu SET `image`='" . $upload_image . "' WHERE `id`=" . $ID;
 			$db->sql($sql);
 		}
 
-		$sql = "UPDATE poojalu_submenu SET poojalu_id='$poojalu',name='$name' WHERE id=$ID";
+		$sql = "UPDATE grahalu_submenu SET grahalu_id='$grahalu',name='$name' WHERE id=$ID";
 		$db->sql($sql);
 		$update_result = $db->getResult();
 		if (!empty($update_result)) {
@@ -66,9 +66,9 @@ if (isset($_POST['btnEdit'])) {
 			// check update result
 			if ($update_result == 1) {
 				
-			$error['update_poojalu_submenu'] = " <section class='content-header'><span class='label label-success'>Poojalu Submenu updated Successfully</span></section>";
+			$error['update_grahalu_submenu'] = " <section class='content-header'><span class='label label-success'>Grahalu Submenu updated Successfully</span></section>";
 			} else {
-				$error['update_poojalu_submenu'] = " <span class='label label-danger'>Failed to update</span>";
+				$error['update_grahalu_submenu'] = " <span class='label label-danger'>Failed to update</span>";
 			}
 		}
 	} 
@@ -77,19 +77,19 @@ if (isset($_POST['btnEdit'])) {
 // create array variable to store previous data
 $data = array();
 
-$sql_query = "SELECT * FROM poojalu_submenu WHERE id =" . $ID;
+$sql_query = "SELECT * FROM grahalu_submenu WHERE id =" . $ID;
 $db->sql($sql_query);
 $res = $db->getResult();
 
 if (isset($_POST['btnCancel'])) { ?>
 	<script>
-		window.location.href = "poojalu_submenu.php";
+		window.location.href = "grahalu_submenu.php";
 	</script>
 <?php } ?>
 <section class="content-header">
 	<h1>
-		Edit Poojalu<small><a href='poojalu_submenu.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Poojalu Submenu</a></small></h1>
-	<small><?php echo isset($error['update_poojalu_submenu']) ? $error['update_poojalu_submenu'] : ''; ?></small>
+		Edit Grahalu<small><a href='grahalu_submenu.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Grahalu Submenu</a></small></h1>
+	<small><?php echo isset($error['update_grahalu_submenu']) ? $error['update_grahalu_submenu'] : ''; ?></small>
 	<ol class="breadcrumb">
 		<li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
 	</ol>
@@ -110,22 +110,22 @@ if (isset($_POST['btnCancel'])) { ?>
 				
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form id="edit_poojalu_form" method="post" enctype="multipart/form-data">
+				<form id="edit_grahalu_form" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 					<input type="hidden" id="old_image" name="old_image"  value="<?= $res[0]['image']; ?>">
 						   <div class="row">
 							    <div class="form-group">
 								    <div class="col-md-6">
-									    <label for="">Poojalu</label> <i class="text-danger asterik">*</i>
-                                                <select id='poojalu' name="poojalu" class='form-control' required>
-                                                    <option value="">Select</option>
+									    <label for="">Grahalu</label> <i class="text-danger asterik">*</i>
+                                                <select id='grahalu' name="grahalu" class='form-control' required>
+                                                    <option value="">--Select--</option>
                                                         <?php
-                                                        $sql = "SELECT id,name FROM `poojalu`";
+                                                        $sql = "SELECT id,name FROM `grahalu`";
                                                         $db->sql($sql);
                                                         $result = $db->getResult();
                                                         foreach ($result as $value) {
                                                         ?>
-													 <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['poojalu_id'] ? 'selected="selected"' : '';?>><?= $value['name'] ?></option>
+													 <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['grahalu_id'] ? 'selected="selected"' : '';?>><?= $value['name'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                     </div>

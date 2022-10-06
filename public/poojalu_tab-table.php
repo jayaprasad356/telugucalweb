@@ -23,8 +23,10 @@
                                 <tr>
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
-                                    <th data-field="poojalu_id" data-sortable="true">Poojalu</th>
-                                    <th data-field="subcategory_id" data-sortable="true">Sub-Category Id</th>
+                                    <th data-field="poojalu_name" data-sortable="true">Poojalu Name</th>
+                                    <th data-field="poojalu_subcategroy" data-sortable="true">Sub-Category Name</th>
+                                    <th data-field="title" data-sortable="true">Title</th>
+                                    <th data-field="description" data-sortable="true">Description</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

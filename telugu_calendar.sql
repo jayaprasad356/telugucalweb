@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Oct 05, 2022 at 03:44 PM
--- Server version: 10.5.15-MariaDB-cll-lve
--- PHP Version: 7.2.34
+-- Host: 127.0.0.1
+-- Generation Time: Oct 06, 2022 at 02:04 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `u762811021_tc`
+-- Database: `telugu_calendar`
 --
 
 -- --------------------------------------------------------
@@ -79,8 +79,89 @@ INSERT INTO `festivals` (`id`, `date`, `festival`) VALUES
 (9, '2022-09-26', 'Festival '),
 (10, '2022-09-27', 'Festival '),
 (11, '2022-09-28', 'Festival '),
-(12, '2022-09-29', 'Festival '),
-(13, '2022-09-22', 'Festival ');
+(12, '2022-09-29', 'Festival ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grahalu`
+--
+
+CREATE TABLE `grahalu` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grahalu`
+--
+
+INSERT INTO `grahalu` (`id`, `name`, `image`) VALUES
+(1, 'graha', 'upload/grahalu/7838-2022-10-06.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grahalu_submenu`
+--
+
+CREATE TABLE `grahalu_submenu` (
+  `id` int(11) NOT NULL,
+  `grahalu_id` int(11) DEFAULT NULL,
+  `name` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grahalu_submenu`
+--
+
+INSERT INTO `grahalu_submenu` (`id`, `grahalu_id`, `name`, `image`) VALUES
+(1, 1, 'home graha', 'upload/grahalu_submenu/1665054820.3623.jpg'),
+(2, 1, 'marriage graha', 'upload/grahalu_submenu/4550-2022-10-06.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grahalu_tab`
+--
+
+CREATE TABLE `grahalu_tab` (
+  `id` int(11) NOT NULL,
+  `grahalu_id` int(11) DEFAULT NULL,
+  `subcategory_id` int(11) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grahalu_tab`
+--
+
+INSERT INTO `grahalu_tab` (`id`, `grahalu_id`, `subcategory_id`, `title`, `description`) VALUES
+(1, 1, 2, 'marriage main', 'everyone wants get maariies');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grahalu_tab_variant`
+--
+
+CREATE TABLE `grahalu_tab_variant` (
+  `id` int(11) NOT NULL,
+  `grahalu_tab_id` int(11) DEFAULT NULL,
+  `sub_title` text DEFAULT NULL,
+  `sub_description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grahalu_tab_variant`
+--
+
+INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_description`) VALUES
+(1, 1, 'manns', 'jnkscshcwj'),
+(2, 1, 'gsffdd', 'mkjpcwj');
 
 -- --------------------------------------------------------
 
@@ -262,7 +343,8 @@ CREATE TABLE `poojalu` (
 --
 
 INSERT INTO `poojalu` (`id`, `name`, `image`) VALUES
-(1, 'Aaitha poojalu', 'upload/poojalu/1664872627.3071.jpg');
+(1, 'Aaitha poojalu', 'upload/poojalu/1664872627.3071.jpg'),
+(2, 'Diwali', 'upload/poojalu/1023-2022-10-06.jpg');
 
 -- --------------------------------------------------------
 
@@ -282,7 +364,8 @@ CREATE TABLE `poojalu_submenu` (
 --
 
 INSERT INTO `poojalu_submenu` (`id`, `poojalu_id`, `name`, `image`) VALUES
-(1, 1, 'submenu1', 'upload/poojalu_submenu/5899-2022-10-04.jpg');
+(1, 1, 'submenu1', 'upload/poojalu_submenu/5899-2022-10-04.jpg'),
+(2, 2, 'submenu 2', 'upload/poojalu_submenu/9876-2022-10-06.jpg');
 
 -- --------------------------------------------------------
 
@@ -293,17 +376,17 @@ INSERT INTO `poojalu_submenu` (`id`, `poojalu_id`, `name`, `image`) VALUES
 CREATE TABLE `poojalu_tab` (
   `id` int(11) NOT NULL,
   `poojalu_id` int(11) DEFAULT NULL,
-  `subcategory_id` int(11) DEFAULT NULL
+  `subcategory_id` int(11) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `poojalu_tab`
 --
 
-INSERT INTO `poojalu_tab` (`id`, `poojalu_id`, `subcategory_id`) VALUES
-(1, 1, 1),
-(2, 1, 1),
-(3, 1, 1);
+INSERT INTO `poojalu_tab` (`id`, `poojalu_id`, `subcategory_id`, `title`, `description`) VALUES
+(1, 1, 1, 'hello main', 'this is the main description');
 
 -- --------------------------------------------------------
 
@@ -314,18 +397,17 @@ INSERT INTO `poojalu_tab` (`id`, `poojalu_id`, `subcategory_id`) VALUES
 CREATE TABLE `poojalu_tab_variant` (
   `id` int(11) NOT NULL,
   `poojalu_tab_id` int(11) DEFAULT NULL,
-  `title` text DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `sub_title` text DEFAULT NULL,
+  `sub_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `poojalu_tab_variant`
 --
 
-INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `title`, `description`) VALUES
-(1, 1, 'bnm', 'wde'),
-(6, 2, 'dsds', 'dsds'),
-(7, 3, 'fgfg', 'fgf');
+INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `sub_title`, `sub_description`) VALUES
+(1, 1, 'wishes', 'happy gettdvxsc'),
+(2, 1, 'tecjsu', 'nkjjcnenc');
 
 -- --------------------------------------------------------
 
@@ -387,15 +469,17 @@ INSERT INTO `weekly_horoscope` (`id`, `rasi`, `year`, `month`, `week`, `descript
 CREATE TABLE `yearly_horoscope` (
   `id` int(11) NOT NULL,
   `rasi` text DEFAULT NULL,
-  `year` year(4) DEFAULT NULL
+  `year` year(4) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `yearly_horoscope`
 --
 
-INSERT INTO `yearly_horoscope` (`id`, `rasi`, `year`) VALUES
-(1, 'Mesham', 2022);
+INSERT INTO `yearly_horoscope` (`id`, `rasi`, `year`, `title`, `description`) VALUES
+(1, 'Midhunam', 2023, 'hello', 'this is main');
 
 -- --------------------------------------------------------
 
@@ -406,16 +490,17 @@ INSERT INTO `yearly_horoscope` (`id`, `rasi`, `year`) VALUES
 CREATE TABLE `yearly_horoscope_variant` (
   `id` int(11) NOT NULL,
   `yearly_horoscope_id` int(11) DEFAULT NULL,
-  `title` text DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `sub_title` text DEFAULT NULL,
+  `sub_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `yearly_horoscope_variant`
 --
 
-INSERT INTO `yearly_horoscope_variant` (`id`, `yearly_horoscope_id`, `title`, `description`) VALUES
-(1, 1, 'test ', 'hello everyone');
+INSERT INTO `yearly_horoscope_variant` (`id`, `yearly_horoscope_id`, `sub_title`, `sub_description`) VALUES
+(1, 1, 'wish', 'happy launching fay'),
+(2, 1, 'punish', 'bfihefhfhih');
 
 -- --------------------------------------------------------
 
@@ -453,6 +538,30 @@ ALTER TABLE `daily_horoscope`
 -- Indexes for table `festivals`
 --
 ALTER TABLE `festivals`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grahalu`
+--
+ALTER TABLE `grahalu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grahalu_submenu`
+--
+ALTER TABLE `grahalu_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grahalu_tab`
+--
+ALTER TABLE `grahalu_tab`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grahalu_tab_variant`
+--
+ALTER TABLE `grahalu_tab_variant`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -562,6 +671,30 @@ ALTER TABLE `festivals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `grahalu`
+--
+ALTER TABLE `grahalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `grahalu_submenu`
+--
+ALTER TABLE `grahalu_submenu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `grahalu_tab`
+--
+ALTER TABLE `grahalu_tab`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `grahalu_tab_variant`
+--
+ALTER TABLE `grahalu_tab_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `monthly_horoscope`
 --
 ALTER TABLE `monthly_horoscope`
@@ -589,37 +722,37 @@ ALTER TABLE `muhurtham_tab`
 -- AUTO_INCREMENT for table `panchangam`
 --
 ALTER TABLE `panchangam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `panchangam_variant`
 --
 ALTER TABLE `panchangam_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `poojalu`
 --
 ALTER TABLE `poojalu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `poojalu_submenu`
 --
 ALTER TABLE `poojalu_submenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `poojalu_tab`
 --
 ALTER TABLE `poojalu_tab`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `poojalu_tab_variant`
 --
 ALTER TABLE `poojalu_tab_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rasi_names`
@@ -643,7 +776,7 @@ ALTER TABLE `yearly_horoscope`
 -- AUTO_INCREMENT for table `yearly_horoscope_variant`
 --
 ALTER TABLE `yearly_horoscope_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `years`

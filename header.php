@@ -226,6 +226,17 @@ $fn = new custom_functions;
                         <li><a href="poojalu_tab.php"><i class="fa fa-angle-right"></i>Poojalu Tab</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bullseye"></i>
+                        <span>Grahalu</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="grahalu.php"><i class="fa fa-angle-right"></i>Grahalu</a></li>
+                        <li><a href="grahalu_submenu.php"><i class="fa fa-angle-right"></i>Grahalu Submenu</a></li>
+                        <li><a href="grahalu_tab.php"><i class="fa fa-angle-right"></i>Grahalu Tab</a></li>
+                    </ul>
+                </li>
              
              
               

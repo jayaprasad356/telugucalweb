@@ -14,17 +14,17 @@ if (isset($_GET['id'])) {
     exit(0);
 }
 $category_data = array();
-$sql = "select id,name from poojalu order by id asc";
+$sql = "select id,name from grahalu order by id asc";
 $db->sql($sql);
 $category_data = $db->getResult();
-$sql = "select * from poojalu_submenu";
+$sql = "select * from grahalu_submenu";
 $db->sql($sql);
 $subcategory = $db->getResult();
 
 if (isset($_POST['btnEdit'])) {
 
 
-	$poojalu_id = $db->escapeString(($_POST['poojalu_id']));
+	$grahalu_id = $db->escapeString(($_POST['grahalu_id']));
 	$subcategory_id = $db->escapeString(($_POST['subcategory_id']));
 	$title = $db->escapeString(($_POST['title']));
 	$description = $db->escapeString(($_POST['description']));
@@ -35,8 +35,8 @@ if (isset($_POST['btnEdit'])) {
 
    
    
-   if (!empty($poojalu_id) && !empty($subcategory_id) && !empty($title) && !empty($description)) {
-				$sql_query = "UPDATE poojalu_tab SET poojalu_id='$poojalu_id',subcategory_id='$subcategory_id',title='$title',description='$description' WHERE id =$ID";
+   if (!empty($grahalu_id) && !empty($subcategory_id) && !empty($title) && !empty($description)) {
+				$sql_query = "UPDATE grahalu_tab SET grahalu_id='$grahalu_id',subcategory_id='$subcategory_id',title='$title',description='$description' WHERE id =$ID";
 				$db->sql($sql_query);
 				$res = $db->getResult();
 				$update_result = $db->getResult();
@@ -50,10 +50,10 @@ if (isset($_POST['btnEdit'])) {
 			if ($update_result == 1)
 			{
 				for ($i = 0; $i < count($_POST['sub_title']); $i++) {
-					$poojalu_tab_id = $db->escapeString(($_POST['poojalu_tab_variant_id'][$i]));
+					$grahalu_tab_id = $db->escapeString(($_POST['grahalu_tab_variant_id'][$i]));
 					$sub_title = $db->escapeString(($_POST['sub_title'][$i]));
 					$sub_description = $db->escapeString(($_POST['sub_description'][$i]));
-					$sql = "UPDATE poojalu_tab_variant SET sub_title='$sub_title',sub_description='$sub_description' WHERE id =$poojalu_tab_id";
+					$sql = "UPDATE grahalu_tab_variant SET sub_title='$sub_title',sub_description='$sub_description' WHERE id =$grahalu_tab_id";
 					$db->sql($sql);
 
 				}
@@ -64,15 +64,15 @@ if (isset($_POST['btnEdit'])) {
 						$sub_title = $db->escapeString(($_POST['insert_sub_title'][$i]));
 						$sub_description = $db->escapeString(($_POST['insert_sub_description'][$i]));
 						if (!empty($sub_title) || !empty($sub_description)) {
-							$sql = "INSERT INTO poojalu_tab_variant (poojalu_tab_id,sub_title,sub_description) VALUES('$ID','$sub_title','$sub_description')";
+							$sql = "INSERT INTO grahalu_tab_variant (grahalu_tab_id,sub_title,sub_description) VALUES('$ID','$sub_title','$sub_description')";
 							$db->sql($sql);
 
 						}
 					}
 				}
-					$error['update_poojalutab'] = " <section class='content-header'><span class='label label-success'>Poojalu Tab updated Successfully</span></section>";
+					$error['update_grahalutab'] = " <section class='content-header'><span class='label label-success'>Grahalu Tab updated Successfully</span></section>";
 			} else {
-				$error['update_poojalutab'] = " <span class='label label-danger'>Failed to update</span>";
+				$error['update_grahalutab'] = " <span class='label label-danger'>Failed to update</span>";
 			}
 			}
 	} 
@@ -81,23 +81,23 @@ if (isset($_POST['btnEdit'])) {
 // create array variable to store previous data
 $data = array();
 
-$sql_query = "SELECT * FROM poojalu_tab WHERE id =" . $ID;
+$sql_query = "SELECT * FROM grahalu_tab WHERE id =" . $ID;
 $db->sql($sql_query);
 $res = $db->getResult();
 
-$sql_query = "SELECT * FROM poojalu_tab_variant WHERE poojalu_tab_id =" . $ID;
+$sql_query = "SELECT * FROM grahalu_tab_variant WHERE grahalu_tab_id =" . $ID;
 $db->sql($sql_query);
 $resslot = $db->getResult();
 
 if (isset($_POST['btnCancel'])) { ?>
 	<script>
-		window.location.href = "poojalu_tab.php";
+		window.location.href = "grahalu_tab.php";
 	</script>
 <?php } ?>
 <section class="content-header">
 	<h1>
-		Edit Poojalu Tab<small><a href='poojalu_tab.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Poojalu Tab</a></small></h1>
-	<small><?php echo isset($error['update_poojalutab']) ? $error['update_poojalutab'] : ''; ?></small>
+		Edit Grahalu Tab<small><a href='grahalu_tab.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Grahalu Tab</a></small></h1>
+	<small><?php echo isset($error['update_grahalutab']) ? $error['update_grahalutab'] : ''; ?></small>
 	<ol class="breadcrumb">
 		<li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
 	</ol>
@@ -118,16 +118,16 @@ if (isset($_POST['btnCancel'])) { ?>
 				
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form id="edit_poojalu_tab_form" method="post" enctype="multipart/form-data">
+				<form id="edit_grahalu_tab_form" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 						   <div class="row">
 							    <div class="form-group">
 								    <div class="col-md-5">
-									      <label for="">Select Poojalu</label> <i class="text-danger asterik">*</i>
-                                                <select id='poojalu_id' name="poojalu_id" class='form-control' required>
+									      <label for="">Select Grahalu</label> <i class="text-danger asterik">*</i>
+                                                <select id='grahalu_id' name="grahalu_id" class='form-control' required>
                                                 <?php
                                                 foreach ($category_data as $row) { ?>
-                                                    <option value="<?php echo $row['id']; ?>" <?= ($row['id'] == $res[0]['poojalu_id']) ? "selected" : ""; ?>><?php echo $row['name']; ?></option>
+                                                    <option value="<?php echo $row['id']; ?>" <?= ($row['id'] == $res[0]['grahalu_id']) ? "selected" : ""; ?>><?php echo $row['name']; ?></option>
                                                 <?php }
                                             ?>
                                           </select>
@@ -166,7 +166,7 @@ if (isset($_POST['btnCancel'])) { ?>
 								?>
 								<div id="packate_div">
 									<div class="row">
-									    <input type="hidden" class="form-control" name="poojalu_tab_variant_id[]" id="poojalu_tab_variant_id" value='<?= $row['id']; ?>' />
+									    <input type="hidden" class="form-control" name="grahalu_tab_variant_id[]" id="grahalu_tab_variant_id" value='<?= $row['id']; ?>' />
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1">sub_title</label> <i class="text-danger asterik">*</i>
@@ -243,7 +243,7 @@ if (isset($_POST['btnCancel'])) { ?>
     $(document).on('click', '.remove_variation', function() {
         if ($(this).data('id') == 'data_delete') {
             if (confirm('Are you sure? Want to delete this row')) {
-                var id = $(this).closest('div.row').find("input[id='poojalu_tab_variant_id']").val();
+                var id = $(this).closest('div.row').find("input[id='grahalu_tab_variant_id']").val();
                 $.ajax({
                     url: 'public/db-operation.php',
                     type: "post",
@@ -263,11 +263,11 @@ if (isset($_POST['btnCancel'])) { ?>
     });
 </script>
 <script>
-     $(document).on('change', '#poojalu_id', function() {
+     $(document).on('change', '#grahalu_id', function() {
         $.ajax({
             url: 'public/db-operation.php',
             method: 'POST',
-            data: 'poojalu_id=' + $('#poojalu_id').val() + '&find_subcategory=1',
+            data: 'grahalu_id=' + $('#grahalu_id').val() + '&find_grahalusubcategory=1',
             success: function(data) {
                 $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
             }

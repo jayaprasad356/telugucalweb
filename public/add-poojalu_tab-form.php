@@ -10,12 +10,27 @@ if (isset($_POST['btnAdd'])) {
         
         $poojalu_id = $db->escapeString(($_POST['poojalu_id']));
         $subcategory_id = $db->escapeString(($_POST['subcategory_id']));
+        $title = $db->escapeString(($_POST['title']));
+        $description = $db->escapeString(($_POST['description']));
 
+
+        if (empty($poojalu_id)) {
+            $error['poojalu_id'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($subcategory_id)) {
+            $error['subcategory_id'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($title)) {
+            $error['title'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($description)) {
+            $error['description'] = " <span class='label label-danger'>Required!</span>";
+        }
      
        
-       if (!empty($poojalu_id)) {
+       if (!empty($poojalu_id) && !empty($subcategory_id)&& !empty($title)&& !empty($description)) {
          
-                $sql_query = "INSERT INTO poojalu_tab (poojalu_id,subcategory_id)VALUES('$poojalu_id','$subcategory_id')";
+                $sql_query = "INSERT INTO poojalu_tab (poojalu_id,subcategory_id,title,description)VALUES('$poojalu_id','$subcategory_id','$title','$description')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -28,11 +43,11 @@ if (isset($_POST['btnAdd'])) {
                     $db->sql($sql);
                     $res = $db->getResult();
                     $poojalu_tab_id = $res[0]['id'];
-                    for ($i = 0; $i < count($_POST['title']); $i++) {
+                    for ($i = 0; $i < count($_POST['sub_title']); $i++) {
 
-                        $title = $db->escapeString(($_POST['title'][$i]));
-                        $description = $db->escapeString(($_POST['description'][$i]));
-                        $sql = "INSERT INTO poojalu_tab_variant (poojalu_tab_id,title,description) VALUES('$poojalu_tab_id','$title','$description')";
+                        $sub_title = $db->escapeString(($_POST['sub_title'][$i]));
+                        $sub_description = $db->escapeString(($_POST['sub_description'][$i]));
+                        $sql = "INSERT INTO poojalu_tab_variant (poojalu_tab_id,sub_title,sub_description) VALUES('$poojalu_tab_id','$sub_title','$sub_description')";
                         $db->sql($sql);
                         $tab_result = $db->getResult();
                     }
@@ -97,18 +112,31 @@ if (isset($_POST['btnAdd'])) {
                                 </div>
                             </div>
                             <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label for="">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
+                                        <input type="text" class="form-control" name="title" required />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
+                                        <textarea type="text" rows="2" class="form-control" name="description" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
                             <div id="packate_div"  >
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="title[]" required />
+                                            <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="sub_title[]" required />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
-                                            <textarea type="text" rows="2" class="form-control" name="description[]" required></textarea>
+                                            <label for="exampleInputEmail1">Sub description</label> <i class="text-danger asterik">*</i>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
                                         </div>
                                     </div>
                                 
@@ -145,8 +173,10 @@ if (isset($_POST['btnAdd'])) {
         ignore: [],
         debug: false,
         rules: {
-            poojalu:"required",
-            subcategory: "required",
+            poojalu_id:"required",
+            subcategory_id: "required",
+            title="required",
+            description="required",
         }
     });
     $('#btnClear').on('click', function() {
@@ -168,7 +198,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="title[]" /></div></div>' + '<div class="col-md-6"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub Title</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-6"><div class="form-group"><label for="sub_description">Sub description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             }
             else{
                 alert('You Reached the limits')
@@ -182,15 +212,14 @@ if (isset($_POST['btnAdd'])) {
         })
     });
 </script>
-
 <script>
      $(document).on('change', '#poojalu_id', function() {
         $.ajax({
             url: "public/db-operation.php",
-            data: "poojalu_id=" + $('#poojalu_id').val() + "&change_category=1",
+            data: "poojalu_id=" + $('#poojalu_id').val() + "&change_poojalu=1",
             method: "POST",
             success: function(data) {
-                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + "<option value='0'>No Subcategory</option>" + data);
+                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
             }
         });
     });
