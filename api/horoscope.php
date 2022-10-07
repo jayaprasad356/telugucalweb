@@ -77,7 +77,9 @@ if ($_POST['type'] == 'Yearly'){
             $temp['id'] = $row['id'];
             $temp['rasi'] = $row['rasi'];
             $temp['year'] = $row['year'];
-            $sql = "SELECT * FROM `yearly_horoscope_variant` WHERE id = '$id'";
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $sql = "SELECT * FROM `yearly_horoscope_variant` WHERE yearly_horoscope_id = '$id'";
             $db->sql($sql);
             $res = $db->getResult();
             $temp['yearly_horoscope_variant'] = $res;

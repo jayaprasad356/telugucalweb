@@ -112,7 +112,7 @@ foreach ($res as $row) {
 }
 $response['poojalu_sub_menu_list'] = $rows;
 unset($temp);
-$sql = "SELECT *,pt.id AS id FROM `poojalu_tab` pt,`poojalu_tab_variant` ptv WHERE ptv.poojalu_tab_id = pt.id";
+$sql = "SELECT *,ptv.id AS id FROM `poojalu_tab` pt,`poojalu_tab_variant` ptv WHERE ptv.poojalu_tab_id = pt.id";
 $db->sql($sql);
 $res = $db->getResult();
 $rows = array();
@@ -123,8 +123,55 @@ foreach ($res as $row) {
     $temp['subcategory_id'] = $row['subcategory_id'];
     $temp['title'] = $row['title'];
     $temp['description'] = $row['description'];
+    $temp['sub_title'] = $row['sub_title'];
+    $temp['sub_description'] = $row['sub_description'];
     $rows[] = $temp;
 }
 $response['poojalu_tab_list'] = $rows;
+unset($temp);
+$sql = "SELECT * FROM `grahalu`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['name'] = $row['name'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $rows[] = $temp;
+}
+$response['grahalu_list'] = $rows;
+unset($temp);
+$sql = "SELECT * FROM `grahalu_submenu`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['grahalu_id'] = $row['grahalu_id'];
+    $temp['name'] = $row['name'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $rows[] = $temp;
+}
+$response['grahalu_sub_menu_list'] = $rows;
+unset($temp);
+$sql = "SELECT *,gtv.id AS id FROM `grahalu_tab` gt,`grahalu_tab_variant` gtv WHERE gtv.grahalu_tab_id = gt.id";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['grahalu_id'] = $row['grahalu_id'];
+    $temp['subcategory_id'] = $row['subcategory_id'];
+    $temp['title'] = $row['title'];
+    $temp['description'] = $row['description'];
+    $temp['sub_title'] = $row['sub_title'];
+    $temp['sub_description'] = $row['sub_description'];
+    $rows[] = $temp;
+}
+$response['grahalu_tab_list'] = $rows;
+unset($temp);
 print_r(json_encode($response));
 ?>
