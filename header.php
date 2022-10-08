@@ -235,6 +235,7 @@ $fn = new custom_functions;
                         <li><a href="grahalu.php"><i class="fa fa-angle-right"></i>Grahalu</a></li>
                         <li><a href="grahalu_submenu.php"><i class="fa fa-angle-right"></i>Grahalu Submenu</a></li>
                         <li><a href="grahalu_tab.php"><i class="fa fa-angle-right"></i>Grahalu Tab</a></li>
+                        <li><a href="nakshatralu.php"><i class="fa fa-angle-right"></i>Nakshatralu</a></li>
                     </ul>
                 </li>
              

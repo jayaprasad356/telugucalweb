@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2022 at 02:04 PM
+-- Generation Time: Oct 08, 2022 at 06:43 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -253,6 +253,25 @@ CREATE TABLE `muhurtham_tab` (
 INSERT INTO `muhurtham_tab` (`id`, `muhurtham_id`, `title`, `description`) VALUES
 (1, 1, 'dd', 'ddd'),
 (2, 1, 'Rohini Nakshathram', '01:30 - 02:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nakshatralu`
+--
+
+CREATE TABLE `nakshatralu` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nakshatralu`
+--
+
+INSERT INTO `nakshatralu` (`id`, `name`, `image`) VALUES
+(1, 'kadaga nakshahra', 'upload/nakshatralu/5585-2022-10-08.jpg');
 
 -- --------------------------------------------------------
 
@@ -589,6 +608,12 @@ ALTER TABLE `muhurtham_tab`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nakshatralu`
+--
+ALTER TABLE `nakshatralu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `panchangam`
 --
 ALTER TABLE `panchangam`
@@ -717,6 +742,12 @@ ALTER TABLE `muhurtham`
 --
 ALTER TABLE `muhurtham_tab`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `nakshatralu`
+--
+ALTER TABLE `nakshatralu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `panchangam`
