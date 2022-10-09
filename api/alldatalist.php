@@ -173,5 +173,18 @@ foreach ($res as $row) {
 }
 $response['grahalu_tab_list'] = $rows;
 unset($temp);
+$sql = "SELECT * FROM `nakshatralu`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['name'] = $row['name'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $rows[] = $temp;
+}
+$response['nakshatralu_list'] = $rows;
+unset($temp);
 print_r(json_encode($response));
 ?>
