@@ -11,15 +11,17 @@ $db->connect();
 		exit(0);
 	}
 	$data = array();
-	$sql_query = "SELECT *  FROM nakshatralu WHERE id =" . $ID;
+
+	$sql_query = "SELECT *  FROM audios WHERE id =" . $ID;
 	$db->sql($sql_query);
 	$res = $db->getResult();
-	$target_path = "".$res[0]['image'];
+	$target_path = "".$res[0]['audio'];
 		if(unlink($target_path)){	
 
-				$sql_query = "DELETE  FROM nakshatralu WHERE id =" . $ID;
-				$db->sql($sql_query);
-				$res = $db->getResult();
-				header("location:nakshatralu.php");
+			$sql_query = "DELETE  FROM audios WHERE id =" . $ID;
+			$db->sql($sql_query);
+			$res = $db->getResult();
+			header("location:audio.php");
+
 		}
 ?>

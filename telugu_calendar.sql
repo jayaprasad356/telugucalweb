@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2022 at 06:43 AM
+-- Generation Time: Oct 10, 2022 at 01:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `telugu_calendar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `audios`
+--
+
+CREATE TABLE `audios` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `lyrics` text DEFAULT NULL,
+  `audio` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -160,8 +174,7 @@ CREATE TABLE `grahalu_tab_variant` (
 --
 
 INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_description`) VALUES
-(1, 1, 'manns', 'jnkscshcwj'),
-(2, 1, 'gsffdd', 'mkjpcwj');
+(1, 1, 'manns', 'jnkscshcwj');
 
 -- --------------------------------------------------------
 
@@ -271,7 +284,48 @@ CREATE TABLE `nakshatralu` (
 --
 
 INSERT INTO `nakshatralu` (`id`, `name`, `image`) VALUES
-(1, 'kadaga nakshahra', 'upload/nakshatralu/5585-2022-10-08.jpg');
+(1, 'kadaga nakshahra', 'upload/nakshatralu/1665395736.211.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nakshatralu_tab`
+--
+
+CREATE TABLE `nakshatralu_tab` (
+  `id` int(11) NOT NULL,
+  `nakshatralu_id` int(11) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nakshatralu_tab`
+--
+
+INSERT INTO `nakshatralu_tab` (`id`, `nakshatralu_id`, `title`, `description`) VALUES
+(1, 1, 'hello', 'this is main of nakshatralu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nakshatralu_tab_variant`
+--
+
+CREATE TABLE `nakshatralu_tab_variant` (
+  `id` int(11) NOT NULL,
+  `nakshatralu_tab_id` int(11) DEFAULT NULL,
+  `sub_title` text DEFAULT NULL,
+  `sub_description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nakshatralu_tab_variant`
+--
+
+INSERT INTO `nakshatralu_tab_variant` (`id`, `nakshatralu_tab_id`, `sub_title`, `sub_description`) VALUES
+(1, 1, 'welcome', 'this is bchfhh'),
+(3, 1, 'hixhx', 'x wjx');
 
 -- --------------------------------------------------------
 
@@ -425,8 +479,7 @@ CREATE TABLE `poojalu_tab_variant` (
 --
 
 INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `sub_title`, `sub_description`) VALUES
-(1, 1, 'wishes', 'happy gettdvxsc'),
-(2, 1, 'tecjsu', 'nkjjcnenc');
+(1, 1, 'wishes', 'happy gettdvxsc');
 
 -- --------------------------------------------------------
 
@@ -456,6 +509,25 @@ INSERT INTO `rasi_names` (`id`, `rasi`) VALUES
 (10, 'Makaram'),
 (11, 'Kumbham'),
 (12, 'Meenam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video`
+--
+
+CREATE TABLE `video` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `link` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `video`
+--
+
+INSERT INTO `video` (`id`, `title`, `link`) VALUES
+(1, 'nakshatram', 'https://youtu.be/MrzkoLKpgLU');
 
 -- --------------------------------------------------------
 
@@ -518,8 +590,7 @@ CREATE TABLE `yearly_horoscope_variant` (
 --
 
 INSERT INTO `yearly_horoscope_variant` (`id`, `yearly_horoscope_id`, `sub_title`, `sub_description`) VALUES
-(1, 1, 'wish', 'happy launching fay'),
-(2, 1, 'punish', 'bfihefhfhih');
+(1, 1, 'wish', 'happy launching fay');
 
 -- --------------------------------------------------------
 
@@ -546,6 +617,12 @@ INSERT INTO `years` (`id`, `year`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `audios`
+--
+ALTER TABLE `audios`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `daily_horoscope`
@@ -614,6 +691,18 @@ ALTER TABLE `nakshatralu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nakshatralu_tab`
+--
+ALTER TABLE `nakshatralu_tab`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nakshatralu_tab_variant`
+--
+ALTER TABLE `nakshatralu_tab_variant`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `panchangam`
 --
 ALTER TABLE `panchangam`
@@ -656,6 +745,12 @@ ALTER TABLE `rasi_names`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `weekly_horoscope`
 --
 ALTER TABLE `weekly_horoscope`
@@ -682,6 +777,12 @@ ALTER TABLE `years`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `audios`
+--
+ALTER TABLE `audios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `daily_horoscope`
@@ -747,7 +848,19 @@ ALTER TABLE `muhurtham_tab`
 -- AUTO_INCREMENT for table `nakshatralu`
 --
 ALTER TABLE `nakshatralu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `nakshatralu_tab`
+--
+ALTER TABLE `nakshatralu_tab`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `nakshatralu_tab_variant`
+--
+ALTER TABLE `nakshatralu_tab_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `panchangam`
@@ -765,13 +878,13 @@ ALTER TABLE `panchangam_variant`
 -- AUTO_INCREMENT for table `poojalu`
 --
 ALTER TABLE `poojalu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `poojalu_submenu`
 --
 ALTER TABLE `poojalu_submenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `poojalu_tab`
@@ -790,6 +903,12 @@ ALTER TABLE `poojalu_tab_variant`
 --
 ALTER TABLE `rasi_names`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `video`
+--
+ALTER TABLE `video`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `weekly_horoscope`

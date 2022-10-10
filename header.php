@@ -235,10 +235,30 @@ $fn = new custom_functions;
                         <li><a href="grahalu.php"><i class="fa fa-angle-right"></i>Grahalu</a></li>
                         <li><a href="grahalu_submenu.php"><i class="fa fa-angle-right"></i>Grahalu Submenu</a></li>
                         <li><a href="grahalu_tab.php"><i class="fa fa-angle-right"></i>Grahalu Tab</a></li>
-                        <li><a href="nakshatralu.php"><i class="fa fa-angle-right"></i>Nakshatralu</a></li>
                     </ul>
                 </li>
-             
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bullseye"></i>
+                        <span>Nakshatralu</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="nakshatralu.php"><i class="fa fa-angle-right"></i>Nakshatralu</a></li>
+                        <li><a href="nakshatralu_tab.php"><i class="fa fa-angle-right"></i>Nakshatralu Tab</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="audio.php">
+                        <i class="fa fa-headphones"></i>
+                        <span>Audio</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="video.php">
+                        <i class="fa fa-play"></i>
+                        <span>Video</span>
+                    </a>
+                </li>
              
               
             </ul>

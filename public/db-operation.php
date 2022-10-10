@@ -61,6 +61,19 @@ if (isset($_POST['delete_variant'])) {
     }
 }
 
+//Nakshatralu tab variant
+if (isset($_POST['delete_variant'])) {
+    $nakshtatralu_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM nakshatralu_tab_variant WHERE id = $nakshtatralu_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
+
 //get subcategories by category for poojalu tab
 if (isset($_POST['change_poojalu'])) {
     if ($_POST['poojalu_id'] == '') {

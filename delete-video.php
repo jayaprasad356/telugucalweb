@@ -11,14 +11,9 @@ $db->connect();
 		exit(0);
 	}
 	$data = array();
-	$sql_query = "SELECT *  FROM poojalu WHERE id =" . $ID;
+
+	$sql_query = "DELETE  FROM video WHERE id =" . $ID;
 	$db->sql($sql_query);
 	$res = $db->getResult();
-	$target_path = "".$res[0]['image'];
-		if(unlink($target_path)){		
-	$sql_query = "DELETE  FROM poojalu WHERE id =" . $ID;
-	$db->sql($sql_query);
-	$res = $db->getResult();
-	header("location:poojalu.php");
-		}
+	header("location:video.php");
 ?>
