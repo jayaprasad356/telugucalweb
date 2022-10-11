@@ -186,5 +186,18 @@ foreach ($res as $row) {
 }
 $response['nakshatralu_list'] = $rows;
 unset($temp);
+$sql = "SELECT * FROM `video`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['title'] = $row['title'];
+    $temp['link'] = $row['link'];
+    $rows[] = $temp;
+}
+$response['video_list'] = $rows;
+unset($temp);
 print_r(json_encode($response));
 ?>
