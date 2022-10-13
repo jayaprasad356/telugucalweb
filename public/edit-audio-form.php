@@ -57,6 +57,27 @@ if (isset($_POST['btnEdit'])) {
 			$sql = "UPDATE audios SET `image`='" . $upload_image . "' WHERE `id`=" . $ID;
 			$db->sql($sql);
 		}
+		if ($_FILES['audio']['size'] != 0 && $_FILES['audio']['error'] == 0 && !empty($_FILES['audio'])) {
+			//image isn't empty and update the image
+			$old_audio = $db->escapeString($_POST['old_audio']);
+			$extension = pathinfo($_FILES["audio"]["name"])['extension'];
+			$target_path = 'upload/mp3/';
+			
+			$filename = microtime(true) . '.' . strtolower($extension);
+			$full_path = $target_path . "" . $filename;
+			if (!move_uploaded_file($_FILES["audio"]["tmp_name"], $full_path)) {
+				echo '<p class="alert alert-danger">Can not upload audio.</p>';
+				return false;
+				exit();
+			}
+			if (!empty($old_audio)) {
+				unlink($old_audio);
+			}
+			$upload_audio = 'upload/mp3/' . $filename;
+			$sql = "UPDATE audios SET `audio`='" . $upload_audio . "' WHERE `id`=" . $ID;
+			$db->sql($sql);
+		}
+
 
 		$sql = "UPDATE audios SET title='$title',lyrics='$lyrics' WHERE id=$ID";
 		$db->sql($sql);
@@ -117,6 +138,7 @@ if (isset($_POST['btnCancel'])) { ?>
 				<form id="edit_audio_form" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 					<input type="hidden" id="old_image" name="old_image"  value="<?= $res[0]['image']; ?>">
+					<input type="hidden" id="old_audio" name="old_audio"  value="<?= $res[0]['audio']; ?>">
 						   <div class="row">
 							    <div class="form-group">
 									<div class='col-md-12'>
@@ -137,7 +159,8 @@ if (isset($_POST['btnCancel'])) { ?>
 									<div class="col-md-6">
 									   <label for="exampleInputFile">Audio File</label><i class="text-danger asterik">*</i>
 											<input type="file" accept="audio/mp3,  audio/wcc"  name="audio" id="audio">
-											<p class="help-block"><img id="blah" src="<?php echo $res[0]['image']; ?>" style="height:100px;max-width:100%" /></p>
+											<p><?php echo $res[0]['audio']; ?></p>
+											
 									</div>
 								</div>
                             </div>  

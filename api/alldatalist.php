@@ -186,6 +186,22 @@ foreach ($res as $row) {
 }
 $response['nakshatralu_list'] = $rows;
 unset($temp);
+$sql = "SELECT *,ntv.id AS id FROM `nakshatralu_tab` nt,`nakshatralu_tab_variant` ntv WHERE ntv.nakshatralu_tab_id = nt.id";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['nakshatralu_id'] = $row['nakshatralu_id'];
+    $temp['title'] = $row['title'];
+    $temp['description'] = $row['description'];
+    $temp['sub_title'] = $row['sub_title'];
+    $temp['sub_description'] = $row['sub_description'];
+    $rows[] = $temp;
+}
+$response['nakshatralu_tab_list'] = $rows;
+unset($temp);
 $sql = "SELECT * FROM `video`";
 $db->sql($sql);
 $res = $db->getResult();
@@ -220,9 +236,9 @@ $temp = array();
 foreach ($res as $row) {
     $temp['id'] = $row['id'];
     $temp['title'] = $row['title'];
-    $temp['image'] = $row['image'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
     $temp['lyrics'] = $row['lyrics'];
-    $temp['audio'] = $row['audio'];
+    $temp['audio'] = DOMAIN_URL . $row['audio'];
     $rows[] = $temp;
 }
 $response['audio_list'] = $rows;

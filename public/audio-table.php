@@ -25,7 +25,7 @@
                                     <th  data-field="id" data-sortable="true">ID</th>
                                     <th data-field="title" data-sortable="true">Title</th>
                                     <th  data-field="image">Image</th>
-                                    <th data-field="lyrics" data-sortable="true">Audio Lyrics</th>
+                                    <!-- <th data-field="lyrics" data-sortable="true">Audio Lyrics</th> -->
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

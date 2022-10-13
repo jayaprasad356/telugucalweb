@@ -25,6 +25,7 @@ if (isset($_POST['btnAdd'])) {
         // get image file extension
         error_reporting(E_ERROR | E_PARSE);
         $extension = end(explode(".", $_FILES["god_image"]["name"]));
+        $extension2 = end(explode(".", $_FILES["audio"]["name"]));
         
         if (empty($title)) {
             $error['title'] = " <span class='label label-danger'>Required!</span>";
@@ -53,15 +54,13 @@ if (isset($_POST['btnAdd'])) {
 
             $type = $_FILES["audio"]["type"];
             $size = $_FILES["audio"]["size"];
-            if( ( ($type == "audio/mp3") || ($type == "audio/wav") ) && ($size < 20000000)) {
-                $menu_file = $function->get_random_string($string, 4) . "-" . date("Y-m-d") . "." . $extension;
-                if(move_uploaded_file($_FILES['audio']['tmp_name'], 'upload/mp3/'.$menu_file) ) {
-                    $upload_file = 'upload/mp3/' . $menu_file;
-                    $result1=1;
-                }
+            $menu_file = $function->get_random_string($string, 4) . "-" . date("Y-m-d") . "." . $extension2;
+            if(move_uploaded_file($_FILES['audio']['tmp_name'], 'upload/mp3/'.$menu_file) ) {
+                $upload_file = 'upload/mp3/' . $menu_file;
+                $result1=1;
             }
          
-            $sql_query = "INSERT INTO audios (title,image,lyrics,audio)VALUES('$name','$upload_image','$lyrics','$upload_file')";
+            $sql_query = "INSERT INTO audios (title,image,lyrics,audio)VALUES('$title','$upload_image','$lyrics','$upload_file')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
