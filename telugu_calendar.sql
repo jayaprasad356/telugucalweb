@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2022 at 01:08 PM
+-- Generation Time: Oct 15, 2022 at 02:38 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -175,6 +175,61 @@ CREATE TABLE `grahalu_tab_variant` (
 
 INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_description`) VALUES
 (1, 1, 'manns', 'jnkscshcwj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL,
+  `image_category_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `image_category_id`, `name`, `image`, `status`) VALUES
+(1, 5, 'test', 'upload/images/5730-2022-10-15.jpg', 0),
+(2, 4, 'Teslaa', 'upload/images/1665837306.6472.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image_category`
+--
+
+CREATE TABLE `image_category` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `status` tinyint(11) DEFAULT NULL,
+  `last_updated` timestamp NULL DEFAULT NULL,
+  `date_created` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `image_category`
+--
+
+INSERT INTO `image_category` (`id`, `name`, `image`, `status`, `last_updated`, `date_created`) VALUES
+(1, 'Price Drop', 'upload/images/4143-2022-10-14.png', 0, NULL, NULL),
+(2, 'Price Drop', 'upload/images/7652-2022-10-14.jpg', 0, NULL, NULL),
+(3, 'last name', 'upload/images/3113-2022-10-14.jpg', 0, NULL, NULL),
+(4, 'image', 'upload/images/0604-2022-10-14.png', 0, NULL, NULL),
+(5, 'gfgfgf', 'upload/images/3938-2022-10-15.jpg', 0, NULL, NULL),
+(6, 'resds', 'upload/images/1665813329.5985.jpg', 0, NULL, NULL),
+(7, 'sdgsg', 'upload/images/5244-2022-10-15.jpg', 0, NULL, NULL),
+(8, 'middle name', 'upload/images/1665816527.2336.jpg', 0, NULL, NULL),
+(9, 'Price Drop', 'upload/images/4418-2022-10-15.jpg', 0, NULL, NULL),
+(10, '23', 'upload/images/3408-2022-10-15.jpg', 0, NULL, NULL),
+(11, '23', 'upload/images/2957-2022-10-15.jpg', 0, NULL, NULL),
+(12, '23', 'upload/images/1165-2022-10-15.jpg', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -661,6 +716,18 @@ ALTER TABLE `grahalu_tab_variant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `image_category`
+--
+ALTER TABLE `image_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `monthly_horoscope`
 --
 ALTER TABLE `monthly_horoscope`
@@ -819,6 +886,18 @@ ALTER TABLE `grahalu_tab`
 --
 ALTER TABLE `grahalu_tab_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `image_category`
+--
+ALTER TABLE `image_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `monthly_horoscope`
