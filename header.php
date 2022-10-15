@@ -259,8 +259,18 @@ $fn = new custom_functions;
                         <span>Video</span>
                     </a>
                 </li>
-             
-              
+                <li class="treeview">
+                    <a href="image-category.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Image Category</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="images.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Images</span>
+                    </a>
+                </li>   
             </ul>
             </section>
             <!-- /.sidebar -->
