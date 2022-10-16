@@ -1,10 +1,11 @@
 
 <section class="content-header">
-    <h1>Image Category/<small><a href="home.php"><i class="fa fa-home"></i> Home</a></small></h1>
+    <h1>Video Post /<small><a href="home.php"><i class="fa fa-home"></i> Home</a></small></h1>
     <ol class="breadcrumb">
-        <a class="btn btn-block btn-default" href="add-image-category.php"><i class="fa fa-plus-square"></i> Add New Image Category</a>
+        <a class="btn btn-block btn-default" href="add-video-post.php"><i class="fa fa-plus-square"></i> Add Video Post</a>
     </ol>
 </section>
+
     <!-- Main content -->
     <section class="content">
         <!-- Main row -->
@@ -14,24 +15,19 @@
                 <div class="box">
                     
                     <div  class="box-body table-responsive">
-                    <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=image_category" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc" data-show-export="false" data-export-types='["txt","excel"]' data-export-options='{
+                    <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=video_post" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc" data-show-export="false" data-export-types='["txt","excel"]' data-export-options='{
                             "fileName": "students-list-<?= date('d-m-Y') ?>",
                             "ignoreColumn": ["operate"] 
                         }'>
-                        <thead>
+                            <thead>
                                 <tr>
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
-                                    <th  data-field="name" data-sortable="true">Name</th>
-                                    
-                                    <th data-field="image">Video Category</th>
-                                    <th class="main" data-field="operate" data-events="actionEvents">Action</th>
+                                    <th data-field="video_category_id" data-sortable="true">Video Category ID</th>
+                                    <th  data-field="text" data-sortable="true"> Name</th>
+                                    <th  data-field="link" data-sortable="true"> Video</th>
+                                    <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
-                               <style>
-                                   .main{
-                                       max-width:2px!important;
-                                   }
-                               </style>
                             </thead>
                         </table>
                     </div>
@@ -42,7 +38,6 @@
     </section>
 
 <script>
-
     $('#seller_id').on('change', function() {
         $('#products_table').bootstrapTable('refresh');
     });
@@ -62,5 +57,4 @@
             search: p.search
         };
     }
-    
 </script>
