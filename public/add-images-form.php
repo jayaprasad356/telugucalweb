@@ -89,7 +89,7 @@ if (isset($_POST['btnAdd'])) {
                 <!-- form start -->
                 <form name="add_category" method="post" enctype="multipart/form-data">
                     <div class="box-body">
-                    <label for="exampleInputEmail1"> Image Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['categories']) ? $error['categories'] : ''; ?>
+                        <label for="exampleInputEmail1"> Image Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['categories']) ? $error['categories'] : ''; ?>
                                     <select id='image_category_id' name="image_category_id" class='form-control' required>
                                     <option value="">Image Categories</option>
                                                 <?php
