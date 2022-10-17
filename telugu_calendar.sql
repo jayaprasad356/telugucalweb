@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 08:20 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Oct 17, 2022 at 02:01 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `telugu_calender`
+-- Database: `telugu_calendar`
 --
 
 -- --------------------------------------------------------
@@ -196,7 +196,7 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`id`, `image_category_id`, `name`, `image`, `status`) VALUES
 (1, 5, 'test', 'upload/images/5730-2022-10-15.jpg', 0),
-(2, 4, 'Teslaa', 'upload/images/1665837306.6472.jpg', 0);
+(2, 13, 'Teslaa', 'upload/images/1665837306.6472.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -212,6 +212,13 @@ CREATE TABLE `image_category` (
   `last_updated` timestamp NULL DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `image_category`
+--
+
+INSERT INTO `image_category` (`id`, `name`, `image`, `status`, `last_updated`, `date_created`) VALUES
+(13, 'sivan', 'upload/images/4904-2022-10-17.jpeg', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -575,15 +582,16 @@ INSERT INTO `video` (`id`, `title`, `link`) VALUES
 CREATE TABLE `video_category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `image` text DEFAULT NULL
+  `image` text DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `video_category`
 --
 
-INSERT INTO `video_category` (`id`, `name`, `image`) VALUES
-(1, 'hanuman', 'upload/images/siva1.jpeg');
+INSERT INTO `video_category` (`id`, `name`, `image`, `status`) VALUES
+(1, 'Sivan', 'upload/video-category/7531-2022-10-17.jpeg', 0);
 
 -- --------------------------------------------------------
 
@@ -930,7 +938,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `image_category`
 --
 ALTER TABLE `image_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `monthly_horoscope`
