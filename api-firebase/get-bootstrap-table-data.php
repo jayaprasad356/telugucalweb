@@ -1202,7 +1202,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'video_post') {
     $offset = 0;
     $limit = 10;
     $where = '';
-    $sort = 'id';
+    $sort = 'vc.id';
     $order = 'DESC';
     if (isset($_GET['offset']))
         $offset = $db->escapeString($_GET['offset']);
@@ -1215,21 +1215,15 @@ if (isset($_GET['table']) && $_GET['table'] == 'video_post') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR title like '%" . $search . "%'";
+        $where .= "AND vc.name like '%" . $search . "%' OR title like '%" . $search . "%'";
     }
-    if (isset($_GET['sort'])){
-        $sort = $db->escapeString($_GET['sort']);
-    }
-    if (isset($_GET['order'])){
-        $order = $db->escapeString($_GET['order']);
-    }
-    $sql = "SELECT COUNT(`id`) as total FROM `video_post` ";
+    $sql = "SELECT COUNT(vp.id) as total FROM video_post vp,video_category vc WHERE vp.video_category_id = vc.id " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
     $db->sql($sql);
     $res = $db->getResult();
     foreach ($res as $row)
         $total = $row['total'];
    
-    $sql = "SELECT * FROM video_post " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $sql = "SELECT *,vp.id AS id FROM video_post vp,video_category vc WHERE vp.video_category_id = vc.id " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
     $db->sql($sql);
     $res = $db->getResult();
 
@@ -1240,14 +1234,11 @@ if (isset($_GET['table']) && $_GET['table'] == 'video_post') {
     $tempRow = array();
 
     foreach ($res as $row) {
-
-        
         $operate = ' <a href="edit-video-post.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-video.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
-        $tempRow['video_category_id'] = $row['video_Category_id'];
-         $tempRow['name'] = $row['name'];
-         $tempRow['video'] = $row['video'];
+        $tempRow['video_category'] = $row['name'];
+        $tempRow['video'] = ' <a class="text text-primary" target="_blank" href="' . $row['video'] . '">View</a>';
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }

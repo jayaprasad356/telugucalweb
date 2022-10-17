@@ -8,20 +8,29 @@ $fn = new custom_functions;
 <?php
 if (isset($_POST['btnAdd'])) {
         $video_category_id= $db->escapeString($_POST['video_category_id']);
-        $name= $db->escapeString($_POST['name']);
-        $video= $db->escapeString($_POST['video']);
-
-        if (empty($title)) {
-            $error['title'] = " <span class='label label-danger'>Required!</span>";
+     
+        
+        
+        if (empty($video_category_id)) {
+            $error['video_category_id'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($link)) {
-            $error['link'] = " <span class='label label-danger'>Required!</span>";
-        }
+      
        
-       
-       if (!empty($title) && !empty($link)) {
-         
-            $sql_query = "INSERT INTO video_post (video_category_id,name,video)VALUES('$video_category_id','$name','$video')";
+       if (!empty($video_category_id)) {
+            // insert new data to menu table
+            $video_category_id= $db->escapeString($_POST['video_category_id']);
+     
+        
+            $type = $_FILES["video"]["type"];
+            $size = $_FILES["video"]["size"];
+            error_reporting(E_ERROR | E_PARSE);
+            $extension = end(explode(".", $_FILES["video"]["name"]));
+            $menu_file = $function->get_random_string($string, 4) . "-" . date("Y-m-d") . "." . $extension;
+            if(move_uploaded_file($_FILES['video']['tmp_name'], 'upload/videos/'.$menu_file) ) {
+                $upload_file = 'upload/videos/' . $menu_file;
+            
+            }
+            $sql_query = "INSERT INTO video_post (video_category_id,video)VALUES('$video_category_id','$upload_file')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -62,25 +71,22 @@ if (isset($_POST['btnAdd'])) {
                 <!-- form start -->
                 <form name="add_video_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
-                    <label for="exampleInputEmail1"> Video Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['video_category_id']) ? $error['video_category_id'] : ''; ?>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class='col-md-8'>
+                                    <label for="exampleInputEmail1"> Video Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['video_category_id']) ? $error['video_category_id'] : ''; ?>
+
                                     <select id='video_category_id' name="video_category_id" class='form-control' required>
-                                    <option value="">Video Categories</option>
+                                    <option value="">Select</option>
                                                 <?php
-                                                $sql = "SELECT * FROM `video`";
+                                                $sql = "SELECT * FROM `video_category`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
                                                 ?>
-                                                    <option value='<?= $value['id'] ?>'><?= $value['title'] ?></option>
+                                                    <option value='<?= $value['id'] ?>'><?= $value['name'] ?></option>
                                             <?php } ?>
                                     </select>
-                                </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class='col-md-8'>
-                                        <label for="exampleInputEmail1"> Name</label> <i class="text-danger asterik">*</i><?php echo isset($error['name']) ? $error['name'] : ''; ?>
-                                        <input type="text" class="form-control" name="name" id = "name"required>
                                     </div>
                                 </div>
                             </div>
@@ -89,12 +95,10 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class='col-md-8'>
                                         <label for="exampleInputEmail1"> Video</label> <i class="text-danger asterik">*</i><?php echo isset($error['video']) ? $error['video'] : ''; ?>
-                                        <input type="text" class="form-control" name="video" id="video" required>
+                                        <input type="file" accept="video/*" class="form-control" name="video" id="video" required>
                                     </div>
                                 </div>
                             </div>
-
-         
                     </div>
                   
                     <!-- /.box-body -->

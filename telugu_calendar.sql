@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2022 at 07:21 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Oct 17, 2022 at 08:20 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `telugu_calendar`
+-- Database: `telugu_calender`
 --
 
 -- --------------------------------------------------------
@@ -212,24 +212,6 @@ CREATE TABLE `image_category` (
   `last_updated` timestamp NULL DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `image_category`
---
-
-INSERT INTO `image_category` (`id`, `name`, `image`, `status`, `last_updated`, `date_created`) VALUES
-(1, 'Price Drop', 'upload/images/4143-2022-10-14.png', 0, NULL, NULL),
-(2, 'Price Drop', 'upload/images/7652-2022-10-14.jpg', 0, NULL, NULL),
-(3, 'last name', 'upload/images/3113-2022-10-14.jpg', 0, NULL, NULL),
-(4, 'image', 'upload/images/0604-2022-10-14.png', 0, NULL, NULL),
-(5, 'gfgfgf', 'upload/images/3938-2022-10-15.jpg', 0, NULL, NULL),
-(6, 'resds', 'upload/images/1665813329.5985.jpg', 0, NULL, NULL),
-(7, 'sdgsg', 'upload/images/5244-2022-10-15.jpg', 0, NULL, NULL),
-(8, 'middle name', 'upload/images/1665816527.2336.jpg', 0, NULL, NULL),
-(9, 'Price Drop', 'upload/images/4418-2022-10-15.jpg', 0, NULL, NULL),
-(10, '23', 'upload/images/3408-2022-10-15.jpg', 0, NULL, NULL),
-(11, '23', 'upload/images/2957-2022-10-15.jpg', 0, NULL, NULL),
-(12, '23', 'upload/images/1165-2022-10-15.jpg', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -587,6 +569,45 @@ INSERT INTO `video` (`id`, `title`, `link`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `video_category`
+--
+
+CREATE TABLE `video_category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `video_category`
+--
+
+INSERT INTO `video_category` (`id`, `name`, `image`) VALUES
+(1, 'hanuman', 'upload/images/siva1.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video_post`
+--
+
+CREATE TABLE `video_post` (
+  `id` int(11) NOT NULL,
+  `video_category_id` int(11) NOT NULL,
+  `video` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `video_post`
+--
+
+INSERT INTO `video_post` (`id`, `video_category_id`, `video`) VALUES
+(1, 1, 'upload/videos/1665986597.9193.mp4'),
+(2, 1, 'upload/videos/-2022-10-16.mp4');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `weekly_horoscope`
 --
 
@@ -818,6 +839,18 @@ ALTER TABLE `video`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `video_category`
+--
+ALTER TABLE `video_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `video_post`
+--
+ALTER TABLE `video_post`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `weekly_horoscope`
 --
 ALTER TABLE `weekly_horoscope`
@@ -988,6 +1021,18 @@ ALTER TABLE `rasi_names`
 --
 ALTER TABLE `video`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `video_category`
+--
+ALTER TABLE `video_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `video_post`
+--
+ALTER TABLE `video_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `weekly_horoscope`

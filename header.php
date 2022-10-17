@@ -270,6 +270,12 @@ $fn = new custom_functions;
                         <i class="fa fa-calendar"></i>
                         <span>Images</span>
                     </a>
+                </li>
+                <li class="treeview">
+                    <a href="video-category.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Video Category</span>
+                    </a>
                 </li>   
                 <li class="treeview">
                     <a href="video-post.php">

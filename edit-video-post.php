@@ -24,7 +24,7 @@
 <?php include "header.php";?>
 <html>
 <head>
-<title>Edit Images | - Dashboard</title>
+<title>Edit Video Post | - Dashboard</title>
 </head>
 </body>
       <!-- Content Wrapper. Contains page content -->
