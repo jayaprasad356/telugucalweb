@@ -46,7 +46,7 @@ if (isset($_POST['btnAdd'])) {
 
             
            
-            $sql_query = "INSERT INTO video_category (name,image,status)VALUES('$name','$upload_image',0)";
+            $sql_query = "INSERT INTO video_category (name,image)VALUES('$name','$upload_image')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {

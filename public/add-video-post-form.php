@@ -8,19 +8,17 @@ $fn = new custom_functions;
 <?php
 if (isset($_POST['btnAdd'])) {
         $video_category_id= $db->escapeString($_POST['video_category_id']);
+        $name= $db->escapeString($_POST['name']);
      
-        
-        
         if (empty($video_category_id)) {
             $error['video_category_id'] = " <span class='label label-danger'>Required!</span>";
         }
-      
-       
-       if (!empty($video_category_id)) {
+        if (empty($name)) {
+            $error['name'] = " <span class='label label-danger'>Required!</span>";
+        }
+       if (!empty($video_category_id) && !empty($name)) {
             // insert new data to menu table
             $video_category_id= $db->escapeString($_POST['video_category_id']);
-     
-        
             $type = $_FILES["video"]["type"];
             $size = $_FILES["video"]["size"];
             error_reporting(E_ERROR | E_PARSE);
@@ -30,7 +28,7 @@ if (isset($_POST['btnAdd'])) {
                 $upload_file = 'upload/videos/' . $menu_file;
             
             }
-            $sql_query = "INSERT INTO video_post (video_category_id,video)VALUES('$video_category_id','$upload_file')";
+            $sql_query = "INSERT INTO video_post (name,video_category_id,video)VALUES('$name','$video_category_id','$upload_file')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -72,23 +70,29 @@ if (isset($_POST['btnAdd'])) {
                 <form name="add_video_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                             <div class="row">
-                                <div class="form-group">
-                                    <div class='col-md-8'>
-                                    <label for="exampleInputEmail1"> Video Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['video_category_id']) ? $error['video_category_id'] : ''; ?>
-
-                                    <select id='video_category_id' name="video_category_id" class='form-control' required>
-                                    <option value="">Select</option>
-                                                <?php
-                                                $sql = "SELECT * FROM `video_category`";
-                                                $db->sql($sql);
-                                                $result = $db->getResult();
-                                                foreach ($result as $value) {
-                                                ?>
-                                                    <option value='<?= $value['id'] ?>'><?= $value['name'] ?></option>
-                                            <?php } ?>
-                                    </select>
+                                <div class='col-md-8'>
+                                        <label for="exampleInputEmail1"> Name</label><i class="text-danger asterik">*</i><?php echo isset($error['name']) ? $error['name'] : ''; ?>
+                                        <input type="text" class="form-control" name="name" required>
                                     </div>
-                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class='col-md-8'>
+                                        <label for="exampleInputEmail1"> Video Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['video_category_id']) ? $error['video_category_id'] : ''; ?>
+
+                                        <select id='video_category_id' name="video_category_id" class='form-control' required>
+                                        <option value="">Select</option>
+                                                    <?php
+                                                    $sql = "SELECT * FROM `video_category`";
+                                                    $db->sql($sql);
+                                                    $result = $db->getResult();
+                                                    foreach ($result as $value) {
+                                                    ?>
+                                                        <option value='<?= $value['id'] ?>'><?= $value['name'] ?></option>
+                                                <?php } ?>
+                                        </select>
+                                    </div>
+
                             </div>
                             <br>
                             <div class="row">

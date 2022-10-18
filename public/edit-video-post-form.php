@@ -15,13 +15,17 @@ if (isset($_GET['id'])) {
 }
 if (isset($_POST['btnEdit'])) {
 	$video_category_id= $db->escapeString($_POST['video_category_id']);
+	$name= $db->escapeString($_POST['name']);
      
         
         
 	if (empty($video_category_id)) {
 		$error['video_category_id'] = " <span class='label label-danger'>Required!</span>";
 	}
-	if (!empty($video_category_id)) {
+	if (empty($name)) {
+		$error['name'] = " <span class='label label-danger'>Required!</span>";
+	}
+	if (!empty($video_category_id)  && !empty($name)) {
 		if ($_FILES['video']['size'] != 0 && $_FILES['video']['error'] == 0 && !empty($_FILES['video'])) {
 			//image isn't empty and update the image
 			$old_video = $db->escapeString($_POST['old_video']);
@@ -42,7 +46,7 @@ if (isset($_POST['btnEdit'])) {
 			$sql = "UPDATE video_post SET `video`='" . $upload_video . "' WHERE `id`=" . $ID;
 			$db->sql($sql);
 		}
-		$sql = "UPDATE video_post SET video_category_id='$video_category_id' WHERE id=$ID";
+		$sql = "UPDATE video_post SET video_category_id='$video_category_id',name='$name' WHERE id=$ID";
 		$db->sql($sql);
 		$update_result = $db->getResult();
 		if (!empty($update_result)) {
@@ -100,7 +104,12 @@ if (isset($_POST['btnCancel'])) { ?>
                             <div class="row">
                                 <div class="form-group">
                                     <div class='col-md-8'>
-                                    <label for="exampleInputEmail1"> Video Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['video_category_id']) ? $error['video_category_id'] : ''; ?>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> Name</label><i class="text-danger asterik">*</i><?php echo isset($error['name']) ? $error['name'] : ''; ?>
+                                        <input type="text" class="form-control" name="name" value="<?php echo $res[0]['name']?>" required>
+                                    </div>
+									<label for="exampleInputEmail1"> Video Categories</label> <i class="text-danger asterik">*</i><?php echo isset($error['video_category_id']) ? $error['video_category_id'] : ''; ?>
+									
 
                                     <select id='video_category_id' name="video_category_id" class='form-control' required>
                                     <option value="">Select</option>
@@ -122,7 +131,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                 <div class="form-group">
                                     <div class='col-md-8'>
                                         <label for="exampleInputEmail1"> Video</label> <i class="text-danger asterik">*</i><?php echo isset($error['video']) ? $error['video'] : ''; ?>
-                                        <input type="file" accept="video/*" class="form-control" name="video" id="video" required>
+                                        <input type="file" accept="video/*" class="form-control" name="video" id="video">
 										<p><?php echo $res[0]['video'] ?></p>
                                     </div>
                                 </div>
