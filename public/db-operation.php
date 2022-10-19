@@ -74,6 +74,19 @@ if (isset($_POST['delete_variant'])) {
     }
 }
 
+//thidthi variant
+if (isset($_POST['delete_variant'])) {
+    $thidhi_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM thidhi_variant WHERE id = $thidhi_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
+
 //get subcategories by category for poojalu tab
 if (isset($_POST['change_poojalu'])) {
     if ($_POST['poojalu_id'] == '') {

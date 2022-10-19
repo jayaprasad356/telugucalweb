@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 02:01 PM
+-- Generation Time: Oct 19, 2022 at 01:45 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -68,6 +68,30 @@ INSERT INTO `daily_horoscope` (`id`, `date`, `rasi`, `description`, `lucky_numbe
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `days`
+--
+
+CREATE TABLE `days` (
+  `id` int(11) NOT NULL,
+  `day` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `days`
+--
+
+INSERT INTO `days` (`id`, `day`) VALUES
+(1, 'Sunday'),
+(2, 'Monday'),
+(3, 'Tuesday'),
+(4, 'Wednesday'),
+(5, 'Thursday'),
+(6, 'Friday'),
+(7, 'Saturday');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `festivals`
 --
 
@@ -94,6 +118,52 @@ INSERT INTO `festivals` (`id`, `date`, `festival`) VALUES
 (10, '2022-09-27', 'Festival '),
 (11, '2022-09-28', 'Festival '),
 (12, '2022-09-29', 'Festival ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gowri`
+--
+
+CREATE TABLE `gowri` (
+  `id` int(11) NOT NULL,
+  `year` text DEFAULT NULL,
+  `day` text DEFAULT NULL,
+  `time` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gowri`
+--
+
+INSERT INTO `gowri` (`id`, `year`, `day`, `time`, `description`) VALUES
+(1, '2023', 'Tuesday', '10:30-12:00', 'This is your test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gowri_timeslots`
+--
+
+CREATE TABLE `gowri_timeslots` (
+  `id` int(11) NOT NULL,
+  `time` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gowri_timeslots`
+--
+
+INSERT INTO `gowri_timeslots` (`id`, `time`) VALUES
+(1, '06:00-07:30'),
+(2, '07:30-09:00'),
+(3, '09:00-10:30'),
+(4, '10:30-12:00'),
+(5, '12:00-01:30'),
+(6, '01:30-03:00'),
+(7, '03:00-04:30'),
+(8, '04:30-06:00');
 
 -- --------------------------------------------------------
 
@@ -528,6 +598,26 @@ INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `sub_title`, `sub_des
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rahukalams`
+--
+
+CREATE TABLE `rahukalams` (
+  `id` int(11) NOT NULL,
+  `year` text DEFAULT NULL,
+  `rahukalam` text DEFAULT NULL,
+  `yamangandam` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rahukalams`
+--
+
+INSERT INTO `rahukalams` (`id`, `year`, `rahukalam`, `yamangandam`) VALUES
+(1, '2021', 'Rahukalam', 'you have at 8.00 pm ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rasi_names`
 --
 
@@ -553,6 +643,45 @@ INSERT INTO `rasi_names` (`id`, `rasi`) VALUES
 (10, 'Makaram'),
 (11, 'Kumbham'),
 (12, 'Meenam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thidhi`
+--
+
+CREATE TABLE `thidhi` (
+  `id` int(11) NOT NULL,
+  `year` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `thidhi`
+--
+
+INSERT INTO `thidhi` (`id`, `year`) VALUES
+(1, '2021');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thidhi_variant`
+--
+
+CREATE TABLE `thidhi_variant` (
+  `id` int(11) NOT NULL,
+  `thidhi_id` int(11) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `thidhi_variant`
+--
+
+INSERT INTO `thidhi_variant` (`id`, `thidhi_id`, `title`, `description`) VALUES
+(1, 1, 'Good morning', 'this is variant1'),
+(2, 1, 'Wishhes', 'variant2');
 
 -- --------------------------------------------------------
 
@@ -715,9 +844,27 @@ ALTER TABLE `daily_horoscope`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `days`
+--
+ALTER TABLE `days`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `festivals`
 --
 ALTER TABLE `festivals`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gowri`
+--
+ALTER TABLE `gowri`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gowri_timeslots`
+--
+ALTER TABLE `gowri_timeslots`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -835,9 +982,27 @@ ALTER TABLE `poojalu_tab_variant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rahukalams`
+--
+ALTER TABLE `rahukalams`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rasi_names`
 --
 ALTER TABLE `rasi_names`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `thidhi`
+--
+ALTER TABLE `thidhi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `thidhi_variant`
+--
+ALTER TABLE `thidhi_variant`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -899,10 +1064,28 @@ ALTER TABLE `daily_horoscope`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `days`
+--
+ALTER TABLE `days`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `festivals`
 --
 ALTER TABLE `festivals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `gowri`
+--
+ALTER TABLE `gowri`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `gowri_timeslots`
+--
+ALTER TABLE `gowri_timeslots`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `grahalu`
@@ -1019,10 +1202,28 @@ ALTER TABLE `poojalu_tab_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `rahukalams`
+--
+ALTER TABLE `rahukalams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `rasi_names`
 --
 ALTER TABLE `rasi_names`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `thidhi`
+--
+ALTER TABLE `thidhi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `thidhi_variant`
+--
+ALTER TABLE `thidhi_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `video`

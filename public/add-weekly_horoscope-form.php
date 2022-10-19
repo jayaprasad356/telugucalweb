@@ -87,7 +87,7 @@ if (isset($_POST['btnAdd'])) {
                                                 ?>
                                                     <option value='<?= $value['rasi'] ?>'><?= $value['rasi'] ?></option>
                                             <?php } ?>
-                                            </select>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

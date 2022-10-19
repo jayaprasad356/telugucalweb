@@ -1308,4 +1308,170 @@ if (isset($_GET['table']) && $_GET['table'] == 'video_category') {
     $bulkData['rows'] = $rows;
     print_r(json_encode($bulkData));
 }
+//panchangam list tables goes here
+if (isset($_GET['table']) && $_GET['table'] == 'gowri') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR year like '%" . $search . "%' OR day like '%" . $search . "%' OR time like '%" . $search . "%' OR description like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `gowri` ";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM gowri " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+        $operate = ' <a href="edit-gowri.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="text text-danger" href="delete-gowri.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['year'] = $row['year'];
+        $tempRow['day'] = $row['day'];
+        $tempRow['time'] = $row['time'];
+        $tempRow['description'] = $row['description'];
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+
+if (isset($_GET['table']) && $_GET['table'] == 'thidhi') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR year like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `thidhi` ";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM thidhi " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+        $operate = ' <a href="edit-thidhi.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="text text-danger" href="delete-thidhi.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['year'] = $row['year'];
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+if (isset($_GET['table']) && $_GET['table'] == 'rahukalams') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR year like '%" . $search . "%' OR rahukalam like '%" . $search . "%' OR yamangandam like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `rahukalams` ";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM rahukalams " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+        $operate = ' <a href="edit-rahukalam.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="text text-danger" href="delete-rahukalam.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['year'] = $row['year'];
+        $tempRow['rahukalam'] = $row['rahukalam'];
+        $tempRow['yamangandam'] = $row['yamangandam'];
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
 $db->disconnect();
