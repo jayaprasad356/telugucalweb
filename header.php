@@ -184,22 +184,7 @@ $fn = new custom_functions;
                         <span>Upload Panchangam Tab</span>
                     </a>
                 </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-calendar"></i>
-                        <span>Panchangam List</span>
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="gowri.php"><i class="fa fa-angle-right"></i>Gowri</a></li>
-                        <li><a href="horachakram.php"><i class="fa fa-angle-right"></i>Hora Chakram</a></li>
-                        <li><a href="thidhi.php"><i class="fa fa-angle-right"></i>Thidhi</a></li>
-                        <li><a href="karanam.php"><i class="fa fa-angle-right"></i>Karanam</a></li>
-                        <li><a href="rahukalam.php"><i class="fa fa-angle-right"></i>Rahukalam</a></li>
-                        <li><a href="yogam.php"><i class="fa fa-angle-right"></i>Yogam</a></li>
 
-                    </ul>
-                </li>
                 <li class="treeview">
                     <a href="festivals.php">
                         <i class="fa fa-calendar"></i>
@@ -299,6 +284,22 @@ $fn = new custom_functions;
                         <span>Video Post</span>
                     </a>
                 </li> 
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Panchangam List</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="gowri.php"><i class="fa fa-angle-right"></i>Gowri</a></li>
+                        <li><a href="horachakram.php"><i class="fa fa-angle-right"></i>Hora Chakram</a></li>
+                        <li><a href="thidhi.php"><i class="fa fa-angle-right"></i>Thidhi</a></li>
+                        <li><a href="karanam.php"><i class="fa fa-angle-right"></i>Karanam</a></li>
+                        <li><a href="rahukalam.php"><i class="fa fa-angle-right"></i>Rahukalam</a></li>
+                        <li><a href="yogam.php"><i class="fa fa-angle-right"></i>Yogam</a></li>
+
+                    </ul>
+                </li>
             </ul>
             </section>
             <!-- /.sidebar -->

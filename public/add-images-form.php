@@ -149,6 +149,9 @@ if (isset($_POST['btnAdd'])) {
 </script>
 <!--code for page clear-->
 <script>
+    <script defer src="https://cdn.crop.guide/loader/l.js?c=123ABC"></script>
+</script>
+<script>
     function refreshPage(){
     window.location.reload();
 } 
