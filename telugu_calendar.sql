@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2022 at 01:45 PM
+-- Generation Time: Oct 20, 2022 at 01:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -245,6 +245,27 @@ CREATE TABLE `grahalu_tab_variant` (
 
 INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_description`) VALUES
 (1, 1, 'manns', 'jnkscshcwj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hora_chakram`
+--
+
+CREATE TABLE `hora_chakram` (
+  `id` int(11) NOT NULL,
+  `year` text DEFAULT NULL,
+  `day` text DEFAULT NULL,
+  `time` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hora_chakram`
+--
+
+INSERT INTO `hora_chakram` (`id`, `year`, `day`, `time`, `description`) VALUES
+(1, '2024', 'Thursday', '12:00-01:30', 'This is hora chjakram');
 
 -- --------------------------------------------------------
 
@@ -892,6 +913,12 @@ ALTER TABLE `grahalu_tab_variant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hora_chakram`
+--
+ALTER TABLE `hora_chakram`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
@@ -1110,6 +1137,12 @@ ALTER TABLE `grahalu_tab`
 --
 ALTER TABLE `grahalu_tab_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `hora_chakram`
+--
+ALTER TABLE `hora_chakram`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `images`
