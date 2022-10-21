@@ -135,4 +135,23 @@ if (isset($_POST['rahukalam']) && $_POST['rahukalam'] == 1) {
     }
 
 }
+if (isset($_POST['karanam']) && $_POST['karanam'] == 1) {
+    $sql = "SELECT * FROM `karanam`";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $response['success'] = true;
+        $response['message'] = "Karanam List Successfullty";
+        $response['data'] = $res;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
 ?>
