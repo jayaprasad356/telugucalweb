@@ -9,6 +9,7 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
 
         $year= $db->escapeString($_POST['year']);
+        $month= $db->escapeString($_POST['month']);
 
         if (empty($year)) {
             $error['year'] = " <span class='label label-danger'>Required!</span>";
@@ -16,9 +17,9 @@ if (isset($_POST['btnAdd'])) {
 
        
        
-       if (!empty($year)) {
+       if (!empty($year)  && !empty($month)) {
          
-            $sql_query = "INSERT INTO thidhi (year)VALUES('$year')";
+            $sql_query = "INSERT INTO thidhi (year,month)VALUES('$year','$month')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -89,6 +90,20 @@ if (isset($_POST['btnAdd'])) {
                                                 foreach ($result as $value) {
                                                 ?>
                                                     <option value='<?= $value['year'] ?>'><?= $value['year'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class='col-md-5'>
+                                        <label for="exampleInputEmail1"> month</label> <i class="text-danger asterik">*</i>
+                                        <select id='month' name="month" class='form-control' required>
+                                            <option value="">Select</option>
+                                                <?php
+                                                $sql = "SELECT * FROM `months`";
+                                                $db->sql($sql);
+                                                $result = $db->getResult();
+                                                foreach ($result as $value) {
+                                                ?>
+                                                    <option value='<?= $value['month'] ?>'><?= $value['month'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

@@ -9,11 +9,15 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
 
         $year= $db->escapeString($_POST['year']);
+        $day= $db->escapeString($_POST['day']);
         $rahukalam= $db->escapeString($_POST['rahukalam']);
         $yamangandam= $db->escapeString($_POST['yamangandam']);
 
         if (empty($year)) {
             $error['year'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($day)) {
+            $error['day'] = " <span class='label label-danger'>Required!</span>";
         }
         if (empty($rahukalam)) {
             $error['rahukalam'] = " <span class='label label-danger'>Required!</span>";
@@ -22,9 +26,9 @@ if (isset($_POST['btnAdd'])) {
             $error['yamangandam'] = " <span class='label label-danger'>Required!</span>";
         }
        
-       if (!empty($year) && !empty($rahukalam) && !empty($yamangandam)) {
+       if (!empty($year) && !empty($rahukalam) && !empty($yamangandam) && !empty($day)) {
          
-            $sql_query = "INSERT INTO rahukalams (year,rahukalam,yamangandam)VALUES('$year','$rahukalam','$yamangandam')";
+            $sql_query = "INSERT INTO rahukalams (year,day,rahukalam,yamangandam)VALUES('$year','$day','$rahukalam','$yamangandam')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -78,6 +82,20 @@ if (isset($_POST['btnAdd'])) {
                                                 foreach ($result as $value) {
                                                 ?>
                                                     <option value='<?= $value['year'] ?>'><?= $value['year'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class='col-md-5'>
+                                        <label for="exampleInputEmail1"> Day</label> <i class="text-danger asterik">*</i>
+                                        <select id='day' name="day" class='form-control' required>
+                                            <option value="">Select</option>
+                                                <?php
+                                                $sql = "SELECT * FROM `days`";
+                                                $db->sql($sql);
+                                                $result = $db->getResult();
+                                                foreach ($result as $value) {
+                                                ?>
+                                                    <option value='<?= $value['day'] ?>'><?= $value['day'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

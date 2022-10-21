@@ -42,4 +42,97 @@ if (isset($_POST['gowri']) && $_POST['gowri'] == 1) {
     }
 
 }
+if (isset($_POST['hora_chakram']) && $_POST['hora_chakram'] == 1) {
+    $year = $db->escapeString($_POST['year']);
+    $day = $db->escapeString($_POST['day']);
+    $sql = "SELECT * FROM `hora_chakram` WHERE day = '$day' AND year = '$year'";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['year'] = $row['year'];
+            $temp['day'] = $row['day'];
+            $temp['time'] = $row['time'];
+            $temp['description'] = $row['description'];
+            $rows[] = $temp;
+        }
+        $response['success'] = true;
+        $response['message'] = "Hora Chakram List Successfullty";
+        $response['data'] = $rows;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
+if (isset($_POST['thidhi']) && $_POST['thidhi'] == 1) {
+    $year = $db->escapeString($_POST['year']);
+    $month = $db->escapeString($_POST['month']);
+    $sql = "SELECT * FROM `thidhi` t,`thidhi_variant` tv WHERE tv.thidhi_id = t.id AND t.month = '$month' AND t.year = '$year'";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['year'] = $row['year'];
+            $temp['month'] = $row['month'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $rows[] = $temp;
+        }
+        $response['success'] = true;
+        $response['message'] = "Thidhi List Successfullty";
+        $response['data'] = $rows;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
+if (isset($_POST['rahukalam']) && $_POST['rahukalam'] == 1) {
+    $year = $db->escapeString($_POST['year']);
+    $day = $db->escapeString($_POST['day']);
+    $sql = "SELECT * FROM `rahukalams` WHERE day = '$day' AND year = '$year'";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['year'] = $row['year'];
+            $temp['day'] = $row['day'];
+            $temp['rahukalam'] = $row['rahukalam'];
+            $temp['yamangandam'] = $row['yamangandam'];
+            $rows[] = $temp;
+        }
+        $response['success'] = true;
+        $response['message'] = "Rahukalams List Successfullty";
+        $response['data'] = $rows;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
 ?>

@@ -15,12 +15,13 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['btnUpdate'])) {
         $year= $db->escapeString($_POST['year']);
+        $day= $db->escapeString($_POST['day']);
         $rahukalam= $db->escapeString($_POST['rahukalam']);
         $yamangandam= $db->escapeString($_POST['yamangandam']);
 
-   if (!empty($year) && !empty($rahukalam) && !empty($yamangandam)) {
+   if (!empty($year) && !empty($rahukalam) && !empty($yamangandam)&& !empty($day)) {
      
-        $sql_query = "UPDATE rahukalams SET year='$year',rahukalam='$rahukalam',yamangandam='$yamangandam' WHERE id='$ID'";
+        $sql_query = "UPDATE rahukalams SET year='$year',day='$day',rahukalam='$rahukalam',yamangandam='$yamangandam' WHERE id='$ID'";
         $db->sql($sql_query);
         $result = $db->getResult();
         if (!empty($result)) {
@@ -81,6 +82,20 @@ $res = $db->getResult();
                                                 foreach ($result as $value) {
                                                 ?>
 													 <option value='<?= $value['year'] ?>' <?= $value['year']==$res[0]['year'] ? 'selected="selected"' : '';?>><?= $value['year'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class='col-md-5'>
+                                        <label for="exampleInputEmail1"> Day</label> <i class="text-danger asterik">*</i>
+                                        <select id='day' name="day" class='form-control' >
+                                            <option value="">Select</option>
+                                                <?php
+                                                $sql = "SELECT * FROM `days`";
+                                                $db->sql($sql);
+                                                $result = $db->getResult();
+                                                foreach ($result as $value) {
+                                                ?>
+													 <option value='<?= $value['day'] ?>' <?= $value['day']==$res[0]['day'] ? 'selected="selected"' : '';?>><?= $value['day'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

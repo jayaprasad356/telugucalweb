@@ -33,7 +33,7 @@ if (isset($_POST['btnUpdate'])) {
         if ($result == 1) {
             
             $error['update_horachakram'] = "<section class='content-header'>
-                                            <span class='label label-success'>Gowri Updated Successfully</span> </section>";
+                                            <span class='label label-success'>Hora Chakram Updated Successfully</span> </section>";
         } else {
             $error['update_horachakram'] = " <span class='label label-danger'>Failed</span>";
         }

@@ -18,15 +18,10 @@ if (isset($_POST['btnEdit'])) {
 
 
 	$year = $db->escapeString(($_POST['year']));
-
+	$month= $db->escapeString($_POST['month']);
 	$error = array();
-
-	
-
-   
-   
-   if (!empty($year)) {
-				$sql_query = "UPDATE thidhi SET year='$year' WHERE id =$ID";
+   if (!empty($year)  && !empty($month)) {
+				$sql_query = "UPDATE thidhi SET year='$year',month = '$month' WHERE id =$ID";
 				$db->sql($sql_query);
 				$res = $db->getResult();
 				$update_result = $db->getResult();
@@ -123,6 +118,20 @@ if (isset($_POST['btnCancel'])) { ?>
                                                 foreach ($result as $value) {
                                                 ?>
 													 <option value='<?= $value['year'] ?>' <?= $value['year']==$res[0]['year'] ? 'selected="selected"' : '';?>><?= $value['year'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+									<div class='col-md-5'>
+                                        <label for="exampleInputEmail1"> month</label> <i class="text-danger asterik">*</i>
+                                        <select id='month' name="month" class='form-control' >
+                                            <option value="">Select</option>
+                                                <?php
+                                                $sql = "SELECT * FROM `months`";
+                                                $db->sql($sql);
+                                                $result = $db->getResult();
+                                                foreach ($result as $value) {
+                                                ?>
+													 <option value='<?= $value['month'] ?>' <?= $value['month']==$res[0]['month'] ? 'selected="selected"' : '';?>><?= $value['month'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

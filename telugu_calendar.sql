@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2022 at 01:26 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Oct 21, 2022 at 04:14 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `telugu_calendar`
+-- Database: `telugu_calender`
 --
 
 -- --------------------------------------------------------
@@ -265,7 +265,8 @@ CREATE TABLE `hora_chakram` (
 --
 
 INSERT INTO `hora_chakram` (`id`, `year`, `day`, `time`, `description`) VALUES
-(1, '2024', 'Thursday', '12:00-01:30', 'This is hora chjakram');
+(1, '2024', 'Thursday', '12:00-01:30', 'This is hora chjakram'),
+(2, '2023', 'Thursday', '10:30-12:00', 'dsdsdsdsds');
 
 -- --------------------------------------------------------
 
@@ -310,6 +311,24 @@ CREATE TABLE `image_category` (
 
 INSERT INTO `image_category` (`id`, `name`, `image`, `status`, `last_updated`, `date_created`) VALUES
 (13, 'sivan', 'upload/images/4904-2022-10-17.jpeg', 0, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `karanam`
+--
+
+CREATE TABLE `karanam` (
+  `id` int(11) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `karanam`
+--
+
+INSERT INTO `karanam` (`id`, `description`) VALUES
+(4, 'sddsdsfdfdfd');
 
 -- --------------------------------------------------------
 
@@ -625,6 +644,7 @@ INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `sub_title`, `sub_des
 CREATE TABLE `rahukalams` (
   `id` int(11) NOT NULL,
   `year` text DEFAULT NULL,
+  `day` varchar(255) DEFAULT NULL,
   `rahukalam` text DEFAULT NULL,
   `yamangandam` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -633,8 +653,9 @@ CREATE TABLE `rahukalams` (
 -- Dumping data for table `rahukalams`
 --
 
-INSERT INTO `rahukalams` (`id`, `year`, `rahukalam`, `yamangandam`) VALUES
-(1, '2021', 'Rahukalam', 'you have at 8.00 pm ');
+INSERT INTO `rahukalams` (`id`, `year`, `day`, `rahukalam`, `yamangandam`) VALUES
+(1, '2021', NULL, 'Rahukalam', 'you have at 8.00 pm '),
+(2, '2022', 'Sunday', 'sdsds', 'sdsds');
 
 -- --------------------------------------------------------
 
@@ -673,15 +694,18 @@ INSERT INTO `rasi_names` (`id`, `rasi`) VALUES
 
 CREATE TABLE `thidhi` (
   `id` int(11) NOT NULL,
-  `year` text DEFAULT NULL
+  `year` text DEFAULT NULL,
+  `month` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `thidhi`
 --
 
-INSERT INTO `thidhi` (`id`, `year`) VALUES
-(1, '2021');
+INSERT INTO `thidhi` (`id`, `year`, `month`) VALUES
+(1, '2021', NULL),
+(2, '2023', 'Saturday'),
+(3, '2022', 'May');
 
 -- --------------------------------------------------------
 
@@ -702,7 +726,10 @@ CREATE TABLE `thidhi_variant` (
 
 INSERT INTO `thidhi_variant` (`id`, `thidhi_id`, `title`, `description`) VALUES
 (1, 1, 'Good morning', 'this is variant1'),
-(2, 1, 'Wishhes', 'variant2');
+(2, 1, 'Wishhes', 'variant2'),
+(3, 2, 'dsds', 'sdsd'),
+(4, 2, 'sds', 'dsds'),
+(5, 3, 'sdsd', 'sdsdsd');
 
 -- --------------------------------------------------------
 
@@ -931,6 +958,12 @@ ALTER TABLE `image_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `karanam`
+--
+ALTER TABLE `karanam`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `monthly_horoscope`
 --
 ALTER TABLE `monthly_horoscope`
@@ -1142,7 +1175,7 @@ ALTER TABLE `grahalu_tab_variant`
 -- AUTO_INCREMENT for table `hora_chakram`
 --
 ALTER TABLE `hora_chakram`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `images`
@@ -1155,6 +1188,12 @@ ALTER TABLE `images`
 --
 ALTER TABLE `image_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `karanam`
+--
+ALTER TABLE `karanam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `monthly_horoscope`
@@ -1238,7 +1277,7 @@ ALTER TABLE `poojalu_tab_variant`
 -- AUTO_INCREMENT for table `rahukalams`
 --
 ALTER TABLE `rahukalams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rasi_names`
@@ -1250,13 +1289,13 @@ ALTER TABLE `rasi_names`
 -- AUTO_INCREMENT for table `thidhi`
 --
 ALTER TABLE `thidhi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `thidhi_variant`
 --
 ALTER TABLE `thidhi_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `video`
