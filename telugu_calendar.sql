@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2022 at 04:14 PM
+-- Generation Time: Oct 22, 2022 at 04:17 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -875,6 +875,24 @@ INSERT INTO `years` (`id`, `year`) VALUES
 (4, '2024'),
 (5, '2025');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `yogam`
+--
+
+CREATE TABLE `yogam` (
+  `id` int(11) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `yogam`
+--
+
+INSERT INTO `yogam` (`id`, `description`) VALUES
+(2, 'yyyy');
+
 --
 -- Indexes for dumped tables
 --
@@ -1108,6 +1126,12 @@ ALTER TABLE `years`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `yogam`
+--
+ALTER TABLE `yogam`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1338,6 +1362,12 @@ ALTER TABLE `yearly_horoscope_variant`
 --
 ALTER TABLE `years`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `yogam`
+--
+ALTER TABLE `yogam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
