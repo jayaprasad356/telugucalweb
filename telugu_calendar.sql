@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 02:04 PM
+-- Generation Time: Oct 25, 2022 at 07:55 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -600,6 +600,18 @@ INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pilli_sasthram`
+--
+
+CREATE TABLE `pilli_sasthram` (
+  `description` varchar(255) DEFAULT NULL,
+  `id` int(225) NOT NULL,
+  `title` varchar(225) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `poojalu`
 --
 
@@ -1108,6 +1120,12 @@ ALTER TABLE `panchangam`
 -- Indexes for table `panchangam_variant`
 --
 ALTER TABLE `panchangam_variant`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pilli_sasthram`
+--
+ALTER TABLE `pilli_sasthram`
   ADD PRIMARY KEY (`id`);
 
 --
