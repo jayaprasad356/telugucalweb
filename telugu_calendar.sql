@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2022 at 04:17 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Oct 25, 2022 at 02:04 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `telugu_calender`
+-- Database: `telugu_calendar`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,31 @@ CREATE TABLE `audios` (
   `lyrics` text DEFAULT NULL,
   `audio` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `balli_sasthram`
+--
+
+CREATE TABLE `balli_sasthram` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `subtitle1` text DEFAULT NULL,
+  `subdescription1a` text DEFAULT NULL,
+  `subdescription1b` text DEFAULT NULL,
+  `subtitle2` text DEFAULT NULL,
+  `subdescription2a` text DEFAULT NULL,
+  `subdescription2b` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `balli_sasthram`
+--
+
+INSERT INTO `balli_sasthram` (`id`, `title`, `description`, `subtitle1`, `subdescription1a`, `subdescription1b`, `subtitle2`, `subdescription2a`, `subdescription2b`) VALUES
+(1, 'hello', 'wegrtygu', 'zxcvbn', 'sdfyhijo', 'esdtghi', 'ezxrdtygu', 'rdtfyhij', 'rdtfyhij');
 
 -- --------------------------------------------------------
 
@@ -311,6 +336,25 @@ CREATE TABLE `image_category` (
 
 INSERT INTO `image_category` (`id`, `name`, `image`, `status`, `last_updated`, `date_created`) VALUES
 (13, 'sivan', 'upload/images/4904-2022-10-17.jpeg', 0, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kaki_sasthram`
+--
+
+CREATE TABLE `kaki_sasthram` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kaki_sasthram`
+--
+
+INSERT INTO `kaki_sasthram` (`id`, `title`, `description`) VALUES
+(1, 'Hello Teluhguiisi', 'Today you will face lot of issues');
 
 -- --------------------------------------------------------
 
@@ -689,6 +733,25 @@ INSERT INTO `rasi_names` (`id`, `rasi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sakunalu`
+--
+
+CREATE TABLE `sakunalu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sakunalu`
+--
+
+INSERT INTO `sakunalu` (`id`, `title`, `description`) VALUES
+(1, 'First Sakunam', 'This is a Dangerous situation to handle this');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `thidhi`
 --
 
@@ -904,6 +967,12 @@ ALTER TABLE `audios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `balli_sasthram`
+--
+ALTER TABLE `balli_sasthram`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `daily_horoscope`
 --
 ALTER TABLE `daily_horoscope`
@@ -973,6 +1042,12 @@ ALTER TABLE `images`
 -- Indexes for table `image_category`
 --
 ALTER TABLE `image_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kaki_sasthram`
+--
+ALTER TABLE `kaki_sasthram`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1072,6 +1147,12 @@ ALTER TABLE `rasi_names`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sakunalu`
+--
+ALTER TABLE `sakunalu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `thidhi`
 --
 ALTER TABLE `thidhi`
@@ -1140,6 +1221,12 @@ ALTER TABLE `yogam`
 --
 ALTER TABLE `audios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `balli_sasthram`
+--
+ALTER TABLE `balli_sasthram`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `daily_horoscope`
@@ -1212,6 +1299,12 @@ ALTER TABLE `images`
 --
 ALTER TABLE `image_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `kaki_sasthram`
+--
+ALTER TABLE `kaki_sasthram`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `karanam`
@@ -1308,6 +1401,12 @@ ALTER TABLE `rahukalams`
 --
 ALTER TABLE `rasi_names`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `sakunalu`
+--
+ALTER TABLE `sakunalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `thidhi`

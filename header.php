@@ -300,6 +300,20 @@ $fn = new custom_functions;
 
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Sakuna Sasthram</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="sakunalu.php"><i class="fa fa-angle-right"></i>Sakunalu</a></li>
+                        <li><a href="ballisasthram.php"><i class="fa fa-angle-right"></i>Balli Sasthram</a></li>
+                        <li><a href="kakisasthram.php"><i class="fa fa-angle-right"></i>Kaki Sasthram</a></li>
+                        <li><a href="kukutasasthram.php"><i class="fa fa-angle-right"></i>Kukuta Sasthram</a></li>
+                        <li><a href="pillisasthram.php"><i class="fa fa-angle-right"></i>Pilli Sasthram</a></li>
+                    </ul>
+                </li>
             </ul>
             </section>
             <!-- /.sidebar -->
