@@ -1,9 +1,8 @@
 <?php
 	// start session
-	ob_start();
 	
 	session_start();
-	// set time for session timeout
+  // set time for session timeout
 	
     // set time for session timeout
     $currentTime = time() + 25200;
@@ -21,20 +20,16 @@
 	
 	
 ?>
-
 <?php include "header.php";?>
 <html>
 <head>
-<title>Add Pilli Sasthram | - Dashboard</title>
+<title>Kakuta Sasthram | - Dashboard</title>
 </head>
 </body>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-		<?php
-			include('public/add-pillisasthram-form.php'); 
-		?>
+        <?php include('public/kukutasasthram-table.php'); ?>
       </div><!-- /.content-wrapper -->
   </body>
 </html>
 <?php include "footer.php";?>
-    	

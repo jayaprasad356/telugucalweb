@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 07:55 PM
+-- Generation Time: Oct 26, 2022 at 10:36 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -377,6 +377,47 @@ INSERT INTO `karanam` (`id`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kukutasasthram_menu`
+--
+
+CREATE TABLE `kukutasasthram_menu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `star` text DEFAULT NULL,
+  `winning` text DEFAULT NULL,
+  `lossing` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kukutasasthram_menu`
+--
+
+INSERT INTO `kukutasasthram_menu` (`id`, `title`, `description`, `star`, `winning`, `lossing`) VALUES
+(1, 'hello everyone', 'this is about your kukuta sasthram menu', 'five star', 'you can win', 'you can loss');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kukuta_sasthram`
+--
+
+CREATE TABLE `kukuta_sasthram` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kukuta_sasthram`
+--
+
+INSERT INTO `kukuta_sasthram` (`id`, `title`, `description`) VALUES
+(1, 'hello', 'Kukkuta Sastra (also called Cock Astrology) is a form of divination based on cock fighting, commonly believed in coastal districts of Andhra Pradesh, India.\r\n');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `monthly_horoscope`
 --
 
@@ -604,10 +645,17 @@ INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`)
 --
 
 CREATE TABLE `pilli_sasthram` (
-  `description` varchar(255) DEFAULT NULL,
-  `id` int(225) NOT NULL,
-  `title` varchar(225) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `title` varchar(225) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pilli_sasthram`
+--
+
+INSERT INTO `pilli_sasthram` (`id`, `title`, `description`) VALUES
+(1, 'Hello Pillis', 'you can remove a lot ');
 
 -- --------------------------------------------------------
 
@@ -1069,6 +1117,18 @@ ALTER TABLE `karanam`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `kukutasasthram_menu`
+--
+ALTER TABLE `kukutasasthram_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kukuta_sasthram`
+--
+ALTER TABLE `kukuta_sasthram`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `monthly_horoscope`
 --
 ALTER TABLE `monthly_horoscope`
@@ -1331,6 +1391,18 @@ ALTER TABLE `karanam`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `kukutasasthram_menu`
+--
+ALTER TABLE `kukutasasthram_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `kukuta_sasthram`
+--
+ALTER TABLE `kukuta_sasthram`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `monthly_horoscope`
 --
 ALTER TABLE `monthly_horoscope`
@@ -1383,6 +1455,12 @@ ALTER TABLE `panchangam`
 --
 ALTER TABLE `panchangam_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT for table `pilli_sasthram`
+--
+ALTER TABLE `pilli_sasthram`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `poojalu`

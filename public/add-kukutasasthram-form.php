@@ -19,7 +19,7 @@ if (isset($_POST['btnAdd'])) {
 
        if (!empty($title) && !empty($description)) {
          
-            $sql_query = "INSERT INTO pilli_sasthram (title,description)VALUES('$title','$description')";
+            $sql_query = "INSERT INTO kukuta_sasthram (title,description)VALUES('$title','$description')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -30,18 +30,18 @@ if (isset($_POST['btnAdd'])) {
 
             if ($result == 1) {
                 
-                $error['add_pillisasthram'] = "<section class='content-header'>
-                                                <span class='label label-success'>Pilli Sasthram Added Successfully</span> </section>";
+                $error['add_kukutasasthram'] = "<section class='content-header'>
+                                                <span class='label label-success'>Kukuta Sasthram Added Successfully</span> </section>";
             } else {
-                $error['add_pillisasthram'] = " <span class='label label-danger'>Failed</span>";
+                $error['add_kukutasasthram'] = " <span class='label label-danger'>Failed</span>";
             }
             }
         }
 ?>
 <section class="content-header">
-    <h1>Add Pilli Sasthram<small><a href='pillisasthram.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Pilli Sasthram</a></small></h1>
+    <h1>Add Kukuta Sasthram<small><a href='kukutasasthram.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Kukuta Sasthram</a></small></h1>
 
-    <?php echo isset($error['add_pillisasthram']) ? $error['add_pillisasthram'] : ''; ?>
+    <?php echo isset($error['add_kukutasasthram']) ? $error['add_kukutasasthram'] : ''; ?>
     <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
     </ol>
@@ -58,7 +58,7 @@ if (isset($_POST['btnAdd'])) {
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form name="add_pillisasthram_form" method="post" enctype="multipart/form-data">
+                <form name="add_kukutasasthram_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
@@ -99,7 +99,7 @@ if (isset($_POST['btnAdd'])) {
 <div class="separator"> </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script>
-    $('#add_pillisasthram_form').validate({
+    $('#add_kukutasasthram_form').validate({
 
         ignore: [],
         debug: false,

@@ -25,13 +25,13 @@
 <?php include "header.php";?>
 <html>
 <head>
-<title>Add Pilli Sasthram | - Dashboard</title>
+<title>Add Kukuta Sasthram Menu| - Dashboard</title>
 </head>
 </body>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
 		<?php
-			include('public/add-pillisasthram-form.php'); 
+			include('public/add-kukutasasthram_menu-form.php'); 
 		?>
       </div><!-- /.content-wrapper -->
   </body>

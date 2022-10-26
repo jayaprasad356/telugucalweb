@@ -9,6 +9,9 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
         $title= $db->escapeString($_POST['title']);
         $description= $db->escapeString($_POST['description']);
+        $star= $db->escapeString($_POST['star']);
+        $winning= $db->escapeString($_POST['winning']);
+        $lossing= $db->escapeString($_POST['lossing']);
 
         if (empty($title)) {
             $error['title'] = " <span class='label label-danger'>Required!</span>";
@@ -16,10 +19,19 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
+        if (empty($star)) {
+            $error['star'] = " <span class='label label-danger'>Required!</span>";
+        } 
+        if (empty($winning)) {
+            $error['winning'] = " <span class='label label-danger'>Required!</span>";
+        }
+         if (empty($lossing)) {
+            $error['lossing'] = " <span class='label label-danger'>Required!</span>";
+        }
 
-       if (!empty($title) && !empty($description)) {
+       if (!empty($title) && !empty($description) && !empty($star)&& !empty($winning)&& !empty($lossing)) {
          
-            $sql_query = "INSERT INTO pilli_sasthram (title,description)VALUES('$title','$description')";
+            $sql_query = "INSERT INTO kukutasasthram_menu (title,description,star,winning,lossing)VALUES('$title','$description','$star','$winning','$lossing')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -30,18 +42,18 @@ if (isset($_POST['btnAdd'])) {
 
             if ($result == 1) {
                 
-                $error['add_pillisasthram'] = "<section class='content-header'>
-                                                <span class='label label-success'>Pilli Sasthram Added Successfully</span> </section>";
+                $error['add_menu'] = "<section class='content-header'>
+                                                <span class='label label-success'>Kukutasasthram Menu Added Successfully</span> </section>";
             } else {
-                $error['add_pillisasthram'] = " <span class='label label-danger'>Failed</span>";
+                $error['add_menu'] = " <span class='label label-danger'>Failed</span>";
             }
             }
         }
 ?>
 <section class="content-header">
-    <h1>Add Pilli Sasthram<small><a href='pillisasthram.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Pilli Sasthram</a></small></h1>
+    <h1>Add Kukutasasthram Menu<small><a href='kukutasasthram_menu.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Kukuta Sasthram Menu</a></small></h1>
 
-    <?php echo isset($error['add_pillisasthram']) ? $error['add_pillisasthram'] : ''; ?>
+    <?php echo isset($error['add_menu']) ? $error['add_menu'] : ''; ?>
     <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
     </ol>
@@ -49,7 +61,7 @@ if (isset($_POST['btnAdd'])) {
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
            
             <!-- general form elements -->
             <div class="box box-primary">
@@ -58,7 +70,7 @@ if (isset($_POST['btnAdd'])) {
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form name="add_pillisasthram_form" method="post" enctype="multipart/form-data">
+                <form name="add_kukutasasthram_menu_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
@@ -78,6 +90,22 @@ if (isset($_POST['btnAdd'])) {
                                  </div>
                             </div>
                             <br>
+                            <div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Star</label> <i class="text-danger asterik">*</i><?php echo isset($error['star']) ? $error['star'] : ''; ?>
+                                            <input type="text" class="form-control" name="star" id = "star" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Winning</label> <i class="text-danger asterik">*</i><?php echo isset($error['winning']) ? $error['winning'] : ''; ?>
+                                            <input type="text" class="form-control" name="winning" id = "winning" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Lossing</label> <i class="text-danger asterik">*</i><?php echo isset($error['lossing']) ? $error['lossing'] : ''; ?>
+                                            <input type="text" class="form-control" name="lossing" id = "lossing" required>
+                                    </div>
+                                </div>
+                            </div>
 
          
                     </div>
@@ -99,7 +127,7 @@ if (isset($_POST['btnAdd'])) {
 <div class="separator"> </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script>
-    $('#add_pillisasthram_form').validate({
+    $('#add_kukutasasthram_menu_form').validate({
 
         ignore: [],
         debug: false,

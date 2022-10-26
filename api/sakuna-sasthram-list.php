@@ -77,4 +77,61 @@ if (isset($_POST['kaki_sasthram']) && $_POST['kaki_sasthram'] == 1) {
     }
 
 }
+if (isset($_POST['kukuta_sasthram']) && $_POST['kukuta_sasthram'] == 1) {
+    $sql = "SELECT * FROM `kukuta_sasthram`";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $response['success'] = true;
+        $response['message'] = "Kukuta Sasthram Panchangam List Successfullty";
+        $response['data'] = $res;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
+if (isset($_POST['kukutasasthram_menu']) && $_POST['kukutasasthram_menu'] == 1) {
+    $sql = "SELECT * FROM `kukutasasthram_menu`";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $response['success'] = true;
+        $response['message'] = "Kukuta Sasthram Menu Panchangam List Successfullty";
+        $response['data'] = $res;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
+if (isset($_POST['pilli_sasthram']) && $_POST['pilli_sasthram'] == 1) {
+    $sql = "SELECT * FROM `pilli_sasthram`";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $response['success'] = true;
+        $response['message'] = "Pilli Sasthram Panchangam List Successfullty";
+        $response['data'] = $res;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
 ?>

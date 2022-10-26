@@ -311,6 +311,7 @@ $fn = new custom_functions;
                         <li><a href="ballisasthram.php"><i class="fa fa-angle-right"></i>Balli Sasthram</a></li>
                         <li><a href="kakisasthram.php"><i class="fa fa-angle-right"></i>Kaki Sasthram</a></li>
                         <li><a href="kukutasasthram.php"><i class="fa fa-angle-right"></i>Kukuta Sasthram</a></li>
+                        <li><a href="kukutasasthram_menu.php"><i class="fa fa-angle-right"></i>Kukuta Sasthram Menu</a></li>
                         <li><a href="pillisasthram.php"><i class="fa fa-angle-right"></i>Pilli Sasthram</a></li>
                     </ul>
                 </li>
