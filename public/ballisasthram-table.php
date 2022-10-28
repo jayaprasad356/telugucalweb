@@ -23,8 +23,8 @@
                                 <tr>
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
-                                    <th data-field="title" data-sortable="true">title</th>
-                                    <th data-field="description" data-sortable="true">description</th>
+                                    <th data-field="title" data-sortable="true">Title</th>
+                                    <th data-field="description" data-sortable="true">Description</th>
                                     <th data-field="subtitle1" data-sortable="true">Sub Title 1</th>
                                     <th data-field="subdescription1a" data-sortable="true">Sub Description 1A</th>
                                     <th data-field="subdescription1b" data-sortable="true">Sub Description 1B</th>

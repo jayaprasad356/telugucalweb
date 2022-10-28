@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 10:36 AM
+-- Generation Time: Oct 28, 2022 at 12:31 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,44 @@ SET time_zone = "+00:00";
 --
 -- Database: `telugu_calendar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aksharalu`
+--
+
+CREATE TABLE `aksharalu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `aksharalu`
+--
+
+INSERT INTO `aksharalu` (`id`, `title`, `description`) VALUES
+(1, 'Acchu', 'రాశుల పేర్లు ·');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ankelu`
+--
+
+CREATE TABLE `ankelu` (
+  `id` int(11) NOT NULL,
+  `title1` text DEFAULT NULL,
+  `title2` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ankelu`
+--
+
+INSERT INTO `ankelu` (`id`, `title1`, `title2`) VALUES
+(1, '2', '౨');
 
 -- --------------------------------------------------------
 
@@ -270,6 +308,24 @@ CREATE TABLE `grahalu_tab_variant` (
 
 INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_description`) VALUES
 (1, 1, 'manns', 'jnkscshcwj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guninthalu`
+--
+
+CREATE TABLE `guninthalu` (
+  `id` int(11) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `guninthalu`
+--
+
+INSERT INTO `guninthalu` (`id`, `description`) VALUES
+(1, 'Vowels — Acchulu — అచ్చులు\r\n\r\na — అ — as in come\r\n\r\naa/â — ఆ — as in far\r\n\r\ni- ఇ — as in bit\r\n\r\nee/î — ఈ — as in feel\r\n\r\nu — ఉ — as in could\r\n\r\nuu/û — ఊ — as i ncool\r\n\r\nru — ఋ — as i nrupee\r\n\r\nroo/rû — ఋూ — as in root\r\n\r\ne — ఎ — as i nget\r\n\r\nê/ye — ఏ — as in stake\r\n\r\nai/ay — ఐ — as in might\r\n\r\no — ఒ — as in rotate\r\n\r\noo — ఓ — as in oat\r\n\r\nAu — ఔ — as in out\r\n\r\nAum — అం\r\n\r\nAhaa — అః');
 
 -- --------------------------------------------------------
 
@@ -764,6 +820,25 @@ INSERT INTO `rahukalams` (`id`, `year`, `day`, `rahukalam`, `yamangandam`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rashulu`
+--
+
+CREATE TABLE `rashulu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rashulu`
+--
+
+INSERT INTO `rashulu` (`id`, `title`, `description`) VALUES
+(1, 'Midhunam మిధునం', 'Rashi | Nakshatra​​ Each Rashi is associated with a sign');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rasi_names`
 --
 
@@ -807,7 +882,45 @@ CREATE TABLE `sakunalu` (
 --
 
 INSERT INTO `sakunalu` (`id`, `title`, `description`) VALUES
-(1, 'First Sakunam', 'This is a Dangerous situation to handle this');
+(1, 'First Sakunam', 'This is your First Sakunam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telugu_months`
+--
+
+CREATE TABLE `telugu_months` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `telugu_months`
+--
+
+INSERT INTO `telugu_months` (`id`, `title`, `description`) VALUES
+(1, 'hello', 'this is telugu month');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telugu_years`
+--
+
+CREATE TABLE `telugu_years` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `telugu_years`
+--
+
+INSERT INTO `telugu_years` (`id`, `title`, `description`) VALUES
+(1, 'Prabhava Nama year', '1901,1910,2010,2100');
 
 -- --------------------------------------------------------
 
@@ -1021,6 +1134,18 @@ INSERT INTO `yogam` (`id`, `description`) VALUES
 --
 
 --
+-- Indexes for table `aksharalu`
+--
+ALTER TABLE `aksharalu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ankelu`
+--
+ALTER TABLE `ankelu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `audios`
 --
 ALTER TABLE `audios`
@@ -1084,6 +1209,12 @@ ALTER TABLE `grahalu_tab`
 -- Indexes for table `grahalu_tab_variant`
 --
 ALTER TABLE `grahalu_tab_variant`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `guninthalu`
+--
+ALTER TABLE `guninthalu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1219,6 +1350,12 @@ ALTER TABLE `rahukalams`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rashulu`
+--
+ALTER TABLE `rashulu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rasi_names`
 --
 ALTER TABLE `rasi_names`
@@ -1228,6 +1365,18 @@ ALTER TABLE `rasi_names`
 -- Indexes for table `sakunalu`
 --
 ALTER TABLE `sakunalu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telugu_months`
+--
+ALTER TABLE `telugu_months`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telugu_years`
+--
+ALTER TABLE `telugu_years`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1295,6 +1444,18 @@ ALTER TABLE `yogam`
 --
 
 --
+-- AUTO_INCREMENT for table `aksharalu`
+--
+ALTER TABLE `aksharalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `ankelu`
+--
+ALTER TABLE `ankelu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `audios`
 --
 ALTER TABLE `audios`
@@ -1359,6 +1520,12 @@ ALTER TABLE `grahalu_tab`
 --
 ALTER TABLE `grahalu_tab_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `guninthalu`
+--
+ALTER TABLE `guninthalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hora_chakram`
@@ -1493,6 +1660,12 @@ ALTER TABLE `rahukalams`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `rashulu`
+--
+ALTER TABLE `rashulu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `rasi_names`
 --
 ALTER TABLE `rasi_names`
@@ -1502,6 +1675,18 @@ ALTER TABLE `rasi_names`
 -- AUTO_INCREMENT for table `sakunalu`
 --
 ALTER TABLE `sakunalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `telugu_months`
+--
+ALTER TABLE `telugu_months`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `telugu_years`
+--
+ALTER TABLE `telugu_years`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

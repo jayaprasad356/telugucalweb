@@ -1,8 +1,8 @@
 
 <section class="content-header">
-    <h1> Kukuta Sasthram/<small><a href="home.php"><i class="fa fa-home"></i> Home</a></small></h1>
+    <h1> Ankelu/<small><a href="home.php"><i class="fa fa-home"></i> Home</a></small></h1>
     <ol class="breadcrumb">
-        <a class="btn btn-block btn-default" href="add-kukutasasthram.php"><i class="fa fa-plus-square"></i> Add Kukuta Sasthram</a>
+        <a class="btn btn-block btn-default" href="add-ankelu.php"><i class="fa fa-plus-square"></i> Add Ankelu</a>
     </ol>
 </section>
 
@@ -15,7 +15,7 @@
                 <div class="box">
                     
                     <div  class="box-body table-responsive">
-                    <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=kukutasasthram" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc" data-show-export="false" data-export-types='["txt","excel"]' data-export-options='{
+                    <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=ankelu" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc" data-show-export="false" data-export-types='["txt","excel"]' data-export-options='{
                             "fileName": "students-list-<?= date('d-m-Y') ?>",
                             "ignoreColumn": ["operate"] 
                         }'>
@@ -23,8 +23,8 @@
                                 <tr>
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
-                                    <th data-field="title" data-sortable="true">Title</th>
-                                    <th data-field="description" data-sortable="true">Description</th>
+                                    <th data-field="title1" data-sortable="true">Title 1</th>
+                                    <th data-field="title2" data-sortable="true">Title 2</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

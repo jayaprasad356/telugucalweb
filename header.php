@@ -315,6 +315,22 @@ $fn = new custom_functions;
                         <li><a href="pillisasthram.php"><i class="fa fa-angle-right"></i>Pilli Sasthram</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Telugu Samkrutham</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="telugu_years.php"><i class="fa fa-angle-right"></i>Telugu Years</a></li>
+                        <li><a href="telugu_months.php"><i class="fa fa-angle-right"></i>Telugu Months</a></li>
+                        <li><a href="rashulu.php"><i class="fa fa-angle-right"></i>Rashulu</a></li>
+                        <li><a href="ankelu.php"><i class="fa fa-angle-right"></i>Ankelu</a></li>
+                        <li><a href="aksharalu.php"><i class="fa fa-angle-right"></i>Aksharalu</a></li>
+                        <li><a href="guninthalu.php"><i class="fa fa-angle-right"></i>Guninthalu</a></li>
+
+                    </ul>
+                </li>
             </ul>
             </section>
             <!-- /.sidebar -->
