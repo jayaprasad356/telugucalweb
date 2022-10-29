@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2022 at 12:31 PM
+-- Generation Time: Oct 29, 2022 at 01:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -181,6 +181,25 @@ INSERT INTO `festivals` (`id`, `date`, `festival`) VALUES
 (10, '2022-09-27', 'Festival '),
 (11, '2022-09-28', 'Festival '),
 (12, '2022-09-29', 'Festival ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fruits`
+--
+
+CREATE TABLE `fruits` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fruits`
+--
+
+INSERT INTO `fruits` (`id`, `title`, `description`) VALUES
+(1, '	ఆపిల్', 'Every NIGHT eat one apple before sleep');
 
 -- --------------------------------------------------------
 
@@ -415,6 +434,25 @@ INSERT INTO `kaki_sasthram` (`id`, `title`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kalalu`
+--
+
+CREATE TABLE `kalalu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kalalu`
+--
+
+INSERT INTO `kalalu` (`id`, `title`, `description`) VALUES
+(1, 'Hi guys', 'this is the sample text');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `karanam`
 --
 
@@ -429,6 +467,25 @@ CREATE TABLE `karanam` (
 
 INSERT INTO `karanam` (`id`, `description`) VALUES
 (4, 'sddsdsfdfdfd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kolathalu`
+--
+
+CREATE TABLE `kolathalu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kolathalu`
+--
+
+INSERT INTO `kolathalu` (`id`, `title`, `description`) VALUES
+(1, 'Hi everyone', 'This is the details about kolathalu ');
 
 -- --------------------------------------------------------
 
@@ -470,6 +527,25 @@ CREATE TABLE `kukuta_sasthram` (
 
 INSERT INTO `kukuta_sasthram` (`id`, `title`, `description`) VALUES
 (1, 'hello', 'Kukkuta Sastra (also called Cock Astrology) is a form of divination based on cock fighting, commonly believed in coastal districts of Andhra Pradesh, India.\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lagnam`
+--
+
+CREATE TABLE `lagnam` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lagnam`
+--
+
+INSERT INTO `lagnam` (`id`, `title`, `description`) VALUES
+(1, 'Lagnam', 'This is all about Lagnam Description');
 
 -- --------------------------------------------------------
 
@@ -621,6 +697,45 @@ CREATE TABLE `nakshatralu_tab_variant` (
 INSERT INTO `nakshatralu_tab_variant` (`id`, `nakshatralu_tab_id`, `sub_title`, `sub_description`) VALUES
 (1, 1, 'welcome', 'this is bchfhh'),
 (3, 1, 'hixhx', 'x wjx');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `navagrahalu`
+--
+
+CREATE TABLE `navagrahalu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `navagrahalu`
+--
+
+INSERT INTO `navagrahalu` (`id`, `title`, `description`) VALUES
+(1, 'Hello', 'This is navagrahalu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pakshamulu`
+--
+
+CREATE TABLE `pakshamulu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pakshamulu`
+--
+
+INSERT INTO `pakshamulu` (`id`, `title`, `description`, `image`) VALUES
+(1, 'Telugu Pakshamulu', 'Hi everyone this is the sample description', 'upload/pakshamulu/0602-2022-10-29.jpg');
 
 -- --------------------------------------------------------
 
@@ -798,6 +913,44 @@ INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `sub_title`, `sub_des
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prasadhams`
+--
+
+CREATE TABLE `prasadhams` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prasadhams`
+--
+
+INSERT INTO `prasadhams` (`id`, `title`, `description`) VALUES
+(1, 'Laddu', 'This is made from Tirupati');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pushpalu`
+--
+
+CREATE TABLE `pushpalu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pushpalu`
+--
+
+INSERT INTO `pushpalu` (`id`, `title`, `description`) VALUES
+(1, 'Hi Bot ', 'This is the fullfilled by the pushpalu');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rahukalams`
 --
 
@@ -868,6 +1021,25 @@ INSERT INTO `rasi_names` (`id`, `rasi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ruthuvulu`
+--
+
+CREATE TABLE `ruthuvulu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ruthuvulu`
+--
+
+INSERT INTO `ruthuvulu` (`id`, `title`, `description`) VALUES
+(1, 'Ruthuvulu', 'this is the about ruthuvulu description');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sakunalu`
 --
 
@@ -876,13 +1048,6 @@ CREATE TABLE `sakunalu` (
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sakunalu`
---
-
-INSERT INTO `sakunalu` (`id`, `title`, `description`) VALUES
-(1, 'First Sakunam', 'This is your First Sakunam');
 
 -- --------------------------------------------------------
 
@@ -902,6 +1067,25 @@ CREATE TABLE `telugu_months` (
 
 INSERT INTO `telugu_months` (`id`, `title`, `description`) VALUES
 (1, 'hello', 'this is telugu month');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telugu_weeks`
+--
+
+CREATE TABLE `telugu_weeks` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `telugu_weeks`
+--
+
+INSERT INTO `telugu_weeks` (`id`, `title`, `description`) VALUES
+(1, 'Hello Calendar', 'Every weelkend the week will update');
 
 -- --------------------------------------------------------
 
@@ -942,6 +1126,25 @@ INSERT INTO `thidhi` (`id`, `year`, `month`) VALUES
 (1, '2021', NULL),
 (2, '2023', 'Saturday'),
 (3, '2022', 'May');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thidhi_addhi`
+--
+
+CREATE TABLE `thidhi_addhi` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `thidhi_addhi`
+--
+
+INSERT INTO `thidhi_addhi` (`id`, `title`, `description`) VALUES
+(1, 'ರಾಶಿಗಳು', 'Good morning this is yours');
 
 -- --------------------------------------------------------
 
@@ -1025,6 +1228,25 @@ CREATE TABLE `video_post` (
 INSERT INTO `video_post` (`id`, `video_category_id`, `video`) VALUES
 (1, 1, 'upload/videos/1665986597.9193.mp4'),
 (2, 1, 'upload/videos/-2022-10-16.mp4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vruthulu`
+--
+
+CREATE TABLE `vruthulu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vruthulu`
+--
+
+INSERT INTO `vruthulu` (`id`, `title`, `description`) VALUES
+(1, 'Hello', 'This is test');
 
 -- --------------------------------------------------------
 
@@ -1176,6 +1398,12 @@ ALTER TABLE `festivals`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `fruits`
+--
+ALTER TABLE `fruits`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `gowri`
 --
 ALTER TABLE `gowri`
@@ -1242,9 +1470,21 @@ ALTER TABLE `kaki_sasthram`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `kalalu`
+--
+ALTER TABLE `kalalu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `karanam`
 --
 ALTER TABLE `karanam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kolathalu`
+--
+ALTER TABLE `kolathalu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1257,6 +1497,12 @@ ALTER TABLE `kukutasasthram_menu`
 -- Indexes for table `kukuta_sasthram`
 --
 ALTER TABLE `kukuta_sasthram`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lagnam`
+--
+ALTER TABLE `lagnam`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1302,6 +1548,18 @@ ALTER TABLE `nakshatralu_tab_variant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `navagrahalu`
+--
+ALTER TABLE `navagrahalu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pakshamulu`
+--
+ALTER TABLE `pakshamulu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `panchangam`
 --
 ALTER TABLE `panchangam`
@@ -1344,6 +1602,18 @@ ALTER TABLE `poojalu_tab_variant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `prasadhams`
+--
+ALTER TABLE `prasadhams`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pushpalu`
+--
+ALTER TABLE `pushpalu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rahukalams`
 --
 ALTER TABLE `rahukalams`
@@ -1362,6 +1632,12 @@ ALTER TABLE `rasi_names`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ruthuvulu`
+--
+ALTER TABLE `ruthuvulu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sakunalu`
 --
 ALTER TABLE `sakunalu`
@@ -1374,6 +1650,12 @@ ALTER TABLE `telugu_months`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `telugu_weeks`
+--
+ALTER TABLE `telugu_weeks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `telugu_years`
 --
 ALTER TABLE `telugu_years`
@@ -1383,6 +1665,12 @@ ALTER TABLE `telugu_years`
 -- Indexes for table `thidhi`
 --
 ALTER TABLE `thidhi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `thidhi_addhi`
+--
+ALTER TABLE `thidhi_addhi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1407,6 +1695,12 @@ ALTER TABLE `video_category`
 -- Indexes for table `video_post`
 --
 ALTER TABLE `video_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vruthulu`
+--
+ALTER TABLE `vruthulu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1486,6 +1780,12 @@ ALTER TABLE `festivals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `fruits`
+--
+ALTER TABLE `fruits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `gowri`
 --
 ALTER TABLE `gowri`
@@ -1552,10 +1852,22 @@ ALTER TABLE `kaki_sasthram`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `kalalu`
+--
+ALTER TABLE `kalalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `karanam`
 --
 ALTER TABLE `karanam`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `kolathalu`
+--
+ALTER TABLE `kolathalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kukutasasthram_menu`
@@ -1567,6 +1879,12 @@ ALTER TABLE `kukutasasthram_menu`
 -- AUTO_INCREMENT for table `kukuta_sasthram`
 --
 ALTER TABLE `kukuta_sasthram`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `lagnam`
+--
+ALTER TABLE `lagnam`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -1612,6 +1930,18 @@ ALTER TABLE `nakshatralu_tab_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `navagrahalu`
+--
+ALTER TABLE `navagrahalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pakshamulu`
+--
+ALTER TABLE `pakshamulu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `panchangam`
 --
 ALTER TABLE `panchangam`
@@ -1654,6 +1984,18 @@ ALTER TABLE `poojalu_tab_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `prasadhams`
+--
+ALTER TABLE `prasadhams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pushpalu`
+--
+ALTER TABLE `pushpalu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `rahukalams`
 --
 ALTER TABLE `rahukalams`
@@ -1672,6 +2014,12 @@ ALTER TABLE `rasi_names`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `ruthuvulu`
+--
+ALTER TABLE `ruthuvulu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `sakunalu`
 --
 ALTER TABLE `sakunalu`
@@ -1681,6 +2029,12 @@ ALTER TABLE `sakunalu`
 -- AUTO_INCREMENT for table `telugu_months`
 --
 ALTER TABLE `telugu_months`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `telugu_weeks`
+--
+ALTER TABLE `telugu_weeks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -1694,6 +2048,12 @@ ALTER TABLE `telugu_years`
 --
 ALTER TABLE `thidhi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `thidhi_addhi`
+--
+ALTER TABLE `thidhi_addhi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `thidhi_variant`
@@ -1718,6 +2078,12 @@ ALTER TABLE `video_category`
 --
 ALTER TABLE `video_post`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `vruthulu`
+--
+ALTER TABLE `vruthulu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `weekly_horoscope`

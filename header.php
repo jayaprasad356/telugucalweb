@@ -324,10 +324,22 @@ $fn = new custom_functions;
                     <ul class="treeview-menu">
                         <li><a href="telugu_years.php"><i class="fa fa-angle-right"></i>Telugu Years</a></li>
                         <li><a href="telugu_months.php"><i class="fa fa-angle-right"></i>Telugu Months</a></li>
-                        <li><a href="rashulu.php"><i class="fa fa-angle-right"></i>Rashulu</a></li>
                         <li><a href="ankelu.php"><i class="fa fa-angle-right"></i>Ankelu</a></li>
                         <li><a href="aksharalu.php"><i class="fa fa-angle-right"></i>Aksharalu</a></li>
                         <li><a href="guninthalu.php"><i class="fa fa-angle-right"></i>Guninthalu</a></li>
+                        <li><a href="rashulu.php"><i class="fa fa-angle-right"></i>Rashulu</a></li>
+                        <li><a href="kalalu.php"><i class="fa fa-angle-right"></i>64 Kalalu</a></li>
+                        <li><a href="vruthulu.php"><i class="fa fa-angle-right"></i>Vruthulu</a></li>
+                        <li><a href="navagrahalu.php"><i class="fa fa-angle-right"></i>Navagrahalu</a></li>
+                        <li><a href="ruthuvulu.php"><i class="fa fa-angle-right"></i>Ruthuvulu</a></li>
+                        <li><a href="kolathalu.php"><i class="fa fa-angle-right"></i>Kolathalu</a></li>
+                        <li><a href="pakshamulu.php"><i class="fa fa-angle-right"></i>Pakshamulu</a></li>
+                        <li><a href="lagnam.php"><i class="fa fa-angle-right"></i>Lagnam</a></li>
+                        <li><a href="thidhi_addhi.php"><i class="fa fa-angle-right"></i>Thidhi Addhi</a></li>
+                        <li><a href="telugu_weeks.php"><i class="fa fa-angle-right"></i>Telugu Weeks</a></li>
+                        <li><a href="fruits.php"><i class="fa fa-angle-right"></i>Fruit Names</a></li>
+                        <li><a href="prasadhams.php"><i class="fa fa-angle-right"></i>Prasadham Names</a></li>
+                        <li><a href="pushpalu.php"><i class="fa fa-angle-right"></i>Pushpalu</a></li>
 
                     </ul>
                 </li>
