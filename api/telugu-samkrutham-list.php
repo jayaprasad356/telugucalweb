@@ -11,7 +11,7 @@ date_default_timezone_set('Asia/Kolkata');
 include_once('../includes/crud.php');
 $db = new Database();
 $db->connect();
-if (isset($_POST['telugu_years']) && $_POST['telugu_years'] == 1) {
+if (isset($_POST['telugu_sawancharalu']) && $_POST['telugu_sawancharalu'] == 1) {
     $sql = "SELECT * FROM `telugu_years`";
     $db->sql($sql);
     $res = $db->getResult();
@@ -26,7 +26,7 @@ if (isset($_POST['telugu_years']) && $_POST['telugu_years'] == 1) {
             $rows[] = $temp;
         }
         $response['success'] = true;
-        $response['message'] = "Telugu Years Listed Successfullty";
+        $response['message'] = "Telugu Sawanchralu Listed Successfullty";
         $response['data'] = $rows;
         print_r(json_encode($response));
 
