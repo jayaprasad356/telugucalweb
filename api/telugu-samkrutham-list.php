@@ -286,33 +286,14 @@ if (isset($_POST['thidhi_aadhi_devathalu']) && $_POST['thidhi_aadhi_devathalu'] 
     }
 
 }
-if (isset($_POST['rashulu']) && $_POST['rashulu'] == 1) {
-    $sql = "SELECT * FROM `rashulu`";
-    $db->sql($sql);
-    $res = $db->getResult();
-    $num = $db->numRows($res);
-    if($num>=1){
-        $response['success'] = true;
-        $response['message'] = "Rashulu Listed Successfullty";
-        $response['data'] = $res;
-        print_r(json_encode($response));
-
-    }
-    else{
-        $response['success'] = false;
-        $response['message'] = "Not Found";
-        print_r(json_encode($response));
-    }
-
-}
-if (isset($_POST['telugu_weeks']) && $_POST['telugu_weeks'] == 1) {
+if (isset($_POST['telugu_varamulu']) && $_POST['telugu_varamulu'] == 1) {
     $sql = "SELECT * FROM `telugu_weeks`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
         $response['success'] = true;
-        $response['message'] = "Telugu Weeks Listed Successfullty";
+        $response['message'] = "Telugu Varamulu Listed Successfullty";
         $response['data'] = $res;
         print_r(json_encode($response));
 
@@ -324,14 +305,15 @@ if (isset($_POST['telugu_weeks']) && $_POST['telugu_weeks'] == 1) {
     }
 
 }
-if (isset($_POST['fruits']) && $_POST['fruits'] == 1) {
+
+if (isset($_POST['pandlu_perulu']) && $_POST['pandlu_perulu'] == 1) {
     $sql = "SELECT * FROM `fruits`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
         $response['success'] = true;
-        $response['message'] = "Fruit Names Listed Successfullty";
+        $response['message'] = "Pandlu Perulu Listed Successfullty";
         $response['data'] = $res;
         print_r(json_encode($response));
 
@@ -343,14 +325,14 @@ if (isset($_POST['fruits']) && $_POST['fruits'] == 1) {
     }
 
 }
-if (isset($_POST['prsadham']) && $_POST['prasadham'] == 1) {
-    $sql = "SELECT * FROM `prasadham`";
+if (isset($_POST['prasadhamulu_perulu']) && $_POST['prasadhamulu_perulu'] == 1) {
+    $sql = "SELECT * FROM `prasadhams`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
         $response['success'] = true;
-        $response['message'] = "prasadham Names Listed Successfullty";
+        $response['message'] = "Prasadhamulu Perulu Listed Successfullty";
         $response['data'] = $res;
         print_r(json_encode($response));
 
@@ -362,14 +344,14 @@ if (isset($_POST['prsadham']) && $_POST['prasadham'] == 1) {
     }
 
 }
-if (isset($_POST['pushpalu']) && $_POST['pushpalu'] == 1) {
+if (isset($_POST['pushpala_perulu']) && $_POST['pushpala_perulu'] == 1) {
     $sql = "SELECT * FROM `pushpalu`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
         $response['success'] = true;
-        $response['message'] = "Pushpalu Listed Successfullty";
+        $response['message'] = "Pushpala Perulu Listed Successfullty";
         $response['data'] = $res;
         print_r(json_encode($response));
 
