@@ -16,10 +16,14 @@ if (isset($_GET['id'])) {
 if (isset($_POST['btnUpdate'])) {
     $error = array();
     $title= $db->escapeString($_POST['title']);
-    $description= $db->escapeString($_POST['description']);
-    if (!empty($title) && !empty($description))
-     { 
-        $sql = "UPDATE kolathalu SET title='$title',description='$description' WHERE id = '$ID'";
+        $subtitle1= $db->escapeString($_POST['subtitle1']);
+        $subdescription1= $db->escapeString($_POST['subdescription1']);
+        $subtitle2= $db->escapeString($_POST['subtitle2']);
+        $subdescription2= $db->escapeString($_POST['subdescription2']);
+
+   if (!empty($title) &&  !empty($subtitle1) && !empty($subdescription1) &&  !empty($subtitle2) && !empty($subdescription2))
+    {
+        $sql = "UPDATE kolathalu SET title='$title',subtitle1='$subtitle1',subdescription1='$subdescription1',subtitle2='$subtitle2',subdescription2='$subdescription2'  WHERE id = '$ID'";
         $db->sql($sql);
         $result = $db->getResult();
         if (!empty($result)) {
@@ -55,7 +59,7 @@ $res = $db->getResult();
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="box box-primary">
 
                 <div class="box-header">
@@ -70,20 +74,36 @@ $res = $db->getResult();
                                 <div class="form-group">
                                      <div class="col-md-6">
                                             <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
-                                            <input type="text" class="form-control" name="title" id = "title" value="<?php echo $res[0]['title']?>"required>
+                                            <input type="text" class="form-control" name="title" id = "title" value="<?php echo $res[0]['title']?>">
                                     </div>
                                 </div>
                             </div>
                              <br>
                             <div class="row">
                                 <div class="form-group">
+                                   <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Subtitle 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['subtitle1']) ? $error['subtitle1'] : ''; ?>
+                                            <input type="text" class="form-control" name="subtitle1" id = "subtitle1" value="<?php echo $res[0]['subtitle1']?>">
+                                    </div>
                                     <div class="col-md-8">
-                                            <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description']?></textarea>
+                                            <label for="exampleInputEmail1">Sub Description 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription1']) ? $error['subdescription1'] : ''; ?>
+                                            <textarea  type="text" rows="3" class="form-control" name="subdescription1"><?php echo $res[0]['subdescription1']?></textarea>
                                     </div>
                                  </div>
                             </div>
                             <br>
+                            <div class="row">
+                                <div class="form-group">
+                                   <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Subtitle 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['subtitle2']) ? $error['subtitle2'] : ''; ?>
+                                            <input type="text" class="form-control" name="subtitle2" id = "subtitle2" value="<?php echo $res[0]['subtitle2']?>">
+                                    </div>
+                                    <div class="col-md-8">
+                                            <label for="exampleInputEmail1">Sub Description 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription2']) ? $error['subdescription2'] : ''; ?>
+                                            <textarea  type="text" rows="3" class="form-control" name="subdescription2"><?php echo $res[0]['subdescription2']?></textarea>
+                                    </div>
+                                 </div>
+                            </div>
                     </div>
                   
                     <!-- /.box-body -->

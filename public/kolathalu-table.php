@@ -24,7 +24,10 @@
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
                                     <th data-field="title" data-sortable="true">Title</th>
-                                    <th data-field="description" data-sortable="true">Description</th>
+                                    <th data-field="subtitle1" data-sortable="true">Subtitle 1</th>
+                                    <th data-field="subdescription1" data-sortable="true">Sub Description 1</th>
+                                    <th data-field="subtitle2" data-sortable="true">Subtitle 2</th>
+                                    <th data-field="subdescription2" data-sortable="true">Sub Description 2</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

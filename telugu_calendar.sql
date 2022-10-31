@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2022 at 01:01 PM
+-- Generation Time: Oct 31, 2022 at 07:18 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -477,15 +477,18 @@ INSERT INTO `karanam` (`id`, `description`) VALUES
 CREATE TABLE `kolathalu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `subtitle1` text DEFAULT NULL,
+  `subdescription1` text DEFAULT NULL,
+  `subtitle2` text DEFAULT NULL,
+  `subdescription2` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kolathalu`
 --
 
-INSERT INTO `kolathalu` (`id`, `title`, `description`) VALUES
-(1, 'Hi everyone', 'This is the details about kolathalu ');
+INSERT INTO `kolathalu` (`id`, `title`, `subtitle1`, `subdescription1`, `subtitle2`, `subdescription2`) VALUES
+(1, 'Hi Everyone', 'This is sample', 'It is all about your own Interest', 'This is the test title', 'That is our Power of passion');
 
 -- --------------------------------------------------------
 

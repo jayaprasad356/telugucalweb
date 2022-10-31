@@ -2507,7 +2507,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'kolathalu') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR title like '%" . $search . "%' OR description like '%" . $search . "%'";
+        $where .= "WHERE id like '%" . $search . "%' OR title like '%" . $search . "%' OR subdescription1 like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -2538,7 +2538,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'kolathalu') {
         $operate .= ' <a class="text text-danger" href="delete-kolathalu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
-        $tempRow['description'] = $row['description'];
+        $tempRow['subtitle1'] = $row['subtitle1'];
+        $tempRow['subdescription1'] = $row['subdescription1'];
+        $tempRow['subtitle2'] = $row['subtitle2'];
+        $tempRow['subdescription2'] = $row['subdescription2'];
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }

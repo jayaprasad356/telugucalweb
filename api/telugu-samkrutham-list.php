@@ -216,6 +216,12 @@ if (isset($_POST['kolathalu']) && $_POST['kolathalu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        foreach ($res as $row){
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+        }
         $response['success'] = true;
         $response['message'] = "Kolathalu Listed Successfullty";
         $response['data'] = $res;
