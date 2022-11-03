@@ -96,8 +96,6 @@ $fn = new custom_functions;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js" integrity="sha256-CtKylYan+AJuoH8jrMht1+1PMhMqrKnB8K5g012WN5I=" crossorigin="anonymous"></script>
 
     <!--styleing input -->
-    <script src= "https://code.jquery.com/jquery-3.2.1.min.js"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -192,16 +190,16 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="muhurtham.php">
+                    <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Muhurtham</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
-                </li>
-                <li class="treeview">
-                    <a href="muhurtham-tab.php">
-                        <i class="fa fa-calendar"></i>
-                        <span>Muhurtham tab</span>
-                    </a>
+                    <ul class="treeview-menu">
+                          <li><a href="muhurtham.php"><i class="fa fa-angle-right"></i>Muhurtham</a></li>
+                          <li><a href="muhurtham-tab.php"><i class="fa fa-angle-right"></i>Muhurtham Tab</a></li>
+
+                    </ul>
                 </li>
                 <li class="treeview">
                     <a href="#">
@@ -341,6 +339,32 @@ $fn = new custom_functions;
                         <li><a href="prasadhams.php"><i class="fa fa-angle-right"></i>Prasadham Names</a></li>
                         <li><a href="pushpalu.php"><i class="fa fa-angle-right"></i>Pushpalu</a></li>
 
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Mahapuranalu</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                <span> Maha Bharatham</span>
+                                <i class="pull-right"></i>
+                             </a>              
+                            <ul class="treeview-menu">
+                                <li><a href="mahabharatham.php"><i class="fa fa-angle-right"></i>Mahabharatham</a></li>
+                                <li><a href="mahabharatham_menu.php"><i class="fa fa-angle-right"></i>Mahabharatham Menu</a></li>
+                                <li><a href="mahabharatham_submenu.php"><i class="fa fa-angle-right"></i>Mahabharatham Submenu</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="ramayanam.php"><i class="fa fa-angle-right"></i>Ramayanam</a></li>
+                        <li><a href="bhagvathgeetha.php"><i class="fa fa-angle-right"></i>Bhagvath Geetha</a></li>
+                        <li><a href="bhagvatham.php"><i class="fa fa-angle-right"></i>Bhagvatham</a></li>
+                        <li><a href="telugu_sethakamulu.php"><i class="fa fa-angle-right"></i>Telugu Sethakamulu</a></li>
+                        <li><a href="shivapuranam.php"><i class="fa fa-angle-right"></i>Shiva Puranam</a></li>
                     </ul>
                 </li>
             </ul>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 07:18 AM
+-- Generation Time: Nov 03, 2022 at 11:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -549,6 +549,65 @@ CREATE TABLE `lagnam` (
 
 INSERT INTO `lagnam` (`id`, `title`, `description`) VALUES
 (1, 'Lagnam', 'This is all about Lagnam Description');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mahabharatham`
+--
+
+CREATE TABLE `mahabharatham` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mahabharatham`
+--
+
+INSERT INTO `mahabharatham` (`id`, `title`) VALUES
+(1, 'About Mahabharatham'),
+(2, 'People in Mahabharatham');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mahabharatham_menu`
+--
+
+CREATE TABLE `mahabharatham_menu` (
+  `id` int(11) NOT NULL,
+  `mahabharatham_id` int(11) DEFAULT NULL,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mahabharatham_menu`
+--
+
+INSERT INTO `mahabharatham_menu` (`id`, `mahabharatham_id`, `title`) VALUES
+(1, 1, 'Satyavati');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mahabharatham_submenu`
+--
+
+CREATE TABLE `mahabharatham_submenu` (
+  `id` int(11) NOT NULL,
+  `mahabharatham_id` int(11) DEFAULT 0,
+  `mahabharatham_menu_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mahabharatham_submenu`
+--
+
+INSERT INTO `mahabharatham_submenu` (`id`, `mahabharatham_id`, `mahabharatham_menu_id`, `title`, `description`) VALUES
+(1, 1, 1, 'Kalakkal', 'తెలుగు అనువాదం, అర్థం, నిర్వచనం, వివరణ మరియు సంబంధిత పదాలు మరియు ఫోటో ఉదాహరణలు - మీరు ఇక్కడ చదువుకోవచ్చు.');
 
 -- --------------------------------------------------------
 
@@ -1509,6 +1568,24 @@ ALTER TABLE `lagnam`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mahabharatham`
+--
+ALTER TABLE `mahabharatham`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mahabharatham_menu`
+--
+ALTER TABLE `mahabharatham_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mahabharatham_submenu`
+--
+ALTER TABLE `mahabharatham_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `monthly_horoscope`
 --
 ALTER TABLE `monthly_horoscope`
@@ -1888,6 +1965,24 @@ ALTER TABLE `kukuta_sasthram`
 -- AUTO_INCREMENT for table `lagnam`
 --
 ALTER TABLE `lagnam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `mahabharatham`
+--
+ALTER TABLE `mahabharatham`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `mahabharatham_menu`
+--
+ALTER TABLE `mahabharatham_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `mahabharatham_submenu`
+--
+ALTER TABLE `mahabharatham_submenu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

@@ -387,5 +387,58 @@ if (isset($_POST['bulk_upload_tab']) && $_POST['bulk_upload_tab'] == 1) {
     }
 }
 
+//mahabharatham submenu
+
+if (isset($_POST['change_mahabharatham'])) {
+        if ($_POST['mahabharatham_id'] == '') {
+            $sql = "SELECT * FROM mahabharatham_menu";
+        } else {
+            $mahabharatham_id = $db->escapeString($fn->xss_clean($_POST['mahabharatham_id']));
+            $sql = "SELECT * FROM mahabharatham_menu WHERE mahabharatham_id=" . $mahabharatham_id;
+        }
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Mahabharatham Menu is added--</option>";
+    }
+}
+
+if (isset($_POST['mahabharatham'])) {
+        if ($_POST['mahabharatham_id'] == '') {
+            $sql = "SELECT * FROM mahabharatham_menu";
+        } else {
+            $mahabharatham_id = $db->escapeString($fn->xss_clean($_POST['mahabharatham_id']));
+            $sql = "SELECT * FROM mahabharatham_menu WHERE mahabharatham_id=" . $mahabharatham_id;
+        }
+        $db->sql($sql);
+        $res = $db->getResult();
+        if (!empty($res)) {
+            echo "<option value=''>All</option>";
+            foreach ($res as $row) {
+                echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+            }
+        } else {
+            echo "<option value=''>--No Mahabharatham Menu is added--</option>";
+        }
+}
+
+if (isset($_POST['find_mahabharatham_menu'])) {
+    $mahabharatham_id = $db->escapeString($fn->xss_clean($_POST['mahabharatham_id']));
+    $sql = "SELECT * FROM mahabharatham_menu WHERE mahabharatham_id=" . $mahabharatham_id;
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Mahabharatham Menu is added--</option>";
+    }
+}
+
 
 
