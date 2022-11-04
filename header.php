@@ -218,6 +218,7 @@ $fn = new custom_functions;
                     <a href="#">
                         <i class="fa fa-bullseye"></i>
                         <span>Poojalu</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="poojalu.php"><i class="fa fa-angle-right"></i>Poojalu</a></li>
@@ -229,6 +230,7 @@ $fn = new custom_functions;
                     <a href="#">
                         <i class="fa fa-bullseye"></i>
                         <span>Grahalu</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="grahalu.php"><i class="fa fa-angle-right"></i>Grahalu</a></li>
@@ -240,6 +242,7 @@ $fn = new custom_functions;
                     <a href="#">
                         <i class="fa fa-bullseye"></i>
                         <span>Nakshatralu</span>
+                        <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="nakshatralu.php"><i class="fa fa-angle-right"></i>Nakshatralu</a></li>
@@ -360,11 +363,64 @@ $fn = new custom_functions;
                                 <li><a href="mahabharatham_submenu.php"><i class="fa fa-angle-right"></i>Mahabharatham Submenu</a></li>
                             </ul>
                         </li>
-                        <li><a href="ramayanam.php"><i class="fa fa-angle-right"></i>Ramayanam</a></li>
-                        <li><a href="bhagvathgeetha.php"><i class="fa fa-angle-right"></i>Bhagvath Geetha</a></li>
-                        <li><a href="bhagvatham.php"><i class="fa fa-angle-right"></i>Bhagvatham</a></li>
-                        <li><a href="telugu_sethakamulu.php"><i class="fa fa-angle-right"></i>Telugu Sethakamulu</a></li>
-                        <li><a href="shivapuranam.php"><i class="fa fa-angle-right"></i>Shiva Puranam</a></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                <span>Ramayanam</span>
+                                <i class="pull-right"></i>
+                             </a>              
+                            <ul class="treeview-menu">
+                                <li><a href="ramayanam.php"><i class="fa fa-angle-right"></i>Ramayanam</a></li>
+                                <li><a href="ramayanam_menu.php"><i class="fa fa-angle-right"></i>Ramayanam Menu</a></li>
+                                <li><a href="ramayanam_submenu.php"><i class="fa fa-angle-right"></i>Ramayanam Submenu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                <span>Bhagawath Geetha</span>
+                                <i class="pull-right"></i>
+                             </a>              
+                            <ul class="treeview-menu">
+                                <li><a href="bhagawath_geetha.php"><i class="fa fa-angle-right"></i>Bhagawath Geetha</a></li>
+                                <li><a href="bhagawath_geetha_menu.php"><i class="fa fa-angle-right"></i>Bhagawath Geetha Menu</a></li>
+                                <li><a href="bhagawath_geetha_submenu.php"><i class="fa fa-angle-right"></i>Bhagawath Geetha <br> Submenu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                <span>Bhagawatham</span>
+                                <i class="pull-right"></i>
+                             </a>              
+                            <ul class="treeview-menu">
+                                <li><a href="bhagawatham.php"><i class="fa fa-angle-right"></i>Bhagawatham</a></li>
+                                <li><a href="bhagawatham_menu.php"><i class="fa fa-angle-right"></i>Bhagawatham Menu</a></li>
+                                <li><a href="bhagawatham_submenu.php"><i class="fa fa-angle-right"></i>Bhagawatham Submenu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                <span>Telugu Sethakamulu</span>
+                                <i class="pull-right"></i>
+                             </a>              
+                            <ul class="treeview-menu">
+                                <li><a href="telugu_sethakamulu.php"><i class="fa fa-angle-right"></i>Telugu Sethakamulu</a></li>
+                                <li><a href="telugu_sethakamulu_menu.php"><i class="fa fa-angle-right"></i>Telugu Sethakamulu <br> Menu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-angle-right"></i>
+                                <span>Shiva Puranam</span>
+                                <i class="pull-right"></i>
+                             </a>              
+                            <ul class="treeview-menu">
+                                <li><a href="shivapuranam.php"><i class="fa fa-angle-right"></i>Shiva Puranam</a></li>
+                                <li><a href="shivapuranam_menu.php"><i class="fa fa-angle-right"></i>Shiva Puranam Menu</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>

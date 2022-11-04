@@ -440,5 +440,168 @@ if (isset($_POST['find_mahabharatham_menu'])) {
     }
 }
 
+//ramayanam submenu------>
+
+if (isset($_POST['change_ramayanam'])) {
+        if ($_POST['ramayanam_id'] == '') {
+            $sql = "SELECT * FROM ramayanam_menu";
+        } else {
+            $ramayanam_id = $db->escapeString($fn->xss_clean($_POST['ramayanam_id']));
+            $sql = "SELECT * FROM ramayanam_menu WHERE ramayanam_id=" . $ramayanam_id;
+        }
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Ramayanam Menu is added--</option>";
+    }
+}
+
+if (isset($_POST['ramayanam'])) {
+        if ($_POST['ramayanam_id'] == '') {
+            $sql = "SELECT * FROM ramayanam_menu";
+        } else {
+            $ramayanam_id = $db->escapeString($fn->xss_clean($_POST['ramayanam_id']));
+            $sql = "SELECT * FROM ramayanam_menu WHERE ramayanam_id=" . $ramayanam_id;
+        }
+        $db->sql($sql);
+        $res = $db->getResult();
+        if (!empty($res)) {
+            echo "<option value=''>All</option>";
+            foreach ($res as $row) {
+                echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+            }
+        } else {
+            echo "<option value=''>--No Ramayanam Menu is added--</option>";
+        }
+}
+
+if (isset($_POST['find_ramayanam_menu'])) {
+    $ramayanam_id = $db->escapeString($fn->xss_clean($_POST['ramayanam_id']));
+    $sql = "SELECT * FROM ramayanam_menu WHERE ramayanam_id=" . $ramayanam_id;
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Ramayanam Menu is added--</option>";
+    }
+}
 
 
+//Bhagawath Geetha submenu------>
+
+if (isset($_POST['change_bhagawath_geetha'])) {
+    if ($_POST['bhagawath_geetha_id'] == '') {
+        $sql = "SELECT * FROM bhagawath_geetha_menu";
+    } else {
+        $bhagawath_geetha_id = $db->escapeString($fn->xss_clean($_POST['bhagawath_geetha_id']));
+        $sql = "SELECT * FROM bhagawath_geetha_menu WHERE bhagawath_geetha_id=" . $bhagawath_geetha_id;
+    }
+$db->sql($sql);
+$res = $db->getResult();
+if (!empty($res)) {
+    foreach ($res as $row) {
+        echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+    }
+} else {
+    echo "<option value=''>--No Bhagawath Geetha Menu is added--</option>";
+}
+}
+
+if (isset($_POST['bhagawath_geetha'])) {
+    if ($_POST['bhagawath_geetha_id'] == '') {
+        $sql = "SELECT * FROM bhagawath_geetha_menu";
+    } else {
+        $bhagawath_geetha_id = $db->escapeString($fn->xss_clean($_POST['bhagawath_geetha_id']));
+        $sql = "SELECT * FROM bhagawath_geetha_menu WHERE bhagawath_geetha_id=" . $bhagawath_geetha_id;
+    }
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        echo "<option value=''>All</option>";
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Bhagawath Geetha Menu is added--</option>";
+    }
+}
+
+if (isset($_POST['find_bhagawath_geetha_menu'])) {
+    $bhagawath_geetha_id = $db->escapeString($fn->xss_clean($_POST['bhagawath_geetha_id']));
+    $sql = "SELECT * FROM bhagawath_geetha_menu WHERE bhagawath_geetha_id=" . $bhagawath_geetha_id;
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Bhagawath Geetha Menu is added--</option>";
+    }
+}
+
+//<-----End of bhagawath geetha submenu ----->
+
+
+
+//Bhagawatham submenu------>
+
+if (isset($_POST['change_bhagawatham'])) {
+    if ($_POST['bhagawatham_id'] == '') {
+        $sql = "SELECT * FROM bhagawatham_menu";
+    } else {
+        $bhagawatham_id = $db->escapeString($fn->xss_clean($_POST['bhagawatham_id']));
+        $sql = "SELECT * FROM bhagawatham_menu WHERE bhagawatham_id=" . $bhagawatham_id;
+    }
+$db->sql($sql);
+$res = $db->getResult();
+if (!empty($res)) {
+    foreach ($res as $row) {
+        echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+    }
+} else {
+    echo "<option value=''>--No Bhagawatham Menu is added--</option>";
+}
+}
+
+if (isset($_POST['bhagawatham'])) {
+    if ($_POST['bhagawatham_id'] == '') {
+        $sql = "SELECT * FROM bhagawatham_menu";
+    } else {
+        $bhagawatham_id = $db->escapeString($fn->xss_clean($_POST['bhagawatham_id']));
+        $sql = "SELECT * FROM bhagawatham_menu WHERE bhagawatham_id=" . $bhagawatham_id;
+    }
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        echo "<option value=''>All</option>";
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Bhagawatham Menu is added--</option>";
+    }
+}
+
+if (isset($_POST['find_bhagawatham_menu'])) {
+$bhagawatham_id = $db->escapeString($fn->xss_clean($_POST['bhagawatham_id']));
+$sql = "SELECT * FROM bhagawatham_menu WHERE bhagawatham_id=" . $bhagawatham_id;
+$db->sql($sql);
+$res = $db->getResult();
+if (!empty($res)) {
+    foreach ($res as $row) {
+        echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+    }
+} else {
+    echo "<option value=''>--No Bhagawatham Menu is added--</option>";
+}
+}
+//<------End OF bhagawatham Submenu ---->
+?>

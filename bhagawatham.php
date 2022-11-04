@@ -23,12 +23,12 @@
 <?php include "header.php";?>
 <html>
 <head>
-<title>Mahabharatham Submenu | - Dashboard</title>
+<title>Bhagawatham | - Dashboard</title>
 </head>
 </body>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <?php include('public/mahabharatham_submenu-table.php'); ?>
+        <?php include('public/bhagawatham-table.php'); ?>
       </div><!-- /.content-wrapper -->
   </body>
 </html>

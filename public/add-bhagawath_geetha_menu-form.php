@@ -7,19 +7,19 @@ $fn = new custom_functions;
 ?>
 <?php
 if (isset($_POST['btnAdd'])) {
-        $mahabharatham= $db->escapeString($_POST['mahabharatham']);
+        $bhagawath_geetha= $db->escapeString($_POST['bhagawath_geetha']);
         $title= $db->escapeString($_POST['title']);
 
         if (empty($title)) {
             $error['title'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($mahabharatham)) {
-            $error['mahabharatham'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($bhagawath_geetha)) {
+            $error['bhagawath_geetha'] = " <span class='label label-danger'>Required!</span>";
         }
 
-       if (!empty($mahabharatham) && !empty($title)) {
+       if (!empty($bhagawath_geetha) && !empty($title)) {
          
-            $sql_query = "INSERT INTO mahabharatham_menu (mahabharatham_id,title) VALUES ('$mahabharatham','$title')";
+            $sql_query = "INSERT INTO bhagawath_geetha_menu (bhagawath_geetha_id,title) VALUES ('$bhagawath_geetha','$title')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -30,18 +30,18 @@ if (isset($_POST['btnAdd'])) {
 
             if ($result == 1) {
                 
-                $error['add_mahabharatham_menu'] = "<section class='content-header'>
-                                                <span class='label label-success'>Mahabharatham Menu Added Successfully</span> </section>";
+                $error['add_bhagawath_geetha_menu'] = "<section class='content-header'>
+                                                <span class='label label-success'>Bhagawath Geetha Menu Added Successfully</span> </section>";
             } else {
-                $error['add_mahabharatham_menu'] = " <span class='label label-danger'>Failed</span>";
+                $error['add_bhagawath_geetha_menu'] = " <span class='label label-danger'>Failed</span>";
             }
             }
         }
 ?>
 <section class="content-header">
-    <h1>Add Mahabharatham Menu<small><a href='mahabharatham_menu.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Mahabharatham Menu</a></small></h1>
+    <h1>Add Bhagawath Geetha Menu<small><a href='bhagawath_geetha_menu.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Bhagawath Geetha Menu</a></small></h1>
 
-    <?php echo isset($error['add_mahabharatham_menu']) ? $error['add_mahabharatham_menu'] : ''; ?>
+    <?php echo isset($error['add_bhagawath_geetha_menu']) ? $error['add_bhagawath_geetha_menu'] : ''; ?>
     <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
     </ol>
@@ -58,15 +58,16 @@ if (isset($_POST['btnAdd'])) {
                 <!-- /.box-header -->
 
                 <!-- form start -->
-                <form name="add_mahabharatham_menu_form" method="post" enctype="multipart/form-data">
+                <form name="add_bhagawath_geetha_menu_form" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
                                      <div class="col-md-6">
-                                        <label for="exampleInputEmail1">Mahabharatham</label> <i class="text-danger asterik">*</i><?php echo isset($error['mahabharatham']) ? $error['mahabharatham'] : ''; ?>
-                                        <select id='mahabharatham' name="mahabharatham" class='form-control' required>
+                                        <label for="exampleInputEmail1">Bhagawath Geetha</label> <i class="text-danger asterik">*</i><?php echo isset($error['bhagawath_geetha']) ? $error['bhagawath_geetha'] : ''; ?>
+                                        <select id='bhagawath_geetha' name="bhagawath_geetha" class='form-control' required>
+                                            <option value="">-- Select --</option>
                                                     <?php
-                                                    $sql = "SELECT id,title FROM `mahabharatham`";
+                                                    $sql = "SELECT id,title FROM `bhagawath_geetha`";
                                                     $db->sql($sql);
                                                     $result = $db->getResult();
                                                     foreach ($result as $value) {
@@ -105,13 +106,13 @@ if (isset($_POST['btnAdd'])) {
 <div class="separator"> </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script>
-    $('#add_mahabharatham_menu_form').validate({
+    $('#add_bhagawath_geetha_menu_form').validate({
 
         ignore: [],
         debug: false,
         rules: {
+            bhagawath_geetha: "required",
             title: "required",
-            mahabharatham: "required",
         }
     });
     $('#btnClear').on('click', function() {

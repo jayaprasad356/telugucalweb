@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2022 at 11:46 AM
+-- Generation Time: Nov 04, 2022 at 12:55 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -97,6 +97,126 @@ CREATE TABLE `balli_sasthram` (
 
 INSERT INTO `balli_sasthram` (`id`, `title`, `description`, `subtitle1`, `subdescription1a`, `subdescription1b`, `subtitle2`, `subdescription2a`, `subdescription2b`) VALUES
 (1, 'hello', 'wegrtygu', 'zxcvbn', 'sdfyhijo', 'esdtghi', 'ezxrdtygu', 'rdtfyhij', 'rdtfyhij');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bhagawatham`
+--
+
+CREATE TABLE `bhagawatham` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bhagawatham`
+--
+
+INSERT INTO `bhagawatham` (`id`, `title`) VALUES
+(1, 'Bhagawatham Padhyalu'),
+(2, 'Bhagawatham Animuthyamulu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bhagawatham_menu`
+--
+
+CREATE TABLE `bhagawatham_menu` (
+  `id` int(11) NOT NULL,
+  `bhagawatham_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bhagawatham_menu`
+--
+
+INSERT INTO `bhagawatham_menu` (`id`, `bhagawatham_id`, `title`) VALUES
+(1, 1, 'Bhagawatham Part-1'),
+(2, 1, 'Bhagawatham Part-2'),
+(3, 2, 'Bhagawatham Part-3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bhagawatham_submenu`
+--
+
+CREATE TABLE `bhagawatham_submenu` (
+  `id` int(11) NOT NULL,
+  `bhagawatham_id` int(11) DEFAULT 0,
+  `bhagawatham_menu_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bhagawatham_submenu`
+--
+
+INSERT INTO `bhagawatham_submenu` (`id`, `bhagawatham_id`, `bhagawatham_menu_id`, `title`, `description`) VALUES
+(1, 1, 2, 'Shakthi', 'ఇరానియన్ కేలండెరు: ఇరాన్, ఆప్ఘనిస్తాన్ లలో ఉపయోగించబడుతుంది.\r\nహెబ్ర్యూ కేలండరు : ప్రపంచంలో వున్న యూదులు ఉపయోగిస్తారు.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bhagawath_geetha`
+--
+
+CREATE TABLE `bhagawath_geetha` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bhagawath_geetha`
+--
+
+INSERT INTO `bhagawath_geetha` (`id`, `title`) VALUES
+(1, 'Geetha Saramsam'),
+(2, 'Arjuna Yogam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bhagawath_geetha_menu`
+--
+
+CREATE TABLE `bhagawath_geetha_menu` (
+  `id` int(11) NOT NULL,
+  `bhagawath_geetha_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bhagawath_geetha_menu`
+--
+
+INSERT INTO `bhagawath_geetha_menu` (`id`, `bhagawath_geetha_id`, `title`) VALUES
+(1, 1, 'Jalabula');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bhagawath_geetha_submenu`
+--
+
+CREATE TABLE `bhagawath_geetha_submenu` (
+  `id` int(11) NOT NULL,
+  `bhagawath_geetha_id` int(11) DEFAULT 0,
+  `bhagawath_geetha_menu_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bhagawath_geetha_submenu`
+--
+
+INSERT INTO `bhagawath_geetha_submenu` (`id`, `bhagawath_geetha_id`, `bhagawath_geetha_menu_id`, `title`, `description`) VALUES
+(1, 1, 1, 'Shakthi', 'పంజాబీ కేలండరు: విక్రమాదిత్యశకం నుండి వచ్చిన బిక్రమి కేలండరు ఆధారంగా రూపొందించబడి క్రీ.పూ 57 నుండి మొదలయింది.\r\n');
 
 -- --------------------------------------------------------
 
@@ -1035,6 +1155,66 @@ INSERT INTO `rahukalams` (`id`, `year`, `day`, `rahukalam`, `yamangandam`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ramayanam`
+--
+
+CREATE TABLE `ramayanam` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ramayanam`
+--
+
+INSERT INTO `ramayanam` (`id`, `title`) VALUES
+(1, 'Ramayanam Import'),
+(2, 'Balakandas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ramayanam_menu`
+--
+
+CREATE TABLE `ramayanam_menu` (
+  `id` int(11) NOT NULL,
+  `ramayanam_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ramayanam_menu`
+--
+
+INSERT INTO `ramayanam_menu` (`id`, `ramayanam_id`, `title`) VALUES
+(1, 1, 'Shatya'),
+(2, 2, 'Hello man');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ramayanam_submenu`
+--
+
+CREATE TABLE `ramayanam_submenu` (
+  `id` int(11) NOT NULL,
+  `ramayanam_id` int(11) DEFAULT 0,
+  `ramayanam_menu_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ramayanam_submenu`
+--
+
+INSERT INTO `ramayanam_submenu` (`id`, `ramayanam_id`, `ramayanam_menu_id`, `title`, `description`) VALUES
+(1, 2, 1, 'Vruthi', 'కాలెండరు, లేదా క్యాలెండరు (ఆంగ్లం: క్యాలెండర్) అనగా, సంవత్సరంలో అన్ని రోజులు, వారాలు, నెలలు కాలాన్ని చూపించే ముద్రిత పట్టికను క్యాలెండరు అని అంటారు');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rashulu`
 --
 
@@ -1114,6 +1294,45 @@ CREATE TABLE `sakunalu` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shivapuranam`
+--
+
+CREATE TABLE `shivapuranam` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shivapuranam`
+--
+
+INSERT INTO `shivapuranam` (`id`, `title`) VALUES
+(1, 'Eesa'),
+(2, 'Eswaran Kovil');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shivapuranam_menu`
+--
+
+CREATE TABLE `shivapuranam_menu` (
+  `id` int(11) NOT NULL,
+  `shivapuranam_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shivapuranam_menu`
+--
+
+INSERT INTO `shivapuranam_menu` (`id`, `shivapuranam_id`, `title`, `description`) VALUES
+(1, 1, 'Coimbatore', 'గమనాలపై ఆధారపడి తయారుచేసింది. ఈ కేలండరు ప్రస్తుతం ఎక్కువగా ముస్లింలు ఉపయోగించే ఇస్లామీయ కేలండరుకు మూలం.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `telugu_months`
 --
 
@@ -1129,6 +1348,45 @@ CREATE TABLE `telugu_months` (
 
 INSERT INTO `telugu_months` (`id`, `title`, `description`) VALUES
 (1, 'hello', 'this is telugu month');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telugu_sethakamulu`
+--
+
+CREATE TABLE `telugu_sethakamulu` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `telugu_sethakamulu`
+--
+
+INSERT INTO `telugu_sethakamulu` (`id`, `title`) VALUES
+(1, 'Sumathi Sethakam'),
+(2, 'Kumara Sethakam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telugu_sethakamulu_menu`
+--
+
+CREATE TABLE `telugu_sethakamulu_menu` (
+  `id` int(11) NOT NULL,
+  `telugu_sethakamulu_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `telugu_sethakamulu_menu`
+--
+
+INSERT INTO `telugu_sethakamulu_menu` (`id`, `telugu_sethakamulu_id`, `title`, `description`) VALUES
+(1, 1, 'Vruthi', 'బిక్రమి కాలెండరు: ఈ కాలెండరు మార్చి నుండి ప్రారంభమవుతుంది.వసంతకాలంతో ప్రారంభంతో ప్రారంభమై 365 రోజుల వరకు ఉంటుంది.\r\nనానాక్షాహి కేలండరు:ఈ కాలెండరు శకం మొదటి సిక్కుల గురువైన నానక్ దేవ్ జన..');
 
 -- --------------------------------------------------------
 
@@ -1442,6 +1700,42 @@ ALTER TABLE `balli_sasthram`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `bhagawatham`
+--
+ALTER TABLE `bhagawatham`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bhagawatham_menu`
+--
+ALTER TABLE `bhagawatham_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bhagawatham_submenu`
+--
+ALTER TABLE `bhagawatham_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bhagawath_geetha`
+--
+ALTER TABLE `bhagawath_geetha`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bhagawath_geetha_menu`
+--
+ALTER TABLE `bhagawath_geetha_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bhagawath_geetha_submenu`
+--
+ALTER TABLE `bhagawath_geetha_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `daily_horoscope`
 --
 ALTER TABLE `daily_horoscope`
@@ -1700,6 +1994,24 @@ ALTER TABLE `rahukalams`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ramayanam`
+--
+ALTER TABLE `ramayanam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ramayanam_menu`
+--
+ALTER TABLE `ramayanam_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ramayanam_submenu`
+--
+ALTER TABLE `ramayanam_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rashulu`
 --
 ALTER TABLE `rashulu`
@@ -1724,9 +2036,33 @@ ALTER TABLE `sakunalu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `shivapuranam`
+--
+ALTER TABLE `shivapuranam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shivapuranam_menu`
+--
+ALTER TABLE `shivapuranam_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `telugu_months`
 --
 ALTER TABLE `telugu_months`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telugu_sethakamulu`
+--
+ALTER TABLE `telugu_sethakamulu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telugu_sethakamulu_menu`
+--
+ALTER TABLE `telugu_sethakamulu_menu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1839,6 +2175,42 @@ ALTER TABLE `audios`
 -- AUTO_INCREMENT for table `balli_sasthram`
 --
 ALTER TABLE `balli_sasthram`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `bhagawatham`
+--
+ALTER TABLE `bhagawatham`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `bhagawatham_menu`
+--
+ALTER TABLE `bhagawatham_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `bhagawatham_submenu`
+--
+ALTER TABLE `bhagawatham_submenu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `bhagawath_geetha`
+--
+ALTER TABLE `bhagawath_geetha`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `bhagawath_geetha_menu`
+--
+ALTER TABLE `bhagawath_geetha_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `bhagawath_geetha_submenu`
+--
+ALTER TABLE `bhagawath_geetha_submenu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -2100,6 +2472,24 @@ ALTER TABLE `rahukalams`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `ramayanam`
+--
+ALTER TABLE `ramayanam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `ramayanam_menu`
+--
+ALTER TABLE `ramayanam_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `ramayanam_submenu`
+--
+ALTER TABLE `ramayanam_submenu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `rashulu`
 --
 ALTER TABLE `rashulu`
@@ -2124,9 +2514,33 @@ ALTER TABLE `sakunalu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `shivapuranam`
+--
+ALTER TABLE `shivapuranam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `shivapuranam_menu`
+--
+ALTER TABLE `shivapuranam_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `telugu_months`
 --
 ALTER TABLE `telugu_months`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `telugu_sethakamulu`
+--
+ALTER TABLE `telugu_sethakamulu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `telugu_sethakamulu_menu`
+--
+ALTER TABLE `telugu_sethakamulu_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

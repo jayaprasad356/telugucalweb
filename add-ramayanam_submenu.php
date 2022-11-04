@@ -1,8 +1,9 @@
 <?php
 	// start session
+	ob_start();
 	
 	session_start();
-  // set time for session timeout
+	// set time for session timeout
 	
     // set time for session timeout
     $currentTime = time() + 25200;
@@ -20,16 +21,20 @@
 	
 	
 ?>
+
 <?php include "header.php";?>
 <html>
 <head>
-<title>Mahabharatham Submenu | - Dashboard</title>
+<title>Add Ramayanam Submenu | - Dashboard</title>
 </head>
 </body>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <?php include('public/mahabharatham_submenu-table.php'); ?>
+		<?php
+			include('public/add-ramayanam_submenu-form.php'); 
+		?>
       </div><!-- /.content-wrapper -->
   </body>
 </html>
 <?php include "footer.php";?>
+    	

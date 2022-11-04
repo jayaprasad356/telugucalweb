@@ -16,33 +16,33 @@ if (isset($_GET['id'])) {
 if (isset($_POST['btnUpdate'])) {
 
     $error = array();
-    $mahabharatham_id= $db->escapeString($_POST['mahabharatham_id']);
-    $mahabharatham_menu_id= $db->escapeString($_POST['mahabharatham_menu_id']);
+    $ramayanam_id= $db->escapeString($_POST['ramayanam_id']);
+    $ramayanam_menu_id= $db->escapeString($_POST['ramayanam_menu_id']);
     $title= $db->escapeString($_POST['title']);
     $description= $db->escapeString($_POST['description']);
 
 
-    $sql = "UPDATE mahabharatham_submenu SET mahabharatham_id='$mahabharatham_id',mahabharatham_menu_id='$mahabharatham_menu_id',title='$title',description='$description' WHERE id = '$ID'";
+    $sql = "UPDATE ramayanam_submenu SET ramayanam_id='$ramayanam_id',ramayanam_menu_id='$ramayanam_menu_id',title='$title',description='$description' WHERE id = '$ID'";
     $db->sql($sql);
     $result = $db->getResult();
     if (!empty($result)) {
-        $error['update_mahabharatham_submenu'] = " <span class='label label-danger'>Failed</span>";
+        $error['update_ramayanam_submenu'] = " <span class='label label-danger'>Failed</span>";
     } else {
-        $error['update_mahabharatham_submenu'] = " <span class='label label-success'>Mahabharatham Submenu Updated Successfully</span>";
+        $error['update_ramayanam_submenu'] = " <span class='label label-success'>Ramayanam Submenu Updated Successfully</span>";
     }
     
 }
 
 $data = array();
 
-$sql_query = "SELECT * FROM `mahabharatham_submenu` WHERE id = '$ID'";
+$sql_query = "SELECT * FROM `ramayanam_submenu` WHERE id = '$ID'";
 $db->sql($sql_query);
 $res = $db->getResult();
 
 ?>
 <section class="content-header">
-    <h1>Edit Mahabharatham Submenu<small><a href='mahabharatham_submenu.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Mahabharatham Submenu</a></small></h1>
-    <?php echo isset($error['update_mahabharatham_submenu']) ? $error['update_mahabharatham_submenu'] : ''; ?>
+    <h1>Edit Ramayanam Submenu<small><a href='ramayanam_submenu.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Ramayanam Submenu</a></small></h1>
+    <?php echo isset($error['update_ramayanam_submenu']) ? $error['update_ramayanam_submenu'] : ''; ?>
     <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
     </ol>
@@ -59,33 +59,33 @@ $res = $db->getResult();
 
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form id="edit_mahabharatham_submenu_form" method="post" enctype="multipart/form-data">
+                <form id="edit_ramayanam_submenu_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <label for="exampleInputEmail1">Mahabharatham</label> <i class="text-danger asterik">*</i><?php echo isset($error['mahabharatham_id']) ? $error['mahabharatham_id'] : ''; ?>
-                                        <select id='mahabharatham_id' name="mahabharatham_id" class='form-control'>
+                                        <label for="exampleInputEmail1">Ramayanam</label> <i class="text-danger asterik">*</i><?php echo isset($error['ramayanam_id']) ? $error['ramayanam_id'] : ''; ?>
+                                        <select id='ramayanam_id' name="ramayanam_id" class='form-control'>
                                             <?php
-                                                $sql = "SELECT id,title FROM `mahabharatham`";
+                                                $sql = "SELECT id,title FROM `ramayanam`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
                                             ?>
-                                              <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['mahabharatham_id'] ? 'selected="selected"' : '';?>><?= $value['title'] ?></option>
+                                              <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['ramayanam_id'] ? 'selected="selected"' : '';?>><?= $value['title'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="exampleInputEmail1">Mahabharatham</label> <i class="text-danger asterik">*</i><?php echo isset($error['mahabharatham_menu_id']) ? $error['mahabharatham_menu_id'] : ''; ?>
-                                        <select id='mahabharatham_menu_id' name="mahabharatham_menu_id" class='form-control'>
+                                        <label for="exampleInputEmail1">Ramayanam Menu</label> <i class="text-danger asterik">*</i><?php echo isset($error['ramayanam_menu_id']) ? $error['ramayanam_menu_id'] : ''; ?>
+                                        <select id='ramayanam_menu_id' name="ramayanam_menu_id" class='form-control'>
                                             <?php
-                                                $sql = "SELECT id,title FROM `mahabharatham_menu`";
+                                                $sql = "SELECT id,title FROM `ramayanam_menu`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
                                             ?>
-                                              <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['mahabharatham_menu_id'] ? 'selected="selected"' : '';?>><?= $value['title'] ?></option>
+                                              <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['ramayanam_menu_id'] ? 'selected="selected"' : '';?>><?= $value['title'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -120,13 +120,13 @@ $res = $db->getResult();
 </section>
 <div class="separator"> </div>
 <script>
-       $(document).on('change', '#mahabharatham_id', function() {
+       $(document).on('change', '#ramayanam_id', function() {
         $.ajax({
             url: 'public/db-operation.php',
             method: 'POST',
-            data: 'mahabharatham_id=' + $('#mahabharatham_id').val() + '&find_mahabharatham_menu=1',
+            data: 'ramayanam_id=' + $('#ramayanam_id').val() + '&find_ramayanam_menu=1',
             success: function(data) {
-                $('#mahabharatham_menu_id').html("<option value=''>---Select Mahabharatham Menu---</option>" + data);
+                $('#ramayanam_menu_id').html("<option value=''>---Select Ramayanam Menu---</option>" + data);
             }
         });
     });
