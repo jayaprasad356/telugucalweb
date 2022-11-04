@@ -90,7 +90,7 @@ if (isset($_POST['ramayanam']) && $_POST['ramayanam'] == 1) {
     }
 
 }
-if (isset($_POST['ramayanam']) && $_POST['ramayanam_menu'] == 1) {
+if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
     $sql = "SELECT * FROM `ramayanam_menu`";
     $db->sql($sql);
     $res = $db->getResult();
