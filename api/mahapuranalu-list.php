@@ -91,7 +91,8 @@ if (isset($_POST['ramayanam']) && $_POST['ramayanam'] == 1) {
 
 }
 if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
-    $sql = "SELECT * FROM `ramayanam_menu`";
+    $ramayanam_id = $db->escapeString($_POST['ramayanam_id']);
+    $sql = "SELECT * FROM `ramayanam_menu` WHERE ramayanam_id = '$ramayanam_id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
