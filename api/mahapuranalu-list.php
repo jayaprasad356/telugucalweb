@@ -111,7 +111,9 @@ if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
 
 }
 if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
-    $sql = "SELECT * FROM `ramayanam_submenu`";
+    $ramayanam_id = $db->escapeString($_POST['ramayanam_id']);
+    $ramayanam_menu_id = $db->escapeString($_POST['ramayanam_menu_id']);
+    $sql = "SELECT * FROM `ramayanam_submenu` WHERE ramayanam_id = '$ramayanam_id' AND ramayanam_menu_id = '$ramayanam_menu_id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
