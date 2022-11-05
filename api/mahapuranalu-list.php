@@ -33,7 +33,8 @@ if (isset($_POST['mahabharatham']) && $_POST['mahabharatham'] == 1) {
 
 }
 if (isset($_POST['mahabharatham_menu']) && $_POST['mahabharatham_menu'] == 1) {
-    $sql = "SELECT * FROM `mahabharatham_menu`";
+    $id = $db->escapeString($_POST['id']);
+    $sql = "SELECT * FROM `mahabharatham_menu` WHERE mahabharatham_id = $id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -52,7 +53,9 @@ if (isset($_POST['mahabharatham_menu']) && $_POST['mahabharatham_menu'] == 1) {
 
 }
 if (isset($_POST['mahabharatham_submenu']) && $_POST['mahabharatham_submenu'] == 1) {
-    $sql = "SELECT * FROM `aksharalu`";
+    $id = $db->escapeString($_POST['id']);
+    $menu_id = $db->escapeString($_POST['menu_id']);
+    $sql = "SELECT * FROM `mahabharatham_submenu` WHERE mahabharatham_id = $id AND 	mahabharatham_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -91,8 +94,8 @@ if (isset($_POST['ramayanam']) && $_POST['ramayanam'] == 1) {
 
 }
 if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
-    $ramayanam_id = $db->escapeString($_POST['ramayanam_id']);
-    $sql = "SELECT * FROM `ramayanam_menu` WHERE ramayanam_id = '$ramayanam_id'";
+    $id = $db->escapeString($_POST['id']);
+    $sql = "SELECT * FROM `ramayanam_menu` WHERE ramayanam_id = '$id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -111,9 +114,9 @@ if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
 
 }
 if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
-    $ramayanam_id = $db->escapeString($_POST['ramayanam_id']);
-    $ramayanam_menu_id = $db->escapeString($_POST['ramayanam_menu_id']);
-    $sql = "SELECT * FROM `ramayanam_submenu` WHERE ramayanam_id = '$ramayanam_id' AND ramayanam_menu_id = '$ramayanam_menu_id'";
+    $id = $db->escapeString($_POST['id']);
+    $menu_id = $db->escapeString($_POST['menu_id']);
+    $sql = "SELECT * FROM `ramayanam_submenu` WHERE ramayanam_id = '$id' AND ramayanam_menu_id = '$menu_id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -153,7 +156,8 @@ if (isset($_POST['bhagawath_geetha']) && $_POST['bhagawath_geetha'] == 1) {
 
 }
 if (isset($_POST['bhagawath_geetha_menu']) && $_POST['bhagawath_geetha_menu'] == 1) {
-    $sql = "SELECT * FROM `bhagawath_geetha_menu`";
+    $id = $db->escapeString($_POST['id']);
+    $sql = "SELECT * FROM `bhagawath_geetha_menu` WHERE bhagawath_geetha_id = '$id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -172,7 +176,9 @@ if (isset($_POST['bhagawath_geetha_menu']) && $_POST['bhagawath_geetha_menu'] ==
 
 }
 if (isset($_POST['bhagawath_geetha_submenu']) && $_POST['bhagawath_geetha_submenu'] == 1) {
-    $sql = "SELECT * FROM `bhagawath_geetha_submenu`";
+    $id = $db->escapeString($_POST['id']);
+    $menu_id = $db->escapeString($_POST['menu_id']);
+    $sql = "SELECT * FROM `bhagawath_geetha_submenu` WHERE bhagawath_geetha_id = '$id' AND bhagawath_geetha_menu_id = '$menu_id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -211,8 +217,9 @@ if (isset($_POST['bhagawatham']) && $_POST['bhagawatham'] == 1) {
     }
 
 }
-if (isset($_POST['bhagawatham']) && $_POST['bhagawatham_menu'] == 1) {
-    $sql = "SELECT * FROM `bhagawatham_menu`";
+if (isset($_POST['bhagawatham_menu']) && $_POST['bhagawatham_menu'] == 1) {
+    $id = $db->escapeString($_POST['id']);
+    $sql = "SELECT * FROM `bhagawatham_menu` WHERE bhagawatham_id = '$id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -231,7 +238,9 @@ if (isset($_POST['bhagawatham']) && $_POST['bhagawatham_menu'] == 1) {
 
 }
 if (isset($_POST['bhagawatham_submenu']) && $_POST['bhagawatham_submenu'] == 1) {
-    $sql = "SELECT * FROM `bhagawatham_submenu`";
+    $id = $db->escapeString($_POST['id']);
+    $menu_id = $db->escapeString($_POST['menu_id']);
+    $sql = "SELECT * FROM `bhagawatham_submenu` WHERE bhagawatham_id = '$id' AND bhagawatham_menu_id = '$menu_id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -270,8 +279,9 @@ if (isset($_POST['telugu_sethakamulu']) && $_POST['telugu_sethakamulu'] == 1) {
     }
 
 }
-if (isset($_POST['telugu_sethakamulu']) && $_POST['telugu_sethakamulu_menu'] == 1) {
-    $sql = "SELECT * FROM `telugu_sethakamulu_menu`";
+if (isset($_POST['telugu_sethakamulu_menu']) && $_POST['telugu_sethakamulu_menu'] == 1) {
+    $id = $db->escapeString($_POST['id']);
+    $sql = "SELECT * FROM `telugu_sethakamulu_menu` WHERE telugu_sethakamulu_id = '$id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -289,6 +299,7 @@ if (isset($_POST['telugu_sethakamulu']) && $_POST['telugu_sethakamulu_menu'] == 
     }
 
 }
+
 
 //<<-----Shivapuranam list---->
 if (isset($_POST['shivapuranam']) && $_POST['shivapuranam'] == 1) {
@@ -310,8 +321,9 @@ if (isset($_POST['shivapuranam']) && $_POST['shivapuranam'] == 1) {
     }
 
 }
-if (isset($_POST['shivapuranam']) && $_POST['shivapuranam_menu'] == 1) {
-    $sql = "SELECT * FROM `shivapuranam_menu`";
+if (isset($_POST['shivapuranam_menu']) && $_POST['shivapuranam_menu'] == 1) {
+    $id = $db->escapeString($_POST['id']);
+    $sql = "SELECT * FROM `shivapuranam_menu` WHERE shivapuranam_id = '$id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
