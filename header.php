@@ -408,6 +408,7 @@ $fn = new custom_functions;
                             <ul class="treeview-menu">
                                 <li><a href="telugu_sethakamulu.php"><i class="fa fa-angle-right"></i>Telugu Sethakamulu</a></li>
                                 <li><a href="telugu_sethakamulu_menu.php"><i class="fa fa-angle-right"></i>Telugu Sethakamulu <br> Menu</a></li>
+                                <li><a href="telugu_sethakamulu_submenu.php"><i class="fa fa-angle-right"></i>Telugu Sethakamulu <br> Submenu</a></li>
                             </ul>
                         </li>
                         <li>

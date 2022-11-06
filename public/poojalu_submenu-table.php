@@ -23,7 +23,7 @@
                                 <tr>
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
-                                    <th data-field="poojalu_id" data-sortable="true">Poojalu</th>
+                                    <th data-field="poojalu" data-sortable="true">Poojalu</th>
                                     <th data-field="name" data-sortable="true">Name</th>
                                     <th  data-field="image">Image</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>

@@ -9,11 +9,7 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
         $telugu_sethakamulu= $db->escapeString($_POST['telugu_sethakamulu']);
         $title= $db->escapeString($_POST['title']);
-        $description= $db->escapeString($_POST['description']);
 
-        if (empty($description)) {
-            $error['description'] = " <span class='label label-danger'>Required!</span>";
-        }
         if (empty($title)) {
             $error['title'] = " <span class='label label-danger'>Required!</span>";
         }
@@ -21,9 +17,9 @@ if (isset($_POST['btnAdd'])) {
             $error['telugu_sethakamulu'] = " <span class='label label-danger'>Required!</span>";
         }
 
-       if (!empty($telugu_sethakamulu) && !empty($title) && !empty($description)) {
+       if (!empty($telugu_sethakamulu) && !empty($title)) {
          
-            $sql_query = "INSERT INTO telugu_sethakamulu_menu (telugu_sethakamulu_id,title,description) VALUES ('$telugu_sethakamulu','$title','$description')";
+            $sql_query = "INSERT INTO telugu_sethakamulu_menu (telugu_sethakamulu_id,title) VALUES ('$telugu_sethakamulu','$title')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -53,7 +49,7 @@ if (isset($_POST['btnAdd'])) {
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
            
             <!-- general form elements -->
             <div class="box box-primary">
@@ -66,7 +62,7 @@ if (isset($_POST['btnAdd'])) {
                         <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
-                                     <div class="col-md-6">
+                                     <div class="col-md-8">
                                         <label for="exampleInputEmail1">Telugu Sethakamulu</label> <i class="text-danger asterik">*</i><?php echo isset($error['telugu_sethakamulu']) ? $error['telugu_sethakamulu'] : ''; ?>
                                         <select id='telugu_sethakamulu' name="telugu_sethakamulu" class='form-control' required>
                                             <option value="">-- Select --</option>
@@ -85,13 +81,9 @@ if (isset($_POST['btnAdd'])) {
                              <br>
                            <div class="row">
                                 <div class="form-group">
-                                     <div class="col-md-4">
+                                     <div class="col-md-8">
                                             <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
                                             <input type="text" class="form-control" name="title" id = "title"required>
-                                    </div>
-                                    <div class="col-md-8">
-                                            <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="description" required></textarea>
                                     </div>
                                 </div>
                             </div>

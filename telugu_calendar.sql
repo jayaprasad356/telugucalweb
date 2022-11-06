@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2022 at 12:55 PM
+-- Generation Time: Nov 06, 2022 at 08:03 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -1291,6 +1291,13 @@ CREATE TABLE `sakunalu` (
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `sakunalu`
+--
+
+INSERT INTO `sakunalu` (`id`, `title`, `description`) VALUES
+(2, 'Hello', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam');
+
 -- --------------------------------------------------------
 
 --
@@ -1377,16 +1384,36 @@ INSERT INTO `telugu_sethakamulu` (`id`, `title`) VALUES
 CREATE TABLE `telugu_sethakamulu_menu` (
   `id` int(11) NOT NULL,
   `telugu_sethakamulu_id` int(11) DEFAULT 0,
-  `title` text DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `title` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_sethakamulu_menu`
 --
 
-INSERT INTO `telugu_sethakamulu_menu` (`id`, `telugu_sethakamulu_id`, `title`, `description`) VALUES
-(1, 1, 'Vruthi', 'బిక్రమి కాలెండరు: ఈ కాలెండరు మార్చి నుండి ప్రారంభమవుతుంది.వసంతకాలంతో ప్రారంభంతో ప్రారంభమై 365 రోజుల వరకు ఉంటుంది.\r\nనానాక్షాహి కేలండరు:ఈ కాలెండరు శకం మొదటి సిక్కుల గురువైన నానక్ దేవ్ జన..');
+INSERT INTO `telugu_sethakamulu_menu` (`id`, `telugu_sethakamulu_id`, `title`) VALUES
+(1, 1, 'Vruthi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telugu_sethakamulu_submenu`
+--
+
+CREATE TABLE `telugu_sethakamulu_submenu` (
+  `id` int(11) NOT NULL,
+  `telugu_sethakamulu_id` int(11) DEFAULT 0,
+  `telugu_sethakamulu_menu_id` int(11) DEFAULT 0,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `telugu_sethakamulu_submenu`
+--
+
+INSERT INTO `telugu_sethakamulu_submenu` (`id`, `telugu_sethakamulu_id`, `telugu_sethakamulu_menu_id`, `title`, `description`) VALUES
+(1, 1, 1, 'Central', 'perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit');
 
 -- --------------------------------------------------------
 
@@ -2066,6 +2093,12 @@ ALTER TABLE `telugu_sethakamulu_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `telugu_sethakamulu_submenu`
+--
+ALTER TABLE `telugu_sethakamulu_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `telugu_weeks`
 --
 ALTER TABLE `telugu_weeks`
@@ -2511,7 +2544,7 @@ ALTER TABLE `ruthuvulu`
 -- AUTO_INCREMENT for table `sakunalu`
 --
 ALTER TABLE `sakunalu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shivapuranam`
@@ -2541,6 +2574,12 @@ ALTER TABLE `telugu_sethakamulu`
 -- AUTO_INCREMENT for table `telugu_sethakamulu_menu`
 --
 ALTER TABLE `telugu_sethakamulu_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `telugu_sethakamulu_submenu`
+--
+ALTER TABLE `telugu_sethakamulu_submenu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

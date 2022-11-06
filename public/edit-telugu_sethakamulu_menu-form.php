@@ -18,9 +18,8 @@ if (isset($_POST['btnUpdate'])) {
     $error = array();
     $telugu_sethakamulu= $db->escapeString($_POST['telugu_sethakamulu']);
     $title= $db->escapeString($_POST['title']);
-    $description= $db->escapeString($_POST['description']);
 
-    $sql = "UPDATE telugu_sethakamulu_menu SET telugu_sethakamulu_id='$telugu_sethakamulu',title='$title',description='$description' WHERE id = '$ID'";
+    $sql = "UPDATE telugu_sethakamulu_menu SET telugu_sethakamulu_id='$telugu_sethakamulu',title='$title' WHERE id = '$ID'";
     $db->sql($sql);
     $result = $db->getResult();
     if (!empty($result)) {
@@ -48,7 +47,7 @@ $res = $db->getResult();
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="box box-primary">
 
                 <div class="box-header">
@@ -79,13 +78,9 @@ $res = $db->getResult();
                             <br>
                            <div class="row">
                                 <div class="form-group">
-                                     <div class="col-md-4">
+                                     <div class="col-md-8">
                                             <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
                                             <input type="text" class="form-control" name="title" id = "title" value="<?php echo $res[0]['title']?>"required>
-                                    </div>
-                                    <div class="col-md-8">
-                                            <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="description" ><?php echo $res[0]['description']?></textarea>
                                     </div>
                                 </div>
                             </div>

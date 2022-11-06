@@ -604,4 +604,57 @@ if (!empty($res)) {
 }
 }
 //<------End OF bhagawatham Submenu ---->
+
+//Telugu Sethakamulu submenu------>
+
+if (isset($_POST['change_telugu_sethakamulu'])) {
+    if ($_POST['telugu_sethakamulu_id'] == '') {
+        $sql = "SELECT * FROM telugu_sethakamulu_menu";
+    } else {
+        $telugu_sethakamulu_id = $db->escapeString($fn->xss_clean($_POST['telugu_sethakamulu_id']));
+        $sql = "SELECT * FROM telugu_sethakamulu_menu WHERE telugu_sethakamulu_id=" . $telugu_sethakamulu_id;
+    }
+$db->sql($sql);
+$res = $db->getResult();
+if (!empty($res)) {
+    foreach ($res as $row) {
+        echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+    }
+} else {
+    echo "<option value=''>--No Telugu Sethakamulu Menu is added--</option>";
+}
+}
+
+if (isset($_POST['telugu_sethakamulu'])) {
+    if ($_POST['telugu_sethakamulu_id'] == '') {
+        $sql = "SELECT * FROM telugu_sethakamulu_menu";
+    } else {
+        $telugu_sethakamulu_id = $db->escapeString($fn->xss_clean($_POST['telugu_sethakamulu_id']));
+        $sql = "SELECT * FROM telugu_sethakamulu_menu WHERE telugu_sethakamulu_id=" . $telugu_sethakamulu_id;
+    }
+    $db->sql($sql);
+    $res = $db->getResult();
+    if (!empty($res)) {
+        echo "<option value=''>All</option>";
+        foreach ($res as $row) {
+            echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+        }
+    } else {
+        echo "<option value=''>--No Telugu Sethakamulu Menu is added--</option>";
+    }
+}
+
+if (isset($_POST['find_telugu_sethakamulu_menu'])) {
+$telugu_sethakamulu_id = $db->escapeString($fn->xss_clean($_POST['telugu_sethakamulu_id']));
+$sql = "SELECT * FROM telugu_sethakamulu_menu WHERE telugu_sethakamulu_id=" . $telugu_sethakamulu_id;
+$db->sql($sql);
+$res = $db->getResult();
+if (!empty($res)) {
+    foreach ($res as $row) {
+        echo "<option value=" . $row['id'] . ">" . $row['title'] . "</option>";
+    }
+} else {
+    echo "<option value=''>--No Telugu Sethakamulu Menu is added--</option>";
+}
+}
 ?>

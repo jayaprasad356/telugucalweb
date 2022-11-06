@@ -160,12 +160,46 @@ if (isset($_GET['table']) && $_GET['table'] == 'festivals') {
     print_r(json_encode($bulkData));
 }
 if (isset($_GET['table']) && $_GET['table'] == 'muhurtham') {
-    $sql="SELECT * FROM muhurtham";
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR muhurtham like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `muhurtham` ";
     $db->sql($sql);
     $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM muhurtham " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
     $rows = array();
     $tempRow = array();
-    $bulkData = array();
+
     foreach ($res as $row) {
         $operate = '<a href="edit-muhurtham.php?id=' . $row['id'] . '" class="label label-primary" title="Edit">Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-muhurtham.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
@@ -180,12 +214,49 @@ if (isset($_GET['table']) && $_GET['table'] == 'muhurtham') {
 
 }
 if (isset($_GET['table']) && $_GET['table'] == 'muhurtham_tab') {
-    $sql="SELECT *,muhurtham_tab.id AS id FROM muhurtham_tab,muhurtham WHERE muhurtham.id = muhurtham_tab.muhurtham_id";
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE mt.id like '%" . $search . "%' OR m.muhurtham like '%" . $search . "%' OR  mt.title like '%" . $search . "%' OR  mt.description like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+
+    $join = "LEFT JOIN `muhurtham` m ON mt.muhurtham_id = m.id";
+
+    $sql = "SELECT COUNT(mt.id) as `total` FROM `muhurtham_tab` mt $join " . $where . "";
     $db->sql($sql);
     $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT mt.id AS id,mt.*,m.muhurtham FROM `muhurtham_tab` mt $join 
+            $where ORDER BY $sort $order LIMIT $offset, $limit"; 
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
     $rows = array();
     $tempRow = array();
-    $bulkData = array();
     foreach ($res as $row) {
         $operate = '<a href="edit-muhurtham-tab.php?id=' . $row['id'] . '" class="label label-primary" title="Edit">Edit</a>';
         $tempRow['id'] = $row['id'];
@@ -523,7 +594,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'poojalu_submenu') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR name like '%" . $search . "%' OR poojalu_id like '%" . $search . "%'";
+        $where .= "WHERE ps.id like '%" . $search . "%' OR ps.name like '%" . $search . "%' OR p.name like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -531,16 +602,18 @@ if (isset($_GET['table']) && $_GET['table'] == 'poojalu_submenu') {
     if (isset($_GET['order'])){
         $order = $db->escapeString($_GET['order']);
     }
-    $sql = "SELECT COUNT(`id`) as total FROM `poojalu_submenu` ";
+    $join = "LEFT JOIN `poojalu` p ON ps.poojalu_id = p.id";
+
+    $sql = "SELECT COUNT(ps.id) as `total` FROM `poojalu_submenu` ps $join " . $where . "";
     $db->sql($sql);
     $res = $db->getResult();
     foreach ($res as $row)
         $total = $row['total'];
    
-    $sql = "SELECT * FROM poojalu_submenu " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $sql = "SELECT ps.id AS id,ps.*,p.name AS poojalu FROM `poojalu_submenu` ps $join 
+    $where ORDER BY $sort $order LIMIT $offset, $limit";
     $db->sql($sql);
     $res = $db->getResult();
-
     $bulkData = array();
     $bulkData['total'] = $total;
     
@@ -553,7 +626,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'poojalu_submenu') {
         $operate = ' <a href="edit-poojalu_submenu.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-poojalu_submenu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
-        $tempRow['poojalu_id'] = $row['poojalu_id'];
+        $tempRow['poojalu'] = $row['poojalu'];
         $tempRow['name'] = $row['name'];
         if(!empty($row['image'])){
             $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
@@ -715,7 +788,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'grahalu_submenu') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR name like '%" . $search . "%' OR grahalu_id like '%" . $search . "%'";
+        $where .= "WHERE gs.id like '%" . $search . "%' OR gs.name like '%" . $search . "%' OR g.name like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -723,21 +796,24 @@ if (isset($_GET['table']) && $_GET['table'] == 'grahalu_submenu') {
     if (isset($_GET['order'])){
         $order = $db->escapeString($_GET['order']);
     }
-    $sql = "SELECT COUNT(`id`) as total FROM `grahalu_submenu` ";
+    $join = "LEFT JOIN `grahalu` g ON gs.grahalu_id = g.id";
+
+    $sql = "SELECT COUNT(gs.id) as `total` FROM `grahalu_submenu` gs $join " . $where . "";
     $db->sql($sql);
     $res = $db->getResult();
     foreach ($res as $row)
         $total = $row['total'];
    
-    $sql = "SELECT * FROM grahalu_submenu " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $sql = "SELECT gs.id AS id,gs.*,g.name AS grahalu FROM `grahalu_submenu` gs $join 
+    $where ORDER BY $sort $order LIMIT $offset, $limit";
     $db->sql($sql);
     $res = $db->getResult();
-
     $bulkData = array();
     $bulkData['total'] = $total;
     
     $rows = array();
     $tempRow = array();
+
 
     foreach ($res as $row) {
 
@@ -745,7 +821,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'grahalu_submenu') {
         $operate = ' <a href="edit-grahalu_submenu.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-grahalu_submenu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
-        $tempRow['grahalu_id'] = $row['grahalu_id'];
+        $tempRow['grahalu'] = $row['grahalu'];
         $tempRow['name'] = $row['name'];
         if(!empty($row['image'])){
             $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
@@ -1152,7 +1228,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'images') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE product_name like '%" . $search . "%' OR id like '%" . $search . "%'OR category_id like '%" . $search . "%'OR brand like '%" . $search . "%'";
+        $where .= "WHERE i.id like '%" . $search . "%' OR i.name like '%" . $search . "%' OR ic.name like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -1160,16 +1236,18 @@ if (isset($_GET['table']) && $_GET['table'] == 'images') {
     if (isset($_GET['order'])){
         $order = $db->escapeString($_GET['order']);
     }
-    $sql = "SELECT COUNT(`id`) as total FROM `images` ";
+    $join = "LEFT JOIN `image_category` ic ON i.image_category_id = ic.id";
+
+    $sql = "SELECT COUNT(i.id) as `total` FROM `images` i $join " . $where . "";
     $db->sql($sql);
     $res = $db->getResult();
     foreach ($res as $row)
         $total = $row['total'];
    
-    $sql = "SELECT * FROM images " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $sql = "SELECT i.id AS id,i.*,ic.name AS image_category,i.name,i.image AS image FROM `images` i $join 
+    $where ORDER BY $sort $order LIMIT $offset, $limit";
     $db->sql($sql);
     $res = $db->getResult();
-
     $bulkData = array();
     $bulkData['total'] = $total;
     
@@ -1182,7 +1260,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'images') {
         $operate = ' <a href="edit-images.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-product.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
-        $tempRow['image_category_id'] = $row['image_category_id'];
+        $tempRow['image_category'] = $row['image_category'];
         $tempRow['name'] = $row['name'];
         if(!empty($row['image'])){
             $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
@@ -3796,7 +3874,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'telugu_sethakamulu_menu') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE tm.id like '%" . $search . "%' OR t.title like '%" . $search . "%' OR tm.title like '%" . $search . "%' OR tm.description like '%" . $search . "%'";
+        $where .= "WHERE tm.id like '%" . $search . "%' OR t.title like '%" . $search . "%' OR tm.title like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -3829,6 +3907,67 @@ if (isset($_GET['table']) && $_GET['table'] == 'telugu_sethakamulu_menu') {
         $operate .= ' <a class="text text-danger" href="delete-telugu_sethakamulu_menu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['telugu_sethakamulu'] = $row['telugu_sethakamulu'];
+        $tempRow['title'] = $row['title'];
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+
+if (isset($_GET['table']) && $_GET['table'] == 'telugu_sethakamulu_submenu') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE ts.id like '%" . $search . "%' OR t.title like '%" . $search . "%' OR tm.title like '%" . $search . "%' OR ts.title like '%" . $search . "%' OR ts.description like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $join = "LEFT JOIN `telugu_sethakamulu` t ON ts.telugu_sethakamulu_id = t.id 
+    LEFT JOIN `telugu_sethakamulu_menu` tm ON  tm.id=ts.telugu_sethakamulu_menu_id";
+
+    $sql = "SELECT COUNT(ts.id) as `total` FROM `telugu_sethakamulu_submenu` ts $join " . $where . "";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT ts.id AS id,ts.*,t.title AS telugu_sethakamulu,tm.title AS telugu_sethakamulu_menu FROM `telugu_sethakamulu_submenu` ts $join 
+    $where ORDER BY $sort $order LIMIT $offset, $limit";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+
+        
+        $operate = ' <a href="edit-telugu_sethakamulu_submenu.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="text text-danger" href="delete-telugu_sethakamulu_submenu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['telugu_sethakamulu'] = $row['telugu_sethakamulu'];
+        $tempRow['telugu_sethakamulu_menu'] = $row['telugu_sethakamulu_menu'];
         $tempRow['title'] = $row['title'];
         $tempRow['description'] = $row['description'];
         $tempRow['operate'] = $operate;

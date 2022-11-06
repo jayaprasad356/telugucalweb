@@ -23,12 +23,12 @@
 <?php include "header.php";?>
 <html>
 <head>
-<title>Muhurtham | - Dashboard</title>
+<title>Telugu Sethakamulu Submenu | - Dashboard</title>
 </head>
 </body>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <?php include('public/muhurtham-table.php'); ?>
+        <?php include('public/telugu_sethakamulu_submenu-table.php'); ?>
       </div><!-- /.content-wrapper -->
   </body>
 </html>
