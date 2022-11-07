@@ -281,13 +281,34 @@ if (isset($_POST['telugu_sethakamulu']) && $_POST['telugu_sethakamulu'] == 1) {
 }
 if (isset($_POST['telugu_sethakamulu_menu']) && $_POST['telugu_sethakamulu_menu'] == 1) {
     $id = $db->escapeString($_POST['id']);
-    $sql = "SELECT * FROM `telugu_sethakamulu_menu` WHERE telugu_sethakamulu_id = '$id'";
+    $sql = "SELECT * FROM `telugu_sethakamulu_menu` WHERE telugu_sethakamulu_id	 = '$id'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
         $response['success'] = true;
-        $response['message'] = "Telugu Sethakamulu Menu Listed Successfullty";
+        $response['message'] = "Sethakamulu Menu Listed Successfullty";
+        $response['data'] = $res;
+        print_r(json_encode($response));
+
+    }
+    else{
+        $response['success'] = false;
+        $response['message'] = "Not Found";
+        print_r(json_encode($response));
+    }
+
+}
+if (isset($_POST['telugu_sethakamulu_submenu']) && $_POST['telugu_sethakamulu_submenu'] == 1) {
+    $id = $db->escapeString($_POST['id']);
+    $menu_id = $db->escapeString($_POST['menu_id']);
+    $sql = "SELECT * FROM `telugu_sethakamulu_submenu` WHERE telugu_sethakamulu_id = '$id' AND telugu_sethakamulu_menu_id = '$menu_id'";
+    $db->sql($sql);
+    $res = $db->getResult();
+    $num = $db->numRows($res);
+    if($num>=1){
+        $response['success'] = true;
+        $response['message'] = "Sethakamulu Submenu Listed Successfullty";
         $response['data'] = $res;
         print_r(json_encode($response));
 
