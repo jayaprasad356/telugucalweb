@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 07:27 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Nov 08, 2022 at 11:22 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `telugu_calender`
+-- Database: `telugu_calendar`
 --
 
 -- --------------------------------------------------------
@@ -930,6 +930,46 @@ INSERT INTO `navagrahalu` (`id`, `title`, `description`) VALUES
 (3, 'కుజుడు', 'శక్తి, విశ్వాసం, అహంకారం\r\n'),
 (4, 'బుధుడు', 'వ్యవహార నైపుణ్యం'),
 (5, 'గురుడు', 'విద్యా బోధన\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `neti_articles`
+--
+
+CREATE TABLE `neti_articles` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `neti_articles`
+--
+
+INSERT INTO `neti_articles` (`id`, `title`, `description`, `image`) VALUES
+(1, 'Sivanath', 'శివుని నీలకంఠం. ఆదియోగి అయిన శివునికి ఉన్న ఎన్నో నామాలలో \"నీలకంఠుడు\" అనే నామం ఒకటి. · మహా ...', 'upload/articles/9681-2022-11-08.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `old_articles`
+--
+
+CREATE TABLE `old_articles` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `old_articles`
+--
+
+INSERT INTO `old_articles` (`id`, `title`, `description`, `image`) VALUES
+(1, 'The God of tourer', 'డా.యం.ఎన్.చార్య- శ్రీమన్నారాయణ ఉపాసకులు ,ప్రముఖ అంతర్జాతీయ జ్యోతిష పండితులు -9440611151\r\nజ్ఞాననిధి , జ్యోతిష అభిజ్ఞ , జ్యోతిష మూహూర్త సార్వభౌమ\"ఉగాది స్వర్ణ కంకణ సన్మాన పురస్కార గ్రహీత\"\r\nఎం.ఏ జ్యోతిషం - పి.హెచ్.డి \"గోల్డ్ మెడల్\" ,ఎం.ఏ తెలుగు (ఏల్) , ఎం. ఏ సంస.', 'upload/articles/9602-2022-11-08.jpg');
 
 -- --------------------------------------------------------
 
@@ -2021,6 +2061,18 @@ ALTER TABLE `navagrahalu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `neti_articles`
+--
+ALTER TABLE `neti_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `old_articles`
+--
+ALTER TABLE `old_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pakshamulu`
 --
 ALTER TABLE `pakshamulu`
@@ -2503,6 +2555,18 @@ ALTER TABLE `nakshatralu_tab_variant`
 --
 ALTER TABLE `navagrahalu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `neti_articles`
+--
+ALTER TABLE `neti_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `old_articles`
+--
+ALTER TABLE `old_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pakshamulu`
