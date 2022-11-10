@@ -60,8 +60,8 @@ if (isset($_POST['btnAdd'])) {
                 <form name="add_gowri_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="row">
-                            <div class='col-md-5'>
-                                        <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
+                            <div class='col-md-8'>
+                                    <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                     <textarea type="text" rows="3" class="form-control" name="description" required></textarea>
                             </div>
                         </div>

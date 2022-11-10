@@ -71,7 +71,7 @@ if (isset($_POST['btnAdd'])) {
                     <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-5'>
+                                    <div class='col-md-4'>
                                         <label for="exampleInputEmail1">Year</label> <i class="text-danger asterik">*</i>
                                         <select id='year' name="year" class='form-control' required>
                                             <option value="">Select</option>
@@ -85,7 +85,7 @@ if (isset($_POST['btnAdd'])) {
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class='col-md-5'>
+                                    <div class='col-md-4'>
                                         <label for="exampleInputEmail1"> Day</label> <i class="text-danger asterik">*</i>
                                         <select id='day' name="day" class='form-control' required>
                                             <option value="">Select</option>
@@ -99,7 +99,7 @@ if (isset($_POST['btnAdd'])) {
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class='col-md-5'>
+                                    <div class='col-md-4'>
                                         <label for="exampleInputEmail1"> Rahukalam</label> <i class="text-danger asterik">*</i><?php echo isset($error['rahukalam']) ? $error['rahukalam'] : ''; ?>
                                        <input type="text" name="rahukalam" class="form-control" required>
                                     </div>

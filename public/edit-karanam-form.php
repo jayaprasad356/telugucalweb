@@ -57,7 +57,6 @@ $res = $db->getResult();
         <div class="col-md-10">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Edit Karanam</h3>
                 </div>
                 <div class="box-header">
                     <?php echo isset($error['cancelable']) ? '<span class="label label-danger">Till status is required.</span>' : ''; ?>
@@ -66,15 +65,15 @@ $res = $db->getResult();
                 <!-- /.box-header -->
                 <!-- form start -->
                 <form id='edit_gowri_form' method="post" enctype="multipart/form-data">
-                <div class="box-body">
-                    <div class="row">
-                        <div class='col-md-5'>
-                            <label for="exampleInputEmail1">Description</label>
-                            <textarea type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description'] ?></textarea>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class='col-md-10'>
+                                <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
+                                <textarea type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description'] ?></textarea>
+                            </div>
                         </div>
+
                     </div>
-
-
                     <div class="box-footer">
                         <input type="submit" class="btn-primary btn" value="Update" name="btnUpdate" />&nbsp;
                     </div>

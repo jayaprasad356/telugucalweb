@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2022 at 11:22 AM
+-- Generation Time: Nov 10, 2022 at 11:15 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -845,6 +845,13 @@ CREATE TABLE `muhurtham_tab` (
   `title` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `muhurtham_tab`
+--
+
+INSERT INTO `muhurtham_tab` (`id`, `muhurtham_id`, `title`, `description`) VALUES
+(3, 3, 'Hello Tamil', 'Every Second is gives a Hour');
 
 -- --------------------------------------------------------
 
@@ -1802,7 +1809,7 @@ CREATE TABLE `yogam` (
 --
 
 INSERT INTO `yogam` (`id`, `description`) VALUES
-(2, 'yyyy');
+(2, 'Hi World! You are something special to me');
 
 --
 -- Indexes for dumped tables
@@ -2530,7 +2537,7 @@ ALTER TABLE `muhurtham`
 -- AUTO_INCREMENT for table `muhurtham_tab`
 --
 ALTER TABLE `muhurtham_tab`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `nakshatralu`

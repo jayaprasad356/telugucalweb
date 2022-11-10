@@ -259,6 +259,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'muhurtham_tab') {
     $tempRow = array();
     foreach ($res as $row) {
         $operate = '<a href="edit-muhurtham-tab.php?id=' . $row['id'] . '" class="label label-primary" title="Edit">Edit</a>';
+        $operate .= ' <a class="text text-danger" href="delete-muhurtham-tab.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['muhurtham'] = $row['muhurtham'];
         $tempRow['title'] = $row['title'];
@@ -1293,7 +1294,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'video_post') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "AND vc.name like '%" . $search . "%' OR title like '%" . $search . "%'";
+        $where .= "AND vc.name like '%" . $search . "%'";
     }
     $sql = "SELECT COUNT(vp.id) as total FROM video_post vp,video_category vc WHERE vp.video_category_id = vc.id " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
     $db->sql($sql);
@@ -1316,7 +1317,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'video_post') {
         $operate .= ' <a class="text text-danger" href="delete-video.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['video_category'] = $row['name'];
-        $tempRow['video'] = ' <a class="text text-primary" target="_blank" href="' . $row['video'] . '">View</a>';
+        $tempRow['video'] = ' <a class="label label-primary" target="_blank" href="' . $row['video'] . '">View</a>';
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
@@ -2021,7 +2022,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'kukutasasthram_menu') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR title like '%" . $search . "%' OR description like '%" . $search . "%'";
+        $where .= "WHERE id like '%" . $search . "%' OR title like '%" . $search . "%' OR description like '%" . $search . "%' OR star like '%" . $search . "%' OR winning like '%" . $search . "%' OR lossing like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);

@@ -12,8 +12,8 @@ $db->connect();
 	}
 	$data = array();
 
-	$sql_query = "DELETE  FROM muhurtham WHERE id =" . $ID;
+	$sql_query = "DELETE  FROM muhurtham_tab WHERE id =" . $ID;
 	$db->sql($sql_query);
 	$res = $db->getResult();
-	header("location:muhurtham.php");
+	header("location:muhurtham_tab.php");
 ?>
