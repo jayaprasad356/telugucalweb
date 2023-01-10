@@ -436,6 +436,18 @@ $fn = new custom_functions;
 
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="settings.php">
+                        <i class="fa fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>   
+                <li class="treeview">
+                    <a href="sakuna_settings.php">
+                        <i class="fa fa-gear"></i>
+                        <span>Sakuna Sasthram Settings</span>
+                    </a>
+                </li>   
             </ul>
             </section>
             <!-- /.sidebar -->

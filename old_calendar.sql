@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2022 at 11:15 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Jan 10, 2023 at 02:07 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `telugu_calendar`
+-- Database: `old_calendar`
 --
 
 -- --------------------------------------------------------
@@ -351,7 +351,7 @@ CREATE TABLE `gowri` (
 --
 
 INSERT INTO `gowri` (`id`, `year`, `day`, `time`, `description`) VALUES
-(1, '2023', 'Tuesday', '10:30-12:00', 'This is your test\r\nTest'),
+(1, '2023', 'Tuesday', '10:30-12:00', 'This is your test'),
 (2, '2022', 'Monday', '06:00-07:30', 'Hello \r\nTest');
 
 -- --------------------------------------------------------
@@ -1394,6 +1394,56 @@ INSERT INTO `sakunalu` (`id`, `title`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sakuna_settings`
+--
+
+CREATE TABLE `sakuna_settings` (
+  `id` int(11) NOT NULL,
+  `sakunalu_image` text DEFAULT NULL,
+  `balli_image` text DEFAULT NULL,
+  `kaki_image` text DEFAULT NULL,
+  `kukuta_image` text DEFAULT NULL,
+  `sasthram_image` text DEFAULT NULL,
+  `pilli_image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sakuna_settings`
+--
+
+INSERT INTO `sakuna_settings` (`id`, `sakunalu_image`, `balli_image`, `kaki_image`, `kukuta_image`, `sasthram_image`, `pilli_image`) VALUES
+(1, 'upload/images/1673336613.0952.jpg', 'upload/images/1673336613.1024.jpg', 'upload/images/1673336613.1097.jpg', 'upload/images/1673336613.1156.jpg', 'upload/images/1673336613.1206.jpg', 'upload/images/1673336613.1256.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `image` text DEFAULT NULL,
+  `telecast_image` text DEFAULT NULL,
+  `image_tab` text DEFAULT NULL,
+  `video_tab` text DEFAULT NULL,
+  `gowri_image` text DEFAULT NULL,
+  `chakram_image` text DEFAULT NULL,
+  `thidhi_image` text DEFAULT NULL,
+  `karanam_image` text DEFAULT NULL,
+  `rahukalam_image` text DEFAULT NULL,
+  `yogam_image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `image`, `telecast_image`, `image_tab`, `video_tab`, `gowri_image`, `chakram_image`, `thidhi_image`, `karanam_image`, `rahukalam_image`, `yogam_image`) VALUES
+(1, 'upload/images/1673330070.0423.jpg', 'upload/images/1673329904.0496.jpg', 'upload/images/1673330860.3241.jpg', 'upload/images/1673330814.954.jpg', 'upload/images/1673333783.7859.jpg', 'upload/images/1673333783.8415.jpg', 'upload/images/1673333783.8478.jpg', 'upload/images/1673333783.8528.png', 'upload/images/1673333842.3831.jpg', 'upload/images/1673333783.8614.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shivapuranam`
 --
 
@@ -2188,6 +2238,18 @@ ALTER TABLE `sakunalu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sakuna_settings`
+--
+ALTER TABLE `sakuna_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `shivapuranam`
 --
 ALTER TABLE `shivapuranam`
@@ -2682,6 +2744,18 @@ ALTER TABLE `ruthuvulu`
 --
 ALTER TABLE `sakunalu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sakuna_settings`
+--
+ALTER TABLE `sakuna_settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `shivapuranam`
