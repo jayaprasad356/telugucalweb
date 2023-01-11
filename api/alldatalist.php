@@ -243,5 +243,45 @@ foreach ($res as $row) {
 }
 $response['audio_list'] = $rows;
 unset($temp);
+
+$sql = "SELECT * FROM `settings` WHERE id=1";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $temp['telecast_image'] = DOMAIN_URL . $row['telecast_image'];
+    $temp['image_tab'] = DOMAIN_URL . $row['image_tab'];
+    $temp['video_tab'] = DOMAIN_URL . $row['video_tab'];
+    $temp['gowri_image'] = DOMAIN_URL . $row['gowri_image'];
+    $temp['chakram_image'] = DOMAIN_URL . $row['chakram_image'];
+    $temp['thidhi_image'] = DOMAIN_URL . $row['thidhi_image'];
+    $temp['karanam_image'] = DOMAIN_URL . $row['karanam_image'];
+    $temp['rahukalam_image'] = DOMAIN_URL . $row['rahukalam_image'];
+    $temp['yogam_image'] = DOMAIN_URL . $row['yogam_image'];
+    $rows[] = $temp;
+}
+$response['Settings_list'] = $rows;
+unset($temp);
+
+$sql = "SELECT * FROM `sakuna_settings` WHERE id=1";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['sakunalu_image'] = DOMAIN_URL . $row['sakunalu_image'];
+    $temp['balli_image'] = DOMAIN_URL . $row['balli_image'];
+    $temp['kaki_image'] = DOMAIN_URL . $row['kaki_image'];
+    $temp['kukuta_image'] = DOMAIN_URL . $row['kukuta_image'];
+    $temp['sasthram_image'] = DOMAIN_URL . $row['sasthram_image'];
+    $temp['pilli_image'] = DOMAIN_URL . $row['pilli_image'];
+    $rows[] = $temp;
+}
+$response['Sakuna Sasthram _list'] = $rows;
+unset($temp);
 print_r(json_encode($response));
 ?>
