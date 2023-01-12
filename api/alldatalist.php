@@ -283,5 +283,20 @@ foreach ($res as $row) {
 }
 $response['Sakuna Sasthram _list'] = $rows;
 unset($temp);
+
+
+$sql = "SELECT * FROM `telugu_samkrutham`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['title'] =$row['title'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $rows[] = $temp;
+}
+$response['Telugu Samkrutham List'] = $rows;
+unset($temp);
 print_r(json_encode($response));
 ?>

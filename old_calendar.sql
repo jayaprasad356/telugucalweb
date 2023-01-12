@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2023 at 02:07 PM
+-- Generation Time: Jan 12, 2023 at 05:58 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -1506,6 +1506,42 @@ INSERT INTO `telugu_months` (`id`, `title`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `telugu_samkrutham`
+--
+
+CREATE TABLE `telugu_samkrutham` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `telugu_samkrutham`
+--
+
+INSERT INTO `telugu_samkrutham` (`id`, `title`, `image`) VALUES
+(1, 'Telugu Years', 'upload/images/674747745.png'),
+(2, 'Telugu Months', 'upload/images/366474.png'),
+(3, 'Telugu Weeks', 'upload/images/69393021.png'),
+(4, 'Ankelu', 'upload/images/6747215.png'),
+(5, 'Aksharalu', 'upload/images/67474843445.png'),
+(6, 'Guninthalu', 'upload/images/67474842332.png'),
+(7, 'Rashulu', 'upload/images/674748423443.png'),
+(8, '64 Kalalu', 'upload/images/674354548745.png'),
+(9, 'Vruthulu', 'upload/images/6747435454.png'),
+(10, 'Navagrahalu', 'upload/images/674748021.png'),
+(11, 'Ruthuvulu', 'upload/images/674748335.png'),
+(12, 'Kolathalu', 'upload/images/5455575766.png'),
+(13, 'Pakshamulu', 'upload/images/67474842334.png'),
+(14, 'Lagnam', 'upload/images/6747484233.png'),
+(15, 'Thidhi Addhi', 'upload/images/6747484233645.png'),
+(16, 'Pushpalu', 'upload/images/67474842344.png'),
+(17, 'Fruit Names', 'upload/images/67474848345.png'),
+(18, 'Prasadham Names', 'upload/images/67474845445.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `telugu_sethakamulu`
 --
 
@@ -2268,6 +2304,12 @@ ALTER TABLE `telugu_months`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `telugu_samkrutham`
+--
+ALTER TABLE `telugu_samkrutham`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `telugu_sethakamulu`
 --
 ALTER TABLE `telugu_sethakamulu`
@@ -2774,6 +2816,12 @@ ALTER TABLE `shivapuranam_menu`
 --
 ALTER TABLE `telugu_months`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `telugu_samkrutham`
+--
+ALTER TABLE `telugu_samkrutham`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `telugu_sethakamulu`
