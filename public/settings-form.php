@@ -248,6 +248,54 @@ if (isset($_POST['btnAdd'])) {
                 $db->sql($sql);
             }
 
+                 //neti arti image 
+                 if ($_FILES['neti_arti_image']['size'] != 0 && $_FILES['neti_arti_image']['error'] == 0 && !empty($_FILES['neti_arti_image']))
+                 {
+                     $old_neti_arti_image = $db->escapeString($_POST['old_neti_arti_image']);
+                     $extension = pathinfo($_FILES["neti_arti_image"]["name"])['extension'];              
+     
+                     $result = $fn->validate_image($_FILES["neti_arti_image"]);
+                     $target_path = 'upload/images/';
+                     
+                     $filename = microtime(true) . '.' . strtolower($extension);
+                     $full_path = $target_path . "" . $filename;
+                     if (!move_uploaded_file($_FILES["neti_arti_image"]["tmp_name"], $full_path)) {
+                         echo '<p class="alert alert-danger">Can not upload image.</p>';
+                         return false;
+                         exit();
+                     }
+                     if (!empty($old_neti_arti_image)) {
+                         unlink( $old_neti_arti_image);
+                     }
+                     $upload_neti_arti_image= 'upload/images/' . $filename;
+                     $sql = "UPDATE settings SET neti_arti_image='$upload_neti_arti_image' WHERE id = 1";
+                     $db->sql($sql);
+                 }
+
+                 //old arti image 
+                 if ($_FILES['old_arti_image']['size'] != 0 && $_FILES['old_arti_image']['error'] == 0 && !empty($_FILES['old_arti_image']))
+                 {
+                     $old_old_arti_image = $db->escapeString($_POST['old_old_arti_image']);
+                     $extension = pathinfo($_FILES["old_arti_image"]["name"])['extension'];              
+     
+                     $result = $fn->validate_image($_FILES["old_arti_image"]);
+                     $target_path = 'upload/images/';
+                     
+                     $filename = microtime(true) . '.' . strtolower($extension);
+                     $full_path = $target_path . "" . $filename;
+                     if (!move_uploaded_file($_FILES["old_arti_image"]["tmp_name"], $full_path)) {
+                         echo '<p class="alert alert-danger">Can not upload image.</p>';
+                         return false;
+                         exit();
+                     }
+                     if (!empty($old_old_arti_image)) {
+                         unlink( $old_old_arti_image);
+                     }
+                     $upload_old_arti_image= 'upload/images/' . $filename;
+                     $sql = "UPDATE settings SET old_arti_image='$upload_old_arti_image' WHERE id = 1";
+                     $db->sql($sql);
+                 }
+
                 $update_result = $db->getResult();
                 if (!empty($update_result)) {
                     $update_result = 0;
@@ -294,6 +342,8 @@ if (isset($_POST['btnAdd'])) {
                     <input type="hidden" id="old_karanam_image" name="old_karanam_image"  value="<?= $res[0]['karanam_image']; ?>">
                     <input type="hidden" id="old_rahukalam_image" name="old_rahukalam_image"  value="<?= $res[0]['rahukalam_image']; ?>">
                     <input type="hidden" id="old_yogam_image" name="old_yogam_image"  value="<?= $res[0]['yogam_image']; ?>">
+                    <input type="hidden" id="old_neti_arti_image" name="old_neti_arti_image"  value="<?= $res[0]['neti_arti_image']; ?>">
+                    <input type="hidden" id="old_old_arti_image" name="old_old_arti_image"  value="<?= $res[0]['old_arti_image']; ?>">
 
                         <div class="row">
                                 <div class="form-group col-md-6">
@@ -380,6 +430,26 @@ if (isset($_POST['btnAdd'])) {
                                        <label for="exampleInputFile">Yogam Image</label>
                                         <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="yogam_image" id="yogam_image">
                                         <p class="help-block"><img id="blan" src="<?php echo $res[0]['yogam_image']; ?>" style="max-width:50%;padding:4px;" /></p>
+                                
+                                    </div>
+                                </div>
+                        </div>
+                        <br>
+                        <h3 class="text-center">Article Images</h3>
+                        <br>
+                        <div class="row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Neti Article Image</label>
+                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"  name="neti_arti_image" id="neti_arti_image">
+                                        <p class="help-block"><img id="blad" src="<?php echo $res[0]['neti_arti_image']; ?>" style="max-width:50%;padding:4px;" /></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                       <label for="exampleInputFile">Old Article Image</label>
+                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="old_arti_image" id="old_arti_image">
+                                        <p class="help-block"><img id="blan" src="<?php echo $res[0]['old_arti_image']; ?>" style="max-width:50%;padding:4px;" /></p>
                                 
                                     </div>
                                 </div>

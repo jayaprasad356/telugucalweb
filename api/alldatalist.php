@@ -261,6 +261,8 @@ foreach ($res as $row) {
     $temp['karanam_image'] = DOMAIN_URL . $row['karanam_image'];
     $temp['rahukalam_image'] = DOMAIN_URL . $row['rahukalam_image'];
     $temp['yogam_image'] = DOMAIN_URL . $row['yogam_image'];
+    $temp['neti_arti_image'] = DOMAIN_URL . $row['neti_arti_image'];
+    $temp['old_arti_images'] = DOMAIN_URL . $row['yogam_image'];
     $rows[] = $temp;
 }
 $response['Settings_list'] = $rows;

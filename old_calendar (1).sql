@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2023 at 05:58 AM
+-- Generation Time: Jan 12, 2023 at 08:05 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -1431,15 +1431,17 @@ CREATE TABLE `settings` (
   `thidhi_image` text DEFAULT NULL,
   `karanam_image` text DEFAULT NULL,
   `rahukalam_image` text DEFAULT NULL,
-  `yogam_image` text DEFAULT NULL
+  `yogam_image` text DEFAULT NULL,
+  `neti_arti_image` text DEFAULT NULL,
+  `old_arti_image` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `image`, `telecast_image`, `image_tab`, `video_tab`, `gowri_image`, `chakram_image`, `thidhi_image`, `karanam_image`, `rahukalam_image`, `yogam_image`) VALUES
-(1, 'upload/images/1673330070.0423.jpg', 'upload/images/1673329904.0496.jpg', 'upload/images/1673330860.3241.jpg', 'upload/images/1673330814.954.jpg', 'upload/images/1673333783.7859.jpg', 'upload/images/1673333783.8415.jpg', 'upload/images/1673333783.8478.jpg', 'upload/images/1673333783.8528.png', 'upload/images/1673333842.3831.jpg', 'upload/images/1673333783.8614.jpg');
+INSERT INTO `settings` (`id`, `image`, `telecast_image`, `image_tab`, `video_tab`, `gowri_image`, `chakram_image`, `thidhi_image`, `karanam_image`, `rahukalam_image`, `yogam_image`, `neti_arti_image`, `old_arti_image`) VALUES
+(1, 'upload/images/1673330070.0423.jpg', 'upload/images/1673329904.0496.jpg', 'upload/images/1673330860.3241.jpg', 'upload/images/1673330814.954.jpg', 'upload/images/1673333783.7859.jpg', 'upload/images/1673333783.8415.jpg', 'upload/images/1673333783.8478.jpg', 'upload/images/1673333783.8528.png', 'upload/images/1673333842.3831.jpg', 'upload/images/1673333783.8614.jpg', 'upload/images/1673506692.1389.jpg', 'upload/images/1673506769.2568.png');
 
 -- --------------------------------------------------------
 
@@ -1520,24 +1522,24 @@ CREATE TABLE `telugu_samkrutham` (
 --
 
 INSERT INTO `telugu_samkrutham` (`id`, `title`, `image`) VALUES
-(1, 'Telugu Years', 'upload/images/674747745.png'),
-(2, 'Telugu Months', 'upload/images/366474.png'),
-(3, 'Telugu Weeks', 'upload/images/69393021.png'),
-(4, 'Ankelu', 'upload/images/6747215.png'),
-(5, 'Aksharalu', 'upload/images/67474843445.png'),
-(6, 'Guninthalu', 'upload/images/67474842332.png'),
-(7, 'Rashulu', 'upload/images/674748423443.png'),
-(8, '64 Kalalu', 'upload/images/674354548745.png'),
-(9, 'Vruthulu', 'upload/images/6747435454.png'),
-(10, 'Navagrahalu', 'upload/images/674748021.png'),
-(11, 'Ruthuvulu', 'upload/images/674748335.png'),
-(12, 'Kolathalu', 'upload/images/5455575766.png'),
-(13, 'Pakshamulu', 'upload/images/67474842334.png'),
-(14, 'Lagnam', 'upload/images/6747484233.png'),
-(15, 'Thidhi Addhi', 'upload/images/6747484233645.png'),
-(16, 'Pushpalu', 'upload/images/67474842344.png'),
-(17, 'Fruit Names', 'upload/images/67474848345.png'),
-(18, 'Prasadham Names', 'upload/images/67474845445.png');
+(1, 'Telugu Years', 'upload/images/1673505296.6581.jpg'),
+(2, 'Telugu Months', 'upload/images/1673505296.6581.jpg'),
+(3, 'Telugu Weeks', 'upload/images/1673505296.6581.jpg'),
+(4, 'Ankelu', 'upload/images/1673505296.6581.jpg'),
+(5, 'Aksharalu', 'upload/images/1673505296.6581.jpg'),
+(6, 'Guninthalu', 'upload/images/1673505296.6581.jpg'),
+(7, 'Rashulu', 'upload/images/1673505296.6581.jpg'),
+(8, '64 Kalalu', 'upload/images/1673505296.6581.jpg'),
+(9, 'Vruthulu', 'upload/images/1673505296.6581.jpg'),
+(10, 'Navagrahalu', 'upload/images/1673505296.6581.jpg'),
+(11, 'Ruthuvulu', 'upload/images/1673505296.6581.jpg'),
+(12, 'Kolathalu', 'upload/images/1673505296.6581.jpg'),
+(13, 'Pakshamulu', 'upload/images/1673505296.6581.jpg'),
+(14, 'Lagnam', 'upload/images/1673505296.6581.jpg'),
+(15, 'Thidhi Addhi', 'upload/images/1673505296.6581.jpg'),
+(16, 'Pushpalu', 'upload/images/1673505296.6581.jpg'),
+(17, 'Fruit Names', 'upload/images/1673505296.6581.jpg'),
+(18, 'Prasadham Names', 'upload/images/1673505296.6581.jpg');
 
 -- --------------------------------------------------------
 
