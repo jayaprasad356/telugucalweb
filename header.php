@@ -444,8 +444,14 @@ $fn = new custom_functions;
                 </li>   
                 <li class="treeview">
                     <a href="sakuna_settings.php">
-                        <i class="fa fa-gear"></i>
-                        <span>Sakuna Sasthram Settings</span>
+                        <i class="fa fa-image"></i>
+                        <span>Sakuna Sasthram Images</span>
+                    </a>
+                </li>   
+                <li class="treeview">
+                    <a href="samkrutham_images.php">
+                        <i class="fa fa-image"></i>
+                        <span>Telugu Samkrutham Images</span>
                     </a>
                 </li>   
             </ul>
