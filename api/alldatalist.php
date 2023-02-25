@@ -21,6 +21,12 @@ $temp = array();
 foreach ($res as $row) {
     $temp['id'] = $row['id'];
     $temp['date'] = $row['date'];
+    $temp['text1']= $row['text1'];
+    $temp['text2']= $row['text2'];
+    $temp['text3']= $row['text3'];
+    $temp['text4']= $row['text4'];
+    $temp['text5']= $row['text5'];
+    $temp['text6']= $row['text6'];
     $temp['sunrise'] = date('h:i a', strtotime($row['sunrise']));
     $temp['sunset'] = date('h:i a', strtotime($row['sunset']));
     $temp['moonrise'] = date('h:i a', strtotime($row['moonrise']));

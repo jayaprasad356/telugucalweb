@@ -21,6 +21,12 @@ if (isset($_POST['btnEdit'])) {
 	$sunset = $db->escapeString($_POST['sunset']);
 	$moonrise = $db->escapeString($_POST['moonrise']);
 	$moonset= $db->escapeString($_POST['moonset']);
+	$text1 = $db->escapeString($_POST['text1']);
+	$text2 = $db->escapeString($_POST['text2']);
+	$text3 = $db->escapeString($_POST['text3']);
+	$text4 = $db->escapeString($_POST['text4']);
+	$text5 = $db->escapeString($_POST['text5']);
+	$text6 = $db->escapeString($_POST['text6']);
 
 	
 	if (empty($date)) {
@@ -38,11 +44,31 @@ if (isset($_POST['btnEdit'])) {
 	if (empty($moonset)) {
 		$error['moonset'] = " <span class='label label-danger'>Required!</span>";
 	}
+	if (empty($text1)) {
+		$error['text1'] = " <span class='label label-danger'>Required!</span>";
+	}
+	if (empty($text2)) {
+		$error['text2'] = " <span class='label label-danger'>Required!</span>";
+	}
+	if (empty($text3)) {
+		$error['text3'] = " <span class='label label-danger'>Required!</span>";
+	}
+	if (empty($text4)) {
+		$error['text4'] = " <span class='label label-danger'>Required!</span>";
+	}
+	if (empty($text5)) {
+		$error['text5'] = " <span class='label label-danger'>Required!</span>";
+	}
+	if (empty($text6)) {
+		$error['text6'] = " <span class='label label-danger'>Required!</span>";
+	}
+
 	
    
-   if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset))
-    {
-             $sql_query = "UPDATE panchangam SET date='$date',sunrise='$sunrise',sunset='$sunset',moonrise='$moonrise',moonset='$moonset' WHERE id =  $ID";
+   if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($text1) && !empty($text2) && !empty($text3) && !empty($text4) && !empty($text5) && !empty($text6))
+    {        
+		    
+			$sql_query = "UPDATE panchangam SET date = '$date',sunrise = '$sunrise',sunset = '$sunset',moonrise = '$moonrise',moonset = '$moonset',text1 = '$text1',text2 = '$text2',text3 = '$text3',text4 = '$text4',text5 = '$text5',text6 = '$text6' WHERE id = $ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -134,7 +160,40 @@ if (isset($_POST['btnCancel'])) { ?>
 									<div class='col-md-6'>
 									          <label for="exampleInputEmail1">Date</label> <i class="text-danger asterik">*</i>
 											  <input type="date" class="form-control" name="date" value="<?php echo $res[0]['date']; ?>">
-
+									</div>
+								</div>
+						   </div>
+						   <br>
+						   <div class="row">
+								<div class="form-group">
+									<div class='col-md-4'>
+											<label for="exampleInputEmail1">Text1</label> <i class="text-danger asterik">*</i>
+											<input type="text" class="form-control" name="text1" value="<?php echo $res[0]['text1']; ?>">
+									</div>
+									<div class='col-md-4'>
+											<label for="exampleInputEmail1">Text2</label> <i class="text-danger asterik">*</i>
+											<input type="text" class="form-control" name="text2" value="<?php echo $res[0]['text2']; ?>">
+									</div>
+									<div class='col-md-4'>
+											<label for="exampleInputEmail1">Text3</label> <i class="text-danger asterik">*</i>
+											<input type="text" class="form-control" name="text3" value="<?php echo $res[0]['text3']; ?>">
+									</div>
+								</div>
+						   </div>
+						   <br>
+						   <div class="row">
+								<div class="form-group">
+									<div class='col-md-4'>
+											<label for="exampleInputEmail1">Text4</label> <i class="text-danger asterik">*</i>
+											<input type="text" class="form-control" name="text4" value="<?php echo $res[0]['text4']; ?>">
+									</div>
+									<div class='col-md-4'>
+											<label for="exampleInputEmail1">Text5</label> <i class="text-danger asterik">*</i>
+											<input type="text" class="form-control" name="text5" value="<?php echo $res[0]['text5']; ?>">
+									</div>
+									<div class='col-md-4'>
+											<label for="exampleInputEmail1">Text6</label> <i class="text-danger asterik">*</i>
+											<input type="text" class="form-control" name="text6" value="<?php echo $res[0]['text6']; ?>">
 									</div>
 								</div>
 						   </div>
@@ -143,11 +202,11 @@ if (isset($_POST['btnCancel'])) { ?>
 							    <div class="form-group">
 									 <div class="col-md-4">
 										<label for="exampleInputEmail1">Sunrise</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="sunrise" value="<?php echo $res[0]['sunrise']; ?>">
+										<input type="text" class="form-control" name="sunrise" value="<?php echo $res[0]['sunrise']; ?>">
 									 </div>
 									 <div class="col-md-4">
 										<label for="exampleInputEmail1">Sunset</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="sunset" value="<?php echo $res[0]['sunset']; ?>">
+										<input type="text" class="form-control" name="sunset" value="<?php echo $res[0]['sunset']; ?>">
 									 </div>
 								</div>
 						   </div>
@@ -156,11 +215,11 @@ if (isset($_POST['btnCancel'])) { ?>
 							    <div class="form-group">
 									 <div class="col-md-4">
 										<label for="exampleInputEmail1">Moonrise</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="moonrise" value="<?php echo $res[0]['moonrise']; ?>">
+										<input type="text" class="form-control" name="moonrise" value="<?php echo $res[0]['moonrise']; ?>">
 									 </div>
 									 <div class="col-md-4">
 										<label for="exampleInputEmail1">Moonset</label><i class="text-danger asterik">*</i>
-										<input type="time" class="form-control" name="moonset" value="<?php echo $res[0]['moonset']; ?>">
+										<input type="text" class="form-control" name="moonset" value="<?php echo $res[0]['moonset']; ?>">
 									 </div>
 								</div>
 						   </div>

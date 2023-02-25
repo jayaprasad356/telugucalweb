@@ -16,6 +16,12 @@ if (isset($_POST['btnAdd'])) {
         $sunset = $db->escapeString($_POST['sunset']);
         $moonrise = $db->escapeString($_POST['moonrise']);
         $moonset= $db->escapeString($_POST['moonset']);
+        $text1 = $db->escapeString($_POST['text1']);
+        $text2 = $db->escapeString($_POST['text2']);
+        $text3 = $db->escapeString($_POST['text3']);
+        $text4 = $db->escapeString($_POST['text4']);
+        $text5 = $db->escapeString($_POST['text5']);
+        $text6 = $db->escapeString($_POST['text6']);
 
         
         if (empty($date)) {
@@ -33,9 +39,28 @@ if (isset($_POST['btnAdd'])) {
         if (empty($moonset)) {
             $error['moonset'] = " <span class='label label-danger'>Required!</span>";
         }
+        if (empty($text1)) {
+            $error['text1'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($text2)) {
+            $error['text2'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($text3)) {
+            $error['text3'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($text4)) {
+            $error['text4'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($text5)) {
+            $error['text5'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($text6)) {
+            $error['text6'] = " <span class='label label-danger'>Required!</span>";
+        }
+
        
        
-       if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset)) {
+       if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($text1) && !empty($text2) && !empty($text3) && !empty($text4) && !empty($text5) && !empty($text6)) {
          
             $sql = "SELECT * FROM panchangam WHERE date = '$date'";
             $db->sql($sql);
@@ -45,7 +70,7 @@ if (isset($_POST['btnAdd'])) {
                 $error['add_panchangam'] = " <span class='label label-danger'>Panchangam already in this date</span>";
             }
             else{
-                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset)VALUES('$date','$sunrise','$sunset','$moonrise','$moonset')";
+                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,text1,text2,text3,text4,text5,text6) VALUES('$date','$sunrise','$sunset','$moonrise','$moonset','$text1','$text2','$text3','$text4','$text5','$text6')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -115,15 +140,49 @@ if (isset($_POST['btnAdd'])) {
                                 </div>
                             </div>
                              <br>
+                             <div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Text1</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
+                                            <input type="text" class="form-control" name="text1" required>
+                                    </div>
+                                     <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Text2</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
+                                            <input type="text" class="form-control" name="text2" required>
+                                    </div>
+                                     <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Text3</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
+                                            <input type="text" class="form-control" name="text3" required>
+                                    </div>
+                                </div>
+                            </div>
+                             <br>
+                             <div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Text4</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
+                                            <input type="text" class="form-control" name="text4" required>
+                                    </div>
+                                     <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Text5</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
+                                            <input type="text" class="form-control" name="text5" required>
+                                    </div>
+                                     <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Text6</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
+                                            <input type="text" class="form-control" name="text6" required>
+                                    </div>
+                                </div>
+                            </div>
+                             <br>
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
                                             <label for="exampleInputEmail1">Sunrise</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
-                                            <input type="time" class="form-control" name="sunrise" required>
+                                            <input type="text" class="form-control" name="sunrise" required>
                                     </div>
                                     <div class="col-md-4">
                                             <label for="exampleInputEmail1">Sunset</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunset']) ? $error['sunset'] : ''; ?>
-                                            <input type="time" class="form-control" name="sunset" required>
+                                            <input type="text" class="form-control" name="sunset" required>
                                     </div>
 
                                  </div>
@@ -133,11 +192,11 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-4">
                                             <label for="exampleInputEmail1">Moonrise</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonrise']) ? $error['moonrise'] : ''; ?>
-                                            <input type="time" class="form-control" name="moonrise" required>
+                                            <input type="text" class="form-control" name="moonrise" required>
                                     </div>
                                     <div class="col-md-4">
                                             <label for="exampleInputEmail1">Moonset</label> <i class="text-danger asterik">*</i><?php echo isset($error['moonset']) ? $error['moonset'] : ''; ?>
-                                            <input type="time" class="form-control" name="moonset" required>
+                                            <input type="text" class="form-control" name="moonset" required>
                                     </div>
 
                                  </div>
