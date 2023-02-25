@@ -31,6 +31,17 @@ foreach ($res as $row) {
     $temp['sunset'] = date('h:i a', strtotime($row['sunset']));
     $temp['moonrise'] = date('h:i a', strtotime($row['moonrise']));
     $temp['moonset'] = date('h:i a', strtotime($row['moonset']));
+    $temp['festivals'] = $row['festivals'];
+    $temp['thidhi'] = $row['thidhi'];
+    $temp['nakshatram'] = $row['nakshatram'];
+    $temp['yogam'] = $row['yogam'];
+    $temp['karanam'] = $row['karanam'];
+    $temp['amrutha_kalam'] = $row['amrutha_kalam'];
+    $temp['rahukalam'] = $row['rahukalam'];
+    $temp['yamakandam'] = $row['yamakandam'];
+    $temp['dhurmuhurtham'] = $row['dhurmuhurtham'];
+    $temp['varjyam'] = $row['varjyam'];
+    $temp['gulika'] =$row['gulika'];
     $rows[] = $temp;
 }
 $response['success'] = true;

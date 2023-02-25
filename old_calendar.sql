@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2023 at 06:54 AM
+-- Generation Time: Feb 25, 2023 at 01:23 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -1017,22 +1017,33 @@ CREATE TABLE `panchangam` (
   `text3` text DEFAULT NULL,
   `text4` text DEFAULT NULL,
   `text5` text DEFAULT NULL,
-  `text6` text DEFAULT NULL
+  `text6` text DEFAULT NULL,
+  `festivals` text DEFAULT NULL,
+  `thidhi` text DEFAULT NULL,
+  `nakshatram` text DEFAULT NULL,
+  `yogam` text DEFAULT NULL,
+  `karanam` text DEFAULT NULL,
+  `amrutha_kalam` text DEFAULT NULL,
+  `rahukalam` text DEFAULT NULL,
+  `yamakandam` text DEFAULT NULL,
+  `dhurmuhurtham` text DEFAULT NULL,
+  `varjyam` text DEFAULT NULL,
+  `gulika` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `panchangam`
 --
 
-INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonset`, `text1`, `text2`, `text3`, `text4`, `text5`, `text6`) VALUES
-(1, '2022-09-17', '06:07', '06:15', '23:22', '12:09', NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '2022-09-22', '21:36', '21:36', '21:36', '21:36', NULL, NULL, NULL, NULL, NULL, NULL),
-(3, '2022-09-18', '23:54', '23:54', '23:54', '23:54', NULL, NULL, NULL, NULL, NULL, NULL),
-(4, '2022-09-23', '06:08', '18:06', '03:42', '16:48', NULL, NULL, NULL, NULL, NULL, NULL),
-(5, '0000-00-00', 'sunrise', 'sunset', 'moonrise', 'moonset', NULL, NULL, NULL, NULL, NULL, NULL),
-(6, '2022-09-07', '13:25', '14:05', '11:48', '22:50', NULL, NULL, NULL, NULL, NULL, NULL),
-(7, '2023-01-01', '12:05', '12:04', '13:06', '10:07', NULL, NULL, NULL, NULL, NULL, NULL),
-(8, '2023-02-25', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hello', 'Hi', 'This is yours', 'I smmsm', 'check this', 'yggwdgd');
+INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonset`, `text1`, `text2`, `text3`, `text4`, `text5`, `text6`, `festivals`, `thidhi`, `nakshatram`, `yogam`, `karanam`, `amrutha_kalam`, `rahukalam`, `yamakandam`, `dhurmuhurtham`, `varjyam`, `gulika`) VALUES
+(1, '2022-09-17', '06:07', '06:15', '23:22', '12:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '2022-09-22', '21:36', '21:36', '21:36', '21:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '2022-09-18', '23:54', '23:54', '23:54', '23:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '2022-09-23', '06:08', '18:06', '03:42', '16:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '0000-00-00', 'sunrise', 'sunset', 'moonrise', 'moonset', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '2022-09-07', '13:25', '14:05', '11:48', '22:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, '2023-01-01', '12:05', '12:04', '13:06', '10:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '2023-02-25', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hello', 'Hi', 'This is yours', 'I smmsm', 'check this', 'yggwdgd', 'hhrhh55', '1', '2', '34', '4', '5', '6', '7', '8', '9', '9');
 
 -- --------------------------------------------------------
 

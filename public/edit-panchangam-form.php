@@ -27,7 +27,17 @@ if (isset($_POST['btnEdit'])) {
 	$text4 = $db->escapeString($_POST['text4']);
 	$text5 = $db->escapeString($_POST['text5']);
 	$text6 = $db->escapeString($_POST['text6']);
-
+	$festivals= $db->escapeString($_POST['festivals']);
+	$thidhi = $db->escapeString($_POST['thidhi']);
+	$nakshatram = $db->escapeString($_POST['nakshatram']);
+	$yogam = $db->escapeString($_POST['yogam']);
+	$karanam = $db->escapeString($_POST['karanam']);
+	$amrutha_kalam = $db->escapeString($_POST['amrutha_kalam']);
+	$rahukalam = $db->escapeString($_POST['rahukalam']);
+	$yamakandam = $db->escapeString($_POST['yamakandam']);
+	$dhurmuhurtham = $db->escapeString($_POST['dhurmuhurtham']);
+	$varjyam = $db->escapeString($_POST['varjyam']);
+	$gulika = $db->escapeString($_POST['gulika']);
 	
 	if (empty($date)) {
 		$error['date'] = " <span class='label label-danger'>Required!</span>";
@@ -65,10 +75,10 @@ if (isset($_POST['btnEdit'])) {
 
 	
    
-   if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($text1) && !empty($text2) && !empty($text3) && !empty($text4) && !empty($text5) && !empty($text6))
+   if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($text1) && !empty($text2) && !empty($text3) && !empty($text4) && !empty($text5) && !empty($text6) )
     {        
 		    
-			$sql_query = "UPDATE panchangam SET date = '$date',sunrise = '$sunrise',sunset = '$sunset',moonrise = '$moonrise',moonset = '$moonset',text1 = '$text1',text2 = '$text2',text3 = '$text3',text4 = '$text4',text5 = '$text5',text6 = '$text6' WHERE id = $ID";
+			$sql_query = "UPDATE panchangam SET date = '$date',sunrise = '$sunrise',sunset = '$sunset',moonrise = '$moonrise',moonset = '$moonset',text1 = '$text1',text2 = '$text2',text3 = '$text3',text4 = '$text4',text5 = '$text5',text6 = '$text6',festivals='$festivals',thidhi='$thidhi',nakshatram='$nakshatram',yogam='$yogam',karanam='$karanam',amrutha_kalam='$amrutha_kalam',rahukalam='$rahukalam',yamakandam='$yamakandam',dhurmuhurtham='$dhurmuhurtham',varjyam='$varjyam',gulika='$gulika' WHERE id = $ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -199,6 +209,16 @@ if (isset($_POST['btnCancel'])) { ?>
 						   </div>
 						   <br>
 						   <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Festivals</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="festivals" value="<?php echo $res[0]['festivals']; ?>">
+                                    </div>
+
+                                 </div>
+                            </div>
+                            <br>
+						   <div class="row">
 							    <div class="form-group">
 									 <div class="col-md-4">
 										<label for="exampleInputEmail1">Sunrise</label><i class="text-danger asterik">*</i>
@@ -224,6 +244,61 @@ if (isset($_POST['btnCancel'])) { ?>
 								</div>
 						   </div>
 						   <br>
+						   <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Thidhi</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="thidhi" value="<?php echo $res[0]['thidhi']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Nakshathram</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="nakshatram" value="<?php echo $res[0]['nakshatram']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Yogam</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="yogam" value="<?php echo $res[0]['yogam']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1"> Karanam</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="karanam" value="<?php echo $res[0]['karanam']; ?>">
+                                    </div>
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Amrutha Kalam</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="amrutha_kalam" value="<?php echo $res[0]['amrutha_kalam']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Rahukalam</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="rahukalam" value="<?php echo $res[0]['rahukalam']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Yamagandam</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="yamakandam" value="<?php echo $res[0]['yamakandam']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1"> Dhurmuhurtham</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="dhurmuhurtham" value="<?php echo $res[0]['dhurmuhurtham']; ?>">
+                                    </div>
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Varjyam</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="varjyam" value="<?php echo $res[0]['varjyam']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Gulika</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="gulika" value="<?php echo $res[0]['varjyam']; ?>">
+                                    </div>
+                                 </div>
+                            </div>
+							<br>
 						 <div id="variations">
 							<?php
 							$i=0;
