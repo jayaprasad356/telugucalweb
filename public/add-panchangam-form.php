@@ -174,6 +174,34 @@ if (isset($_POST['btnAdd'])) {
                                 </div>
                             </div>
                              <br>
+                             <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Festivals</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
+                                            <input type="text" class="form-control" name="festivals" required>
+                                    </div>
+
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Thidhi</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
+                                            <input type="text" class="form-control" name="thidhi" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Nakshathram</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
+                                            <input type="text" class="form-control" name="nakshathram" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Yogam</label> <i class="text-danger asterik">*</i><?php echo isset($error['sunrise']) ? $error['sunrise'] : ''; ?>
+                                            <input type="text" class="form-control" name="yogam" required>
+                                    </div>
+
+                                 </div>
+                            </div>
+                            <br>
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
