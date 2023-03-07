@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2023 at 01:23 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Mar 07, 2023 at 11:02 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `old_calendar`
+-- Database: `telugu_calendar`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ CREATE TABLE `aksharalu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `aksharalu`
@@ -52,7 +52,7 @@ CREATE TABLE `ankelu` (
   `id` int(11) NOT NULL,
   `title1` text DEFAULT NULL,
   `title2` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ankelu`
@@ -74,7 +74,7 @@ CREATE TABLE `audios` (
   `image` text DEFAULT NULL,
   `lyrics` text DEFAULT NULL,
   `audio` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `audios`
@@ -99,7 +99,7 @@ CREATE TABLE `balli_sasthram` (
   `subtitle2` text DEFAULT NULL,
   `subdescription2a` text DEFAULT NULL,
   `subdescription2b` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `balli_sasthram`
@@ -117,7 +117,7 @@ INSERT INTO `balli_sasthram` (`id`, `title`, `description`, `subtitle1`, `subdes
 CREATE TABLE `bhagawatham` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bhagawatham`
@@ -137,7 +137,7 @@ CREATE TABLE `bhagawatham_menu` (
   `id` int(11) NOT NULL,
   `bhagawatham_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bhagawatham_menu`
@@ -160,7 +160,7 @@ CREATE TABLE `bhagawatham_submenu` (
   `bhagawatham_menu_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bhagawatham_submenu`
@@ -178,7 +178,7 @@ INSERT INTO `bhagawatham_submenu` (`id`, `bhagawatham_id`, `bhagawatham_menu_id`
 CREATE TABLE `bhagawath_geetha` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bhagawath_geetha`
@@ -197,7 +197,7 @@ CREATE TABLE `bhagawath_geetha_menu` (
   `id` int(11) NOT NULL,
   `bhagawath_geetha_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bhagawath_geetha_menu`
@@ -218,7 +218,7 @@ CREATE TABLE `bhagawath_geetha_submenu` (
   `bhagawath_geetha_menu_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bhagawath_geetha_submenu`
@@ -247,7 +247,7 @@ CREATE TABLE `daily_horoscope` (
   `things_love` text DEFAULT NULL,
   `profession` text DEFAULT NULL,
   `married_life` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `daily_horoscope`
@@ -267,7 +267,7 @@ INSERT INTO `daily_horoscope` (`id`, `date`, `rasi`, `description`, `lucky_numbe
 CREATE TABLE `days` (
   `id` int(11) NOT NULL,
   `day` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `days`
@@ -292,7 +292,7 @@ CREATE TABLE `festivals` (
   `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `festival` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `festivals`
@@ -323,7 +323,7 @@ CREATE TABLE `fruits` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `fruits`
@@ -344,7 +344,7 @@ CREATE TABLE `gowri` (
   `day` text DEFAULT NULL,
   `time` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gowri`
@@ -363,7 +363,7 @@ INSERT INTO `gowri` (`id`, `year`, `day`, `time`, `description`) VALUES
 CREATE TABLE `gowri_timeslots` (
   `id` int(11) NOT NULL,
   `time` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gowri_timeslots`
@@ -389,7 +389,7 @@ CREATE TABLE `grahalu` (
   `id` int(11) NOT NULL,
   `name` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `grahalu`
@@ -416,7 +416,7 @@ CREATE TABLE `grahalu_submenu` (
   `grahalu_id` int(11) DEFAULT NULL,
   `name` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `grahalu_submenu`
@@ -438,7 +438,7 @@ CREATE TABLE `grahalu_tab` (
   `subcategory_id` int(11) DEFAULT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `grahalu_tab`
@@ -458,7 +458,7 @@ CREATE TABLE `grahalu_tab_variant` (
   `grahalu_tab_id` int(11) DEFAULT NULL,
   `sub_title` text DEFAULT NULL,
   `sub_description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `grahalu_tab_variant`
@@ -478,7 +478,7 @@ INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_des
 CREATE TABLE `guninthalu` (
   `id` int(11) NOT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `guninthalu`
@@ -499,7 +499,7 @@ CREATE TABLE `hora_chakram` (
   `day` text DEFAULT NULL,
   `time` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hora_chakram`
@@ -521,7 +521,7 @@ CREATE TABLE `images` (
   `name` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `images`
@@ -545,7 +545,7 @@ CREATE TABLE `image_category` (
   `status` tinyint(11) DEFAULT NULL,
   `last_updated` timestamp NULL DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `image_category`
@@ -566,7 +566,7 @@ CREATE TABLE `kaki_sasthram` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kaki_sasthram`
@@ -591,7 +591,7 @@ CREATE TABLE `kalalu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kalalu`
@@ -612,7 +612,7 @@ INSERT INTO `kalalu` (`id`, `title`, `description`) VALUES
 CREATE TABLE `karanam` (
   `id` int(11) NOT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `karanam`
@@ -634,7 +634,7 @@ CREATE TABLE `kolathalu` (
   `subdescription1` text DEFAULT NULL,
   `subtitle2` text DEFAULT NULL,
   `subdescription2` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kolathalu`
@@ -657,7 +657,7 @@ CREATE TABLE `kukutasasthram_menu` (
   `star` text DEFAULT NULL,
   `winning` text DEFAULT NULL,
   `lossing` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kukutasasthram_menu`
@@ -676,7 +676,7 @@ CREATE TABLE `kukuta_sasthram` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kukuta_sasthram`
@@ -695,7 +695,7 @@ CREATE TABLE `lagnam` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lagnam`
@@ -714,7 +714,7 @@ INSERT INTO `lagnam` (`id`, `title`, `description`) VALUES
 CREATE TABLE `mahabharatham` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mahabharatham`
@@ -734,7 +734,7 @@ CREATE TABLE `mahabharatham_menu` (
   `id` int(11) NOT NULL,
   `mahabharatham_id` int(11) DEFAULT NULL,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mahabharatham_menu`
@@ -755,7 +755,7 @@ CREATE TABLE `mahabharatham_submenu` (
   `mahabharatham_menu_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mahabharatham_submenu`
@@ -776,7 +776,7 @@ CREATE TABLE `monthly_horoscope` (
   `year` year(4) DEFAULT NULL,
   `month` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `monthly_horoscope`
@@ -794,7 +794,7 @@ INSERT INTO `monthly_horoscope` (`id`, `rasi`, `year`, `month`, `description`) V
 CREATE TABLE `months` (
   `id` int(11) NOT NULL,
   `month` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `months`
@@ -823,7 +823,7 @@ INSERT INTO `months` (`id`, `month`) VALUES
 CREATE TABLE `muhurtham` (
   `id` int(11) NOT NULL,
   `muhurtham` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `muhurtham`
@@ -844,7 +844,7 @@ CREATE TABLE `muhurtham_tab` (
   `muhurtham_id` int(11) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `muhurtham_tab`
@@ -863,7 +863,7 @@ CREATE TABLE `nakshatralu` (
   `id` int(11) NOT NULL,
   `name` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `nakshatralu`
@@ -885,7 +885,7 @@ CREATE TABLE `nakshatralu_tab` (
   `nakshatralu_id` int(11) DEFAULT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `nakshatralu_tab`
@@ -905,7 +905,7 @@ CREATE TABLE `nakshatralu_tab_variant` (
   `nakshatralu_tab_id` int(11) DEFAULT NULL,
   `sub_title` text DEFAULT NULL,
   `sub_description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `nakshatralu_tab_variant`
@@ -925,7 +925,7 @@ CREATE TABLE `navagrahalu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `navagrahalu`
@@ -949,7 +949,7 @@ CREATE TABLE `neti_articles` (
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `neti_articles`
@@ -969,7 +969,7 @@ CREATE TABLE `old_articles` (
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `old_articles`
@@ -989,7 +989,7 @@ CREATE TABLE `pakshamulu` (
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pakshamulu`
@@ -1029,7 +1029,7 @@ CREATE TABLE `panchangam` (
   `dhurmuhurtham` text DEFAULT NULL,
   `varjyam` text DEFAULT NULL,
   `gulika` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `panchangam`
@@ -1056,7 +1056,7 @@ CREATE TABLE `panchangam_variant` (
   `panchangam_id` int(11) DEFAULT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `panchangam_variant`
@@ -1100,7 +1100,7 @@ CREATE TABLE `pilli_sasthram` (
   `id` int(11) NOT NULL,
   `title` varchar(225) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pilli_sasthram`
@@ -1119,7 +1119,7 @@ CREATE TABLE `poojalu` (
   `id` int(11) NOT NULL,
   `name` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `poojalu`
@@ -1145,7 +1145,7 @@ CREATE TABLE `poojalu_submenu` (
   `poojalu_id` int(11) DEFAULT NULL,
   `name` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `poojalu_submenu`
@@ -1167,7 +1167,7 @@ CREATE TABLE `poojalu_tab` (
   `subcategory_id` int(11) DEFAULT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `poojalu_tab`
@@ -1187,7 +1187,7 @@ CREATE TABLE `poojalu_tab_variant` (
   `poojalu_tab_id` int(11) DEFAULT NULL,
   `sub_title` text DEFAULT NULL,
   `sub_description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `poojalu_tab_variant`
@@ -1208,7 +1208,7 @@ CREATE TABLE `prasadhams` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `prasadhams`
@@ -1227,7 +1227,7 @@ CREATE TABLE `pushpalu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pushpalu`
@@ -1248,7 +1248,7 @@ CREATE TABLE `rahukalams` (
   `day` varchar(255) DEFAULT NULL,
   `rahukalam` text DEFAULT NULL,
   `yamangandam` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rahukalams`
@@ -1267,7 +1267,7 @@ INSERT INTO `rahukalams` (`id`, `year`, `day`, `rahukalam`, `yamangandam`) VALUE
 CREATE TABLE `ramayanam` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ramayanam`
@@ -1287,7 +1287,7 @@ CREATE TABLE `ramayanam_menu` (
   `id` int(11) NOT NULL,
   `ramayanam_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ramayanam_menu`
@@ -1310,7 +1310,7 @@ CREATE TABLE `ramayanam_submenu` (
   `ramayanam_menu_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ramayanam_submenu`
@@ -1331,7 +1331,7 @@ CREATE TABLE `rashulu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rashulu`
@@ -1351,7 +1351,7 @@ INSERT INTO `rashulu` (`id`, `title`, `description`) VALUES
 CREATE TABLE `rasi_names` (
   `id` int(11) NOT NULL,
   `rasi` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rasi_names`
@@ -1381,7 +1381,7 @@ CREATE TABLE `ruthuvulu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ruthuvulu`
@@ -1401,7 +1401,7 @@ CREATE TABLE `sakunalu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sakunalu`
@@ -1425,7 +1425,7 @@ CREATE TABLE `sakuna_settings` (
   `kukuta_image` text DEFAULT NULL,
   `sasthram_image` text DEFAULT NULL,
   `pilli_image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sakuna_settings`
@@ -1454,7 +1454,7 @@ CREATE TABLE `settings` (
   `yogam_image` text DEFAULT NULL,
   `neti_arti_image` text DEFAULT NULL,
   `old_arti_image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `settings`
@@ -1472,7 +1472,7 @@ INSERT INTO `settings` (`id`, `image`, `telecast_image`, `image_tab`, `video_tab
 CREATE TABLE `shivapuranam` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `shivapuranam`
@@ -1493,7 +1493,7 @@ CREATE TABLE `shivapuranam_menu` (
   `shivapuranam_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `shivapuranam_menu`
@@ -1513,7 +1513,7 @@ CREATE TABLE `telugu_months` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_months`
@@ -1535,7 +1535,7 @@ CREATE TABLE `telugu_samkrutham` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_samkrutham`
@@ -1570,7 +1570,7 @@ INSERT INTO `telugu_samkrutham` (`id`, `title`, `image`) VALUES
 CREATE TABLE `telugu_sethakamulu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_sethakamulu`
@@ -1591,7 +1591,7 @@ CREATE TABLE `telugu_sethakamulu_menu` (
   `id` int(11) NOT NULL,
   `telugu_sethakamulu_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_sethakamulu_menu`
@@ -1612,7 +1612,7 @@ CREATE TABLE `telugu_sethakamulu_submenu` (
   `telugu_sethakamulu_menu_id` int(11) DEFAULT 0,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_sethakamulu_submenu`
@@ -1631,7 +1631,7 @@ CREATE TABLE `telugu_weeks` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_weeks`
@@ -1652,7 +1652,7 @@ CREATE TABLE `telugu_years` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telugu_years`
@@ -1672,7 +1672,7 @@ CREATE TABLE `thidhi` (
   `id` int(11) NOT NULL,
   `year` text DEFAULT NULL,
   `month` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `thidhi`
@@ -1693,7 +1693,7 @@ CREATE TABLE `thidhi_addhi` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `thidhi_addhi`
@@ -1713,7 +1713,7 @@ CREATE TABLE `thidhi_variant` (
   `thidhi_id` int(11) DEFAULT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `thidhi_variant`
@@ -1736,7 +1736,7 @@ CREATE TABLE `video` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `link` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `video`
@@ -1755,7 +1755,7 @@ CREATE TABLE `video_category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `video_category`
@@ -1783,7 +1783,7 @@ CREATE TABLE `video_post` (
   `name` varchar(255) DEFAULT NULL,
   `video` text DEFAULT NULL,
   `downloads` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `video_post`
@@ -1805,7 +1805,7 @@ CREATE TABLE `vruthulu` (
   `id` int(11) NOT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vruthulu`
@@ -1829,7 +1829,7 @@ CREATE TABLE `weekly_horoscope` (
   `month` varchar(255) DEFAULT NULL,
   `week` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `weekly_horoscope`
@@ -1850,7 +1850,7 @@ CREATE TABLE `yearly_horoscope` (
   `year` year(4) DEFAULT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `yearly_horoscope`
@@ -1870,7 +1870,7 @@ CREATE TABLE `yearly_horoscope_variant` (
   `yearly_horoscope_id` int(11) DEFAULT NULL,
   `title` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `yearly_horoscope_variant`
@@ -1888,7 +1888,7 @@ INSERT INTO `yearly_horoscope_variant` (`id`, `yearly_horoscope_id`, `title`, `d
 CREATE TABLE `years` (
   `id` int(11) NOT NULL,
   `year` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `years`
@@ -1910,7 +1910,7 @@ INSERT INTO `years` (`id`, `year`) VALUES
 CREATE TABLE `yogam` (
   `id` int(11) NOT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `yogam`
