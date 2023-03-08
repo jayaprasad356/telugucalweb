@@ -35,6 +35,18 @@ if (isset($_POST['btnAdd'])) {
         $dhurmuhurtham = $db->escapeString($_POST['dhurmuhurtham']);
         $varjyam = $db->escapeString($_POST['varjyam']);
         $gulika = $db->escapeString($_POST['gulika']);
+        $hc1 = $db->escapeString($_POST['hc1']);
+        $hc2 = $db->escapeString($_POST['hc2']);
+        $hc3 = $db->escapeString($_POST['hc3']);
+        $hc4 = $db->escapeString($_POST['hc4']);
+        $hc5 = $db->escapeString($_POST['hc5']);
+        $hc6 = $db->escapeString($_POST['hc6']);
+        $hc7 = $db->escapeString($_POST['hc7']);
+        $hc8 = $db->escapeString($_POST['hc8']);
+        $hc9 = $db->escapeString($_POST['hc9']);
+        $hc10 = $db->escapeString($_POST['hc10']);
+        $hc11 = $db->escapeString($_POST['hc11']);
+        $hc12 = $db->escapeString($_POST['hc12']);
 
         
         if (empty($date)) {
@@ -109,6 +121,43 @@ if (isset($_POST['btnAdd'])) {
         if (empty($gulika)) {
             $error['gulika'] = " <span class='label label-danger'>Required!</span>";
         }
+        if (empty($hc1)) {
+            $error['hc1'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc2)) {
+            $error['hc2'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc3)) {
+            $error['hc3'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc4)) {
+            $error['hc4'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc5)) {
+            $error['hc5'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc6)) {
+            $error['hc6'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc7)) {
+            $error['hc7'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc8)) {
+            $error['hc8'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc9)) {
+            $error['hc9'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc10)) {
+            $error['hc10'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc11)) {
+            $error['hc11'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($hc12)) {
+            $error['hc12'] = " <span class='label label-danger'>Required!</span>";
+        }
+
 
 
        
@@ -123,7 +172,7 @@ if (isset($_POST['btnAdd'])) {
                 $error['add_panchangam'] = " <span class='label label-danger'>Panchangam already in this date</span>";
             }
             else{
-                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,text1,text2,text3,text4,text5,text6,festivals,thidhi,nakshatram,yogam,karanam,abhijith_muhurtham,bhrama_muhurtham,amrutha_kalam,rahukalam,yamakandam,dhurmuhurtham,varjyam,gulika) VALUES ('$date','$sunrise','$sunset','$moonrise','$moonset','$text1','$text2','$text3','$text4','$text5','$text6','$festivals','$thidhi','$nakshatram','$yogam','$karanam','$abhijith_muhurtham','$bhrama_muhurtham','$amrutha_kalam','$rahukalam','$yamakandam','$dhurmuhurtham','$varjyam','$gulika')";
+                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,text1,text2,text3,text4,text5,text6,festivals,thidhi,nakshatram,yogam,karanam,abhijith_muhurtham,bhrama_muhurtham,amrutha_kalam,rahukalam,yamakandam,dhurmuhurtham,varjyam,gulika,hc1,hc2,hc3,hc4,hc5,hc6,hc7,hc8,hc9,hc10,hc11,hc12) VALUES ('$date','$sunrise','$sunset','$moonrise','$moonset','$text1','$text2','$text3','$text4','$text5','$text6','$festivals','$thidhi','$nakshatram','$yogam','$karanam','$abhijith_muhurtham','$bhrama_muhurtham','$amrutha_kalam','$rahukalam','$yamakandam','$dhurmuhurtham','$varjyam','$gulika','$hc1','$hc2','$hc3','$hc4','$hc5','$hc6','$hc7','$hc8','$hc9','$hc10','$hc11','$hc12')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -327,6 +376,71 @@ if (isset($_POST['btnAdd'])) {
                                             <input type="text" class="form-control" name="gulika" required>
                                     </div>
                                  </div>
+                            </div>
+                            <br>
+                            <h3 class="text-center" style="font-weight:bold;color:Blue;">Hora Chakram</h3>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo1</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc1']) ? $error['hc1'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc1" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo2</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc2']) ? $error['hc2'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc2" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo3</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc3']) ? $error['hc3'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc3" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo4</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc4']) ? $error['hc4'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc4" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo5</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc5']) ? $error['hc5'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc5" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo6</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc6']) ? $error['hc6'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc6" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo7</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc7']) ? $error['hc7'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc7" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo8</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc8']) ? $error['hc8'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc8" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo9</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc9']) ? $error['hc9'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc9" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo10</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc10']) ? $error['hc10'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc10" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo11</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc11']) ? $error['hc11'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc11" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Horo12</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc12']) ? $error['hc12'] : ''; ?>
+                                            <input type="text" class="form-control" name="hc12" required>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <div id="packate_div"  >

@@ -44,6 +44,18 @@ foreach ($res as $row) {
     $temp['dhurmuhurtham'] = $row['dhurmuhurtham'];
     $temp['varjyam'] = $row['varjyam'];
     $temp['gulika'] =$row['gulika'];
+    $temp['hc1']= $row['hc1'];
+    $temp['hc2']= $row['hc2'];
+    $temp['hc3']= $row['hc3'];
+    $temp['hc4']= $row['hc4'];
+    $temp['hc5']= $row['hc5'];
+    $temp['hc6']= $row['hc6'];
+    $temp['hc7']= $row['hc7'];
+    $temp['hc8']= $row['hc8'];
+    $temp['hc9']= $row['hc9'];
+    $temp['hc10']= $row['hc10'];
+    $temp['hc11']= $row['hc11'];
+    $temp['hc12']= $row['hc12'];
     $rows[] = $temp;
 }
 $response['success'] = true;
