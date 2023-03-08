@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2023 at 11:02 AM
+-- Generation Time: Mar 08, 2023 at 07:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -1007,7 +1007,7 @@ INSERT INTO `pakshamulu` (`id`, `title`, `description`, `image`) VALUES
 
 CREATE TABLE `panchangam` (
   `id` int(11) NOT NULL,
-  `date` date DEFAULT NULL,
+  `date` text DEFAULT NULL,
   `sunrise` text DEFAULT NULL,
   `sunset` text DEFAULT NULL,
   `moonrise` text DEFAULT NULL,
@@ -1023,6 +1023,8 @@ CREATE TABLE `panchangam` (
   `nakshatram` text DEFAULT NULL,
   `yogam` text DEFAULT NULL,
   `karanam` text DEFAULT NULL,
+  `abhijith_muhurtham` text DEFAULT NULL,
+  `bhrama_muhurtham` text DEFAULT NULL,
   `amrutha_kalam` text DEFAULT NULL,
   `rahukalam` text DEFAULT NULL,
   `yamakandam` text DEFAULT NULL,
@@ -1035,15 +1037,16 @@ CREATE TABLE `panchangam` (
 -- Dumping data for table `panchangam`
 --
 
-INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonset`, `text1`, `text2`, `text3`, `text4`, `text5`, `text6`, `festivals`, `thidhi`, `nakshatram`, `yogam`, `karanam`, `amrutha_kalam`, `rahukalam`, `yamakandam`, `dhurmuhurtham`, `varjyam`, `gulika`) VALUES
-(1, '2022-09-17', '06:07', '06:15', '23:22', '12:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '2022-09-22', '21:36', '21:36', '21:36', '21:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, '2022-09-18', '23:54', '23:54', '23:54', '23:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, '2022-09-23', '06:08', '18:06', '03:42', '16:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, '0000-00-00', 'sunrise', 'sunset', 'moonrise', 'moonset', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, '2022-09-07', '13:25', '14:05', '11:48', '22:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, '2023-01-01', '12:05', '12:04', '13:06', '10:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, '2023-02-25', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hello', 'Hi', 'This is yours', 'I smmsm', 'check this', 'yggwdgd', 'hhrhh55', '1', '2', '34', '4', '5', '6', '7', '8', '9', '9');
+INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonset`, `text1`, `text2`, `text3`, `text4`, `text5`, `text6`, `festivals`, `thidhi`, `nakshatram`, `yogam`, `karanam`, `abhijith_muhurtham`, `bhrama_muhurtham`, `amrutha_kalam`, `rahukalam`, `yamakandam`, `dhurmuhurtham`, `varjyam`, `gulika`) VALUES
+(1, '2022-09-17', '06:07', '06:15', '23:22', '12:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '2022-09-22', '21:36', '21:36', '21:36', '21:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '2022-09-18', '23:54', '23:54', '23:54', '23:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '2022-09-23', '06:08', '18:06', '03:42', '16:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '0000-00-00', 'sunrise', 'sunset', 'moonrise', 'moonset', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '2022-09-07', '13:25', '14:05', '11:48', '22:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, '2023-01-01', '12:05', '12:04', '13:06', '10:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '2023-02-25', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hello', 'Hi', 'This is yours', 'I smmsm', 'check this', 'yggwdgd', 'hhrhh55', '1', '2', '34', '4', NULL, NULL, '5', '6', '7', '8', '9', '9'),
+(9, '2023-03-09', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hi', 'Everyone', 'This is yours', 'I smmsm', 'check this', 'Thank You', 'Holi', '05:00 AM', '06:20 AM', '07:12 AM', '02:22 AM', '04:59 AM', '05:24 PM', '21:08 AM', '20:10 AM', '10:37 AM', '01:47 PM', '02:22 PM', '02:22 PM');
 
 -- --------------------------------------------------------
 
@@ -1088,7 +1091,8 @@ INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`)
 (42, 4, 'వర్జ్యం', '12:16 pm – 1:57 pm'),
 (43, 7, 'నక్షత్రం', 'Karanam'),
 (44, 8, 'DJOWJDOW', 'efrrrrgrgr'),
-(45, 8, 'test', 'cvvfvrvrv');
+(45, 8, 'test', 'cvvfvrvrv'),
+(46, 9, 'sample', 'You can see all data\'s in that project');
 
 -- --------------------------------------------------------
 
@@ -2711,13 +2715,13 @@ ALTER TABLE `pakshamulu`
 -- AUTO_INCREMENT for table `panchangam`
 --
 ALTER TABLE `panchangam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `panchangam_variant`
 --
 ALTER TABLE `panchangam_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `pilli_sasthram`

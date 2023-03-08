@@ -20,7 +20,7 @@ $rows = array();
 $temp = array();
 foreach ($res as $row) {
     $temp['id'] = $row['id'];
-    $temp['date'] = $row['date'];
+    $temp['date'] = DateTime::createFromFormat('Y-m-d', $row['date'])->format('d-m-Y');
     $temp['text1']= $row['text1'];
     $temp['text2']= $row['text2'];
     $temp['text3']= $row['text3'];
@@ -36,6 +36,8 @@ foreach ($res as $row) {
     $temp['nakshatram'] = $row['nakshatram'];
     $temp['yogam'] = $row['yogam'];
     $temp['karanam'] = $row['karanam'];
+    $temp['abhijith_muhurtham'] = $row['abhijith_muhurtham'];
+    $temp['bhrama_muhurtham'] = $row['bhrama_muhurtham'];
     $temp['amrutha_kalam'] = $row['amrutha_kalam'];
     $temp['rahukalam'] = $row['rahukalam'];
     $temp['yamakandam'] = $row['yamakandam'];
@@ -45,7 +47,7 @@ foreach ($res as $row) {
     $rows[] = $temp;
 }
 $response['success'] = true;
-$response['message'] = "Panchangam List Successfullty";
+$response['message'] = "Panchangam Listed Successfullty";
 $response['panchangam_list'] = $rows;
 
 unset($temp);

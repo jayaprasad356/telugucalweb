@@ -32,6 +32,8 @@ if (isset($_POST['btnEdit'])) {
 	$nakshatram = $db->escapeString($_POST['nakshatram']);
 	$yogam = $db->escapeString($_POST['yogam']);
 	$karanam = $db->escapeString($_POST['karanam']);
+	$abhijith_muhurtham = $db->escapeString($_POST['abhijith_muhurtham']);
+	$bhrama_muhurtham = $db->escapeString($_POST['bhrama_muhurtham']);
 	$amrutha_kalam = $db->escapeString($_POST['amrutha_kalam']);
 	$rahukalam = $db->escapeString($_POST['rahukalam']);
 	$yamakandam = $db->escapeString($_POST['yamakandam']);
@@ -78,7 +80,7 @@ if (isset($_POST['btnEdit'])) {
    if (!empty($date) && !empty($sunrise) && !empty($sunset) && !empty($moonrise) && !empty($moonset) && !empty($text1) && !empty($text2) && !empty($text3) && !empty($text4) && !empty($text5) && !empty($text6) )
     {        
 		    
-			$sql_query = "UPDATE panchangam SET date = '$date',sunrise = '$sunrise',sunset = '$sunset',moonrise = '$moonrise',moonset = '$moonset',text1 = '$text1',text2 = '$text2',text3 = '$text3',text4 = '$text4',text5 = '$text5',text6 = '$text6',festivals='$festivals',thidhi='$thidhi',nakshatram='$nakshatram',yogam='$yogam',karanam='$karanam',amrutha_kalam='$amrutha_kalam',rahukalam='$rahukalam',yamakandam='$yamakandam',dhurmuhurtham='$dhurmuhurtham',varjyam='$varjyam',gulika='$gulika' WHERE id = $ID";
+			$sql_query = "UPDATE panchangam SET date = '$date',sunrise = '$sunrise',sunset = '$sunset',moonrise = '$moonrise',moonset = '$moonset',text1 = '$text1',text2 = '$text2',text3 = '$text3',text4 = '$text4',text5 = '$text5',text6 = '$text6',festivals='$festivals',thidhi='$thidhi',nakshatram='$nakshatram',yogam='$yogam',karanam='$karanam',abhijith_muhurtham='$abhijith_muhurtham',bhrama_muhurtham='$bhrama_muhurtham',amrutha_kalam='$amrutha_kalam',rahukalam='$rahukalam',yamakandam='$yamakandam',dhurmuhurtham='$dhurmuhurtham',varjyam='$varjyam',gulika='$gulika' WHERE id = $ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -267,6 +269,14 @@ if (isset($_POST['btnCancel'])) { ?>
                             <br>
                             <div class="row">
                                 <div class="form-group">
+								   <div class="col-md-3">
+                                            <label for="exampleInputEmail1"> Abhijith Muhurtham</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="abhijith_muhurtham"  value="<?php echo $res[0]['abhijith_muhurtham']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Bhrama Muhurtham</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="bhrama_muhurtham"  value="<?php echo $res[0]['bhrama_muhurtham']; ?>">
+                                    </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Amrutha Kalam</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="amrutha_kalam" value="<?php echo $res[0]['amrutha_kalam']; ?>">
@@ -275,7 +285,12 @@ if (isset($_POST['btnCancel'])) { ?>
                                             <label for="exampleInputEmail1">Rahukalam</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="rahukalam" value="<?php echo $res[0]['rahukalam']; ?>">
                                     </div>
-                                    <div class="col-md-3">
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+								    <div class="col-md-3">
                                             <label for="exampleInputEmail1">Yamagandam</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="yamakandam" value="<?php echo $res[0]['yamakandam']; ?>">
                                     </div>
@@ -283,11 +298,6 @@ if (isset($_POST['btnCancel'])) { ?>
                                             <label for="exampleInputEmail1"> Dhurmuhurtham</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="dhurmuhurtham" value="<?php echo $res[0]['dhurmuhurtham']; ?>">
                                     </div>
-                                 </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Varjyam</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="varjyam" value="<?php echo $res[0]['varjyam']; ?>">

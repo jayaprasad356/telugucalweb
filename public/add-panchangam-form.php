@@ -27,6 +27,8 @@ if (isset($_POST['btnAdd'])) {
         $nakshatram = $db->escapeString($_POST['nakshatram']);
         $yogam = $db->escapeString($_POST['yogam']);
         $karanam = $db->escapeString($_POST['karanam']);
+        $abhijith_muhurtham = $db->escapeString($_POST['abhijith_muhurtham']);
+        $bhrama_muhurtham = $db->escapeString($_POST['bhrama_muhurtham']);
         $amrutha_kalam = $db->escapeString($_POST['amrutha_kalam']);
         $rahukalam = $db->escapeString($_POST['rahukalam']);
         $yamakandam = $db->escapeString($_POST['yamakandam']);
@@ -83,6 +85,12 @@ if (isset($_POST['btnAdd'])) {
         if (empty($karanam)) {
             $error['karanam'] = " <span class='label label-danger'>Required!</span>";
         }
+        if (empty($abhijith_muhurtham)) {
+            $error['abhijith_muhurtham'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($bhrama_muhurtham)) {
+            $error['bhrama_muhurtham'] = " <span class='label label-danger'>Required!</span>";
+        }
         if (empty($amrutha_kalam)) {
             $error['amrutha_kalam'] = " <span class='label label-danger'>Required!</span>";
         }
@@ -115,7 +123,7 @@ if (isset($_POST['btnAdd'])) {
                 $error['add_panchangam'] = " <span class='label label-danger'>Panchangam already in this date</span>";
             }
             else{
-                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,text1,text2,text3,text4,text5,text6,festivals,thidhi,nakshatram,yogam,karanam,amrutha_kalam,rahukalam,yamakandam,dhurmuhurtham,varjyam,gulika) VALUES ('$date','$sunrise','$sunset','$moonrise','$moonset','$text1','$text2','$text3','$text4','$text5','$text6','$festivals','$thidhi','$nakshatram','$yogam','$karanam','$amrutha_kalam','$rahukalam','$yamakandam','$dhurmuhurtham','$varjyam','$gulika')";
+                $sql_query = "INSERT INTO panchangam (date,sunrise,sunset,moonrise,moonset,text1,text2,text3,text4,text5,text6,festivals,thidhi,nakshatram,yogam,karanam,abhijith_muhurtham,bhrama_muhurtham,amrutha_kalam,rahukalam,yamakandam,dhurmuhurtham,varjyam,gulika) VALUES ('$date','$sunrise','$sunset','$moonrise','$moonset','$text1','$text2','$text3','$text4','$text5','$text6','$festivals','$thidhi','$nakshatram','$yogam','$karanam','$abhijith_muhurtham','$bhrama_muhurtham','$amrutha_kalam','$rahukalam','$yamakandam','$dhurmuhurtham','$varjyam','$gulika')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -280,6 +288,15 @@ if (isset($_POST['btnAdd'])) {
                             <br>
                             <div class="row">
                                 <div class="form-group">
+                                   <div class="col-md-3">
+                                            <label for="exampleInputEmail1"> Abhijith Muhurtham</label> <i class="text-danger asterik">*</i><?php echo isset($error['abhijith_muhurtham']) ? $error['abhijith_muhurtham'] : ''; ?>
+                                            <input type="text" class="form-control" name="abhijith_muhurtham" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Bhrama Muhurtham</label> <i class="text-danger asterik">*</i><?php echo isset($error['bhrama_muhurtham
+']) ? $error['bhrama_muhurtham'] : ''; ?>
+                                            <input type="text" class="form-control" name="bhrama_muhurtham" required>
+                                    </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Amrutha Kalam</label> <i class="text-danger asterik">*</i><?php echo isset($error['amrutha_kalam']) ? $error['amrutha_kalam'] : ''; ?>
                                             <input type="text" class="form-control" name="amrutha_kalam" required>
@@ -288,6 +305,11 @@ if (isset($_POST['btnAdd'])) {
                                             <label for="exampleInputEmail1">Rahukalam</label> <i class="text-danger asterik">*</i><?php echo isset($error['rahukalam']) ? $error['rahukalam'] : ''; ?>
                                             <input type="text" class="form-control" name="rahukalam" required>
                                     </div>
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Yamakandam</label> <i class="text-danger asterik">*</i><?php echo isset($error['yamakandam']) ? $error['yamakandam'] : ''; ?>
                                             <input type="text" class="form-control" name="yamakandam" required>
@@ -296,11 +318,6 @@ if (isset($_POST['btnAdd'])) {
                                             <label for="exampleInputEmail1"> Dhurmuhurtham</label> <i class="text-danger asterik">*</i><?php echo isset($error['dhurmuhurtham']) ? $error['dhurmuhurtham'] : ''; ?>
                                             <input type="text" class="form-control" name="dhurmuhurtham" required>
                                     </div>
-                                 </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Varjyam</label> <i class="text-danger asterik">*</i><?php echo isset($error['varjyam']) ? $error['varjyam'] : ''; ?>
                                             <input type="text" class="form-control" name="varjyam" required>
