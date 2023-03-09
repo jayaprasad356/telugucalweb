@@ -182,23 +182,23 @@ if (isset($_POST['btnAdd'])) {
                 }
     
                 if ($result == 1) {
-                    $sql = "SELECT id FROM panchangam ORDER BY id DESC LIMIT 1";
-                    $db->sql($sql);
-                    $res = $db->getResult();
-                    $panchangam_id = $res[0]['id'];
-                    for ($i = 0; $i < count($_POST['title']); $i++) {
+                    // $sql = "SELECT id FROM panchangam ORDER BY id DESC LIMIT 1";
+                    // $db->sql($sql);
+                    // $res = $db->getResult();
+                    // $panchangam_id = $res[0]['id'];
+                    // for ($i = 0; $i < count($_POST['title']); $i++) {
         
-                        $title = $db->escapeString(($_POST['title'][$i]));
-                        $description = $db->escapeString(($_POST['description'][$i]));
-                        $sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$panchangam_id','$title','$description')";
-                        $db->sql($sql);
-                        $panchangam_variant_result = $db->getResult();
-                    }
-                    if (!empty($panchangam_variant_result)) {
-                        $panchangam_variant_result = 0;
-                    } else {
-                        $panchangam_variant_result = 1;
-                    }
+                    //     $title = $db->escapeString(($_POST['title'][$i]));
+                    //     $description = $db->escapeString(($_POST['description'][$i]));
+                    //     $sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$panchangam_id','$title','$description')";
+                    //     $db->sql($sql);
+                    //     $panchangam_variant_result = $db->getResult();
+                    // }
+                    // if (!empty($panchangam_variant_result)) {
+                    //     $panchangam_variant_result = 0;
+                    // } else {
+                    //     $panchangam_variant_result = 1;
+                    // }
                     
                     $error['add_panchangam'] = "<section class='content-header'>
                                                     <span class='label label-success'>Panchangam Added Successfully</span> </section>";
@@ -246,15 +246,15 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                      <div class="col-md-4">
                                             <label for="exampleInputEmail1">Text1</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
-                                            <input type="text" class="form-control" name="text1" required>
+                                            <input type="text" class="form-control" name="text1" >
                                     </div>
                                      <div class="col-md-4">
                                             <label for="exampleInputEmail1">Text2</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
-                                            <input type="text" class="form-control" name="text2" required>
+                                            <input type="text" class="form-control" name="text2" >
                                     </div>
                                      <div class="col-md-4">
                                             <label for="exampleInputEmail1">Text3</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
-                                            <input type="text" class="form-control" name="text3" required>
+                                            <input type="text" class="form-control" name="text3" >
                                     </div>
                                 </div>
                             </div>
@@ -263,15 +263,15 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                      <div class="col-md-4">
                                             <label for="exampleInputEmail1">Text4</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
-                                            <input type="text" class="form-control" name="text4" required>
+                                            <input type="text" class="form-control" name="text4">
                                     </div>
                                      <div class="col-md-4">
                                             <label for="exampleInputEmail1">Text5</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
-                                            <input type="text" class="form-control" name="text5" required>
+                                            <input type="text" class="form-control" name="text5">
                                     </div>
                                      <div class="col-md-4">
                                             <label for="exampleInputEmail1">Text6</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
-                                            <input type="text" class="form-control" name="text6" required>
+                                            <input type="text" class="form-control" name="text6">
                                     </div>
                                 </div>
                             </div>
@@ -280,7 +280,7 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-4">
                                             <label for="exampleInputEmail1">Festivals</label> <i class="text-danger asterik">*</i><?php echo isset($error['festivals']) ? $error['festivals'] : ''; ?>
-                                            <input type="text" class="form-control" name="festivals" required>
+                                            <input type="text" class="form-control" name="festivals">
                                     </div>
 
                                  </div>
@@ -318,19 +318,19 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Thidhi</label> <i class="text-danger asterik">*</i><?php echo isset($error['thidhi']) ? $error['thidhi'] : ''; ?>
-                                            <input type="text" class="form-control" name="thidhi" required>
+                                            <input type="text" class="form-control" name="thidhi">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Nakshatram</label> <i class="text-danger asterik">*</i><?php echo isset($error['nakshatram']) ? $error['nakshatram'] : ''; ?>
-                                            <input type="text" class="form-control" name="nakshatram" required>
+                                            <input type="text" class="form-control" name="nakshatram">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Yogam</label> <i class="text-danger asterik">*</i><?php echo isset($error['yogam']) ? $error['yogam'] : ''; ?>
-                                            <input type="text" class="form-control" name="yogam" required>
+                                            <input type="text" class="form-control" name="yogam">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1"> Karanam</label> <i class="text-danger asterik">*</i><?php echo isset($error['karanam']) ? $error['karanam'] : ''; ?>
-                                            <input type="text" class="form-control" name="karanam" required>
+                                            <input type="text" class="form-control" name="karanam">
                                     </div>
                                  </div>
                             </div>
@@ -339,20 +339,20 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                    <div class="col-md-3">
                                             <label for="exampleInputEmail1"> Abhijith Muhurtham</label> <i class="text-danger asterik">*</i><?php echo isset($error['abhijith_muhurtham']) ? $error['abhijith_muhurtham'] : ''; ?>
-                                            <input type="text" class="form-control" name="abhijith_muhurtham" required>
+                                            <input type="text" class="form-control" name="abhijith_muhurtham">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Bhrama Muhurtham</label> <i class="text-danger asterik">*</i><?php echo isset($error['bhrama_muhurtham
 ']) ? $error['bhrama_muhurtham'] : ''; ?>
-                                            <input type="text" class="form-control" name="bhrama_muhurtham" required>
+                                            <input type="text" class="form-control" name="bhrama_muhurtham">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Amrutha Kalam</label> <i class="text-danger asterik">*</i><?php echo isset($error['amrutha_kalam']) ? $error['amrutha_kalam'] : ''; ?>
-                                            <input type="text" class="form-control" name="amrutha_kalam" required>
+                                            <input type="text" class="form-control" name="amrutha_kalam">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Rahukalam</label> <i class="text-danger asterik">*</i><?php echo isset($error['rahukalam']) ? $error['rahukalam'] : ''; ?>
-                                            <input type="text" class="form-control" name="rahukalam" required>
+                                            <input type="text" class="form-control" name="rahukalam">
                                     </div>
                                  </div>
                             </div>
@@ -361,19 +361,19 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Yamakandam</label> <i class="text-danger asterik">*</i><?php echo isset($error['yamakandam']) ? $error['yamakandam'] : ''; ?>
-                                            <input type="text" class="form-control" name="yamakandam" required>
+                                            <input type="text" class="form-control" name="yamakandam">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1"> Dhurmuhurtham</label> <i class="text-danger asterik">*</i><?php echo isset($error['dhurmuhurtham']) ? $error['dhurmuhurtham'] : ''; ?>
-                                            <input type="text" class="form-control" name="dhurmuhurtham" required>
+                                            <input type="text" class="form-control" name="dhurmuhurtham">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Varjyam</label> <i class="text-danger asterik">*</i><?php echo isset($error['varjyam']) ? $error['varjyam'] : ''; ?>
-                                            <input type="text" class="form-control" name="varjyam" required>
+                                            <input type="text" class="form-control" name="varjyam">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Gulika</label> <i class="text-danger asterik">*</i><?php echo isset($error['gulika']) ? $error['gulika'] : ''; ?>
-                                            <input type="text" class="form-control" name="gulika" required>
+                                            <input type="text" class="form-control" name="gulika">
                                     </div>
                                  </div>
                             </div>
@@ -384,19 +384,19 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo1</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc1']) ? $error['hc1'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc1" required>
+                                            <input type="text" class="form-control" name="hc1">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo2</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc2']) ? $error['hc2'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc2" required>
+                                            <input type="text" class="form-control" name="hc2" >
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo3</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc3']) ? $error['hc3'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc3" required>
+                                            <input type="text" class="form-control" name="hc3" >
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo4</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc4']) ? $error['hc4'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc4" required>
+                                            <input type="text" class="form-control" name="hc4">
                                     </div>
                                 </div>
                             </div>
@@ -405,19 +405,19 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo5</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc5']) ? $error['hc5'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc5" required>
+                                            <input type="text" class="form-control" name="hc5">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo6</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc6']) ? $error['hc6'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc6" required>
+                                            <input type="text" class="form-control" name="hc6">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo7</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc7']) ? $error['hc7'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc7" required>
+                                            <input type="text" class="form-control" name="hc7">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo8</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc8']) ? $error['hc8'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc8" required>
+                                            <input type="text" class="form-control" name="hc8">
                                     </div>
                                 </div>
                             </div>
@@ -426,24 +426,24 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo9</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc9']) ? $error['hc9'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc9" required>
+                                            <input type="text" class="form-control" name="hc9">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo10</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc10']) ? $error['hc10'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc10" required>
+                                            <input type="text" class="form-control" name="hc10">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo11</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc11']) ? $error['hc11'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc11" required>
+                                            <input type="text" class="form-control" name="hc11">
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Horo12</label> <i class="text-danger asterik">*</i><?php echo isset($error['hc12']) ? $error['hc12'] : ''; ?>
-                                            <input type="text" class="form-control" name="hc12" required>
+                                            <input type="text" class="form-control" name="hc12">
                                     </div>
                                 </div>
                             </div>
                             <br>
-                            <div id="packate_div"  >
+                            <!-- <div id="packate_div"  >
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
@@ -465,7 +465,7 @@ if (isset($_POST['btnAdd'])) {
                                     <div id="variations">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                     </div>
                    <!-- /.box-body -->
 

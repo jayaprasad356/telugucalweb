@@ -105,30 +105,30 @@ if (isset($_POST['btnEdit'])) {
 
 			// check update result
 			if ($update_result == 1) {
-				for ($i = 0; $i < count($_POST['title']); $i++) {
-					$panchangam_id = $db->escapeString(($_POST['panchangam_variant_id'][$i]));
-					$title = $db->escapeString(($_POST['title'][$i]));
-					$description = $db->escapeString(($_POST['description'][$i]));
-					$sql = "UPDATE panchangam_variant SET title='$title',description='$description' WHERE id = $panchangam_id";
-					$db->sql($sql);
+				// for ($i = 0; $i < count($_POST['title']); $i++) {
+				// 	$panchangam_id = $db->escapeString(($_POST['panchangam_variant_id'][$i]));
+				// 	$title = $db->escapeString(($_POST['title'][$i]));
+				// 	$description = $db->escapeString(($_POST['description'][$i]));
+				// 	$sql = "UPDATE panchangam_variant SET title='$title',description='$description' WHERE id = $panchangam_id";
+				// 	$db->sql($sql);
 
-				}
-				if (
-					isset($_POST['insert_title']) && isset($_POST['insert_description'])
-				) {
-					for ($i = 0; $i < count($_POST['insert_title']); $i++) {
-						$title = $db->escapeString(($_POST['insert_title'][$i]));
-						$description = $db->escapeString(($_POST['insert_description'][$i]));
-						if (!empty($title) || !empty($description)) {
-							$sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$ID','$title','$description')";
-							$db->sql($sql);
+				// }
+				// if (
+				// 	isset($_POST['insert_title']) && isset($_POST['insert_description'])
+				// ) {
+				// 	for ($i = 0; $i < count($_POST['insert_title']); $i++) {
+				// 		$title = $db->escapeString(($_POST['insert_title'][$i]));
+				// 		$description = $db->escapeString(($_POST['insert_description'][$i]));
+				// 		if (!empty($title) || !empty($description)) {
+				// 			$sql = "INSERT INTO panchangam_variant (panchangam_id,title,description) VALUES('$ID','$title','$description')";
+				// 			$db->sql($sql);
 
-						}
+				// 		}
 
 
-					}
+				// 	}
 
-				}
+				// }
 
 			$error['update_panchangam'] = " <section class='content-header'><span class='label label-success'>Panchangam updated Successfully</span></section>";
 			} else {
@@ -387,7 +387,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                 </div>
                             </div>
                             <br>
-						 <div id="variations">
+						 <!-- <div id="variations">
 							<?php
 							$i=0;
 							foreach ($resslot as $row) {
@@ -422,7 +422,7 @@ if (isset($_POST['btnCancel'])) { ?>
 									</div>
 								</div>
 								<?php $i++; 
-							} ?> 
+							} ?>  -->
 					</div><!-- /.box-body -->
                        
 					<div class="box-footer">
@@ -439,7 +439,7 @@ if (isset($_POST['btnCancel'])) { ?>
 <?php $db->disconnect(); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
+<!-- <script>
     $(document).ready(function () {
         var max_fields = 7;
         var wrapper = $("#packate_div");
@@ -486,5 +486,5 @@ if (isset($_POST['btnCancel'])) { ?>
             $(this).closest('.row').remove();
         }
     });
-</script>
+</script> -->
 
