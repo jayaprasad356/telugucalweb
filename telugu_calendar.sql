@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2023 at 09:50 AM
+-- Generation Time: Mar 10, 2023 at 12:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -817,6 +817,36 @@ INSERT INTO `months` (`id`, `month`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `month_panchangam`
+--
+
+CREATE TABLE `month_panchangam` (
+  `id` int(11) NOT NULL,
+  `month` text DEFAULT '',
+  `year` text DEFAULT '',
+  `text1` text DEFAULT NULL,
+  `pournami` text DEFAULT NULL,
+  `amavasya` text DEFAULT NULL,
+  `akadhashi` text DEFAULT NULL,
+  `pradhosha` text DEFAULT NULL,
+  `shasti` text DEFAULT NULL,
+  `chavithi` text DEFAULT NULL,
+  `masa_shiva_Rathri` text DEFAULT NULL,
+  `sankatahara_chathurdhi` text DEFAULT NULL,
+  `festivals` text DEFAULT NULL,
+  `holiday` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `month_panchangam`
+--
+
+INSERT INTO `month_panchangam` (`id`, `month`, `year`, `text1`, `pournami`, `amavasya`, `akadhashi`, `pradhosha`, `shasti`, `chavithi`, `masa_shiva_Rathri`, `sankatahara_chathurdhi`, `festivals`, `holiday`) VALUES
+(1, 'February', '2022', 'DIVAKAR', 'dwd', 'scvadfv', 'eveae', 'efeafqf', 'dgrgqg', 'b nv h', 'fbfbb', '.;oikfyjt', 'Ramjan,Holi,nxahxhi', 'Ramjan\r\nSecond Saturday');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `muhurtham`
 --
 
@@ -1058,7 +1088,9 @@ INSERT INTO `panchangam` (`id`, `date`, `sunrise`, `sunset`, `moonrise`, `moonse
 (6, '2022-09-07', '13:25', '14:05', '11:48', '22:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, '2023-01-01', '12:05', '12:04', '13:06', '10:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, '2023-03-09', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hello', 'Hi', 'This is yours', 'I smmsm', 'check this', 'yggwdgd', 'hhrhh55', '1', '2', '34', '4', NULL, NULL, '5', '6', '7', '8', '9', '9', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, '2023-03-08', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hi', 'Everyone', 'This is yours', 'I smmsm', 'check this', 'Thank You', 'Holi', '05:00 AM', '06:20 AM', '07:12 AM', '02:22 AM', '04:59 AM', '05:24 PM', '21:08 AM', '20:10 AM', '10:37 AM', '01:47 PM', '02:22 PM', '02:22 PM', 'Hi', 'Dhool', 'test', 'Dummy', 'Holi', 'Jolly', 'Dubai', 'Bangalore', 'Kujarat', 'Mumbai', 'Thumps up', 'Keep');
+(9, '2023-03-08', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'Hi', 'Everyone', 'This is yours', 'I smmsm', 'check this', 'Thank You', 'Holi', '05:00 AM', '06:20 AM', '07:12 AM', '02:22 AM', '04:59 AM', '05:24 PM', '21:08 AM', '20:10 AM', '10:37 AM', '01:47 PM', '02:22 PM', '02:22 PM', 'Hi', 'Dhool', 'test', 'Dummy', 'Holi', 'Jolly', 'Dubai', 'Bangalore', 'Kujarat', 'Mumbai', 'Thumps up', 'Keep'),
+(10, '2023-03-04', 'jgkugk', 'umum', 'evr', 'ngbd', 'dwc', 'cwac', 'ccw', 'sce', 'ecec', 'hjb,vhd', 'dvfbrh', 'brb', 'ynyfmm', 'kuk', 'yjnfxb', 'frhbthtjkyu', 'tjtdyuff', 'ykyj', 'j', 'tdthd', 'gdntng', 'vzdvxfnbdnnthdtbs', 'vzdvxfnbdnnthdtbs', 'cbvn', 'gnhmh', 'mnmj,', 'j,n,h x', 'cszdvjyngn', 'ngcnnyjjgge', 'dgrhi7yn', 'vdvbg', 'dzsda', 'hhfghb', 'fbfhthc', 'xvdvdcf'),
+(11, '2023-03-17', '11:24 PM', '01:34 PM', '03:45 AM', '07:12 PM', 'dv', 'vef', 'efef', 'dvf', 'vsv', 'vsv', 'vvrg', 'cs', 'dc', 'cc', 'cccs', 'dwdd', 'qsqdda', 'xss', 'fffw', 'd2ee2', 'fef', 'ef3', 'ef3', 'e2e2', 's3e2e2', 'www', 'e2e2', 'zasq', 'xwwdw', 'csdwdf', ',kuj', 'ffe', 'y6', 'yyjy', '7u6fe');
 
 -- --------------------------------------------------------
 
@@ -1104,7 +1136,8 @@ INSERT INTO `panchangam_variant` (`id`, `panchangam_id`, `title`, `description`)
 (43, 7, 'నక్షత్రం', 'Karanam'),
 (44, 8, 'DJOWJDOW', 'efrrrrgrgr'),
 (45, 8, 'test', 'cvvfvrvrv'),
-(46, 9, 'sample', 'You can see all data\'s in that project');
+(46, 9, 'sample', 'You can see all data\'s in that project'),
+(47, 10, 'vdv', 'dvdvrgd');
 
 -- --------------------------------------------------------
 
@@ -2156,6 +2189,12 @@ ALTER TABLE `months`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `month_panchangam`
+--
+ALTER TABLE `month_panchangam`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `muhurtham`
 --
 ALTER TABLE `muhurtham`
@@ -2670,6 +2709,12 @@ ALTER TABLE `months`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `month_panchangam`
+--
+ALTER TABLE `month_panchangam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `muhurtham`
 --
 ALTER TABLE `muhurtham`
@@ -2727,13 +2772,13 @@ ALTER TABLE `pakshamulu`
 -- AUTO_INCREMENT for table `panchangam`
 --
 ALTER TABLE `panchangam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `panchangam_variant`
 --
 ALTER TABLE `panchangam_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `pilli_sasthram`

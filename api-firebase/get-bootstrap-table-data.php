@@ -103,6 +103,71 @@ if (isset($_GET['table']) && $_GET['table'] == 'panchangam') {
     $bulkData['rows'] = $rows;
     print_r(json_encode($bulkData));
 }
+
+//monthly panchangam
+if (isset($_GET['table']) && $_GET['table'] == 'month_panchangam') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE id like '%" . $search . "%' OR pournami like '%" . $search . "%' OR amavasya like '%" . $search . "%' OR akadhashi like '%" . $search . "%' OR pradhosha like '%" . $search . "%' OR chavithi like '%" . $search . "%' OR masa_Shiva_Rathri like '%" . $search . "%' OR sankatahara_chathurdhi like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `month_panchangam`";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM month_panchangam " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+
+        
+        $operate = ' <a href="edit-month_panchangam.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="text text-danger" href="delete-month_panchangam.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['year'] = $row['year'];
+        $tempRow['month'] = $row['month'];
+        $tempRow['pournami'] = $row['pournami'];
+        $tempRow['amavasya'] = $row['amavasya'];
+        $tempRow['akadhashi'] = $row['akadhashi'];
+        $tempRow['pradhosha'] = $row['pradhosha'];
+        $tempRow['chavithi'] = $row['chavithi'];
+        $tempRow['masa_shiva_Rathri'] = $row['masa_shiva_Rathri'];
+        $tempRow['sankatahara_chathurdhi'] = $row['sankatahara_chathurdhi'];
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
 if (isset($_GET['table']) && $_GET['table'] == 'festivals') {
 
     $offset = 0;
