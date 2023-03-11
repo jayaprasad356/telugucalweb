@@ -165,19 +165,19 @@ if (isset($_POST['btnCancel'])) { ?>
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Pournami</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="pournami" value="<?php echo $res[0]['pournami']; ?>">
+                                            <textarea type="text" rows="2" class="form-control" name="pournami"><?php echo $res[0]['pournami']; ?></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Amavasya</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="amavasya" value="<?php echo $res[0]['amavasya']; ?>">
+											<textarea type="text" rows="2" class="form-control" name="amavasya"><?php echo $res[0]['amavasya']; ?></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Akadhashi</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="akadhashi" value="<?php echo $res[0]['akadhashi']; ?>">
+											<textarea type="text" rows="2" class="form-control" name="akadhashi"><?php echo $res[0]['akadhashi']; ?></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1"> Pradhosha</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="pradhosha" value="<?php echo $res[0]['pradhosha']; ?>">
+                                            <textarea type="text" rows="2" class="form-control" name="pradhosha"><?php echo $res[0]['pradhosha']; ?></textarea>
                                     </div>
                                  </div>
                             </div>
@@ -186,19 +186,19 @@ if (isset($_POST['btnCancel'])) { ?>
                                 <div class="form-group">
 								   <div class="col-md-3">
                                             <label for="exampleInputEmail1">Shasti</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="shasti"  value="<?php echo $res[0]['shasti']; ?>">
+											<textarea type="text" rows="2" class="form-control" name="shasti" ><?php echo $res[0]['shasti']; ?></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Chavithi</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="chavithi"  value="<?php echo $res[0]['chavithi']; ?>">
+											<textarea type="text" rows="2" class="form-control" name="chavithi" ><?php echo $res[0]['chavithi']; ?></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Masa Shiva Rathri</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="masa_shiva_Rathri" value="<?php echo $res[0]['masa_shiva_Rathri']; ?>">
+                                            <textarea type="text" rows="2" class="form-control" name="masa_shiva_Rathri"><?php echo $res[0]['masa_shiva_Rathri']; ?></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Sankatahara Chathurdhi</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="sankatahara_chathurdhi" value="<?php echo $res[0]['sankatahara_chathurdhi']; ?>">
+											<textarea type="text" rows="2"  class="form-control" name="sankatahara_chathurdhi"><?php echo $res[0]['sankatahara_chathurdhi']; ?></textarea>
                                     </div>
                                  </div>
                             </div>

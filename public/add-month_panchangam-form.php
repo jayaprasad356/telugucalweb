@@ -156,19 +156,19 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Pournami</label> <i class="text-danger asterik">*</i><?php echo isset($error['pournami']) ? $error['pournami'] : ''; ?>
-                                            <input type="text" class="form-control" name="pournami" required>
+                                            <textarea type="text" rows="2" class="form-control" name="pournami"></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Amavasya</label> <i class="text-danger asterik">*</i><?php echo isset($error['amavasya']) ? $error['amavasya'] : ''; ?>
-                                            <input type="text" class="form-control" name="amavasya" required>
+                                            <textarea type="text" rows="2" class="form-control" name="amavasya"></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Akadhashi</label> <i class="text-danger asterik">*</i><?php echo isset($error['akadhashi']) ? $error['akadhashi'] : ''; ?>
-                                            <input type="text" class="form-control" name="akadhashi" required>
+                                            <textarea type="text" rows="2" class="form-control" name="akadhashi"></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Pradhosha</label> <i class="text-danger asterik">*</i><?php echo isset($error['pradhosha']) ? $error['pradhosha'] : ''; ?>
-                                            <input type="text" class="form-control" name="pradhosha">
+                                            <textarea type="text" rows="2" class="form-control" name="pradhosha"></textarea>
                                     </div>
                                  </div>
                             </div>
@@ -177,19 +177,19 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Shasti</label> <i class="text-danger asterik">*</i><?php echo isset($error['shasti']) ? $error['shasti'] : ''; ?>
-                                            <input type="text" class="form-control" name="shasti">
+                                            <textarea type="text" rows="2" class="form-control" name="shasti"></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Chavithi</label> <i class="text-danger asterik">*</i><?php echo isset($error['chavithi']) ? $error['chavithi'] : ''; ?>
-                                            <input type="text" class="form-control" name="chavithi">
+                                            <textarea type="text" rows="2" class="form-control" name="chavithi"></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1">Masa Shiva Rathri</label> <i class="text-danger asterik">*</i><?php echo isset($error['masa_shiva_Rathri']) ? $error['masa_shiva_Rathri'] : ''; ?>
-                                            <input type="text" class="form-control" name="masa_shiva_Rathri">
+                                            <textarea type="text" rows="2" class="form-control" name="masa_shiva_Rathri"></textarea>
                                     </div>
                                     <div class="col-md-3">
                                             <label for="exampleInputEmail1"> Sankatahara Chathurdhi</label> <i class="text-danger asterik">*</i><?php echo isset($error['sankatahara_chathurdhi']) ? $error['sankatahara_chathurdhi'] : ''; ?>
-                                            <input type="text" class="form-control" name="sankatahara_chathurdhi">
+                                            <textarea type="text" rows="2" class="form-control" name="sankatahara_chathurdhi"></textarea>
                                     </div>
                                  </div>
                             </div>
