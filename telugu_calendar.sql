@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 12:07 PM
+-- Generation Time: Mar 12, 2023 at 10:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -490,6 +490,20 @@ INSERT INTO `guninthalu` (`id`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `holidays`
+--
+
+CREATE TABLE `holidays` (
+  `id` int(11) NOT NULL,
+  `month` text DEFAULT '',
+  `year` year(4) DEFAULT NULL,
+  `title` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hora_chakram`
 --
 
@@ -555,6 +569,20 @@ INSERT INTO `image_category` (`id`, `name`, `image`, `status`, `last_updated`, `
 (13, 'Sivan', 'upload/images/siva.jpg', NULL, NULL, NULL),
 (14, 'Murugan', 'upload/images/murugan.jpg', NULL, NULL, NULL),
 (15, 'Good Morning', 'upload/images/3379-2022-10-18.jpg', 0, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `important_days`
+--
+
+CREATE TABLE `important_days` (
+  `id` int(11) NOT NULL,
+  `month` text DEFAULT '',
+  `year` year(4) DEFAULT NULL,
+  `title` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -813,6 +841,20 @@ INSERT INTO `months` (`id`, `month`) VALUES
 (10, 'October'),
 (11, 'November'),
 (12, 'December');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `month_festivals`
+--
+
+CREATE TABLE `month_festivals` (
+  `id` int(11) NOT NULL,
+  `month` text DEFAULT '',
+  `year` year(4) DEFAULT NULL,
+  `title` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2099,6 +2141,12 @@ ALTER TABLE `guninthalu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `holidays`
+--
+ALTER TABLE `holidays`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hora_chakram`
 --
 ALTER TABLE `hora_chakram`
@@ -2114,6 +2162,12 @@ ALTER TABLE `images`
 -- Indexes for table `image_category`
 --
 ALTER TABLE `image_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `important_days`
+--
+ALTER TABLE `important_days`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2186,6 +2240,12 @@ ALTER TABLE `monthly_horoscope`
 -- Indexes for table `months`
 --
 ALTER TABLE `months`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `month_festivals`
+--
+ALTER TABLE `month_festivals`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2619,6 +2679,12 @@ ALTER TABLE `guninthalu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `holidays`
+--
+ALTER TABLE `holidays`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `hora_chakram`
 --
 ALTER TABLE `hora_chakram`
@@ -2635,6 +2701,12 @@ ALTER TABLE `images`
 --
 ALTER TABLE `image_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `important_days`
+--
+ALTER TABLE `important_days`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kaki_sasthram`
@@ -2707,6 +2779,12 @@ ALTER TABLE `monthly_horoscope`
 --
 ALTER TABLE `months`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `month_festivals`
+--
+ALTER TABLE `month_festivals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `month_panchangam`

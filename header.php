@@ -188,11 +188,28 @@ $fn = new custom_functions;
                         <span>Upload Panchangam Tab</span>
                     </a>
                 </li>
-
                 <li class="treeview">
-                    <a href="festivals.php">
+                    <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Festivals</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                          <li><a href="festivals.php"><i class="fa fa-angle-right"></i>Festivals</a></li>
+                          <li><a href="month_festivals.php"><i class="fa fa-angle-right"></i>Month Festivals</a></li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="holidays.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Holidays</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="important_days.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Important Days</span>
                     </a>
                 </li>
                 <li class="treeview">
