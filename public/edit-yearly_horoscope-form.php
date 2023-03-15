@@ -20,11 +20,17 @@ if (isset($_POST['btnEdit'])) {
 	$year= $db->escapeString($_POST['year']);	
 	$title= $db->escapeString($_POST['title']);
 	$description= $db->escapeString($_POST['description']);
+	$adhayam = $db->escapeString($_POST['adhayam']);
+	$vyayam = $db->escapeString($_POST['vyayam']);
+	$rajapujyam = $db->escapeString($_POST['rajapujyam']);
+	$aavamanam= $db->escapeString($_POST['aavamanam']);
+	$error = array();
 
 
-	if ( !empty($rasi) && !empty($year)&& !empty($title)&& !empty($description))
+
+	if ( !empty($rasi) && !empty($year) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam))
 	{
-             $sql_query = "UPDATE yearly_horoscope SET rasi='$rasi',year='$year',title='$title',description='$description' WHERE id =$ID";
+             $sql_query = "UPDATE yearly_horoscope SET rasi='$rasi',year='$year',title='$title',description='$description',adhayam='$adhayam',vyayam='$vyayam',rajapujyam='$rajapujyam',aavamanam='$aavamanam' WHERE id =$ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -94,7 +100,7 @@ if (isset($_POST['btnCancel'])) { ?>
 	<!-- Main row -->
 
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-md-12">
 		
 			<!-- general form elements -->
 			<div class="box box-primary">
@@ -110,7 +116,7 @@ if (isset($_POST['btnCancel'])) { ?>
 					<div class="box-body">
 					      <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-6'>
+                                    <div class='col-md-4'>
                                         <label for="">Rasi</label> <i class="text-danger asterik">*</i>
                                         <select id='rasi' name="rasi" class='form-control' required>
                                             <option value="">Select</option>
@@ -124,7 +130,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                             <?php } ?>
                                             </select>
                                     </div>
-                                    <div class='col-md-6'>
+                                    <div class='col-md-4'>
                                         <label for="">Year</label> <i class="text-danger asterik">*</i>
                                         <select id='year' name="year" class='form-control' required>
                                             <option value="">Select Year</option>
@@ -153,7 +159,29 @@ if (isset($_POST['btnCancel'])) { ?>
                                     </div>
                                 </div>
                             </div>
+							<br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="">Adhayam </label> <i class="text-danger asterik">*</i><?php echo isset($error['adhayam']) ? $error['adhayam'] : ''; ?>
+                                        <input type="text" class="form-control" name="adhayam" value="<?php echo $res[0]['adhayam']; ?>" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Vyayam </label> <i class="text-danger asterik">*</i><?php echo isset($error['vyayam']) ? $error['vyayam'] : ''; ?>
+                                        <input type="text" class="form-control" name="vyayam" value="<?php echo $res[0]['vyayam']; ?>" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Rajapujyam </label> <i class="text-danger asterik">*</i><?php echo isset($error['rajapujyam']) ? $error['rajapujyam'] : ''; ?>
+                                        <input type="text" class="form-control" name="rajapujyam" value="<?php echo $res[0]['rajapujyam']; ?>" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Aavamanam</label> <i class="text-danger asterik">*</i><?php echo isset($error['aavamanam']) ? $error['aavamanam'] : ''; ?>
+                                        <input type="text" class="form-control" name="aavamanam" value="<?php echo $res[0]['aavamanam']; ?>" />
+                                    </div>
+                                </div>
+                            </div>
                             <br>
+							
 							<div id="variations">
 							<?php
 							$i=0;
@@ -168,7 +196,7 @@ if (isset($_POST['btnCancel'])) { ?>
 												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" required/>
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-6">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> Sub Description</label> <i class="text-danger asterik">*</i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description[]" required><?php echo $row['sub_description'] ?></textarea>
@@ -216,7 +244,7 @@ if (isset($_POST['btnCancel'])) { ?>
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-				$(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub Title</label>' +'<input type="text" class="form-control" name="insert_sub_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="sub_description">Sub Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+				$(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub Title</label>' +'<input type="text" class="form-control" name="insert_sub_title[]" /></div></div>'+'<div class="col-md-6"><div class="form-group"><label for="sub_description">Sub Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             } else {
                 alert('You Reached the limits')
             }

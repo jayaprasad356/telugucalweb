@@ -12,6 +12,10 @@ if (isset($_POST['btnAdd'])) {
         $year= $db->escapeString($_POST['year']);
         $description= $db->escapeString($_POST['description']);
         $title= $db->escapeString($_POST['title']);
+        $adhayam = $db->escapeString($_POST['adhayam']);
+        $vyayam = $db->escapeString($_POST['vyayam']);
+        $rajapujyam = $db->escapeString($_POST['rajapujyam']);
+        $aavamanam= $db->escapeString($_POST['aavamanam']);
         $error = array();
 
         
@@ -28,9 +32,23 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
-       if ( !empty($rasi) && !empty($year) && !empty($title) && !empty($description))
+        if (empty($adhayam)) {
+            $error['adhayam'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($vyayam)) {
+            $error['vyayam'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($rajapujyam)) {
+            $error['rajapujyam'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($aavamanam)) {
+            $error['aavamanam'] = " <span class='label label-danger'>Required!</span>";
+        }
+
+
+        if ( !empty($rasi) && !empty($year) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam))
         {
-                $sql_query = "INSERT INTO yearly_horoscope (rasi,year,title,description)VALUES('$rasi','$year','$title','$description')";
+                $sql_query = "INSERT INTO yearly_horoscope (rasi,year,title,description,adhayam,vyayam,rajapujyam,aavamanam)VALUES('$rasi','$year','$title','$description','$adhayam','$vyayam','$rajapujyam','$aavamanam')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -77,7 +95,7 @@ if (isset($_POST['btnAdd'])) {
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
            
             <!-- general form elements -->
             <div class="box box-primary">
@@ -90,7 +108,7 @@ if (isset($_POST['btnAdd'])) {
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-6'>
+                                    <div class='col-md-4'>
                                         <label for="">Rasi</label> <i class="text-danger asterik">*</i>
                                         <select id='rasi' name="rasi" class='form-control' required>
                                             <option value="">Select</option>
@@ -104,7 +122,7 @@ if (isset($_POST['btnAdd'])) {
                                             <?php } ?>
                                             </select>
                                     </div>
-                                    <div class='col-md-6'>
+                                    <div class='col-md-4'>
                                         <label for="">Year</label> <i class="text-danger asterik">*</i>
                                         <select id='year' name="year" class='form-control' required>
                                             <option value="">Select Year</option>
@@ -130,6 +148,27 @@ if (isset($_POST['btnAdd'])) {
                                     <div class="col-md-6">
                                         <label for="">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                         <textarea type="text" rows="2" class="form-control" name="description" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="">Adhayam </label> <i class="text-danger asterik">*</i><?php echo isset($error['adhayam']) ? $error['adhayam'] : ''; ?>
+                                        <input type="text" class="form-control" name="adhayam" required />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Vyayam </label> <i class="text-danger asterik">*</i><?php echo isset($error['vyayam']) ? $error['vyayam'] : ''; ?>
+                                        <input type="text" class="form-control" name="vyayam" required />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Rajapujyam </label> <i class="text-danger asterik">*</i><?php echo isset($error['rajapujyam']) ? $error['rajapujyam'] : ''; ?>
+                                        <input type="text" class="form-control" name="rajapujyam" required />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Aavamanam</label> <i class="text-danger asterik">*</i><?php echo isset($error['aavamanam']) ? $error['aavamanam'] : ''; ?>
+                                        <input type="text" class="form-control" name="aavamanam" required />
                                     </div>
                                 </div>
                             </div>
