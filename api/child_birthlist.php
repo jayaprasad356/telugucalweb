@@ -26,16 +26,26 @@ $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
 if($num>=1){
- 
-    $response['success'] = true;
-    $response['message'] = "Child Birth Muhurtham Listed Successfully";
-    $response['data'] = $res;
-    $sql = "SELECT * FROM `child_birth_variant` WHERE child_birth_id = '$id'";
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $id = $row['id'];
+            $temp['id'] = $row['id'];
+            $temp['month'] = $row['month'];
+            $temp['text1'] = $row['text1'];
+            $temp['date_month'] = $row['date_month'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $sql = "SELECT * FROM `child_birth_variant` WHERE child_birth_id = '$id'";
             $db->sql($sql);
-            $result = $db->getResult();
+            $res = $db->getResult();
             $temp['child_birth_variant'] = $res;
-    print_r(json_encode($response));
-
+            $rows[] = $temp;
+        }
+        $response['success'] = true;
+        $response['message'] = "Child Birth Muhurtham Listed Successfully";
+        $response['data'] = $rows;
+        print_r(json_encode($response));
 }
 else{
     $response['success'] = false;
