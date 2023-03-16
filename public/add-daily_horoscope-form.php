@@ -11,15 +11,15 @@ if (isset($_POST['btnAdd'])) {
         $date = $db->escapeString(($_POST['date']));
         $rasi= $db->escapeString($_POST['rasi']);
         $description= $db->escapeString($_POST['description']);
-        $lucky_number= $db->escapeString($_POST['lucky_number']);
-        $lucky_color= $db->escapeString($_POST['lucky_color']);
-        $treatment= $db->escapeString($_POST['treatment']);
-        $health= $db->escapeString($_POST['health']);
-        $wealth= $db->escapeString($_POST['wealth']);
-        $family= $db->escapeString($_POST['family']);
-        $things_love= $db->escapeString($_POST['things_love']);
-        $profession= $db->escapeString($_POST['profession']);
-        $married_life= $db->escapeString($_POST['married_life']);
+        // $lucky_number= $db->escapeString($_POST['lucky_number']);
+        // $lucky_color= $db->escapeString($_POST['lucky_color']);
+        // $treatment= $db->escapeString($_POST['treatment']);
+        // $health= $db->escapeString($_POST['health']);
+        // $wealth= $db->escapeString($_POST['wealth']);
+        // $family= $db->escapeString($_POST['family']);
+        // $things_love= $db->escapeString($_POST['things_love']);
+        // $profession= $db->escapeString($_POST['profession']);
+        // $married_life= $db->escapeString($_POST['married_life']);
         
         if (empty($date)) {
             $error['date'] = " <span class='label label-danger'>Required!</span>";
@@ -30,38 +30,39 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($lucky_number)) {
-            $error['lucky_number'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($lucky_color)) {
-            $error['lucky_color'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($treatment)) {
-            $error['treatment'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($health)) {
-            $error['health'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($wealth)) {
-            $error['wealth'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($family)) {
-            $error['family'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($things_love)) {
-            $error['things_love'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($profession)) {
-            $error['profession'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($married_life)) {
-            $error['married_life'] = " <span class='label label-danger'>Required!</span>";
-        }
+        // if (empty($lucky_number)) {
+        //     $error['lucky_number'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($lucky_color)) {
+        //     $error['lucky_color'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($treatment)) {
+        //     $error['treatment'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($health)) {
+        //     $error['health'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($wealth)) {
+        //     $error['wealth'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($family)) {
+        //     $error['family'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($things_love)) {
+        //     $error['things_love'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($profession)) {
+        //     $error['profession'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($married_life)) {
+        //     $error['married_life'] = " <span class='label label-danger'>Required!</span>";
+        // }
        
        
-       if (!empty($date) && !empty($rasi) && !empty($description) && !empty($lucky_number) && !empty($lucky_color) && !empty($treatment) && !empty($health) && !empty($wealth) && !empty($family) && !empty($things_love) && !empty($profession) && !empty($married_life)) {
+       if (!empty($date) && !empty($rasi) && !empty($description) ) {
          
-            $sql_query = "INSERT INTO daily_horoscope (date,rasi,description,lucky_number,lucky_color,treatment,health,wealth,family,things_love,profession,married_life)VALUES('$date','$rasi','$description','$lucky_number','$lucky_color','$treatment','$health','$wealth','$family','$things_love','$profession','$married_life')";
+            // $sql_query = "INSERT INTO daily_horoscope (date,rasi,description,lucky_number,lucky_color,treatment,health,wealth,family,things_love,profession,married_life)VALUES('$date','$rasi','$description','$lucky_number','$lucky_color','$treatment','$health','$wealth','$family','$things_love','$profession','$married_life')";
+            $sql_query = "INSERT INTO daily_horoscope (date,rasi,description)VALUES('$date','$rasi','$description')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -90,7 +91,7 @@ if (isset($_POST['btnAdd'])) {
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
            
             <!-- general form elements -->
             <div class="box box-primary">
@@ -103,11 +104,11 @@ if (isset($_POST['btnAdd'])) {
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
-                                     <div class="col-md-4">
+                                     <div class="col-md-6">
                                             <label for="exampleInputEmail1">Date</label> <i class="text-danger asterik">*</i><?php echo isset($error['date']) ? $error['date'] : ''; ?>
                                             <input type="date" class="form-control" name="date" required>
                                     </div>
-                                    <div class='col-md-4'>
+                                    <div class='col-md-6'>
                                         <label for="">Rasi</label> <i class="text-danger asterik">*</i>
                                         <select id='rasi' name="rasi" class='form-control' required>
                                             <option value="">Select</option>
@@ -126,13 +127,13 @@ if (isset($_POST['btnAdd'])) {
                             <br>
                             <div class="row">
                                 <div class="form-group">
-                                     <div class="col-md-8">
+                                     <div class="col-md-12">
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                             <textarea type="text" rows="3" class="form-control" name="description" required></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <hr>
+                            <!-- <hr>
                             <h4>Lucky for Today</h4>
                             <div class="row">
                                 <div class="form-group">
@@ -185,7 +186,7 @@ if (isset($_POST['btnAdd'])) {
                                     </div>
                                 </div>
                             </div>
-                            <br>
+                            <br> -->
 
          
                     </div>

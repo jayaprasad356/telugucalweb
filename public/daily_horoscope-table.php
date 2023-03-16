@@ -26,7 +26,7 @@
                                     <th data-field="date" data-sortable="true">Date</th>
                                     <th  data-field="rasi" data-sortable="true">Rasi</th>
                                     <th  data-field="description" data-sortable="true">Description</th>
-                                    <th  data-field="lucky_number" data-sortable="true">Lucky Number</th>
+                                    <!-- <th  data-field="lucky_number" data-sortable="true">Lucky Number</th>
                                     <th  data-field="lucky_color" data-sortable="true">Lucky Color</th>
                                     <th  data-field="treatment" data-sortable="true">Treatment</th>
                                     <th  data-field="health" data-sortable="true">Health</th>
@@ -34,7 +34,7 @@
                                     <th  data-field="family" data-sortable="true">Family</th>
                                     <th  data-field="things_love" data-sortable="true">Things related to love</th>
                                     <th  data-field="profession" data-sortable="true">Profession</th>
-                                    <th  data-field="married_life" data-sortable="true">Married Life</th>
+                                    <th  data-field="married_life" data-sortable="true">Married Life</th> -->
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

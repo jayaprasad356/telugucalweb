@@ -568,15 +568,15 @@ if (isset($_GET['table']) && $_GET['table'] == 'daily_horoscope') {
         $tempRow['date'] = $row['date'];
         $tempRow['rasi'] = $row['rasi'];
         $tempRow['description'] = $row['description'];
-        $tempRow['lucky_number'] = $row['lucky_number'];
-        $tempRow['lucky_color'] = $row['lucky_color'];
-        $tempRow['treatment'] = $row['treatment'];
-        $tempRow['health'] = $row['health'];
-        $tempRow['wealth'] = $row['wealth'];
-        $tempRow['family'] = $row['family'];
-        $tempRow['things_love'] = $row['things_love'];
-        $tempRow['profession'] = $row['profession'];
-        $tempRow['married_life'] = $row['married_life'];
+        // $tempRow['lucky_number'] = $row['lucky_number'];
+        // $tempRow['lucky_color'] = $row['lucky_color'];
+        // $tempRow['treatment'] = $row['treatment'];
+        // $tempRow['health'] = $row['health'];
+        // $tempRow['wealth'] = $row['wealth'];
+        // $tempRow['family'] = $row['family'];
+        // $tempRow['things_love'] = $row['things_love'];
+        // $tempRow['profession'] = $row['profession'];
+        // $tempRow['married_life'] = $row['married_life'];
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
