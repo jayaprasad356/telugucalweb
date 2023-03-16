@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2023 at 08:53 AM
+-- Generation Time: Mar 16, 2023 at 11:36 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -226,6 +226,49 @@ CREATE TABLE `bhagawath_geetha_submenu` (
 
 INSERT INTO `bhagawath_geetha_submenu` (`id`, `bhagawath_geetha_id`, `bhagawath_geetha_menu_id`, `title`, `description`) VALUES
 (1, 1, 1, 'Shakthi', 'పంజాబీ కేలండరు: విక్రమాదిత్యశకం నుండి వచ్చిన బిక్రమి కేలండరు ఆధారంగా రూపొందించబడి క్రీ.పూ 57 నుండి మొదలయింది.\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_birth`
+--
+
+CREATE TABLE `child_birth` (
+  `id` int(11) NOT NULL,
+  `month` text DEFAULT '',
+  `date_month` text DEFAULT '',
+  `text1` text DEFAULT '',
+  `title` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `child_birth`
+--
+
+INSERT INTO `child_birth` (`id`, `month`, `date_month`, `text1`, `title`, `description`) VALUES
+(1, 'March', '23,March', 'Hello Everone', 'This is the ఇదే టైటిల్', 'ఈ రోజు పుట్టిన పిల్లలందరికీ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_birth_variant`
+--
+
+CREATE TABLE `child_birth_variant` (
+  `id` int(11) NOT NULL,
+  `child_birth_id` int(11) DEFAULT NULL,
+  `sub_title` text DEFAULT '',
+  `sub_description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `child_birth_variant`
+--
+
+INSERT INTO `child_birth_variant` (`id`, `child_birth_id`, `sub_title`, `sub_description`) VALUES
+(1, 1, 'తెలుగు', 'తెలుగు అనేది ద్రావిడ భాషల కుటుంబానికి చెందిన భాష. దీనిని మాట్లాడే ప్రజలు ప్రధానంగా ఆంధ్ర, తెలంగాణాలో ఉన్నారు. ఇది ఆ రాష్ట్రాలలో అధికార భాష. భారతదేశంలో ఒకటి కంటే ఎక్కువ రాష్ట్రాల్లో ప్రాథమిక అధికారిక భాషా హోదా కలిగిన కొద్ది భాషలలో హిందీ, బెంగాలీలతో పాటు ఇది కూడా ఉంది.'),
+(2, 1, 'పేరు వ్యుత్పత్తి', 'మరొక కథనం ప్రకారం తెనుగు అనేది ప్రోటో-ద్రావిడ పదం *తెన్ (\"దక్షిణం\") [21] నుండి \"దక్షిణం/దక్షిణ దిశలో నివసించిన ప్రజలు\" (సంస్కృతం, ప్రాకృతం మాట్లాడే ప్రజలకు సంబంధించి) నుండి ఉద్భవించింది. తెలుగు అనే పేరు \"ఎన్\" నుండి \"ఎల్\" ప్రత్యామ్నాయం ఫలితంగా వచ్చింది. ');
 
 -- --------------------------------------------------------
 
@@ -458,7 +501,6 @@ CREATE TABLE `grahalu_tab_variant` (
 
 INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_description`) VALUES
 (1, 1, 'సూర్యుడు ', 'తూర్పువైపు తిరిగి ఉండే నవగ్రహాలలో సూర్యుడు మధ్య స్థానంలో ఉంటాడు. రవి అని కూడా పిలవబడే సూర్యుడు సింహరాశికి అధిదేవుడు. సూర్యుడి వాహనం ఏడు గుర్రాలు నడిపే రథం. ఈ ఏడు గుర్రాలు ఇంద్రధనుస్సులోని రంగులు (తెల్లటి కాంతిలోని ఏడురంగులు) మరియు వారంలో ఏడురోజులకు ప్రతీక. ఆయన రోజు రవివారం లేదా ఆదివారం, రంగు ఎరుపు మరియు రత్నం కెంపు. మంచి ఆరోగ్యకరమైన జీవితానికి సూర్యనమస్కారాలు చేయటం మంచిది. ఒరిస్సాలోని కోణార్క్ ఆలయం మరియు తమిళనాడులోని కుంభకోణం వద్దనున్న సూర్యనార్ కోవిల్ సూర్యుడికి సంబంధించి దేశంలో రెండు ముఖ్య ఆలయాలు.\r\n'),
-(2, 1, 'చంద్రుడు ', 'చంద్రుడు రాత్రి దేవుడు, సోముడు అని కూడా పిలవబడతాడు. చంద్రుడు మనస్సును, స్త్రీత్వాన్ని, అందాన్ని మరియు ఆనందానికి ప్రతీక. ఆయన ప్రతి రాత్రి పది గుర్రాలు లేదా లేడి నడిపే రథంపై ఆకాశంలో విహరిస్తాడని భావిస్తారు. చంద్రుడిని నిషధిపతి మరియు క్షుపారక అని కూడా అంటారు. చంద్రదేవుడు సంతానసాఫల్యతకి దేవుడు. కర్కాటక రాశికి అధిదేవుడు. ఒక వ్యక్తి మానసిక స్థితి, ఆరోగ్యం జాతకచక్రంలో చంద్రుడి స్థానంపై ఎక్కువగా ఆధారపడి ఉంటాయి. సోముడు కావడం వలన తన రోజు సోమవారం, మరియు రత్నం ముత్యం. తమిళనాడులోని తంజావూర్ వద్దనున్న తింగలూర్ కాలియసనాథార్ ఆలయం మన దేశంలోని ముఖ్య చంద్ర ఆలయాలలో ఒకటి.\r\n'),
 (3, 1, 'కుజుడు', 'అంగారకుడుగా కూడా పిలవబడే మంగళ దేవుడు నాలుగు చేతులతో ఉగ్రంగా కన్పించే దేవత. ఈయనను పృథ్వీ లేదా భూమికి కొడుకుగా భావిస్తారు. కుజగ్రహాన్ని వేడిగా ఉండే గ్రహంగా మరియు ధర్మానికి రక్షకుడిగా భావిస్తారు. ఆయన తన రెండు చేతులలో ఆయుధాలతో మరియు మరో రెండు చేతులు అభయ, వరద ముద్రలు కలిగి ఉంటాయి. మేషరాశి (మేదం) మరియు వృశ్చిక రాశులు(వృశ్చిగం)(ఏరిస్ మరియు స్కార్పియో రాశులు) మంగళ లేదా కుజ గ్రహం ఆధీనంలో ఉంటాయి. ఆయన కండరాల వ్యవస్థ, ముక్కు, నుదురు, రక్తప్రసరణ వ్యవస్థలను నియంత్రిస్తాడు. అతని వాహనం ర్యామ్ (ఒక రకమైన గొర్రె) మరియు రంగు ఎరుపు. వారం మంగళవారం మరియు రత్నం పగడం. తమిళనాడులోని సిర్కఝి వద్ద నున్న పుల్లిరుక్కువేలూర్ వైదీశ్వరన్ కోయిల్ కుజ గ్రహానికి చెందిన ప్రముఖ ఆలయాలలో ఒకటి.');
 
 -- --------------------------------------------------------
@@ -1278,7 +1320,6 @@ CREATE TABLE `poojalu_tab_variant` (
 
 INSERT INTO `poojalu_tab_variant` (`id`, `poojalu_tab_id`, `sub_title`, `sub_description`) VALUES
 (1, 1, 'వినాయకుని శ్లోకం:', 'శుక్లాం బరదరం విష్ణుం శశి వర్ణం చతుర్భుజం\r\nప్రసన్న వదనం ధ్యాయేత్ సర్వ విఘ్నోప శాంతయే\r\nఅగజానన పద్మార్కం గజానన మహర్నిశం\r\nఅనేకదంతం భక్తానాం ఏకదంతం ఉపాస్మహే.\r\n***\r\nవక్ర తుండ మహా కాయ సూర్య కోటి సమ ప్రభ\r\nనిర్విఘ్నం కురుమే దేవ సర్వ కార్యేషు సర్వదా\r\nఓమ్ శ్రీ మహా గణాధి పతయే నమః\r\n( అని నమఃస్కారం చేసుకోవాలి )\r\n***'),
-(2, 1, 'ఏకాహారతి వెలిగించాలి:', '( ఏకాహారతి వెలిగించి దానికి పసుపు, కుంకుమ, అక్షంతలు & పూల తో అలంకరించవలెను.\r\n***'),
 (3, 1, 'దీపారాధన వెలిగించేటప్పుడు శ్లోకం:', '( యీ క్రింది మంత్రమును చెప్పుతూ దీపమును ఏకాహారతి తోటి దీపం వెలిగించాలి )\r\nభోదీప దేవి రూపస్త్వం,\r\nకర్మ సాక్షిహ్య విఘ్ణకృత్,\r\nయావత్ పూజాం కరిష్యామి,\r\nతావత్వం సుస్థిరో భవ.\r\nదీపారాధన ముహూర్తః సుమూహూర్తోస్తు\r\n( పై శ్లోకం చదువుకుంటూ దీపారాధన కుంది కి పసుపు, కుంకుమ, అక్షంతలు, పూలతో పూజ చెయ్యాలి. )\r\n***');
 
 -- --------------------------------------------------------
@@ -1804,7 +1845,6 @@ CREATE TABLE `thidhi_variant` (
 
 INSERT INTO `thidhi_variant` (`id`, `thidhi_id`, `title`, `description`) VALUES
 (1, 1, 'Good morning', 'this is variant1'),
-(2, 1, 'Wishhes', 'variant2'),
 (3, 2, 'dsds', 'sdsd'),
 (4, 2, 'sds', 'dsds'),
 (5, 3, 'sdsd', 'sdsdsd');
@@ -2054,6 +2094,18 @@ ALTER TABLE `bhagawath_geetha_menu`
 -- Indexes for table `bhagawath_geetha_submenu`
 --
 ALTER TABLE `bhagawath_geetha_submenu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `child_birth`
+--
+ALTER TABLE `child_birth`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `child_birth_variant`
+--
+ALTER TABLE `child_birth_variant`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2593,6 +2645,18 @@ ALTER TABLE `bhagawath_geetha_menu`
 --
 ALTER TABLE `bhagawath_geetha_submenu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `child_birth`
+--
+ALTER TABLE `child_birth`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `child_birth_variant`
+--
+ALTER TABLE `child_birth_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `daily_horoscope`

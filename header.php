@@ -215,18 +215,6 @@ $fn = new custom_functions;
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar"></i>
-                        <span>Muhurtham</span>
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                          <li><a href="muhurtham.php"><i class="fa fa-angle-right"></i>Muhurtham</a></li>
-                          <li><a href="muhurtham-tab.php"><i class="fa fa-angle-right"></i>Muhurtham Tab</a></li>
-
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-calendar"></i>
                         <span>Horoscope</span>
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
@@ -237,6 +225,25 @@ $fn = new custom_functions;
                         <li><a href="yearly.php"><i class="fa fa-angle-right"></i>Yearly</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="child_birth.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Child Birth Muhurtham</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Muhurtham</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                          <li><a href="muhurtham.php"><i class="fa fa-angle-right"></i>Muhurtham</a></li>
+                          <li><a href="muhurtham-tab.php"><i class="fa fa-angle-right"></i>Muhurtham Tab</a></li>
+
+                    </ul>
+                </li>
+               
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bullseye"></i>

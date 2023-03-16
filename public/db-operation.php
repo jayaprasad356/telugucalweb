@@ -34,6 +34,18 @@ if (isset($_POST['delete_variant'])) {
         echo 0;
     }
 }
+//child birth variant
+if (isset($_POST['delete_variant'])) {
+    $yearly_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM child_birth_variant WHERE id = $yearly_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
 
 //poojalu tab variant
 if (isset($_POST['delete_variant'])) {
