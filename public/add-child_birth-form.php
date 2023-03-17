@@ -9,9 +9,7 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
 
         $month= $db->escapeString($_POST['month']);
-        $date_month= $db->escapeString($_POST['date_month']);
-        $description= $db->escapeString($_POST['description']);
-        $title= $db->escapeString($_POST['title']);
+       
         $text1 = $db->escapeString($_POST['text1']);
         $error = array();
 
@@ -20,24 +18,24 @@ if (isset($_POST['btnAdd'])) {
         if (empty($month)) {
             $error['month'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($date_month)) {
-            $error['date_month'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($title)) {
-            $error['title'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($description)) {
-            $error['description'] = " <span class='label label-danger'>Required!</span>";
-        }
+        // if (empty($date_month)) {
+        //     $error['date_month'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($title)) {
+        //     $error['title'] = " <span class='label label-danger'>Required!</span>";
+        // }
+        // if (empty($description)) {
+        //     $error['description'] = " <span class='label label-danger'>Required!</span>";
+        // }
         if (empty($text1)) {
             $error['text1'] = " <span class='label label-danger'>Required!</span>";
         }
        
 
 
-        if ( !empty($month) && !empty($date_month) && !empty($title) && !empty($description) && !empty($text1))
+        if ( !empty($month)  && !empty($text1))
         {
-                $sql_query = "INSERT INTO child_birth (month,date_month,title,description,text1)VALUES('$month','$date_month','$title','$description','$text1')";
+                $sql_query = "INSERT INTO child_birth (month,text1)VALUES('$month','$text1')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -50,11 +48,12 @@ if (isset($_POST['btnAdd'])) {
                     $db->sql($sql);
                     $res = $db->getResult();
                     $child_birth_id = $res[0]['id'];
-                    for ($i = 0; $i < count($_POST['sub_title']); $i++) {
-        
+                    for ($i = 0; $i < count($_POST['date_month']); $i++) {
+                        
+                        $date_month = $db->escapeString(($_POST['date_month'][$i]));
                         $sub_title = $db->escapeString(($_POST['sub_title'][$i]));
                         $sub_description = $db->escapeString(($_POST['sub_description'][$i]));
-                        $sql = "INSERT INTO child_birth_variant (child_birth_id,sub_title,sub_description) VALUES('$child_birth_id','$sub_title','$sub_description')";
+                        $sql = "INSERT INTO child_birth_variant (child_birth_id,date_month,sub_title,sub_description) VALUES('$child_birth_id','$date_month','$sub_title','$sub_description')";
                         $db->sql($sql);
                         $child_birth_variant_result = $db->getResult();
                     }
@@ -93,7 +92,7 @@ if (isset($_POST['btnAdd'])) {
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form name="add_add_child_birth_form" method="post" enctype="multipart/form-data">
+                <form name="add_child_birth_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
@@ -115,15 +114,12 @@ if (isset($_POST['btnAdd'])) {
                                         <label for="">Text1</label> <i class="text-danger asterik">*</i><?php echo isset($error['text1']) ? $error['text1'] : ''; ?>
                                         <input type="text" class="form-control" name="text1" required />
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i><?php echo isset($error['date_month']) ? $error['date_month'] : ''; ?>
-                                        <input type="text" class="form-control" name="date_month" required />
-                                    </div>
+                                   
                                    
                                 </div>
                             </div>
                             <br>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label for="">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
@@ -134,36 +130,40 @@ if (isset($_POST['btnAdd'])) {
                                         <textarea type="text" rows="2" class="form-control" name="description" required></textarea>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <br>
                             <div id="packate_div"  >
                                 <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
+                                        <input type="text" class="form-control" name="date_month[]" required />
+                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="sub_title[]" required />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Description</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
                                             <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
                                         </div>
                                     </div>
                                 
                                     <div class="col-md-1">
                                         <label>Tab</label>
-                                        <a class="add_packate_variation" title="Add variation of Child Birth" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                        <a class="add_packate_variation" title="Add variation of Child Birth" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add More</button></a>
                                     </div>
                                     <div id="variations">
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary" name="btnAdd">Add</button>
+                        <button type="submit" class="btn btn-primary" name="btnAdd">Submit</button>
                         <input type="reset" onClick="refreshPage()" class="btn-warning btn" value="Clear" />
                     </div>
 
@@ -177,12 +177,11 @@ if (isset($_POST['btnAdd'])) {
 <div class="separator"> </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script>
-    $('#add_date_monthly_horoscope_form').validate({
+    $('#add_child_birth_form').validate({
 
         ignore: [],
         debug: false,
         rules: {
-            date_month: "required",
             month: "required",
             title="required",
             description="required",
@@ -207,7 +206,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub title</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-6"><div class="form-group"><label for="sub_description">Sub description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="sub_title">Title</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="sub_description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             }
             else{
                 alert('You Reached the limits')

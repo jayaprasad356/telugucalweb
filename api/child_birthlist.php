@@ -33,9 +33,9 @@ if($num>=1){
             $temp['id'] = $row['id'];
             $temp['month'] = $row['month'];
             $temp['text1'] = $row['text1'];
-            $temp['date_month'] = $row['date_month'];
-            $temp['title'] = $row['title'];
-            $temp['description'] = $row['description'];
+            // $temp['date_month'] = $row['date_month'];
+            // $temp['title'] = $row['title'];
+            // $temp['description'] = $row['description'];
             $sql = "SELECT * FROM `child_birth_variant` WHERE child_birth_id = '$id'";
             $db->sql($sql);
             $res = $db->getResult();

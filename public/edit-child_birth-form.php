@@ -17,17 +17,17 @@ if (isset($_GET['id'])) {
 if (isset($_POST['btnEdit'])) {
 
 	$month= $db->escapeString($_POST['month']);
-	$date_month= $db->escapeString($_POST['date_month']);
-	$description= $db->escapeString($_POST['description']);
-	$title= $db->escapeString($_POST['title']);
+	// $date_month= $db->escapeString($_POST['date_month']);
+	// $description= $db->escapeString($_POST['description']);
+	// $title= $db->escapeString($_POST['title']);
 	$text1 = $db->escapeString($_POST['text1']);
 	$error = array();
 
 
 
-	  if ( !empty($month) && !empty($date_month) && !empty($title) && !empty($description) && !empty($text1))
+	  if ( !empty($month) && !empty($text1))
         {
-             $sql_query = "UPDATE child_birth SET month='$month',date_month='$date_month',title='$title',description='$description',text1='$text1' WHERE id =$ID";
+             $sql_query = "UPDATE child_birth SET month='$month',text1='$text1' WHERE id =$ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -40,22 +40,24 @@ if (isset($_POST['btnEdit'])) {
 			// check update result
 			if ($update_result == 1)
 		   {
-				for ($i = 0; $i < count($_POST['sub_title']); $i++) {
+				for ($i = 0; $i < count($_POST['date_month']); $i++) {
 					$child_birth_id = $db->escapeString(($_POST['child_birth_variant_id'][$i]));
+					$date_month = $db->escapeString(($_POST['date_month'][$i]));
 					$sub_title = $db->escapeString(($_POST['sub_title'][$i]));
 					$sub_description = $db->escapeString(($_POST['sub_description'][$i]));
-					$sql = "UPDATE child_birth_variant SET sub_title='$sub_title',sub_description='$sub_description' WHERE id =$child_birth_id";
+					$sql = "UPDATE child_birth_variant SET date_month='$date_month',sub_title='$sub_title',sub_description='$sub_description' WHERE id =$child_birth_id";
 					$db->sql($sql);
 
 				}
 				if (
-					isset($_POST['insert_sub_title']) && isset($_POST['insert_sub_description'])
+				    isset($_POST['insert_date_month'])  && isset($_POST['insert_sub_title']) && isset($_POST['insert_sub_description'])
 				) {
-					for ($i = 0; $i < count($_POST['insert_sub_title']); $i++) {
+					for ($i = 0; $i < count($_POST['insert_date_month']); $i++) {
+						$date_month = $db->escapeString(($_POST['insert_date_month'][$i]));
 						$sub_title = $db->escapeString(($_POST['insert_sub_title'][$i]));
 						$sub_description = $db->escapeString(($_POST['insert_sub_description'][$i]));
 						if (!empty($sub_title) || !empty($sub_description)) {
-							$sql = "INSERT INTO child_birth_variant (child_birth_id,sub_title,sub_description) VALUES('$ID','$sub_title','$sub_description')";
+							$sql = "INSERT INTO child_birth_variant (child_birth_id,date_month,sub_title,sub_description) VALUES('$ID','$date_month','$sub_title','$sub_description')";
 							$db->sql($sql);
 
 						}
@@ -131,14 +133,11 @@ if (isset($_POST['btnCancel'])) { ?>
                                         <label for="">Text1</label> <i class="text-danger asterik">*</i>
                                         <input type="text" class="form-control" name="text1" value="<?php echo $res[0]['text1']; ?>" />
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
-                                        <input type="text" class="form-control" name="date_month" value="<?php echo $res[0]['date_month']; ?>" />
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <br>
-							<div class="row">
+							<!-- <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
                                         <label for="">Title</label> <i class="text-danger asterik">*</i>
@@ -150,7 +149,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                     </div>
                                 </div>
                             </div>
-                            <br>
+                            <br> -->
 							
 							<div id="variations">
 							<?php
@@ -160,13 +159,17 @@ if (isset($_POST['btnCancel'])) { ?>
 								<div id="packate_div">
 									<div class="row">
 									    <input type="hidden" class="form-control" name="child_birth_variant_id[]" id="child_birth_variant_id" value='<?= $row['id']; ?>' />
+										<div class="col-md-3">
+											<label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
+											<input type="text" class="form-control" name="date_month[]" value="<?php echo $row['date_month']; ?>" />
+										</div>
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
+												<label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
 												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" required/>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> Sub Description</label> <i class="text-danger asterik">*</i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description[]" required><?php echo $row['sub_description'] ?></textarea>
@@ -214,7 +217,7 @@ if (isset($_POST['btnCancel'])) { ?>
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-				$(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub Title</label>' +'<input type="text" class="form-control" name="insert_sub_title[]" /></div></div>'+'<div class="col-md-6"><div class="form-group"><label for="sub_description">Sub Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+				$(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="insert_date_month[]" /></div></div>'+ '<div class="col-md-4"><div class="form-group"><label for="sub_title">Title</label>' +'<input type="text" class="form-control" name="insert_sub_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="sub_description">Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             } else {
                 alert('You Reached the limits')
             }
