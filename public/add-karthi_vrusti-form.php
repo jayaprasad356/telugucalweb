@@ -95,7 +95,7 @@ if (isset($_POST['btnAdd'])) {
                     <div class="box-body">
                            <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-3'>
+                                    <div class='col-md-4'>
                                         <label for="">Month</label> <i class="text-danger asterik">*</i>
                                         <select id='month' name="month" class='form-control' required>
                                             <option value="">Select</option>
@@ -109,11 +109,11 @@ if (isset($_POST['btnAdd'])) {
                                             <?php } ?>
                                             </select>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label for="">Year</label> <i class="text-danger asterik">*</i><?php echo isset($error['year']) ? $error['year'] : ''; ?>
                                         <input type="number" class="form-control" name="year" required />
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label for="">Text1</label> <i class="text-danger asterik">*</i><?php echo isset($error['text1']) ? $error['text1'] : ''; ?>
                                         <input type="text" class="form-control" name="text1" required />
                                     </div>
@@ -140,35 +140,35 @@ if (isset($_POST['btnAdd'])) {
                                         <label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
                                         <input type="text" class="form-control" name="date_month[]" required />
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label for="">Karthi</label> <i class="text-danger asterik">*</i>
                                         <input type="text" class="form-control" name="karthi[]" required />
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Nakshathram</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="nakshathram[]" required />
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Pravesham</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="pravesham[]" required />
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Rashi</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="rashi[]" required />
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Ganam</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="ganam[]" required />
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Karthi Result</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="karthi_result[]" required />
@@ -231,7 +231,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="karthi">Karthi</label>' +'<input type="text" class="form-control" name="karthi[]" /></div></div>' + '<div class="col-md-2"><div class="form-group"><label for="nakshathram">Nakshathram</label>' +'<input type="text" class="form-control" name="nakshathram[]" /></div></div>' + '<div class="col-md-2"><div class="form-group"><label for="pravesham">Pravesham</label>'+'<input type="text" class="form-control" name="pravesham[]"></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="rashi">Rashi</label>' +'<input type="text" class="form-control" name="rashi[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="ganam">Ganam</label>' +'<input type="text" class="form-control" name="ganam[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="karthi_result">Karthi Result</label>' +'<input type="text" class="form-control" name="karthi_result[]" /></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div><br>');
+                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>'+'<div class="col-md-3"><div class="form-group"><label for="karthi">Karthi</label>' +'<input type="text" class="form-control" name="karthi[]" /></div></div>' + '<div class="col-md-3"><div class="form-group"><label for="nakshathram">Nakshathram</label>' +'<input type="text" class="form-control" name="nakshathram[]" /></div></div>' + '<div class="col-md-3"><div class="form-group"><label for="pravesham">Pravesham</label>'+'<input type="text" class="form-control" name="pravesham[]"></div></div>'+'<div class="col-md-3"><div class="form-group"><label for="rashi">Rashi</label>' +'<input type="text" class="form-control" name="rashi[]" /></div></div>'+'<div class="col-md-3"><div class="form-group"><label for="ganam">Ganam</label>' +'<input type="text" class="form-control" name="ganam[]" /></div></div>'+'<div class="col-md-3"><div class="form-group"><label for="karthi_result">Karthi Result</label>' +'<input type="text" class="form-control" name="karthi_result[]" /></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div><br>');
             }
             else{
                 alert('You Reached the limits')
