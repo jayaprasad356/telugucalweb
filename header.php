@@ -238,6 +238,12 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="subha_muhurtham.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Subha Muhurthamulu</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Muhurtham</span>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 09:08 AM
+-- Generation Time: Mar 20, 2023 at 11:35 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -1676,6 +1676,48 @@ INSERT INTO `shivapuranam_menu` (`id`, `shivapuranam_id`, `title`, `description`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subha_muhurtham`
+--
+
+CREATE TABLE `subha_muhurtham` (
+  `id` int(11) NOT NULL,
+  `month` text DEFAULT '',
+  `year` year(4) DEFAULT NULL,
+  `text1` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subha_muhurtham`
+--
+
+INSERT INTO `subha_muhurtham` (`id`, `month`, `year`, `text1`) VALUES
+(1, 'January', 2023, 'Summa Kizhi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subha_muhurtham_variant`
+--
+
+CREATE TABLE `subha_muhurtham_variant` (
+  `id` int(11) NOT NULL,
+  `subha_muhurtham_id` int(11) DEFAULT NULL,
+  `date_month` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subha_muhurtham_variant`
+--
+
+INSERT INTO `subha_muhurtham_variant` (`id`, `subha_muhurtham_id`, `date_month`, `description`) VALUES
+(1, 1, '09,March', 'మీరు తెలుగులో టైప్ చేయాలనుకుంటే మరియు తెలుగులో ఎలా టైప్ చేయాలో మీకు తెలియకపోతే లేదా మీరు తెలుగులో టైప్ చేయడం కష్టంగా ఉంటే, మీరు మా సాధనాన్ని '),
+(2, 1, '10,March', 'దయచేసి మీ స్నేహితులు మరియు బంధువులతో భాగస్వామ్యం చేయడం మర్చిపోవద్దు.'),
+(3, 1, '11,March', ' ఇంగ్లీష్లో ఆ పదాన్ని టైప్ చేయండి మరియు ఇది స్వంతంగా సొంతగా తెలుగులోకి మార్చబడుతుంది. మీరు ఈ ఉపకరణాన్ని కావాలనుకుంటే');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `telugu_months`
 --
 
@@ -2527,6 +2569,18 @@ ALTER TABLE `shivapuranam_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `subha_muhurtham`
+--
+ALTER TABLE `subha_muhurtham`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subha_muhurtham_variant`
+--
+ALTER TABLE `subha_muhurtham_variant`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `telugu_months`
 --
 ALTER TABLE `telugu_months`
@@ -3087,6 +3141,18 @@ ALTER TABLE `shivapuranam`
 --
 ALTER TABLE `shivapuranam_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `subha_muhurtham`
+--
+ALTER TABLE `subha_muhurtham`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `subha_muhurtham_variant`
+--
+ALTER TABLE `subha_muhurtham_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `telugu_months`
