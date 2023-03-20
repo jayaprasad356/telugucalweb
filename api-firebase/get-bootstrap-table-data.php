@@ -777,7 +777,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'child_birth') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR month like '%" . $search . "%' OR text1 like '%" . $search . "%'";
+        $where .= "WHERE id like '%" . $search . "%' OR month like '%" . $search . "%' OR text1 like '%" . $search . "%' OR year like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -808,7 +808,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'child_birth') {
         $operate .= ' <a class="text text-danger" href="delete-child_birth.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['month'] = $row['month'];
-        // $tempRow['date_month'] = $row['date_month'];
+        $tempRow['year'] = $row['year'];
         $tempRow['text1'] = $row['text1'];
         // $tempRow['title'] = $row['title'];
         // $tempRow['description'] = $row['description'];

@@ -19,9 +19,16 @@ if (empty($_POST['month'])) {
     print_r(json_encode($response));
     return false;
 }
+if (empty($_POST['year'])) {
+    $response['success'] = false;
+    $response['message'] = "Year is Empty";
+    print_r(json_encode($response));
+    return false;
+}
 $month = $db->escapeString($_POST['month']);
+$year = $db->escapeString($_POST['year']);
 
-$sql = "SELECT * FROM `child_birth` WHERE month='$month'";
+$sql = "SELECT * FROM `child_birth` WHERE month='$month' AND year='$year'";
 $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
@@ -32,6 +39,7 @@ if($num>=1){
             $id = $row['id'];
             $temp['id'] = $row['id'];
             $temp['month'] = $row['month'];
+            $temp['year'] = $row['year'];
             $temp['text1'] = $row['text1'];
             // $temp['date_month'] = $row['date_month'];
             // $temp['title'] = $row['title'];

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2023 at 03:43 AM
+-- Generation Time: Mar 20, 2023 at 05:25 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -236,6 +236,7 @@ INSERT INTO `bhagawath_geetha_submenu` (`id`, `bhagawath_geetha_id`, `bhagawath_
 CREATE TABLE `child_birth` (
   `id` int(11) NOT NULL,
   `month` text DEFAULT '',
+  `year` year(4) DEFAULT NULL,
   `text1` text DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -243,8 +244,8 @@ CREATE TABLE `child_birth` (
 -- Dumping data for table `child_birth`
 --
 
-INSERT INTO `child_birth` (`id`, `month`, `text1`) VALUES
-(1, 'March', 'Hello Everone');
+INSERT INTO `child_birth` (`id`, `month`, `year`, `text1`) VALUES
+(1, 'March', 2023, 'Hello Everone');
 
 -- --------------------------------------------------------
 

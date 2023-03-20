@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 if (isset($_POST['btnEdit'])) {
 
 	$month= $db->escapeString($_POST['month']);
-	// $date_month= $db->escapeString($_POST['date_month']);
+	$year= $db->escapeString($_POST['year']);
 	// $description= $db->escapeString($_POST['description']);
 	// $title= $db->escapeString($_POST['title']);
 	$text1 = $db->escapeString($_POST['text1']);
@@ -27,7 +27,7 @@ if (isset($_POST['btnEdit'])) {
 
 	  if ( !empty($month) && !empty($text1))
         {
-             $sql_query = "UPDATE child_birth SET month='$month',text1='$text1' WHERE id =$ID";
+             $sql_query = "UPDATE child_birth SET month='$month',year='$year',text1='$text1' WHERE id =$ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -130,6 +130,10 @@ if (isset($_POST['btnCancel'])) { ?>
                                             </select>
                                     </div>
 									<div class="col-md-4">
+                                        <label for="">Year</label> <i class="text-danger asterik">*</i>
+                                        <input type="number" class="form-control" name="year" value="<?php echo $res[0]['year']; ?>" />
+                                    </div>
+									<div class="col-md-4">
                                         <label for="">Text1</label> <i class="text-danger asterik">*</i>
                                         <input type="text" class="form-control" name="text1" value="<?php echo $res[0]['text1']; ?>" />
                                     </div>
@@ -165,13 +169,13 @@ if (isset($_POST['btnCancel'])) { ?>
 										</div>
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
+												<label for="exampleInputEmail1">Rashi</label> <i class="text-danger asterik">*</i>
 												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" required/>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1"> Sub Description</label> <i class="text-danger asterik">*</i>
+												<label for="exampleInputEmail1">Nakshatram</label> <i class="text-danger asterik">*</i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description[]" required><?php echo $row['sub_description'] ?></textarea>
 											</div>
 										</div>
@@ -217,7 +221,7 @@ if (isset($_POST['btnCancel'])) { ?>
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-				$(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="insert_date_month[]" /></div></div>'+ '<div class="col-md-4"><div class="form-group"><label for="sub_title">Title</label>' +'<input type="text" class="form-control" name="insert_sub_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="sub_description">Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+				$(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="insert_date_month[]" /></div></div>'+ '<div class="col-md-4"><div class="form-group"><label for="sub_title">Rashi</label>' +'<input type="text" class="form-control" name="insert_sub_title[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="sub_description">Nakshatram</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             } else {
                 alert('You Reached the limits')
             }

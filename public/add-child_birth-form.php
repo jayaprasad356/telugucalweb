@@ -9,7 +9,7 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
 
         $month= $db->escapeString($_POST['month']);
-       
+        $year= $db->escapeString($_POST['year']);
         $text1 = $db->escapeString($_POST['text1']);
         $error = array();
 
@@ -18,9 +18,9 @@ if (isset($_POST['btnAdd'])) {
         if (empty($month)) {
             $error['month'] = " <span class='label label-danger'>Required!</span>";
         }
-        // if (empty($date_month)) {
-        //     $error['date_month'] = " <span class='label label-danger'>Required!</span>";
-        // }
+        if (empty($year)) {
+            $error['year'] = " <span class='label label-danger'>Required!</span>";
+        }
         // if (empty($title)) {
         //     $error['title'] = " <span class='label label-danger'>Required!</span>";
         // }
@@ -33,9 +33,9 @@ if (isset($_POST['btnAdd'])) {
        
 
 
-        if ( !empty($month)  && !empty($text1))
+        if ( !empty($month)  && !empty($text1) && !empty($year))
         {
-                $sql_query = "INSERT INTO child_birth (month,text1)VALUES('$month','$text1')";
+                $sql_query = "INSERT INTO child_birth (month,text1,year)VALUES('$month','$text1','$year')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -111,6 +111,10 @@ if (isset($_POST['btnAdd'])) {
                                             </select>
                                     </div>
                                     <div class="col-md-4">
+                                        <label for="">Year</label> <i class="text-danger asterik">*</i><?php echo isset($error['year']) ? $error['year'] : ''; ?>
+                                        <input type="number" class="form-control" name="year" required />
+                                    </div>
+                                    <div class="col-md-4">
                                         <label for="">Text1</label> <i class="text-danger asterik">*</i><?php echo isset($error['text1']) ? $error['text1'] : ''; ?>
                                         <input type="text" class="form-control" name="text1" required />
                                     </div>
@@ -140,13 +144,13 @@ if (isset($_POST['btnAdd'])) {
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Rashi</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="sub_title[]" required />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Nakshatram</label> <i class="text-danger asterik">*</i>
                                             <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
                                         </div>
                                     </div>
@@ -206,7 +210,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="sub_title">Title</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="sub_description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="sub_title">Rashi</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="sub_description">Nakshatram</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             }
             else{
                 alert('You Reached the limits')
