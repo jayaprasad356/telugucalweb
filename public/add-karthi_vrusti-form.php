@@ -10,7 +10,6 @@ if (isset($_POST['btnAdd'])) {
 
         $month= $db->escapeString($_POST['month']);
         $year= $db->escapeString($_POST['year']);
-        $date_month= $db->escapeString($_POST['date_month']);
         $text1 = $db->escapeString($_POST['text1']);
         $error = array();
 
@@ -22,18 +21,16 @@ if (isset($_POST['btnAdd'])) {
         if (empty($year)) {
             $error['year'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($date_month)) {
-            $error['date_month'] = " <span class='label label-danger'>Required!</span>";
-        }
+       
         if (empty($text1)) {
             $error['text1'] = " <span class='label label-danger'>Required!</span>";
         }
        
 
 
-        if ( !empty($month)  && !empty($text1) && !empty($year) && !empty($date_month) )
+        if ( !empty($month)  && !empty($text1) && !empty($year) )
         {
-                $sql_query = "INSERT INTO karthi_vrusti (month,text1,year,date_month)VALUES('$month','$text1','$year','$date_month')";
+                $sql_query = "INSERT INTO karthi_vrusti (month,text1,year)VALUES('$month','$text1','$year')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -47,14 +44,15 @@ if (isset($_POST['btnAdd'])) {
                     $res = $db->getResult();
                     $karthi_vrusti_id = $res[0]['id'];
                     for ($i = 0; $i < count($_POST['karthi']); $i++) {
-                        
+
+                        $date_month = $db->escapeString(($_POST['date_month'][$i]));
                         $karthi = $db->escapeString(($_POST['karthi'][$i]));
                         $nakshathram = $db->escapeString(($_POST['nakshathram'][$i]));
                         $pravesham = $db->escapeString(($_POST['pravesham'][$i]));
                         $rashi = $db->escapeString(($_POST['rashi'][$i]));
                         $ganam = $db->escapeString(($_POST['ganam'][$i]));
                         $karthi_result = $db->escapeString(($_POST['karthi_result'][$i]));
-                        $sql = "INSERT INTO karthi_vrusti_variant (karthi_vrusti_id,karthi,nakshathram,pravesham,rashi,ganam,karthi_result) VALUES('$karthi_vrusti_id','$karthi','$nakshathram','$pravesham','$rashi','$ganam','$karthi_result')";
+                        $sql = "INSERT INTO karthi_vrusti_variant (karthi_vrusti_id,date_month,karthi,nakshathram,pravesham,rashi,ganam,karthi_result) VALUES('$karthi_vrusti_id','$date_month','$karthi','$nakshathram','$pravesham','$rashi','$ganam','$karthi_result')";
                         $db->sql($sql);
                         $karthi_vrusti_variant_result = $db->getResult();
                     }
@@ -119,11 +117,6 @@ if (isset($_POST['btnAdd'])) {
                                         <label for="">Text1</label> <i class="text-danger asterik">*</i><?php echo isset($error['text1']) ? $error['text1'] : ''; ?>
                                         <input type="text" class="form-control" name="text1" required />
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i><?php echo isset($error['date_month']) ? $error['date_month'] : ''; ?>
-                                        <input type="text" class="form-control" name="date_month" required />
-                                    </div>
-                                   
                                    
                                 </div>
                             </div>
@@ -143,6 +136,10 @@ if (isset($_POST['btnAdd'])) {
                             <br>
                             <div id="packate_div"  >
                                 <div class="row">
+                                   <div class="col-md-3">
+                                        <label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
+                                        <input type="text" class="form-control" name="date_month[]" required />
+                                    </div>
                                     <div class="col-md-2">
                                         <label for="">Karthi</label> <i class="text-danger asterik">*</i>
                                         <input type="text" class="form-control" name="karthi[]" required />
@@ -234,7 +231,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-2"><div class="form-group"><label for="karthi">Karthi</label>' +'<input type="text" class="form-control" name="karthi[]" /></div></div>' + '<div class="col-md-2"><div class="form-group"><label for="nakshathram">Nakshathram</label>' +'<input type="text" class="form-control" name="nakshathram[]" /></div></div>' + '<div class="col-md-2"><div class="form-group"><label for="pravesham">Pravesham</label>'+'<input type="text" class="form-control" name="pravesham[]"></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="rashi">Rashi</label>' +'<input type="text" class="form-control" name="rashi[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="ganam">Ganam</label>' +'<input type="text" class="form-control" name="ganam[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="karthi_result">Karthi Result</label>' +'<input type="text" class="form-control" name="karthi_result[]" /></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div><br>');
+                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="karthi">Karthi</label>' +'<input type="text" class="form-control" name="karthi[]" /></div></div>' + '<div class="col-md-2"><div class="form-group"><label for="nakshathram">Nakshathram</label>' +'<input type="text" class="form-control" name="nakshathram[]" /></div></div>' + '<div class="col-md-2"><div class="form-group"><label for="pravesham">Pravesham</label>'+'<input type="text" class="form-control" name="pravesham[]"></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="rashi">Rashi</label>' +'<input type="text" class="form-control" name="rashi[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="ganam">Ganam</label>' +'<input type="text" class="form-control" name="ganam[]" /></div></div>'+'<div class="col-md-2"><div class="form-group"><label for="karthi_result">Karthi Result</label>' +'<input type="text" class="form-control" name="karthi_result[]" /></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div><br>');
             }
             else{
                 alert('You Reached the limits')

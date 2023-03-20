@@ -839,7 +839,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'karthi_vrusti') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR month like '%" . $search . "%' OR text1 like '%" . $search . "%' OR year like '%" . $search . "%' OR date_month like '%" . $search . "%'";
+        $where .= "WHERE id like '%" . $search . "%' OR month like '%" . $search . "%' OR text1 like '%" . $search . "%' OR year like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -872,7 +872,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'karthi_vrusti') {
         $tempRow['month'] = $row['month'];
         $tempRow['year'] = $row['year'];
         $tempRow['text1'] = $row['text1'];
-        $tempRow['date_month'] = $row['date_month'];
+        // $tempRow['date_month'] = $row['date_month'];
         // $tempRow['title'] = $row['title'];
         // $tempRow['description'] = $row['description'];
         $tempRow['operate'] = $operate;

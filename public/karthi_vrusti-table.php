@@ -26,7 +26,7 @@
                                     <th data-field="month" data-sortable="true">Month</th>
                                     <th  data-field="year" data-sortable="true">Year</th>
                                     <th data-field="text1" data-sortable="true">Text1</th>
-                                    <th data-field="date_month" data-sortable="true">Telugu Date & Month</th>
+                                    <!-- <th data-field="date_month" data-sortable="true">Telugu Date & Month</th> -->
                                     <!-- <th  data-field="title" data-sortable="true">Title</th>
                                     <th  data-field="description" data-sortable="true">Description</th> -->
                                     <th  data-field="operate" data-events="actionEvents">Action</th>

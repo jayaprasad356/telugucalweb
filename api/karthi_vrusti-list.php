@@ -41,7 +41,7 @@ if($num>=1){
             $temp['month'] = $row['month'];
             $temp['year'] = $row['year'];
             $temp['text1'] = $row['text1'];
-            $temp['date_month'] = $row['date_month'];
+            // $temp['date_month'] = $row['date_month'];
             // $temp['title'] = $row['title'];
             // $temp['description'] = $row['description'];
             $sql = "SELECT * FROM `karthi_vrusti_variant` WHERE karthi_vrusti_id = '$id'";

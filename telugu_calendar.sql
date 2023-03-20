@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 08:13 AM
+-- Generation Time: Mar 20, 2023 at 09:08 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -693,7 +693,6 @@ CREATE TABLE `karthi_vrusti` (
   `id` int(11) NOT NULL,
   `month` text DEFAULT '',
   `year` year(4) DEFAULT NULL,
-  `date_month` text DEFAULT '',
   `text1` text DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -701,8 +700,8 @@ CREATE TABLE `karthi_vrusti` (
 -- Dumping data for table `karthi_vrusti`
 --
 
-INSERT INTO `karthi_vrusti` (`id`, `month`, `year`, `date_month`, `text1`) VALUES
-(2, 'March', 2022, '20,March', 'TEHNAD');
+INSERT INTO `karthi_vrusti` (`id`, `month`, `year`, `text1`) VALUES
+(2, 'March', 2023, 'TEHNAD');
 
 -- --------------------------------------------------------
 
@@ -713,6 +712,7 @@ INSERT INTO `karthi_vrusti` (`id`, `month`, `year`, `date_month`, `text1`) VALUE
 CREATE TABLE `karthi_vrusti_variant` (
   `id` int(11) NOT NULL,
   `karthi_vrusti_id` int(11) DEFAULT NULL,
+  `date_month` text DEFAULT '',
   `karthi` text DEFAULT '',
   `nakshathram` text DEFAULT '',
   `pravesham` text DEFAULT '',
@@ -725,9 +725,9 @@ CREATE TABLE `karthi_vrusti_variant` (
 -- Dumping data for table `karthi_vrusti_variant`
 --
 
-INSERT INTO `karthi_vrusti_variant` (`id`, `karthi_vrusti_id`, `karthi`, `nakshathram`, `pravesham`, `rashi`, `ganam`, `karthi_result`) VALUES
-(1, 2, 'hcjcjv', 'cfwf', 'grwgg', 'grgr', 'r3rr', 'oyuyt'),
-(2, 2, 'gtth', '6u77i7', '8o8o8', 'bhtyj', 'yuuku', 'jyjuk');
+INSERT INTO `karthi_vrusti_variant` (`id`, `karthi_vrusti_id`, `date_month`, `karthi`, `nakshathram`, `pravesham`, `rashi`, `ganam`, `karthi_result`) VALUES
+(1, 2, '20,March', 'hcjcjv', 'cfwf', 'grwgg', 'grgr', 'r3rr', 'oyuyt'),
+(2, 2, '21,March', 'gtth', '6u77i7', '8o8o8', 'bhtyj', 'yuuku', 'jyjuk');
 
 -- --------------------------------------------------------
 
