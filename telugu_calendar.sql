@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 05:25 AM
+-- Generation Time: Mar 20, 2023 at 08:13 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -682,6 +682,52 @@ CREATE TABLE `karanam` (
 
 INSERT INTO `karanam` (`id`, `description`) VALUES
 (4, 'భారతీయ క్రీడాకారిణి. శ్రీకాకుళానికి చెందిన వెయిట్‌ లిఫ్టింగ్‌ క్రీడాకారిణి. ఆమె 2000 సిడ్నీ ఒలింపిక్ పతకం సాధించి ప్రసిద్ధురాలయ్యింది. 2000 సంవత్సరంలో జరిగిన సిడ్నీ ఒలంపిక్స్ లో ఈమె వెయిట్ లిఫ్టింగ్ విభాగంలో భారతదేశం తరపున కాంస్య పతకం సాధించింది.\r\n\r\nబీబీసీ శతవసంతాల ఏడాది సందర్భంగా 2022 మార్చి మాసంలో కరణం మల్లీశ్వరికి ‘బీబీసీ లైఫ్‌ టైమ్‌ అచీవ్‌మెంట్‌ (జీవన సాఫల్యం)’ అవార్డు ప్రకటించారు.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `karthi_vrusti`
+--
+
+CREATE TABLE `karthi_vrusti` (
+  `id` int(11) NOT NULL,
+  `month` text DEFAULT '',
+  `year` year(4) DEFAULT NULL,
+  `date_month` text DEFAULT '',
+  `text1` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `karthi_vrusti`
+--
+
+INSERT INTO `karthi_vrusti` (`id`, `month`, `year`, `date_month`, `text1`) VALUES
+(2, 'March', 2022, '20,March', 'TEHNAD');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `karthi_vrusti_variant`
+--
+
+CREATE TABLE `karthi_vrusti_variant` (
+  `id` int(11) NOT NULL,
+  `karthi_vrusti_id` int(11) DEFAULT NULL,
+  `karthi` text DEFAULT '',
+  `nakshathram` text DEFAULT '',
+  `pravesham` text DEFAULT '',
+  `rashi` text DEFAULT '',
+  `ganam` text DEFAULT '',
+  `karthi_result` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `karthi_vrusti_variant`
+--
+
+INSERT INTO `karthi_vrusti_variant` (`id`, `karthi_vrusti_id`, `karthi`, `nakshathram`, `pravesham`, `rashi`, `ganam`, `karthi_result`) VALUES
+(1, 2, 'hcjcjv', 'cfwf', 'grwgg', 'grgr', 'r3rr', 'oyuyt'),
+(2, 2, 'gtth', '6u77i7', '8o8o8', 'bhtyj', 'yuuku', 'jyjuk');
 
 -- --------------------------------------------------------
 
@@ -2223,6 +2269,18 @@ ALTER TABLE `karanam`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `karthi_vrusti`
+--
+ALTER TABLE `karthi_vrusti`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `karthi_vrusti_variant`
+--
+ALTER TABLE `karthi_vrusti_variant`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kolathalu`
 --
 ALTER TABLE `kolathalu`
@@ -2771,6 +2829,18 @@ ALTER TABLE `kalalu`
 --
 ALTER TABLE `karanam`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `karthi_vrusti`
+--
+ALTER TABLE `karthi_vrusti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `karthi_vrusti_variant`
+--
+ALTER TABLE `karthi_vrusti_variant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kolathalu`

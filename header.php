@@ -232,6 +232,12 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="karthi_vrusti.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Karthi Vrusti</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Muhurtham</span>
