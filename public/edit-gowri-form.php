@@ -14,14 +14,16 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['btnUpdate'])) {
-        $year= $db->escapeString($_POST['year']);
+        // $year= $db->escapeString($_POST['year']);
         $day= $db->escapeString($_POST['day']);
         $time= $db->escapeString($_POST['time']);
-        $description= $db->escapeString($_POST['description']);
+        $morning= $db->escapeString($_POST['morning']);
+        $night= $db->escapeString($_POST['night']);
+        // $description= $db->escapeString($_POST['description']);
 
-   if (!empty($year) && !empty($day) && !empty($time) && !empty($description)) {
+   if ( !empty($day) && !empty($time) && !empty($morning)) {
      
-        $sql_query = "UPDATE gowri SET year='$year',day='$day',time='$time',description='$description' WHERE id='$ID'";
+        $sql_query = "UPDATE gowri SET day='$day',time='$time',morning='$morning',night='$night' WHERE id='$ID'";
         $db->sql($sql_query);
         $result = $db->getResult();
         if (!empty($result)) {
@@ -72,7 +74,7 @@ $res = $db->getResult();
                 <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-5'>
+                                    <!-- <div class='col-md-5'>
                                         <label for="exampleInputEmail1">Year</label> <i class="text-danger asterik">*</i>
                                         <select id='year' name="year" class='form-control' >
                                             <option value="">Select</option>
@@ -99,13 +101,17 @@ $res = $db->getResult();
 													 <option value='<?= $value['day'] ?>' <?= $value['day']==$res[0]['day'] ? 'selected="selected"' : '';?>><?= $value['day'] ?></option>
                                             <?php } ?>
                                         </select>
+                                    </div> -->
+                                    <div class='col-md-5'>
+                                             <label for="exampleInputEmail1">Day</label>
+                                             <input type="date" class="form-control" name="day" value="<?php echo $res[0]['day']; ?>">
                                     </div>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-5'>
+                                    <div class='col-md-4'>
                                         <label for="exampleInputEmail1">Time</label> <i class="text-danger asterik">*</i>
                                         <select id='time' name="time" class='form-control'>
                                             <option value="">Select</option>
@@ -119,9 +125,13 @@ $res = $db->getResult();
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class='col-md-5'>
-                                             <label for="exampleInputEmail1">Description</label>
-                                             <textarea type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description'] ?></textarea>
+                                    <div class='col-md-4'>
+                                             <label for="exampleInputEmail1">Morning</label>
+                                             <input type="text" class="form-control" name="morning" value="<?php echo $res[0]['morning']; ?>">
+                                    </div>
+                                    <div class='col-md-4'>
+                                             <label for="exampleInputEmail1">Night</label>
+                                             <input type="text" class="form-control" name="night" value="<?php echo $res[0]['night']; ?>">
                                     </div>
                                 </div>
                             </div>

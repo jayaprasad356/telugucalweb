@@ -23,10 +23,10 @@
                                 <tr>
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
-                                    <th data-field="year" data-sortable="true">Year</th>
                                     <th data-field="day" data-sortable="true">Day</th>
                                     <th data-field="time" data-sortable="true">Time</th>
-                                    <th data-field="description" data-sortable="true">Description</th>
+                                    <th data-field="morning" data-sortable="true">Morning</th>
+                                    <th data-field="night" data-sortable="true">Night</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

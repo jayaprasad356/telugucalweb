@@ -1837,7 +1837,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'gowri') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE id like '%" . $search . "%' OR year like '%" . $search . "%' OR day like '%" . $search . "%' OR time like '%" . $search . "%' OR description like '%" . $search . "%'";
+        $where .= "WHERE id like '%" . $search . "%' OR morning like '%" . $search . "%' OR day like '%" . $search . "%' OR time like '%" . $search . "%' OR night like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -1865,10 +1865,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'gowri') {
         $operate = ' <a href="edit-gowri.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-gowri.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
-        $tempRow['year'] = $row['year'];
+        $tempRow['morning'] = $row['morning'];
         $tempRow['day'] = $row['day'];
         $tempRow['time'] = $row['time'];
-        $tempRow['description'] = $row['description'];
+        $tempRow['night'] = $row['night'];
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }

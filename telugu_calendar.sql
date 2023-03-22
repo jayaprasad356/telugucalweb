@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 11:35 AM
+-- Generation Time: Mar 22, 2023 at 06:37 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -375,19 +375,18 @@ INSERT INTO `fruits` (`id`, `title`, `description`) VALUES
 
 CREATE TABLE `gowri` (
   `id` int(11) NOT NULL,
-  `year` text DEFAULT NULL,
-  `day` text DEFAULT NULL,
+  `day` text DEFAULT '\'\'',
   `time` text DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `morning` text DEFAULT '',
+  `night` text DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gowri`
 --
 
-INSERT INTO `gowri` (`id`, `year`, `day`, `time`, `description`) VALUES
-(1, '2023', 'Tuesday', '10:30-12:00', 'This is your test'),
-(2, '2022', 'Monday', '06:00-07:30', 'Hello \r\nTest');
+INSERT INTO `gowri` (`id`, `day`, `time`, `morning`, `night`) VALUES
+(1, '2023-03-22', '07:30-09:00', 'This is your test', 'Hello Test');
 
 -- --------------------------------------------------------
 
@@ -2798,7 +2797,7 @@ ALTER TABLE `fruits`
 -- AUTO_INCREMENT for table `gowri`
 --
 ALTER TABLE `gowri`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `gowri_timeslots`
