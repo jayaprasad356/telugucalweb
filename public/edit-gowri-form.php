@@ -87,7 +87,7 @@ $res = $db->getResult();
 													 <option value='<?= $value['year'] ?>' <?= $value['year']==$res[0]['year'] ? 'selected="selected"' : '';?>><?= $value['year'] ?></option>
                                             <?php } ?>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class='col-md-5'>
                                         <label for="exampleInputEmail1"> Day</label> <i class="text-danger asterik">*</i>
                                         <select id='day' name="day" class='form-control' >
@@ -101,11 +101,11 @@ $res = $db->getResult();
 													 <option value='<?= $value['day'] ?>' <?= $value['day']==$res[0]['day'] ? 'selected="selected"' : '';?>><?= $value['day'] ?></option>
                                             <?php } ?>
                                         </select>
-                                    </div> -->
-                                    <div class='col-md-5'>
+                                    </div>
+                                    <!-- <div class='col-md-5'>
                                              <label for="exampleInputEmail1">Day</label>
                                              <input type="date" class="form-control" name="day" value="<?php echo $res[0]['day']; ?>">
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <br>

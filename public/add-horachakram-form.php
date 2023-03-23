@@ -8,28 +8,29 @@ $fn = new custom_functions;
 <?php
 if (isset($_POST['btnAdd'])) {
 
-        $year= $db->escapeString($_POST['year']);
         $day= $db->escapeString($_POST['day']);
         $time= $db->escapeString($_POST['time']);
+        $morning= $db->escapeString($_POST['morning']);
         $description= $db->escapeString($_POST['description']);
 
-        if (empty($year)) {
-            $error['year'] = " <span class='label label-danger'>Required!</span>";
-        }
+       
         if (empty($day)) {
             $error['day'] = " <span class='label label-danger'>Required!</span>";
         }
         if (empty($time)) {
             $error['time'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($description)) {
-            $error['description'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($morning)) {
+            $error['morning'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($night)) {
+            $error['night'] = " <span class='label label-danger'>Required!</span>";
         }
        
        
-       if (!empty($year) && !empty($day) && !empty($time) && !empty($description)) {
+       if (!empty($morning) && !empty($day) && !empty($time) && !empty($night)) {
          
-            $sql_query = "INSERT INTO `hora_chakram` (year,day,time,description)VALUES('$year','$day','$time','$description')";
+            $sql_query = "INSERT INTO `hora_chakram` (morning,day,time,night)VALUES('$morning','$day','$time','$night')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -72,7 +73,7 @@ if (isset($_POST['btnAdd'])) {
                     <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-5'>
+                                    <!-- <div class='col-md-5'>
                                         <label for="exampleInputEmail1">Year</label> <i class="text-danger asterik">*</i>
                                         <select id='year' name="year" class='form-control' required>
                                             <option value="">Select</option>
@@ -85,7 +86,7 @@ if (isset($_POST['btnAdd'])) {
                                                     <option value='<?= $value['year'] ?>'><?= $value['year'] ?></option>
                                             <?php } ?>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class='col-md-5'>
                                         <label for="exampleInputEmail1"> Day</label> <i class="text-danger asterik">*</i>
                                         <select id='day' name="day" class='form-control' required>
@@ -105,12 +106,12 @@ if (isset($_POST['btnAdd'])) {
                             <br>
                             <div class="row">
                                 <div class="form-group">
-                                    <div class='col-md-5'>
+                                    <div class='col-md-4'>
                                         <label for="exampleInputEmail1">Time</label> <i class="text-danger asterik">*</i>
                                         <select id='time' name="time" class='form-control' required>
                                             <option value="">Select</option>
                                                 <?php
-                                                $sql = "SELECT * FROM `gowri_timeslots`";
+                                                $sql = "SELECT * FROM `hora_timeslots`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
@@ -119,9 +120,13 @@ if (isset($_POST['btnAdd'])) {
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class='col-md-5'>
-                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                            <textarea type="text" rows="3" class="form-control" name="description" required></textarea>
+                                    <div class='col-md-4'>
+                                             <label for="exampleInputEmail1">Morning</label> <i class="text-danger asterik">*</i><?php echo isset($error['morning']) ? $error['morning'] : ''; ?>
+                                            <input type="text" class="form-control" name="morning" required>
+                                    </div>
+                                    <div class='col-md-4'>
+                                             <label for="exampleInputEmail1">Night</label> <i class="text-danger asterik">*</i><?php echo isset($error['night']) ? $error['night'] : ''; ?>
+                                            <input type="text" class="form-control" name="night" required>
                                     </div>
                                 </div>
                             </div>
@@ -152,8 +157,8 @@ if (isset($_POST['btnAdd'])) {
         ignore: [],
         debug: false,
         rules: {
-            year: "required",
-            description: "required",
+            day: "required",
+            time: "required",
         }
     });
     $('#btnClear').on('click', function() {

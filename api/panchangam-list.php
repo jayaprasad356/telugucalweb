@@ -11,28 +11,15 @@ date_default_timezone_set('Asia/Kolkata');
 include_once('../includes/crud.php');
 $db = new Database();
 $db->connect();
-if (empty($_POST['date'])) {
+if (empty($_POST['day'])) {
     $response['success'] = false;
-    $response['message'] = "Date is Empty";
+    $response['message'] = "Day is Empty";
     print_r(json_encode($response));
     return false;
 }
-$date_input = $db->escapeString($_POST['date']);
-$date_obj = DateTime::createFromFormat('d-m-Y', $date_input);
-if (!$date_obj) {
-    $date_obj = DateTime::createFromFormat('Y-m-d', $date_input);
-}
-if (!$date_obj) {
-    $response['success'] = false;
-    $response['message'] = "Invalid date format";
-    print_r(json_encode($response));
-    return false;
-}
-$date = $date_obj->format('Y-m-d');
+$day = $db->escapeString($_POST['day']);
 if (isset($_POST['gowri']) && $_POST['gowri'] == 1) {
-    // $year = $db->escapeString($_POST['year']);
-    // $day = $db->escapeString($_POST['day']);
-    $sql = "SELECT * FROM `gowri` WHERE day = '$date'";
+    $sql = "SELECT * FROM `gowri` WHERE day = '$day'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -41,7 +28,7 @@ if (isset($_POST['gowri']) && $_POST['gowri'] == 1) {
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
-            $temp['day'] = DateTime::createFromFormat('Y-m-d', $row['day'])->format('d-m-Y');
+            $temp['day'] = $row['day'];
             $temp['time'] = $row['time'];
             $temp['morning'] = $row['morning'];
             $temp['night'] = $row['night'];
@@ -61,9 +48,7 @@ if (isset($_POST['gowri']) && $_POST['gowri'] == 1) {
 
 }
 if (isset($_POST['hora_chakram']) && $_POST['hora_chakram'] == 1) {
-    $year = $db->escapeString($_POST['year']);
-    $day = $db->escapeString($_POST['day']);
-    $sql = "SELECT * FROM `hora_chakram` WHERE day = '$day' AND year = '$year'";
+    $sql = "SELECT * FROM `hora_chakram` WHERE day = '$day'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -72,10 +57,10 @@ if (isset($_POST['hora_chakram']) && $_POST['hora_chakram'] == 1) {
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
-            $temp['year'] = $row['year'];
             $temp['day'] = $row['day'];
             $temp['time'] = $row['time'];
-            $temp['description'] = $row['description'];
+            $temp['morning'] = $row['morning'];
+            $temp['night'] = $row['night'];
             $rows[] = $temp;
         }
         $response['success'] = true;

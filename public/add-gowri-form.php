@@ -94,7 +94,7 @@ if (isset($_POST['btnAdd'])) {
                                             <?php } ?>
                                         </select>
                                     </div> -->
-                                    <!-- <div class='col-md-5'>
+                                    <div class='col-md-5'>
                                         <label for="exampleInputEmail1"> Day</label> <i class="text-danger asterik">*</i>
                                         <select id='day' name="day" class='form-control' required>
                                             <option value="">Select</option>
@@ -107,11 +107,11 @@ if (isset($_POST['btnAdd'])) {
                                                     <option value='<?= $value['day'] ?>'><?= $value['day'] ?></option>
                                             <?php } ?>
                                         </select>
-                                    </div> -->
-                                    <div class='col-md-4'>
+                                    </div>
+                                    <!-- <div class='col-md-4'>
                                              <label for="exampleInputEmail1">Day</label> <i class="text-danger asterik">*</i><?php echo isset($error['day']) ? $error['day'] : ''; ?>
                                             <input type="date" class="form-control" name="day" required>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <br>

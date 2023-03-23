@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2023 at 06:37 AM
+-- Generation Time: Mar 23, 2023 at 05:25 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -386,7 +386,7 @@ CREATE TABLE `gowri` (
 --
 
 INSERT INTO `gowri` (`id`, `day`, `time`, `morning`, `night`) VALUES
-(1, '2023-03-22', '07:30-09:00', 'This is your test', 'Hello Test');
+(1, 'Tuesday', '07:30-09:00', 'This is your test', 'Hello Test');
 
 -- --------------------------------------------------------
 
@@ -542,19 +542,48 @@ CREATE TABLE `holidays` (
 
 CREATE TABLE `hora_chakram` (
   `id` int(11) NOT NULL,
-  `year` text DEFAULT NULL,
   `day` text DEFAULT NULL,
   `time` text DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `morning` text DEFAULT '',
+  `night` text DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hora_chakram`
 --
 
-INSERT INTO `hora_chakram` (`id`, `year`, `day`, `time`, `description`) VALUES
-(1, '2024', 'Thursday', '12:00-01:30', 'This is hora chjakram'),
-(2, '2023', 'Thursday', '10:30-12:00', 'dsdsdsdsds');
+INSERT INTO `hora_chakram` (`id`, `day`, `time`, `morning`, `night`) VALUES
+(1, 'Thursday', '08:00 - 09:00', '2024', 'This is hora chjakram'),
+(2, 'Thursday', '11:00 - 12:00', 'Rajathi rajs', 'dsdsdsdsds');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hora_timeslots`
+--
+
+CREATE TABLE `hora_timeslots` (
+  `id` int(11) NOT NULL,
+  `time` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hora_timeslots`
+--
+
+INSERT INTO `hora_timeslots` (`id`, `time`) VALUES
+(1, '06:00 - 07:00'),
+(2, '07:00 - 08:00'),
+(3, '08:00 - 09:00'),
+(4, '09:00 - 10:00'),
+(5, '10:00 - 11:00'),
+(6, '11:00 - 12:00'),
+(7, '12:00 - 01:00'),
+(8, '01:00 - 02:00'),
+(9, '02:00 - 03:00'),
+(10, '03:00 - 04:00'),
+(11, '04:00 - 05:00'),
+(12, '05:00 - 06:00');
 
 -- --------------------------------------------------------
 
@@ -2274,6 +2303,12 @@ ALTER TABLE `hora_chakram`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hora_timeslots`
+--
+ALTER TABLE `hora_timeslots`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
@@ -2846,6 +2881,12 @@ ALTER TABLE `holidays`
 --
 ALTER TABLE `hora_chakram`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `hora_timeslots`
+--
+ALTER TABLE `hora_timeslots`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `images`
