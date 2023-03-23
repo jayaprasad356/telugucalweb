@@ -256,6 +256,12 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="bhargava_panchangam.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Bhargava Panchangam</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Panchangam List</span>

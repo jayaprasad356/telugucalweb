@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 05:25 AM
+-- Generation Time: Mar 23, 2023 at 07:05 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -230,6 +230,73 @@ INSERT INTO `bhagawath_geetha_submenu` (`id`, `bhagawath_geetha_id`, `bhagawath_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bhargava_panchangam`
+--
+
+CREATE TABLE `bhargava_panchangam` (
+  `id` int(11) NOT NULL,
+  `day` text DEFAULT '',
+  `time` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bhargava_panchangam`
+--
+
+INSERT INTO `bhargava_panchangam` (`id`, `day`, `time`, `description`) VALUES
+(1, 'Wednesday', '08:00 - 08:24', 'It is one of the official scripts of the Indian Republic. The Telugu script is also widely used for writing Sanskrit texts');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bhargava_timeslots`
+--
+
+CREATE TABLE `bhargava_timeslots` (
+  `id` int(11) NOT NULL,
+  `time` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bhargava_timeslots`
+--
+
+INSERT INTO `bhargava_timeslots` (`id`, `time`) VALUES
+(1, '06:00 - 06:24'),
+(2, '06:24 - 06:48'),
+(3, '06:48 - 07:12'),
+(4, '07:12 - 07:36'),
+(5, '07:36 - 08:00'),
+(6, '08:00 - 08:24'),
+(7, '08:24 - 08:48'),
+(8, '08:48 - 09:12'),
+(9, '09:12 - 09:36'),
+(10, '09:36 - 10:00'),
+(11, '10:00 - 10:24'),
+(12, '10:24 - 10:48'),
+(13, '10:48 - 11:12'),
+(14, '11:12 - 11:36'),
+(15, '11:36 - 12:00'),
+(16, '12:00 - 12:24'),
+(17, '12:24 - 12:48'),
+(18, '12:48 - 01:12'),
+(19, '01:12 - 01:36'),
+(20, '01:36 - 02:00'),
+(21, '02:00 - 02:24'),
+(22, '02:24 - 02:48'),
+(23, '02:48 - 03:12'),
+(24, '03:12 - 03:36'),
+(25, '03:36 - 04:00'),
+(26, '04:00 - 04:24'),
+(27, '04:24 - 04:48'),
+(28, '04:48 - 05:12'),
+(29, '05:12 - 05:36'),
+(30, '05:36 - 06:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `child_birth`
 --
 
@@ -404,14 +471,14 @@ CREATE TABLE `gowri_timeslots` (
 --
 
 INSERT INTO `gowri_timeslots` (`id`, `time`) VALUES
-(1, '06:00-07:30'),
-(2, '07:30-09:00'),
-(3, '09:00-10:30'),
-(4, '10:30-12:00'),
-(5, '12:00-01:30'),
-(6, '01:30-03:00'),
-(7, '03:00-04:30'),
-(8, '04:30-06:00');
+(1, '06:00 - 07:30'),
+(2, '07:30 - 09:00'),
+(3, '09:00 - 10:30'),
+(4, '10:30 - 12:00'),
+(5, '12:00 - 01:30'),
+(6, '01:30 - 03:00'),
+(7, '03:00 - 04:30'),
+(8, '04:30 - 06:00');
 
 -- --------------------------------------------------------
 
@@ -2213,6 +2280,18 @@ ALTER TABLE `bhagawath_geetha_submenu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `bhargava_panchangam`
+--
+ALTER TABLE `bhargava_panchangam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bhargava_timeslots`
+--
+ALTER TABLE `bhargava_timeslots`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `child_birth`
 --
 ALTER TABLE `child_birth`
@@ -2791,6 +2870,18 @@ ALTER TABLE `bhagawath_geetha_menu`
 --
 ALTER TABLE `bhagawath_geetha_submenu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `bhargava_panchangam`
+--
+ALTER TABLE `bhargava_panchangam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `bhargava_timeslots`
+--
+ALTER TABLE `bhargava_timeslots`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `child_birth`
