@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2023 at 06:19 AM
+-- Generation Time: Mar 24, 2023 at 10:01 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -51,7 +51,6 @@ CREATE TABLE `abdhikam_variant` (
   `id` int(11) NOT NULL,
   `abdhikam_id` int(11) DEFAULT NULL,
   `date_month` text DEFAULT '',
-  `thidhi` text DEFAULT '',
   `description` text DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -59,10 +58,10 @@ CREATE TABLE `abdhikam_variant` (
 -- Dumping data for table `abdhikam_variant`
 --
 
-INSERT INTO `abdhikam_variant` (`id`, `abdhikam_id`, `date_month`, `thidhi`, `description`) VALUES
-(1, 1, '23,March', 'Vaangana vanakangana', 'Reading is important for many reasons, such as learning new things'),
-(2, 1, '24,March', 'Thalaivar Thimingalam', 'Expanding the mind and boosting imagination. Many people also read for pleasure, which in turn can help the read...'),
-(3, 1, '25,March', 'This is the sample', 'Many people also read for pleasure, which in turn can help the read...');
+INSERT INTO `abdhikam_variant` (`id`, `abdhikam_id`, `date_month`, `description`) VALUES
+(1, 1, '23,March', 'Reading is important for many reasons, such as learning new things'),
+(2, 1, '24,March', 'Expanding the mind and boosting imagination. Many people also read for pleasure, which in turn can help the read...'),
+(3, 1, '25,March', 'Many people also read for pleasure, which in turn can help the read...');
 
 -- --------------------------------------------------------
 

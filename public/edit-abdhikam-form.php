@@ -42,21 +42,21 @@ if (isset($_POST['btnEdit'])) {
 
 					$abdhikam_id = $db->escapeString(($_POST['abdhikam_variant_id'][$i]));
 					$date_month = $db->escapeString(($_POST['date_month'][$i]));
-					$thidhi = $db->escapeString(($_POST['thidhi'][$i]));
+					// $thidhi = $db->escapeString(($_POST['thidhi'][$i]));
 					$description = $db->escapeString(($_POST['description'][$i]));
-					$sql = "UPDATE abdhikam_variant SET date_month='$date_month',thidhi='$thidhi',description='$description' WHERE id =$abdhikam_id";
+					$sql = "UPDATE abdhikam_variant SET date_month='$date_month',description='$description' WHERE id =$abdhikam_id";
 					$db->sql($sql);
 
 				}
 				if (
-				    isset($_POST['insert_date_month'])  && isset($_POST['insert_thidhi']) && isset($_POST['insert_description'])
+				    isset($_POST['insert_date_month']) && isset($_POST['insert_description'])
 				) {
 					for ($i = 0; $i < count($_POST['insert_date_month']); $i++) {
 						$date_month = $db->escapeString(($_POST['insert_date_month'][$i]));
-						$thidhi = $db->escapeString(($_POST['insert_thidhi'][$i]));
+						// $thidhi = $db->escapeString(($_POST['insert_thidhi'][$i]));
 						$description = $db->escapeString(($_POST['insert_description'][$i]));
 						if (!empty($thidhi) || !empty($description)) {
-							$sql = "INSERT INTO abdhikam_variant (abdhikam_id,date_month,thidhi,description) VALUES('$ID','$date_month','$thidhi','$description')";
+							$sql = "INSERT INTO abdhikam_variant (abdhikam_id,date_month,description) VALUES('$ID','$date_month','$description')";
 							$db->sql($sql);
 
 						}
@@ -153,13 +153,13 @@ if (isset($_POST['btnCancel'])) { ?>
 											<label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
 											<input type="text" class="form-control" name="date_month[]" value="<?php echo $row['date_month']; ?>" />
 										</div>
-									    <div class="col-md-4">
+									    <!-- <div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1">Thidhi</label> <i class="text-danger asterik">*</i>
 												<input type="text" class="form-control" name="thidhi[]" value="<?php echo $row['thidhi'] ?>" required/>
 											</div>
-										</div>
-										<div class="col-md-4">
+										</div> -->
+										<div class="col-md-6">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
 												<textarea type="text" rows="2" class="form-control" name="description[]" required><?php echo $row['description'] ?></textarea>
@@ -207,7 +207,7 @@ if (isset($_POST['btnCancel'])) { ?>
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-				$(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="insert_date_month[]" /></div></div>'+ '<div class="col-md-4"><div class="form-group"><label for="thidhi">Thidhi</label>' +'<input type="text" class="form-control" name="insert_thidhi[]" /></div></div>'+'<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+				$(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="insert_date_month[]" /></div></div>'+ '<div class="col-md-6"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" rows="2" class="form-control" name="insert_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display:grid;"><label>Tab</label><a class="remove text-danger" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             } else {
                 alert('You Reached the limits')
             }

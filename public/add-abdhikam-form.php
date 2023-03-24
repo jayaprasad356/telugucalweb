@@ -46,9 +46,9 @@ if (isset($_POST['btnAdd'])) {
                     for ($i = 0; $i < count($_POST['date_month']); $i++) {
                         
                         $date_month = $db->escapeString(($_POST['date_month'][$i]));
-                        $thidhi = $db->escapeString(($_POST['thidhi'][$i]));
+                        // $thidhi = $db->escapeString(($_POST['thidhi'][$i]));
                         $description = $db->escapeString(($_POST['description'][$i]));
-                        $sql = "INSERT INTO abdhikam_variant (abdhikam_id,date_month,thidhi,description) VALUES('$abdhikam_id','$date_month','$thidhi','$description')";
+                        $sql = "INSERT INTO abdhikam_variant (abdhikam_id,date_month,description) VALUES('$abdhikam_id','$date_month','$description')";
                         $db->sql($sql);
                         $abdhikam_variant_result = $db->getResult();
                     }
@@ -124,13 +124,13 @@ if (isset($_POST['btnAdd'])) {
                                         <label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
                                         <input type="text" class="form-control" name="date_month[]" required />
                                     </div>
-                                    <div class="col-md-4">
+                                    <!-- <div class="col-md-4">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Thidhi</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="thidhi[]" required />
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    </div> -->
+                                    <div class="col-md-6">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
                                             <textarea type="text" rows="2" class="form-control" name="description[]" required></textarea>
@@ -192,7 +192,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="thidhi">Thidhi</label>' +'<input type="text" class="form-control" name="thidhi[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append('<div class="row"><div class="col-md-3"><div class="form-group"><label for="date_month">Telugu Date & Month</label>' +'<input type="text" class="form-control" name="date_month[]" /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             }
             else{
                 alert('You Reached the limits')
