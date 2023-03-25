@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2023 at 10:01 AM
+-- Generation Time: Mar 25, 2023 at 07:44 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -614,6 +614,25 @@ INSERT INTO `grahalu_tab_variant` (`id`, `grahalu_tab_id`, `sub_title`, `sub_des
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `grahanam`
+--
+
+CREATE TABLE `grahanam` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `grahanam`
+--
+
+INSERT INTO `grahanam` (`id`, `title`, `description`) VALUES
+(1, 'Everyone Likes this', ' The journey had begun several days earlier, when on July 16th, the Apollo 11 launched from Earth headed into outer space');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `guninthalu`
 --
 
@@ -1102,6 +1121,25 @@ CREATE TABLE `month_panchangam` (
 
 INSERT INTO `month_panchangam` (`id`, `month`, `year`, `text1`, `pournami`, `amavasya`, `akadhashi`, `pradhosha`, `shasti`, `chavithi`, `masa_shiva_Rathri`, `sankatahara_chathurdhi`, `festivals`, `holiday`) VALUES
 (1, 'February', '2022', 'DIVAKAR', 'dwd', 'scvadfv', 'eveae', 'efeafqf', 'dgrgqg', 'b nv h', 'fbfbb', '.;oikfyjt', 'Ramjan,Holi,nxahxhi', 'Ramjan\r\nSecond Saturday');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `moudya_dhinam`
+--
+
+CREATE TABLE `moudya_dhinam` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `moudya_dhinam`
+--
+
+INSERT INTO `moudya_dhinam` (`id`, `title`, `description`) VALUES
+(1, 'This Desers', 'Sunset is the time of day when our sky meets the outer space solar winds. There are blue, pink, and purple swirls, spinning and twisting, like clouds of balloons caught in a whirlwind.');
 
 -- --------------------------------------------------------
 
@@ -2418,6 +2456,12 @@ ALTER TABLE `grahalu_tab_variant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `grahanam`
+--
+ALTER TABLE `grahanam`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `guninthalu`
 --
 ALTER TABLE `guninthalu`
@@ -2553,6 +2597,12 @@ ALTER TABLE `month_festivals`
 -- Indexes for table `month_panchangam`
 --
 ALTER TABLE `month_panchangam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `moudya_dhinam`
+--
+ALTER TABLE `moudya_dhinam`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -3022,6 +3072,12 @@ ALTER TABLE `grahalu_tab_variant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `grahanam`
+--
+ALTER TABLE `grahanam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `guninthalu`
 --
 ALTER TABLE `guninthalu`
@@ -3157,6 +3213,12 @@ ALTER TABLE `month_festivals`
 -- AUTO_INCREMENT for table `month_panchangam`
 --
 ALTER TABLE `month_panchangam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `moudya_dhinam`
+--
+ALTER TABLE `moudya_dhinam`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

@@ -268,6 +268,18 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="moudya_dhinam.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Moudya Dhinamulu </span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="grahanam.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Grahanam</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Panchangam List</span>
