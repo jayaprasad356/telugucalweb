@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2023 at 08:48 AM
+-- Generation Time: Mar 28, 2023 at 12:04 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -1652,6 +1652,26 @@ INSERT INTO `rahukalams` (`id`, `year`, `day`, `rahukalam`, `yamangandam`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rahu_yamagandam`
+--
+
+CREATE TABLE `rahu_yamagandam` (
+  `id` int(11) NOT NULL,
+  `day` text DEFAULT '',
+  `rahu` text DEFAULT '',
+  `yamagandam` text DEFAULT '\'\''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rahu_yamagandam`
+--
+
+INSERT INTO `rahu_yamagandam` (`id`, `day`, `rahu`, `yamagandam`) VALUES
+(1, 'Wednesday', 'Hello Everyone', 'Today 5:40 PM - 6:00 PM ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ramayanam`
 --
 
@@ -2778,6 +2798,12 @@ ALTER TABLE `rahukalams`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rahu_yamagandam`
+--
+ALTER TABLE `rahu_yamagandam`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ramayanam`
 --
 ALTER TABLE `ramayanam`
@@ -3404,6 +3430,12 @@ ALTER TABLE `pushpalu`
 --
 ALTER TABLE `rahukalams`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `rahu_yamagandam`
+--
+ALTER TABLE `rahu_yamagandam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ramayanam`
