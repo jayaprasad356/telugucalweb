@@ -22,7 +22,7 @@ if (empty($_POST['day'])) {
 
 $day = $db->escapeString($_POST['day']);
 
-$sql = "SELECT * FROM `rahu_yamagandam` WHERE name='$name'";
+$sql = "SELECT * FROM `rahu_yamagandam` WHERE day='$day'";
 $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
