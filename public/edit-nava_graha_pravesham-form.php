@@ -123,7 +123,7 @@ if (isset($_POST['btnCancel'])) { ?>
 						</div><!-- /.box-body -->
                        
 					<div class="box-footer">
-						<button type="submit" class="btn btn-primary" name="btnEdit">Uptitle</button>					
+						<button type="submit" class="btn btn-primary" name="btnEdit">Update</button>					
 					</div>
 				</form>
 			</div><!-- /.box -->
