@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2023 at 07:44 AM
+-- Generation Time: Mar 28, 2023 at 08:48 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -1264,6 +1264,52 @@ INSERT INTO `navagrahalu` (`id`, `title`, `description`) VALUES
 (3, 'కుజుడు', 'శక్తి, విశ్వాసం, అహంకారం\r\n'),
 (4, 'బుధుడు', 'వ్యవహార నైపుణ్యం'),
 (5, 'గురుడు', 'విద్యా బోధన\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nava_grahams`
+--
+
+CREATE TABLE `nava_grahams` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `nava_grahams`
+--
+
+INSERT INTO `nava_grahams` (`id`, `name`) VALUES
+(1, 'Rahuvu'),
+(2, 'Gurudu'),
+(3, 'Bhudhudu'),
+(4, 'Shani'),
+(5, 'Suryudu'),
+(6, 'Shukrudu'),
+(7, 'Kethuvu'),
+(8, 'Kujudu'),
+(9, 'Chandhrudu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nava_graha_pravesham`
+--
+
+CREATE TABLE `nava_graha_pravesham` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT '',
+  `title` text DEFAULT '',
+  `description` text DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `nava_graha_pravesham`
+--
+
+INSERT INTO `nava_graha_pravesham` (`id`, `name`, `title`, `description`) VALUES
+(1, 'Kethuvu', 'fxhthjt', 'thcdgtjnyfjug,i nntjtyjt nmhthsr');
 
 -- --------------------------------------------------------
 
@@ -2642,6 +2688,18 @@ ALTER TABLE `navagrahalu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nava_grahams`
+--
+ALTER TABLE `nava_grahams`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nava_graha_pravesham`
+--
+ALTER TABLE `nava_graha_pravesham`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `neti_articles`
 --
 ALTER TABLE `neti_articles`
@@ -3256,6 +3314,18 @@ ALTER TABLE `nakshatralu_tab_variant`
 --
 ALTER TABLE `navagrahalu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `nava_grahams`
+--
+ALTER TABLE `nava_grahams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `nava_graha_pravesham`
+--
+ALTER TABLE `nava_graha_pravesham`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `neti_articles`

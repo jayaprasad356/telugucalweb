@@ -280,6 +280,12 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="nava_graha_pravesham.php">
+                        <i class="fa fa-calendar"></i>
+                        <span>Nava Graha Pravesham</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Panchangam List</span>
