@@ -1,7 +1,7 @@
 <?php
 
 
-define('DOMAIN_URL', 'https://telucalweb.graymatterworks.com/'); /* chnage to your domain here - don't forget to add forward slash at the end of the URL like this "/" */
+define('DOMAIN_URL', 'https://admin.vibametelugucalendar.online/'); /* chnage to your domain here - don't forget to add forward slash at the end of the URL like this "/" */
 define('ALLOW_MODIFICATION', 1);
 define('JWT_SECRET_KEY', '12345678'); /* chnage to your secret key here set it to anything you like*/
 
@@ -13,18 +13,18 @@ class Database
      * means that they will only be available with the 
      * Database class
      */
-//define('DOMAIN_URL', 'https://admin.vibametelugucalendar.online/'); 
+//define('DOMAIN_URL', 'https://telugucalweb.graymatterworks.com/'); 
     //Live
-    // private $db_host = "localhost";  
-    // private $db_user = "u762811021_tc";  
-    // private $db_pass = "Tcal@2022";  
-    // private $db_name = "u762811021_tc";    
+    private $db_host = "localhost";  
+    private $db_user = "u762811021_tc";  
+    private $db_pass = "Tcal@2022";  
+    private $db_name = "u762811021_tc";    
 
     //Test
-    private $db_host = "localhost";  // Change as required
-    private $db_user = "u743445510_tc";  // Change as required
-    private $db_pass = "Telugucalendar@2023";  // Change as required
-    private $db_name = "u743445510_tc";    // Change as required
+    // private $db_host = "localhost";  // Change as required
+    // private $db_user = "u743445510_tc";  // Change as required
+    // private $db_pass = "Telugucalendar@2023";  // Change as required
+    // private $db_name = "u743445510_tc";    // Change as required
 
     /*
      * Extra variables that are required by other function such as boolean con variable
