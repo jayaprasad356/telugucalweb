@@ -327,19 +327,19 @@ if (isset($_POST['btnCancel'])) { ?>
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo1</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo1</label>
                                             <input type="text" class="form-control" name="hc1" value="<?php echo $res[0]['hc1']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo2</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo2</label>
                                             <input type="text" class="form-control" name="hc2" value="<?php echo $res[0]['hc2']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo3</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo3</label>
                                             <input type="text" class="form-control" name="hc3" value="<?php echo $res[0]['hc3']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo4</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo4</label>
                                             <input type="text" class="form-control" name="hc4" value="<?php echo $res[0]['hc4']; ?>">
                                     </div>
                                 </div>
@@ -348,19 +348,19 @@ if (isset($_POST['btnCancel'])) { ?>
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo5</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo5</label>
                                             <input type="text" class="form-control" name="hc5" value="<?php echo $res[0]['hc5']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo6</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo6</label>
                                             <input type="text" class="form-control" name="hc6" value="<?php echo $res[0]['hc6']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo7</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo7</label>
                                             <input type="text" class="form-control" name="hc7" value="<?php echo $res[0]['hc7']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo8</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo8</label>
                                             <input type="text" class="form-control" name="hc8" value="<?php echo $res[0]['hc8']; ?>">
                                     </div>
                                 </div>
@@ -369,19 +369,19 @@ if (isset($_POST['btnCancel'])) { ?>
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo9</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo9</label> 
                                             <input type="text" class="form-control" name="hc9" value="<?php echo $res[0]['hc9']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo10</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo10</label>
                                             <input type="text" class="form-control" name="hc10" value="<?php echo $res[0]['hc10']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo11</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo11</label>
                                             <input type="text" class="form-control" name="hc11" value="<?php echo $res[0]['hc11']; ?>">
                                     </div>
                                     <div class="col-md-3">
-                                            <label for="exampleInputEmail1">Horo12</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Horo12</label>
                                             <input type="text" class="form-control" name="hc12" value="<?php echo $res[0]['hc12']; ?>">
                                     </div>
                                 </div>
