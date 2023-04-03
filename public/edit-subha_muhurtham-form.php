@@ -52,11 +52,10 @@ if (isset($_POST['btnEdit'])) {
 					for ($i = 0; $i < count($_POST['insert_date_month']); $i++) {
 						$date_month = $db->escapeString(($_POST['insert_date_month'][$i]));
 						$description = $db->escapeString(($_POST['insert_description'][$i]));
-						// if (!empty($sub_title) || !empty($description)) {
+						if (!empty($date_month) || !empty($description)) {
 							$sql = "INSERT INTO subha_muhurtham_variant (subha_muhurtham_id,date_month,description) VALUES('$ID','$date_month','$description')";
 							$db->sql($sql);
-
-						// }
+						}
 					}
 				}
                   $error['update_subha_muhurtham'] = " <section class='content-header'><span class='label label-success'>Subha Muhurtham updated Successfully</span></section>";
@@ -161,7 +160,7 @@ if (isset($_POST['btnCancel'])) { ?>
 									    <input type="hidden" class="form-control" name="subha_muhurtham_variant_id[]" id="subha_muhurtham_variant_id" value='<?= $row['id']; ?>' />
 										<div class="col-md-4">
 											<label for="">Telugu Date & Month</label> <i class="text-danger asterik">*</i>
-											<input type="text" class="form-control" name="date_month[]" value="<?php echo $row['date_month']; ?>" />
+											<input type="text" class="form-control" name="date_month[]" value="<?php echo $row['date_month'] ?>" />
 										</div>
 										<div class="col-md-6">
 											<div class="form-group packate_div">

@@ -99,6 +99,21 @@ if (isset($_POST['delete_variant'])) {
     }
 }
 
+
+
+//subhamuhurtham variant
+if (isset($_POST['delete_variant'])) {
+    $subha_muhurtham_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM subha_muhurtham_variant WHERE id = $subha_muhurtham_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
+
 //get subcategories by category for poojalu tab
 if (isset($_POST['change_poojalu'])) {
     if ($_POST['poojalu_id'] == '') {
