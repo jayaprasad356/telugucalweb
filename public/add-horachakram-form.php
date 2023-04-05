@@ -11,7 +11,7 @@ if (isset($_POST['btnAdd'])) {
         $day= $db->escapeString($_POST['day']);
         $time= $db->escapeString($_POST['time']);
         $morning= $db->escapeString($_POST['morning']);
-        $description= $db->escapeString($_POST['description']);
+        $night= $db->escapeString($_POST['night']);
 
        
         if (empty($day)) {
