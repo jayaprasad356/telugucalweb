@@ -24,8 +24,8 @@ if (isset($_POST['delete_variant'])) {
 }
 //yearly horoscope variant
 if (isset($_POST['delete_variant'])) {
-    $yearly_id = $db->escapeString(($_POST['id']));
-    $sql = "DELETE FROM yearly_horoscope_variant WHERE id = $yearly_id";
+    $yearly_horoscope_id = $db->escapeString(($_POST['id']));
+    $sql = "DELETE FROM yearly_horoscope_variant WHERE id = $yearly_horoscope_id";
     $db->sql($sql);
     $result = $db->getResult();
     if ($result) {
