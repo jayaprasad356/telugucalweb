@@ -73,7 +73,7 @@ if (isset($_POST['all']) && $_POST['all'] == 1) {
 
 }
 if (isset($_POST['day']) && isset($_POST['gowri']) && $_POST['gowri'] == 1) {
-    $sql = "SELECT * FROM `gowri` WHERE day = '$day'";
+    $sql = "SELECT * FROM `gowri`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -102,7 +102,7 @@ if (isset($_POST['day']) && isset($_POST['gowri']) && $_POST['gowri'] == 1) {
 
 }
 if (isset($_POST['day']) && isset($_POST['hora_chakram']) && $_POST['hora_chakram'] == 1) {
-    $sql = "SELECT * FROM `hora_chakram` WHERE day = '$day'";
+    $sql = "SELECT * FROM `hora_chakram`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -131,7 +131,7 @@ if (isset($_POST['day']) && isset($_POST['hora_chakram']) && $_POST['hora_chakra
 
 }
 if (isset($_POST['day']) && isset($_POST['bhargava_panchangam']) && $_POST['bhargava_panchangam'] == 1) {
-    $sql = "SELECT * FROM `bhargava_panchangam` WHERE day = '$day'";
+    $sql = "SELECT * FROM `bhargava_panchangam`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
