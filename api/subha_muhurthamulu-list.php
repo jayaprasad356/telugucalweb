@@ -13,22 +13,8 @@ $db = new Database();
 $db->connect();
 
 
-if (empty($_POST['month'])) {
-    $response['success'] = false;
-    $response['message'] = "Month is Empty";
-    print_r(json_encode($response));
-    return false;
-}
-if (empty($_POST['year'])) {
-    $response['success'] = false;
-    $response['message'] = "Year is Empty";
-    print_r(json_encode($response));
-    return false;
-}
-$month = $db->escapeString($_POST['month']);
-$year = $db->escapeString($_POST['year']);
 
-$sql = "SELECT * FROM `subha_muhurtham` WHERE month='$month' AND year='$year'";
+$sql = "SELECT * FROM `subha_muhurtham`";
 $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
