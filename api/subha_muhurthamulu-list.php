@@ -27,13 +27,13 @@ if($num>=1){
             $temp['month'] = $row['month'];
             $temp['year'] = $row['year'];
             $temp['text1'] = $row['text1'];
-            // $temp['date_month'] = $row['date_month'];
-            // $temp['title'] = $row['title'];
-            // $temp['description'] = $row['description'];
-            $sql = "SELECT * FROM `subha_muhurtham_variant` WHERE subha_muhurtham_id = '$id'";
-            $db->sql($sql);
-            $res = $db->getResult();
-            $temp['subha_muhurtham_variant'] = $res;
+            // // $temp['date_month'] = $row['date_month'];
+            // // $temp['title'] = $row['title'];
+            // // $temp['description'] = $row['description'];
+            // $sql = "SELECT * FROM `subha_muhurtham_variant` WHERE subha_muhurtham_id = '$id'";
+            // $db->sql($sql);
+            // $res = $db->getResult();
+            // $temp['subha_muhurtham_variant'] = $res;
             $rows[] = $temp;
         }
         $response['success'] = true;
