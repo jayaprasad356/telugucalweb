@@ -442,7 +442,7 @@ if (isset($_POST['btnAdd'])) {
                                     <div class="form-group">
                                         <label for="exampleInputFile">Neti Article Image</label>
                                         <input class="form-control" type="file" accept="image/png,  image/jpeg"  name="neti_arti_image" id="neti_arti_image">
-                                        <p class="help-block"><img id="blad" src="<?php echo $res[0]['neti_arti_image']; ?>" style="max-width:50%;padding:4px;" /></p>
+                                        <p class="help-block"><img id="blan" src="<?php echo $res[0]['neti_arti_image']; ?>" style="max-width:50%;padding:4px;" /></p>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6">
