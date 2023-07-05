@@ -264,9 +264,9 @@ if (isset($_POST['btnAdd'])) {
                          return false;
                          exit();
                      }
-                     if (!empty($old_neti_arti_image)) {
-                         unlink( $old_neti_arti_image);
-                     }
+                     if (!empty($old_neti_arti_image) && file_exists($old_neti_arti_image)) {
+                        unlink($old_neti_arti_image);
+                    }
                      $upload_neti_arti_image= 'upload/images/' . $filename;
                      $sql = "UPDATE settings SET neti_arti_image='$upload_neti_arti_image' WHERE id = 1";
                      $db->sql($sql);
@@ -288,9 +288,9 @@ if (isset($_POST['btnAdd'])) {
                          return false;
                          exit();
                      }
-                     if (!empty($old_old_arti_image)) {
-                         unlink( $old_old_arti_image);
-                     }
+                     if (!empty($old_old_arti_image) && file_exists($old_old_arti_image)) {
+                        unlink($old_old_arti_image);
+                    }
                      $upload_old_arti_image= 'upload/images/' . $filename;
                      $sql = "UPDATE settings SET old_arti_image='$upload_old_arti_image' WHERE id = 1";
                      $db->sql($sql);
