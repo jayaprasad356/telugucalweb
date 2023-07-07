@@ -15,10 +15,10 @@ class Database
      */
 //define('DOMAIN_URL', 'https://telugucalweb.graymatterworks.com/'); 
     //Live
-    private $db_host = "localhost";  
-   private $db_user = "u743445510_telugucalweb";  
-    private $db_pass = "Tcal@2022";  
-    private $db_name = "u743445510_telugucalweb";    
+    //private $db_host = "localhost";  
+   //private $db_user = "u743445510_telugucalweb";  
+   // private $db_pass = "Tcal@2022";  
+   // private $db_name = "u743445510_telugucalweb";    
 
     //Test
     // private $db_host = "localhost";  // Change as required
