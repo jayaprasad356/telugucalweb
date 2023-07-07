@@ -23,7 +23,7 @@ class Database
     //Test
      private $db_host = "localhost";  // Change as required
      private $db_user = "u762811021_tc";  // Change as required
-     private $db_pass = "Telugucalendar@2023";  // Change as required
+     private $db_pass = "Tcal@2022";  // Change as required
      private $db_name = "u762811021_tc";    // Change as required
 
     /*
