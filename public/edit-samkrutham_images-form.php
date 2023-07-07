@@ -99,7 +99,7 @@ if (isset($_POST['btnCancel'])) { ?>
 				
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form id="edit_grahalu_form" method="post" enctype="multipart/form-data">
+				<form id="edit_samkrutham_form" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 					<input type="hidden" id="old_image" name="old_image"  value="<?= $res[0]['image']; ?>">
 						   <div class="row">
