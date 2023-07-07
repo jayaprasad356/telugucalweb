@@ -24,6 +24,7 @@
                                     
                                     <th  data-field="id" data-sortable="true">ID</th>
                                     <th data-field="title" data-sortable="true">Ramayanam</th>
+                                    <th data-field="image">Image</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

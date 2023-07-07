@@ -3909,6 +3909,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'mahabharatham') {
         $operate .= ' <a class="text text-danger" href="delete-mahabharatham.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
@@ -4088,6 +4095,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'ramayanam') {
         $operate .= ' <a class="text text-danger" href="delete-ramayanam.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
@@ -4267,6 +4281,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'bhagawath_geetha') {
         $operate .= ' <a class="text text-danger" href="delete-bhagawath_geetha.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
@@ -4447,6 +4468,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'bhagawatham') {
         $operate .= ' <a class="text text-danger" href="delete-bhagawatham.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
@@ -4625,6 +4653,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'bhagawatham_submenu') {
         $operate .= ' <a class="text text-danger" href="delete-telugu_sethakamulu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
@@ -4804,6 +4839,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'telugu_sethakamulu_submenu') {
         $operate .= ' <a class="text text-danger" href="delete-shivapuranam.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
