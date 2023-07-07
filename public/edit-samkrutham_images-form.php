@@ -16,12 +16,6 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['btnEdit'])) {
 
-	$title = $db->escapeString(($_POST['title']));
-	$error = array();
-
-   
-   
-   if (!empty($title))
     {
 		if ($_FILES['image']['size'] != 0 && $_FILES['image']['error'] == 0 && !empty($_FILES['image'])) {
 			//image isn't empty and update the image
@@ -38,7 +32,7 @@ if (isset($_POST['btnEdit'])) {
 				return false;
 				exit();
 			}
-			if (!empty($old_image)) {
+			if (!empty($old_image) && file_exists($old_image)) {
 				unlink($old_image);
 			}
 			$upload_image = 'upload/images/' . $filename;
