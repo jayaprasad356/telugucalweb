@@ -55,9 +55,9 @@ if (isset($_POST['btnEdit'])) {
 			// check update result
 			if ($update_result == 1) {
 				
-			$error['update_images'] = " <section class='content-header'><span class='label label-success'>Telugu Samkrutham Image updated Successfully</span></section>";
+			$error['update_samkrutham_images'] = " <section class='content-header'><span class='label label-success'>Telugu Samkrutham Image updated Successfully</span></section>";
 			} else {
-				$error['update_images'] = " <span class='label label-danger'>Failed to update</span>";
+				$error['update_samkrutham_images'] = " <span class='label label-danger'>Failed to update</span>";
 			}
 		}
 	} 
@@ -78,7 +78,7 @@ if (isset($_POST['btnCancel'])) { ?>
 <section class="content-header">
 	<h1>
 		Edit Telugu Samkrutham Image<small><a href='samkrutham_images.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Images</a></small></h1>
-	<small><?php echo isset($error['update_images']) ? $error['update_images'] : ''; ?></small>
+	<small><?php echo isset($error['update_samkrutham_images']) ? $error['update_samkrutham_images'] : ''; ?></small>
 	<ol class="breadcrumb">
 		<li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
 	</ol>
