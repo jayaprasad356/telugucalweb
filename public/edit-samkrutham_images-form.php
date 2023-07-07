@@ -117,7 +117,7 @@ if (isset($_POST['btnCancel'])) { ?>
 									<label for="exampleInputFile">Image</label><i class="text-danger asterik">*</i>
 											
 											<input type="file" accept="image/png,  image/jpeg" onchange="readURL(this);"  name="image" id="image">
-											<p class="help-block"><img id="blah" src="<?php echo $res[0]['image']; ?>" style="height:100px;max-width:100%" /></p>
+											<p class="help-block"><img id="blan" src="<?php echo $res[0]['image']; ?>" style="height:100px;max-width:100%" /></p>
 									</div>
 								</div>
                             </div>   
