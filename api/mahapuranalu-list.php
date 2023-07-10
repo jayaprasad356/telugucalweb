@@ -168,6 +168,7 @@ if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
             $rows[] = $temp;
         }
@@ -254,6 +255,7 @@ if (isset($_POST['bhagawath_geetha_submenu']) && $_POST['bhagawath_geetha_submen
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
             $rows[] = $temp;
         }
@@ -340,6 +342,7 @@ if (isset($_POST['bhagawatham_submenu']) && $_POST['bhagawatham_submenu'] == 1) 
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
             $rows[] = $temp;
         }
@@ -426,6 +429,7 @@ if (isset($_POST['telugu_sethakamulu_submenu']) && $_POST['telugu_sethakamulu_su
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
             $rows[] = $temp;
         }
@@ -484,6 +488,7 @@ if (isset($_POST['shivapuranam_menu']) && $_POST['shivapuranam_menu'] == 1) {
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
             $rows[] = $temp;
         }
