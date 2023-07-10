@@ -52,7 +52,7 @@ if (isset($_POST['mahabharatham_menu']) && $_POST['mahabharatham_menu'] == 1) {
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
-            $temp['description'] = $row['description'];
+
             $temp['image'] = DOMAIN_URL . $row['image'];
             $rows[] = $temp;
         }
@@ -82,6 +82,7 @@ if (isset($_POST['mahabharatham_submenu']) && $_POST['mahabharatham_submenu'] ==
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
             $rows[] = $temp;
         }
