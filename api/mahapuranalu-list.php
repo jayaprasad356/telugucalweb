@@ -19,9 +19,17 @@ if (isset($_POST['mahabharatham']) && $_POST['mahabharatham'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Mahabharatham Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
