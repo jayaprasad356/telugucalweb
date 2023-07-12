@@ -19,9 +19,17 @@ if (isset($_POST['mahabharatham']) && $_POST['mahabharatham'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Mahabharatham Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -39,9 +47,18 @@ if (isset($_POST['mahabharatham_menu']) && $_POST['mahabharatham_menu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Mahabharatham Menu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -60,9 +77,18 @@ if (isset($_POST['mahabharatham_submenu']) && $_POST['mahabharatham_submenu'] ==
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Mahabharatham Submenu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -80,9 +106,17 @@ if (isset($_POST['ramayanam']) && $_POST['ramayanam'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Ramayanam Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -100,9 +134,17 @@ if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Ramayanam Menu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -121,9 +163,18 @@ if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Ramayanam Submenu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -142,9 +193,17 @@ if (isset($_POST['bhagawath_geetha']) && $_POST['bhagawath_geetha'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Bhagawath Geetha Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -162,9 +221,17 @@ if (isset($_POST['bhagawath_geetha_menu']) && $_POST['bhagawath_geetha_menu'] ==
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Bhagawath Geetha Menu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -183,9 +250,18 @@ if (isset($_POST['bhagawath_geetha_submenu']) && $_POST['bhagawath_geetha_submen
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Bhagawath Geetha Submenu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -204,9 +280,17 @@ if (isset($_POST['bhagawatham']) && $_POST['bhagawatham'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Bhagawatham Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -224,9 +308,17 @@ if (isset($_POST['bhagawatham_menu']) && $_POST['bhagawatham_menu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Bhagawatham Menu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -245,9 +337,18 @@ if (isset($_POST['bhagawatham_submenu']) && $_POST['bhagawatham_submenu'] == 1) 
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Bhagawatham Submenu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -266,9 +367,17 @@ if (isset($_POST['telugu_sethakamulu']) && $_POST['telugu_sethakamulu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Telugu Sethakamulu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -286,9 +395,17 @@ if (isset($_POST['telugu_sethakamulu_menu']) && $_POST['telugu_sethakamulu_menu'
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Sethakamulu Menu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -307,9 +424,18 @@ if (isset($_POST['telugu_sethakamulu_submenu']) && $_POST['telugu_sethakamulu_su
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Sethakamulu Submenu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -329,9 +455,17 @@ if (isset($_POST['shivapuranam']) && $_POST['shivapuranam'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Shivapuranam Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
@@ -349,9 +483,18 @@ if (isset($_POST['shivapuranam_menu']) && $_POST['shivapuranam_menu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
+        $rows = array();
+        $temp = array();
+        foreach ($res as $row) {
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+            $temp['image'] = DOMAIN_URL . $row['image'];
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Shivapuranam Menu Listed Successfullty";
-        $response['data'] = $res;
+        $response['data'] = $rows;
         print_r(json_encode($response));
 
     }
