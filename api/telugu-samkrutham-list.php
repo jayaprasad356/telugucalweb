@@ -241,7 +241,6 @@ if (isset($_POST['kolathalu']) && $_POST['kolathalu'] == 1) {
     }
 }
     
-    ?>
 if (isset($_POST['pakshamulu']) && $_POST['pakshamulu'] == 1) {
     $sql = "SELECT * FROM `pakshamulu`";
     $db->sql($sql);
