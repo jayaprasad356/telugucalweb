@@ -3392,10 +3392,8 @@ if (isset($_GET['table']) && $_GET['table'] == 'kolathalu') {
         $operate .= ' <a class="text text-danger" href="delete-kolathalu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
-        $tempRow['subtitle1'] = $row['subtitle1'];
-        $tempRow['subdescription1'] = $row['subdescription1'];
-        $tempRow['subtitle2'] = $row['subtitle2'];
-        $tempRow['subdescription2'] = $row['subdescription2'];
+        $tempRow['sub_title'] = $row['sub_title'];
+        $tempRow['sub_description'] = $row['sub_description'];
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
