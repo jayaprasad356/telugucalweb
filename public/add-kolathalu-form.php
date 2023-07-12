@@ -8,11 +8,6 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
     $title= $db->escapeString($_POST['title']);
     $error = array();
-
-    
-        if (empty($title)) {
-            $error['title'] = " <span class='label label-danger'>Required!</span>";
-        }
        
          if ( !empty($title))
         {
@@ -88,7 +83,7 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Sub_Title</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="sub_title[]" required />
                                         </div>
                                     </div>
@@ -152,7 +147,7 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="title[]" required /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="description[]" required></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub_Title</label>' +'<input type="text" class="form-control" name="sub_title[]" required /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="sub_description">Sub_Description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]" required></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
             }
             else{
                 alert('You Reached the limits')
