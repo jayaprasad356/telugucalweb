@@ -3376,17 +3376,16 @@ if (isset($_GET['table']) && $_GET['table'] == 'kolathalu') {
     }
     
     $sql = "SELECT kolathalu.id, kolathalu.title, kv.sub_title, kv.sub_description
-            FROM kolathalu
-            LEFT JOIN (
-                SELECT kolathalu_id, sub_title, sub_description
-                FROM kolathalu_variant
-                GROUP BY kolathalu_id
-                ORDER BY id ASC
-                LIMIT 1
-            ) kv ON kolathalu.id = kv.kolathalu_id
-            " . $where . " 
-            ORDER BY " . $sort . " " . $order . " 
-            LIMIT " . $offset . ", " . $limit;
+    FROM kolathalu
+    LEFT JOIN kolathalu_variant kv ON kolathalu.id = kv.kolathalu_id
+    WHERE kv.id = (
+        SELECT MIN(id)
+        FROM kolathalu_variant
+        WHERE kolathalu_id = kv.kolathalu_id
+    )
+    " . $where . " 
+    ORDER BY " . $sort . " " . $order . " 
+    LIMIT " . $offset . ", " . $limit;
     
     $db->sql($sql);
     $res = $db->getResult();
