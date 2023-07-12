@@ -3,60 +3,63 @@ include_once('includes/functions.php');
 $function = new functions;
 include_once('includes/custom-functions.php');
 $fn = new custom_functions;
-
 ?>
 <?php
 if (isset($_POST['btnAdd'])) {
-        $title= $db->escapeString($_POST['title']);
-        $subtitle1= $db->escapeString($_POST['subtitle1']);
-        $subdescription1= $db->escapeString($_POST['subdescription1']);
-        $subtitle2= $db->escapeString($_POST['subtitle2']);
-        $subdescription2= $db->escapeString($_POST['subdescription2']);
+    $title= $db->escapeString($_POST['title']);
+    $error = array();
 
+    
         if (empty($title)) {
             $error['title'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($subtitle1)) {
-            $error['subtitle1'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subdescription1)) {
-            $error['subdescription1'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subtitle2)) {
-            $error['subtitle2'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subdescription2)) {
-            $error['subdescription2'] = " <span class='label label-danger'>Required!</span>";
-        }
-
-       if (!empty($title) &&  !empty($subtitle1) && !empty($subdescription1) &&  !empty($subtitle2) && !empty($subdescription2)) {
-         
-            $sql_query = "INSERT INTO kolathalu (title,subtitle1,subdescription1,subtitle2,subdescription2)VALUES('$title','$subtitle1','$subdescription1','$subtitle2','$subdescription2')";
-            $db->sql($sql_query);
-            $result = $db->getResult();
-            if (!empty($result)) {
-                $result = 0;
-            } else {
-                $result = 1;
-            }
-
-            if ($result == 1) {
+       
+         if ( !empty($title))
+        {
+                $sql_query = "INSERT INTO kolathalu (title)VALUES('$title')";
+                $db->sql($sql_query);
+                $result = $db->getResult();
+                if (!empty($result)) {
+                    $result = 0;
+                } else {
+                    $result = 1;
+                }
+                if ($result == 1) {
+                    $sql = "SELECT id FROM kolathalu ORDER BY id DESC LIMIT 1";
+                    $db->sql($sql);
+                    $res = $db->getResult();
+                    $kolathalu_id = $res[0]['id'];
+                    
+                    for ($i = 0; $i < count($_POST['sub_title']); $i++) {
+                        
+                        $sub_title = $db->escapeString(($_POST['sub_title'][$i]));
+                        $sub_description = $db->escapeString(($_POST['sub_description'][$i]));
+                        $sql = "INSERT INTO kolathalu_variant (kolathalu_id,sub_title,sub_description) VALUES('$kolathalu_id','$sub_title','$sub_description')";
+                        $db->sql($sql);
+                        $kolathalu_variant_result = $db->getResult();
+                    }
+                    if (!empty($kolathalu_variant_result)) {
+                        $kolathalu_variant_result = 0;
+                    } else {
+                        $kolathalu_variant_result = 1;
+                    }
+                    
+                    $error['add_kolathalu'] = "<section class='content-header'>
+                                                    <span class='label label-success'> kolathalu Added Successfully</span> </section>";
+                } else {
+                    $error['add_kolathalu'] = " <span class='label label-danger'>Failed</span>";
+                }
+                }
                 
-                $error['add_kolathalu'] = "<section class='content-header'>
-                                                <span class='label label-success'>Kolathalu Added Successfully</span> </section>";
-            } else {
-                $error['add_kolathalu'] = " <span class='label label-danger'>Failed</span>";
             }
-            }
-        }
 ?>
 <section class="content-header">
-    <h1>Add Kolathalu<small><a href='kolathalu.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Kolathalu</a></small></h1>
+    <h1>Add kolathalu <small><a href='kolathalu.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to kolathalu</a></small></h1>
 
     <?php echo isset($error['add_kolathalu']) ? $error['add_kolathalu'] : ''; ?>
-    <ol class="breadcrumb">
+    <!--<ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
-    </ol>
+    </ol>-->    
     <hr />
 </section>
 <section class="content">
@@ -76,41 +79,36 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                      <div class="col-md-6">
                                             <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
-                                            <input type="text" class="form-control" name="title" id = "title" required>
+                                            <input type="text" class="form-control" name="title" required>
                                     </div>
                                 </div>
                             </div>
-                             <br>
-                            <div class="row">
-                                <div class="form-group">
-                                   <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Subtitle 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['subtitle1']) ? $error['subtitle1'] : ''; ?>
-                                            <input type="text" class="form-control" name="subtitle1" id = "subtitle1" required>
-                                    </div>
-                                    <div class="col-md-8">
-                                            <label for="exampleInputEmail1">Sub Description 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription1']) ? $error['subdescription1'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="subdescription1" required></textarea>
-                                    </div>
-                                 </div>
-                            </div>
                             <br>
-                            <div class="row">
-                                <div class="form-group">
-                                   <div class="col-md-4">
-                                            <label for="exampleInputEmail1">Subtitle 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['subtitle2']) ? $error['subtitle2'] : ''; ?>
-                                            <input type="text" class="form-control" name="subtitle2" id = "subtitle2" required>
+                            <div id="packate_div"  >
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="sub_title[]" required />
+                                        </div>
                                     </div>
-                                    <div class="col-md-8">
-                                            <label for="exampleInputEmail1">Sub Description 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription2']) ? $error['subdescription2'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="subdescription2" required></textarea>
+                                    <div class="col-md-4">
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Sub_Description</label> <i class="text-danger asterik">*</i>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
+                                        </div>
                                     </div>
-                                 </div>
+                                
+                                    <div class="col-md-1">
+                                        <label>Tab</label>
+                                        <a class="add_packate_variation" title="Add variation of kolathalu" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                    </div>
+                                    <div id="variations">
+                                    </div>
+                                </div>
                             </div>
-
-         
                     </div>
-                  
-                    <!-- /.box-body -->
+                   <!-- /.box-body -->
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary" name="btnAdd">Add</button>
@@ -118,7 +116,6 @@ if (isset($_POST['btnAdd'])) {
                     </div>
 
                 </form>
-
             </div><!-- /.box -->
         </div>
     </div>
@@ -127,24 +124,46 @@ if (isset($_POST['btnAdd'])) {
 <div class="separator"> </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script>
-    $('#add_kolathalu_form').validate({
+    $('#add_kolathalu').validate({
 
         ignore: [],
         debug: false,
         rules: {
-            title: "required",
-            subdescription1: "required",
-            subdescription2: "required",
-            subtitle1: "required",
-            subtitle2: "required",
-
-
+            date: "required",
+            sunrise: "required",
+            sunset: "required",
         }
     });
     $('#btnClear').on('click', function() {
         for (instance in CKEDITOR.instances) {
             CKEDITOR.instances[instance].setData('');
         }
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var max_fields = 8;
+        var wrapper = $("#packate_div");
+        var add_button = $(".add_packate_variation");
+
+        var x = 1;
+        $(add_button).click(function (e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                x++;
+                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="title">Title</label>' +'<input type="text" class="form-control" name="title[]" required /></div></div>' + '<div class="col-md-4"><div class="form-group"><label for="description">Description</label>'+'<textarea type="text" row="2" class="form-control" name="description[]" required></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+            }
+            else{
+                alert('You Reached the limits')
+            }
+        });
+
+        $(wrapper).on("click", ".remove", function (e) {
+            e.preventDefault();
+            $(this).closest('.row').remove();
+            x--;
+        })
     });
 </script>
 

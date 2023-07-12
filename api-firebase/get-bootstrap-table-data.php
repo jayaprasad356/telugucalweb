@@ -3375,37 +3375,28 @@ if (isset($_GET['table']) && $_GET['table'] == 'kolathalu') {
         $total = $row['total'];
     }
     
-    $sql = "SELECT kolathalu.id, kolathalu.title, kolathalu_variant.sub_title, kolathalu_variant.sub_description
-            FROM kolathalu
-            LEFT JOIN kolathalu_variant ON kolathalu.id = kolathalu_variant.kolathalu_id
-            " . $where . " 
-            ORDER BY " . $sort . " " . $order . " 
-            LIMIT " . $offset . ", " . $limit;
-    
+    $sql = "SELECT * FROM kolathalu " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
     $db->sql($sql);
     $res = $db->getResult();
-    
+
     $bulkData = array();
     $bulkData['total'] = $total;
     
     $rows = array();
+    $tempRow = array();
+
     foreach ($res as $row) {
         $operate = '<a href="edit-kolathalu.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-kolathalu.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         
-        $tempRow = array(
-            'id' => $row['id'],
-            'title' => $row['title'],
-            'sub_title' => $row['sub_title'],
-            'sub_description' => $row['sub_description'],
-            'operate' => $operate
-        );
-        
+        $tempRow['id'] = $row['id'];
+        $tempRow['title'] = $row['title'];
+    
+        $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
-    
     $bulkData['rows'] = $rows;
-    echo json_encode($bulkData);
+    print_r(json_encode($bulkData));
 }
 
 if (isset($_GET['table']) && $_GET['table'] == 'pakshamulu') {
