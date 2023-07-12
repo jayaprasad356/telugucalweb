@@ -115,13 +115,13 @@ if (isset($_POST['btnCancel'])) {
 									    <input type="hidden" class="form-control" name="kolathalu_variant_id[]" id="kolathalu_variant_id" value='<?= $row['id']; ?>' />
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
+												<label for="exampleInputEmail1">Sub_Title</label> <i class="text-danger asterik">*</i>
 												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" required/>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1"> Sub Description</label> <i class="text-danger asterik">*</i>
+												<label for="exampleInputEmail1"> Sub_Description</label> <i class="text-danger asterik">*</i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description[]" required><?php echo $row['sub_description'] ?></textarea>
 											</div>
 										</div>
