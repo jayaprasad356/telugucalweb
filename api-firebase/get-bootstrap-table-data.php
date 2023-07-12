@@ -3375,9 +3375,15 @@ if (isset($_GET['table']) && $_GET['table'] == 'kolathalu') {
         $total = $row['total'];
     }
     
-    $sql = "SELECT kolathalu.id, kolathalu.title, kolathalu_variant.sub_title, kolathalu_variant.sub_description
+    $sql = "SELECT kolathalu.id, kolathalu.title, kv.sub_title, kv.sub_description
             FROM kolathalu
-            LEFT JOIN kolathalu_variant ON kolathalu.id = kolathalu_variant.kolathalu_id
+            LEFT JOIN (
+                SELECT kolathalu_id, sub_title, sub_description
+                FROM kolathalu_variant
+                GROUP BY kolathalu_id
+                ORDER BY id ASC
+                LIMIT 1
+            ) kv ON kolathalu.id = kv.kolathalu_id
             " . $where . " 
             ORDER BY " . $sort . " " . $order . " 
             LIMIT " . $offset . ", " . $limit;
@@ -3407,6 +3413,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'kolathalu') {
     $bulkData['rows'] = $rows;
     echo json_encode($bulkData);
 }
+
 
 if (isset($_GET['table']) && $_GET['table'] == 'pakshamulu') {
 
