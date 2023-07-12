@@ -15,16 +15,16 @@ class Database
      */
 //define('DOMAIN_URL', 'https://telugucalweb.graymatterworks.com/'); 
     //Live
-    //private $db_host = "localhost";  
-   //private $db_user = "u743445510_telugucalweb";  
-   // private $db_pass = "Tcal@2022";  
-   // private $db_name = "u743445510_telugucalweb";    
+    private $db_host = "localhost";  
+   private $db_user = "u743445510_telugucalweb";  
+    private $db_pass = "Tcal@2022";  
+    private $db_name = "u743445510_telugucalweb";    
 
     //Test
-     private $db_host = "localhost";  // Change as required
-     private $db_user = "u762811021_tc";  // Change as required
-     private $db_pass = "Tcal@2022";  // Change as required
-     private $db_name = "u762811021_tc";    // Change as required
+    // private $db_host = "localhost";  // Change as required
+    // private $db_user = "u762811021_tc";  // Change as required
+    // private $db_pass = "Tcal@2022";  // Change as required
+    // private $db_name = "u762811021_tc";    // Change as required
 
     /*
      * Extra variables that are required by other function such as boolean con variable

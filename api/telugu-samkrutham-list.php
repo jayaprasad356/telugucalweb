@@ -219,8 +219,13 @@ if (isset($_POST['kolathalu']) && $_POST['kolathalu'] == 1) {
         foreach ($res as $row){
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
-            $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
+            $sql = "SELECT * FROM `kolathalu_variant` WHERE kolathalu_id = '$id'";
+            $db->sql($sql);
+            $res = $db->getResult();
+            $temp['kolathalu_variant'] = $res;
+            $rows[] = $temp;
+
         }
         $response['success'] = true;
         $response['message'] = "Kolathalu Listed Successfullty";
