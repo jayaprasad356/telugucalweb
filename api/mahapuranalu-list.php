@@ -72,7 +72,7 @@ if (isset($_POST['mahabharatham_menu']) && $_POST['mahabharatham_menu'] == 1) {
 if (isset($_POST['mahabharatham_submenu']) && $_POST['mahabharatham_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `mahabharatham_submenu` WHERE mahabharatham_id = $id AND 	mahabharatham_menu_id = $menu_id";
+    $sql = "SELECT ms.id,ms.title,ms.description,mm.title AS menu_title FROM `mahabharatham_submenu` ms,`mahabharatham_menu` mm WHERE ms.mahabharatham_menu_id = mm.id AND ms.mahabharatham_id = $id AND ms.mahabharatham_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -81,6 +81,7 @@ if (isset($_POST['mahabharatham_submenu']) && $_POST['mahabharatham_submenu'] ==
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
