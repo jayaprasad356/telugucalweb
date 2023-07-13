@@ -216,25 +216,31 @@ if (isset($_POST['kolathalu']) && $_POST['kolathalu'] == 1) {
     $res = $db->getResult();
     $num = $db->numRows($res);
     if($num>=1){
-        foreach ($res as $row){
-            $temp['id'] = $row['id'];
-            $temp['title'] = $row['title'];
-            $temp['description'] = $row['description'];
-            $temp['image'] = DOMAIN_URL . $row['image'];
-        }
-        $response['success'] = true;
-        $response['message'] = "Kolathalu Listed Successfullty";
-        $response['data'] = $res;
-        print_r(json_encode($response));
-
+            $rows = array();
+            $temp = array();
+            foreach ($res as $row) {
+                $id = $row['id'];
+                $temp['id'] = $row['id'];
+                $temp['title'] = $row['title'];
+     
+                $sql = "SELECT * FROM `kolathalu_variant` WHERE kolathalu_id = '$id'";
+                $db->sql($sql);
+                $res = $db->getResult();
+                $temp['kolathalu_variant'] = $res;
+                $rows[] = $temp;
+            }
+            $response['success'] = true;
+            $response['message'] = "kolathalu Listed Successfully";
+            $response['data'] = $rows;
+            print_r(json_encode($response));
     }
     else{
         $response['success'] = false;
-        $response['message'] = "Not Found";
+        $response['message'] = "Data Not Found";
         print_r(json_encode($response));
     }
-
 }
+    
 if (isset($_POST['pakshamulu']) && $_POST['pakshamulu'] == 1) {
     $sql = "SELECT * FROM `pakshamulu`";
     $db->sql($sql);
