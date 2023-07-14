@@ -247,7 +247,8 @@ if (isset($_POST['bhagawath_geetha_menu']) && $_POST['bhagawath_geetha_menu'] ==
 if (isset($_POST['bhagawath_geetha_submenu']) && $_POST['bhagawath_geetha_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `bhagawath_geetha_submenu` WHERE bhagawath_geetha_id = '$id' AND bhagawath_geetha_menu_id = '$menu_id'";
+    $sql = "SELECT bs.id,bs.title,bs.description,bm.title AS menu_title FROM `bhagawath_geetha_submenu` bs,`bhagawath_geetha_menu` bm WHERE bs.bhagawath_geetha_menu_id = bm.id AND bs.bhagawath_geetha_id = $id AND bs.bhagawath_geetha_menu_id = $menu_id";
+
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
