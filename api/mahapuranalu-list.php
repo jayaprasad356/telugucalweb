@@ -257,6 +257,7 @@ if (isset($_POST['bhagawath_geetha_submenu']) && $_POST['bhagawath_geetha_submen
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
