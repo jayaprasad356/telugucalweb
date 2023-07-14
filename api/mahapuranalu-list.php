@@ -345,6 +345,7 @@ if (isset($_POST['bhagawatham_submenu']) && $_POST['bhagawatham_submenu'] == 1) 
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
@@ -432,6 +433,7 @@ if (isset($_POST['telugu_sethakamulu_submenu']) && $_POST['telugu_sethakamulu_su
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
