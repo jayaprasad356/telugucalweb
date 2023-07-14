@@ -159,7 +159,7 @@ if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
 if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `ramayanam_submenu` WHERE ramayanam_id = '$id' AND ramayanam_menu_id = '$menu_id'";
+    $sql = "SELECT rs.id,rs.title,rs.description,rm.title AS menu_title FROM `ramayanam_submenu` rs,`ramayanam_menu` rm WHERE rs.ramayanam_menu_id = rm.id AND rs.ramayanam_id = $id AND rs.ramayanam_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -168,6 +168,7 @@ if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
