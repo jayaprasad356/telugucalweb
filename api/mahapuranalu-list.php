@@ -336,7 +336,7 @@ if (isset($_POST['bhagawatham_menu']) && $_POST['bhagawatham_menu'] == 1) {
 if (isset($_POST['bhagawatham_submenu']) && $_POST['bhagawatham_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `bhagawatham_submenu` WHERE bhagawatham_id = '$id' AND bhagawatham_menu_id = '$menu_id'";
+    $sql = "SELECT bs.id,bs.title,bs.description,bm.title AS menu_title FROM `bhagawatham_submenu` bs,`bhagawatham_menu` bm WHERE bs.bhagawatham_menu_id = bm.id AND bs.bhagawatham_id = $id AND bs.bhagawatham_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -423,7 +423,7 @@ if (isset($_POST['telugu_sethakamulu_menu']) && $_POST['telugu_sethakamulu_menu'
 if (isset($_POST['telugu_sethakamulu_submenu']) && $_POST['telugu_sethakamulu_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `telugu_sethakamulu_submenu` WHERE telugu_sethakamulu_id = '$id' AND telugu_sethakamulu_menu_id = '$menu_id'";
+    $sql = "SELECT ts.id,ts.title,ts.description,ts.title AS menu_title FROM `telugu_sethakamulu_submenu` ts,`telugu_sethakamulu_menu` tm WHERE ts.telugu_sethakamulu_menu_id = tm.id AND ts.telugu_sethakamulu_id = $id AND ts.telugu_sethakamulu_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
