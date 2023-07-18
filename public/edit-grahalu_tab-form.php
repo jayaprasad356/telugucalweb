@@ -170,13 +170,13 @@ if (isset($_POST['btnCancel'])) { ?>
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1">sub_title</label> <i class="text-danger asterik">*</i>
-												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" required/>
+												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" />
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub_description</label> <i class="text-danger asterik">*</i>
-												<textarea type="text" rows="2" class="form-control" name="sub_description[]" required><?php echo $row['sub_description'] ?></textarea>
+												<textarea type="text" rows="2" class="form-control" name="sub_description[]"><?php echo $row['sub_description'] ?></textarea>
 											</div>
 										</div>
 
