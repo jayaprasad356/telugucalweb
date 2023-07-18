@@ -72,7 +72,7 @@ if (isset($_POST['mahabharatham_menu']) && $_POST['mahabharatham_menu'] == 1) {
 if (isset($_POST['mahabharatham_submenu']) && $_POST['mahabharatham_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `mahabharatham_submenu` WHERE mahabharatham_id = $id AND 	mahabharatham_menu_id = $menu_id";
+    $sql = "SELECT ms.id,ms.title,ms.description,mm.title AS menu_title FROM `mahabharatham_submenu` ms,`mahabharatham_menu` mm WHERE ms.mahabharatham_menu_id = mm.id AND ms.mahabharatham_id = $id AND ms.mahabharatham_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -81,6 +81,7 @@ if (isset($_POST['mahabharatham_submenu']) && $_POST['mahabharatham_submenu'] ==
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
@@ -158,7 +159,7 @@ if (isset($_POST['ramayanam_menu']) && $_POST['ramayanam_menu'] == 1) {
 if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `ramayanam_submenu` WHERE ramayanam_id = '$id' AND ramayanam_menu_id = '$menu_id'";
+    $sql = "SELECT rs.id,rs.title,rs.description,rm.title AS menu_title FROM `ramayanam_submenu` rs,`ramayanam_menu` rm WHERE rs.ramayanam_menu_id = rm.id AND rs.ramayanam_id = $id AND rs.ramayanam_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -167,6 +168,7 @@ if (isset($_POST['ramayanam_submenu']) && $_POST['ramayanam_submenu'] == 1) {
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
@@ -245,7 +247,8 @@ if (isset($_POST['bhagawath_geetha_menu']) && $_POST['bhagawath_geetha_menu'] ==
 if (isset($_POST['bhagawath_geetha_submenu']) && $_POST['bhagawath_geetha_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `bhagawath_geetha_submenu` WHERE bhagawath_geetha_id = '$id' AND bhagawath_geetha_menu_id = '$menu_id'";
+    $sql = "SELECT bs.id,bs.title,bs.description,bm.title AS menu_title FROM `bhagawath_geetha_submenu` bs,`bhagawath_geetha_menu` bm WHERE bs.bhagawath_geetha_menu_id = bm.id AND bs.bhagawath_geetha_id = $id AND bs.bhagawath_geetha_menu_id = $menu_id";
+
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -254,6 +257,7 @@ if (isset($_POST['bhagawath_geetha_submenu']) && $_POST['bhagawath_geetha_submen
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
@@ -332,7 +336,7 @@ if (isset($_POST['bhagawatham_menu']) && $_POST['bhagawatham_menu'] == 1) {
 if (isset($_POST['bhagawatham_submenu']) && $_POST['bhagawatham_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `bhagawatham_submenu` WHERE bhagawatham_id = '$id' AND bhagawatham_menu_id = '$menu_id'";
+    $sql = "SELECT bs.id,bs.title,bs.description,bm.title AS menu_title FROM `bhagawatham_submenu` bs,`bhagawatham_menu` bm WHERE bs.bhagawatham_menu_id = bm.id AND bs.bhagawatham_id = $id AND bs.bhagawatham_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -341,6 +345,7 @@ if (isset($_POST['bhagawatham_submenu']) && $_POST['bhagawatham_submenu'] == 1) 
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
@@ -419,7 +424,7 @@ if (isset($_POST['telugu_sethakamulu_menu']) && $_POST['telugu_sethakamulu_menu'
 if (isset($_POST['telugu_sethakamulu_submenu']) && $_POST['telugu_sethakamulu_submenu'] == 1) {
     $id = $db->escapeString($_POST['id']);
     $menu_id = $db->escapeString($_POST['menu_id']);
-    $sql = "SELECT * FROM `telugu_sethakamulu_submenu` WHERE telugu_sethakamulu_id = '$id' AND telugu_sethakamulu_menu_id = '$menu_id'";
+    $sql = "SELECT ts.id,ts.title,ts.description,ts.title AS menu_title FROM `telugu_sethakamulu_submenu` ts,`telugu_sethakamulu_menu` tm WHERE ts.telugu_sethakamulu_menu_id = tm.id AND ts.telugu_sethakamulu_id = $id AND ts.telugu_sethakamulu_menu_id = $menu_id";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
@@ -428,6 +433,7 @@ if (isset($_POST['telugu_sethakamulu_submenu']) && $_POST['telugu_sethakamulu_su
         $temp = array();
         foreach ($res as $row) {
             $temp['id'] = $row['id'];
+            $temp['menu_title'] = $row['menu_title'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
             $temp['image'] = DOMAIN_URL . $row['image'];
