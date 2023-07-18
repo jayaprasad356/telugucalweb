@@ -28,7 +28,7 @@ if (isset($_POST['btnAdd'])) {
         }
      
        
-       if (!empty($poojalu_id) && !empty($subcategory_id)&& !empty($title)&& !empty($description)) {
+       if (!empty($poojalu_id) && !empty($title)&& !empty($description)) {
          
                 $sql_query = "INSERT INTO poojalu_tab (poojalu_id,subcategory_id,title,description)VALUES('$poojalu_id','$subcategory_id','$title','$description')";
                 $db->sql($sql_query);
@@ -105,7 +105,7 @@ if (isset($_POST['btnAdd'])) {
                                     </div>
                                     <div class="col-md-6">
                                         <label for="">Sub Category</label> <i class="text-danger asterik">*</i>
-                                        <select id='subcategory_id' name="subcategory_id" class='form-control' required>
+                                        <select id='subcategory_id' name="subcategory_id" class='form-control' >
                                             <option value="">--select subcategory--</option>
                                         </select>
                                     </div>
