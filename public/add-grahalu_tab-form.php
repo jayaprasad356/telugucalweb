@@ -130,13 +130,13 @@ if (isset($_POST['btnAdd'])) {
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik"></i>
-                                            <input type="text" class="form-control" name="sub_title[]" required />
+                                            <input type="text" class="form-control" name="sub_title[]" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Sub description</label> <i class="text-danger asterik"></i>
-                                            <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description[]"></textarea>
                                         </div>
                                     </div>
                                 
