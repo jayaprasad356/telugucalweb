@@ -35,7 +35,7 @@ if (isset($_POST['btnEdit'])) {
 
    
    
-   if (!empty($grahalu_id) && !empty($subcategory_id) && !empty($title) && !empty($description)) {
+   if (!empty($grahalu_id) && !empty($title) && !empty($description)) {
 				$sql_query = "UPDATE grahalu_tab SET grahalu_id='$grahalu_id',subcategory_id='$subcategory_id',title='$title',description='$description' WHERE id =$ID";
 				$db->sql($sql_query);
 				$res = $db->getResult();
@@ -132,17 +132,19 @@ if (isset($_POST['btnCancel'])) { ?>
                                             ?>
                                           </select>
                                     </div>
-									<div class='col-md-6'>
-                                           <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
-										   <select id='subcategory_id' name="subcategory_id" class='form-control' required>
+									<div class="col-md-6">
+                                      <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
+                                        <select id='subcategory_id' name="subcategory_id" class='form-control'>
+                                          <option value="">--select subcategory--</option>
+                                          <?php
+                                          foreach ($subcategory as $row) {
+                                           $selected = ($row['id'] == $res[0]['subcategory_id']) ? "selected" : "";
+                                            echo "<option value='{$row['id']}' $selected>{$row['name']}</option>";
+                                            }
+                                             ?>
+                                       </select>
+                                      </div>
 
-                                                <?php foreach ($subcategory as $subcategories) { ?>
-                                                    <option value="<?= $subcategories['id']; ?>" <?= $res[0]['subcategory_id'] == $subcategories['id'] ? 'selected' : '' ?>><?= $subcategories['name']; ?></option>
-                                                <?php }
-                                                 ?>
-                                                </select>
-
-									</div>
 								</div>
 						   </div>
 						   <br>
