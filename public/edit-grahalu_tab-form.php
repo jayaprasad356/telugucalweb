@@ -133,17 +133,17 @@ if (isset($_POST['btnCancel'])) { ?>
                                           </select>
                                     </div>
 									<div class="col-md-6">
-                                      <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
-                                        <select id='subcategory_id' name="subcategory_id" class='form-control'>
-                                          <option value="">--select subcategory--</option>
-                                          <?php
-                                          foreach ($subcategory as $row) {
-                                           $selected = ($row['id'] == $res[0]['subcategory_id']) ? "selected" : "";
-                                            echo "<option value='{$row['id']}' $selected>{$row['name']}</option>";
-                                            }
-                                             ?>
-                                       </select>
-                                      </div>
+    <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
+    <select id='subcategory_id' name="subcategory_id" class='form-control'>
+        <option value="">--select subcategory--</option>
+        <option value="0" <?= ($res[0]['subcategory_id'] == 0) ? "selected" : ""; ?>>--No Sub Category is added--</option>
+        <?php
+        foreach ($subcategory as $row) {?>
+            <option value="<?php echo $row['id']; ?>" <?= ($row['id'] == $res[0]['subcategory_id']) ? "selected" : ""; ?>><?php echo $row['name']; ?></option>
+        <?php }
+        ?>
+    </select>
+</div>
 
 								</div>
 						   </div>
