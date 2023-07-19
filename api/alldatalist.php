@@ -187,15 +187,12 @@ foreach ($res as $row) {
 }
 $response['grahalu_sub_menu_list'] = $rows;
 unset($temp);
-$sql = "SELECT *, gtv.id AS id FROM `grahalu_tab` gt, `grahalu_tab_variant` gtv WHERE gtv.grahalu_tab_id = gt.id";
+$sql = "SELECT *,gtv.id AS id FROM `grahalu_tab` gt,`grahalu_tab_variant` gtv WHERE gtv.grahalu_tab_id = gt.id";
 $db->sql($sql);
 $res = $db->getResult();
 $rows = array();
-
+$temp = array();
 foreach ($res as $row) {
-    // Reset the $temp array for each iteration
-    $temp = array();
-
     $temp['id'] = $row['id'];
     $temp['grahalu_id'] = $row['grahalu_id'];
     $temp['subcategory_id'] = $row['subcategory_id'];
@@ -203,12 +200,8 @@ foreach ($res as $row) {
     $temp['description'] = $row['description'];
     $temp['sub_title'] = $row['sub_title'];
     $temp['sub_description'] = $row['sub_description'];
-
     $rows[] = $temp;
 }
-
-// Now $rows should contain all the data with each row having its own unique data.
-
 $response['grahalu_tab_list'] = $rows;
 unset($temp);
 $sql = "SELECT * FROM `nakshatralu`";
