@@ -35,7 +35,7 @@ if (isset($_POST['btnEdit'])) {
 
    
    
-   if (!empty($grahalu_id) && !empty($subcategory_id) && !empty($title) && !empty($description)) {
+   if (!empty($grahalu_id) && !empty($title) && !empty($description)) {
 				$sql_query = "UPDATE grahalu_tab SET grahalu_id='$grahalu_id',subcategory_id='$subcategory_id',title='$title',description='$description' WHERE id =$ID";
 				$db->sql($sql_query);
 				$res = $db->getResult();
@@ -132,17 +132,19 @@ if (isset($_POST['btnCancel'])) { ?>
                                             ?>
                                           </select>
                                     </div>
-									<div class='col-md-6'>
-                                           <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
-										   <select id='subcategory_id' name="subcategory_id" class='form-control' required>
+									<div class="col-md-6">
+    <label for="">Select Sub-Category</label> <i class="text-danger asterik">*</i>
+    <select id='subcategory_id' name="subcategory_id" class='form-control'>
+        <option value="">--select subcategory--</option>
+        <option value="0" <?= ($res[0]['subcategory_id'] == 0) ? "selected" : ""; ?>>--No Sub Category is added--</option>
+        <?php
+        foreach ($subcategory as $row) {?>
+            <option value="<?php echo $row['id']; ?>" <?= ($row['id'] == $res[0]['subcategory_id']) ? "selected" : ""; ?>><?php echo $row['name']; ?></option>
+        <?php }
+        ?>
+    </select>
+</div>
 
-                                                <?php foreach ($subcategory as $subcategories) { ?>
-                                                    <option value="<?= $subcategories['id']; ?>" <?= $res[0]['subcategory_id'] == $subcategories['id'] ? 'selected' : '' ?>><?= $subcategories['name']; ?></option>
-                                                <?php }
-                                                 ?>
-                                                </select>
-
-									</div>
 								</div>
 						   </div>
 						   <br>
@@ -170,13 +172,13 @@ if (isset($_POST['btnCancel'])) { ?>
 									    <div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1">sub_title</label> <i class="text-danger asterik">*</i>
-												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" required/>
+												<input type="text" class="form-control" name="sub_title[]" value="<?php echo $row['sub_title'] ?>" />
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub_description</label> <i class="text-danger asterik">*</i>
-												<textarea type="text" rows="2" class="form-control" name="sub_description[]" required><?php echo $row['sub_description'] ?></textarea>
+												<textarea type="text" rows="2" class="form-control" name="sub_description[]"><?php echo $row['sub_description'] ?></textarea>
 											</div>
 										</div>
 

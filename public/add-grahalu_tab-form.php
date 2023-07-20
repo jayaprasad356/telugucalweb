@@ -28,7 +28,7 @@ if (isset($_POST['btnAdd'])) {
         }
      
        
-       if (!empty($grahalu_id) && !empty($subcategory_id)&& !empty($title)&& !empty($description)) {
+       if (!empty($grahalu_id) && !empty($title)&& !empty($description)) {
          
                 $sql_query = "INSERT INTO grahalu_tab (grahalu_id,subcategory_id,title,description)VALUES('$grahalu_id','$subcategory_id','$title','$description')";
                 $db->sql($sql_query);
@@ -90,7 +90,7 @@ if (isset($_POST['btnAdd'])) {
                            <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-5">
-                                        <label for="">Grahalu</label> <i class="text-danger asterik">*</i>
+                                        <label for="">Grahalu</label> <i class="text-danger asterik"></i>
                                         <select id='grahalu_id' name="grahalu_id" class='form-control' required>
                                             <option value="">--select--</option>
                                                 <?php
@@ -104,8 +104,8 @@ if (isset($_POST['btnAdd'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="">Sub Category</label> <i class="text-danger asterik">*</i>
-                                        <select id='subcategory_id' name="subcategory_id" class='form-control' required>
+                                        <label for="">Sub Category</label> <i class="text-danger asterik"></i>
+                                        <select id='subcategory_id' name="subcategory_id" class='form-control' >
                                             <option value="">--select subcategory--</option>
                                         </select>
                                     </div>
@@ -115,11 +115,11 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        <label for="">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
+                                        <label for="">Title</label> <i class="text-danger asterik"></i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
                                         <input type="text" class="form-control" name="title" required />
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
+                                        <label for="">Description</label> <i class="text-danger asterik"></i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                         <textarea type="text" rows="2" class="form-control" name="description" required></textarea>
                                     </div>
                                 </div>
@@ -129,14 +129,14 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="sub_title[]" required />
+                                            <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik"></i>
+                                            <input type="text" class="form-control" name="sub_title[]" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub description</label> <i class="text-danger asterik">*</i>
-                                            <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
+                                            <label for="exampleInputEmail1">Sub description</label> <i class="text-danger asterik"></i>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description[]"></textarea>
                                         </div>
                                     </div>
                                 
