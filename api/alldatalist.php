@@ -187,7 +187,7 @@ foreach ($res as $row) {
 }
 $response['grahalu_sub_menu_list'] = $rows;
 unset($temp);
-$sql = "SELECT *,gt.id AS id FROM `grahalu_tab` gt,`grahalu_tab_variant` gtv WHERE gtv.grahalu_tab_id = gt.id";
+$sql = "SELECT *,gtv.id AS id FROM `grahalu_tab` gt,`grahalu_tab_variant` gtv WHERE gtv.grahalu_tab_id = gt.id";
 $db->sql($sql);
 $res = $db->getResult();
 $rows = array();
