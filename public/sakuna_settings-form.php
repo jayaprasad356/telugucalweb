@@ -199,7 +199,6 @@ if (isset($_POST['btnAdd'])) {
                     <input type="hidden" id="old_balli_image" name="old_balli_image"  value="<?= $res[0]['balli_image']; ?>">
                     <input type="hidden" id="old_kaki_image" name="old_kaki_image"  value="<?= $res[0]['kaki_image']; ?>">
                     <input type="hidden" id="old_kukuta_image" name="old_kukuta_image"  value="<?= $res[0]['kukuta_image']; ?>">
-                    <input type="hidden" id="old_sasthram_image" name="old_sasthram_image"  value="<?= $res[0]['sasthram_image']; ?>">
                     <input type="hidden" id="old_pilli_image" name="old_pilli_image"  value="<?= $res[0]['pilli_image']; ?>">
 
                         <h3 class="text-center">Sakuna Sasthram Banners:</h3>
@@ -236,14 +235,6 @@ if (isset($_POST['btnAdd'])) {
                                        <label for="exampleInputFile">Kukuta Sasthram Banner Image</label>
                                         <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="kukuta_image" id="kukuta_image">
                                         <p class="help-block"><img id="blan" src="<?php echo $res[0]['kukuta_image']; ?>" style="max-width:50%;padding:4px;" /></p>
-                                
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="form-group">
-                                       <label for="exampleInputFile">Kukuta Sasthram Menu Banner Image</label>
-                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="sasthram_image" id="sasthram_image">
-                                        <p class="help-block"><img id="blan" src="<?php echo $res[0]['sasthram_image']; ?>" style="max-width:50%;padding:4px;" /></p>
                                 
                                     </div>
                                 </div>
