@@ -177,18 +177,6 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="bulk-panchangam-upload.php">
-                        <i class="fa fa-calendar"></i>
-                        <span>Bulk Upload Panchangam</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="bulk-panchangam-tab-upload.php">
-                        <i class="fa fa-calendar"></i>
-                        <span>Upload Panchangam Tab</span>
-                    </a>
-                </li>
-                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar"></i>
                         <span>Festivals</span>
@@ -342,17 +330,6 @@ $fn = new custom_functions;
                         <li><a href="grahalu.php"><i class="fa fa-angle-right"></i>Grahalu</a></li>
                         <li><a href="grahalu_submenu.php"><i class="fa fa-angle-right"></i>Grahalu Submenu</a></li>
                         <li><a href="grahalu_tab.php"><i class="fa fa-angle-right"></i>Grahalu Tab</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-bullseye"></i>
-                        <span>Nakshatralu</span>
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="nakshatralu.php"><i class="fa fa-angle-right"></i>Nakshatralu</a></li>
-                        <li><a href="nakshatralu_tab.php"><i class="fa fa-angle-right"></i>Nakshatralu Tab</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

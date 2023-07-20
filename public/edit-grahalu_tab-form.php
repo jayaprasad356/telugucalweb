@@ -13,13 +13,13 @@ if (isset($_GET['id'])) {
     return false;
     exit(0);
 }
-$category_data = array();
-$sql = "select id,name from grahalu order by id asc";
-$db->sql($sql);
-$category_data = $db->getResult();
-$sql = "select * from grahalu_submenu";
-$db->sql($sql);
-$subcategory = $db->getResult();
+	$category_data = array();
+	$sql = "select id,name from grahalu order by id asc";
+	$db->sql($sql);
+	$category_data = $db->getResult();
+	$sql = "select * from grahalu_submenu";
+	$db->sql($sql);
+	$subcategory = $db->getResult();
 
 if (isset($_POST['btnEdit'])) {
 
