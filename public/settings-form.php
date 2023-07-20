@@ -381,60 +381,6 @@ if (isset($_POST['btnAdd'])) {
                                 </div>
                         </div>
                         <br>
-                        <h3 class="text-center">Panchangam Banners:</h3>
-                        <br>
-                        <div class="row">
-                                <div class="form-group col-md-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">Gowri Image</label>
-                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"  name="gowri_image" id="gowri_image">
-                                        <p class="help-block"><img id="blad" src="<?php echo $res[0]['gowri_image']; ?>" style="max-width:50%;padding:4px;" /></p>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="form-group">
-                                       <label for="exampleInputFile">Chakram Image</label>
-                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="chakram_image" id="chakram_image">
-                                        <p class="help-block"><img id="blan" src="<?php echo $res[0]['chakram_image']; ?>" style="max-width:50%;padding:4px;" /></p>
-                                
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="form-group">
-                                       <label for="exampleInputFile">Thidhi Image</label>
-                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="thidhi_image" id="thidhi_image">
-                                        <p class="help-block"><img id="blan" src="<?php echo $res[0]['thidhi_image']; ?>" style="max-width:50%;padding:4px;" /></p>
-                                
-                                    </div>
-                                </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                                <div class="form-group col-md-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">Karanam Image</label>
-                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"  name="karanam_image" id="karanam_image">
-                                        <p class="help-block"><img id="blad" src="<?php echo $res[0]['karanam_image']; ?>" style="max-width:50%;padding:4px;" /></p>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="form-group">
-                                       <label for="exampleInputFile">Rahukalam Image</label>
-                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="rahukalam_image" id="rahukalam_image">
-                                        <p class="help-block"><img id="blan" src="<?php echo $res[0]['rahukalam_image']; ?>" style="max-width:50%;padding:4px;" /></p>
-                                
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="form-group">
-                                       <label for="exampleInputFile">Yogam Image</label>
-                                        <input class="form-control" type="file" accept="image/png,  image/jpeg"   name="yogam_image" id="yogam_image">
-                                        <p class="help-block"><img id="blan" src="<?php echo $res[0]['yogam_image']; ?>" style="max-width:50%;padding:4px;" /></p>
-                                
-                                    </div>
-                                </div>
-                        </div>
-                        <br>
                         <h3 class="text-center">Article Images</h3>
                         <br>
                         <div class="row">
