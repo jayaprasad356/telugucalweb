@@ -482,8 +482,8 @@ $fn = new custom_functions;
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="neti_articles.php"><i class="fa fa-angle-right"></i>Neti Articles</a></li>
-                        <li><a href="old_articles.php"><i class="fa fa-angle-right"></i>Old Articles</a></li>
+                        <li><a href="neti_articles.php"><i class="fa fa-angle-right"></i>Temples</a></li>
+                        <li><a href="old_articles.php"><i class="fa fa-angle-right"></i>Festivals info</a></li>
 
                     </ul>
                 </li>
