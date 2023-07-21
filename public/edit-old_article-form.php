@@ -82,7 +82,7 @@ if (isset($_POST['btnCancel'])) { ?>
 <?php } ?>
 <section class="content-header">
 	<h1>
-		Edit Festivals Info<small><a href='old_articles.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Old Articles</a></small></h1>
+		Edit Festivals Info<small><a href='old_articles.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Festivals Info</a></small></h1>
 	<small><?php echo isset($error['update_old_article']) ? $error['update_old_article'] : ''; ?></small>
 	<ol class="breadcrumb">
 		<li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
