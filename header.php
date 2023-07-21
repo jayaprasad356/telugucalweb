@@ -278,20 +278,7 @@ $fn = new custom_functions;
                         <i class="fa fa-calendar"></i>
                         <span>Rahu Yamagandam</span>
                     </a>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-calendar"></i>
-                        <span>Muhurtham</span>
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                          <li><a href="muhurtham.php"><i class="fa fa-angle-right"></i>Muhurtham</a></li>
-                          <li><a href="muhurtham-tab.php"><i class="fa fa-angle-right"></i>Muhurtham Tab</a></li>
-
-                    </ul>
-                </li>
-               
+                </li> 
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bullseye"></i>
