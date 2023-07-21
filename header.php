@@ -165,6 +165,13 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Main Panchangam Menu</span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                <li class="treeview">
                     <a href="panchangam.php">
                         <i class="fa fa-calendar"></i>
                         <span>Panchangam</span>
@@ -279,6 +286,8 @@ $fn = new custom_functions;
                         <span>Rahu Yamagandam</span>
                     </a>
                 </li> 
+                </ul>
+                </li>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bullseye"></i>
