@@ -2,7 +2,7 @@
 <section class="content-header">
     <h1>Temples /<small><a href="home.php"><i class="fa fa-home"></i> Home</a></small></h1>
     <ol class="breadcrumb">
-        <a class="btn btn-block btn-default" href="add-neti_article.php"><i class="fa fa-plus-square"></i> Add Neti Article </a>
+        <a class="btn btn-block btn-default" href="add-neti_article.php"><i class="fa fa-plus-square"></i> Add Temple </a>
     </ol>
 </section>
 
