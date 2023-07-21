@@ -465,7 +465,7 @@ $fn = new custom_functions;
                 <li class="treeview">
                     <a href="#">
                     <i class="fa fa-newspaper-o"></i>
-                        <span>Bhakthi Articles/ News</span>
+                        <span> Temples & Festivals info</span>
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">

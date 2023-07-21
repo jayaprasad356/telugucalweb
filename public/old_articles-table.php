@@ -1,6 +1,6 @@
 
 <section class="content-header">
-    <h1>Old Articles /<small><a href="home.php"><i class="fa fa-home"></i> Home</a></small></h1>
+    <h1> Festivals Info /<small><a href="home.php"><i class="fa fa-home"></i> Home</a></small></h1>
     <ol class="breadcrumb">
         <a class="btn btn-block btn-default" href="add-old_article.php"><i class="fa fa-plus-square"></i> Add Old Article </a>
     </ol>
