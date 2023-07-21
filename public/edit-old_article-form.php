@@ -60,7 +60,7 @@ if (isset($_POST['btnEdit'])) {
 			// check update result
 			if ($update_result == 1) {
 				
-			$error['update_old_article'] = " <section class='content-header'><span class='label label-success'>Old Articles updated Successfully</span></section>";
+			$error['update_old_article'] = " <section class='content-header'><span class='label label-success'>Festivals Info updated Successfully</span></section>";
 			} else {
 				$error['update_old_article'] = " <span class='label label-danger'>Failed to update</span>";
 			}
@@ -82,7 +82,7 @@ if (isset($_POST['btnCancel'])) { ?>
 <?php } ?>
 <section class="content-header">
 	<h1>
-		Edit Old Article<small><a href='old_articles.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Old Articles</a></small></h1>
+		Edit Festivals Info<small><a href='old_articles.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Old Articles</a></small></h1>
 	<small><?php echo isset($error['update_old_article']) ? $error['update_old_article'] : ''; ?></small>
 	<ol class="breadcrumb">
 		<li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>

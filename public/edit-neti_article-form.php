@@ -60,7 +60,7 @@ if (isset($_POST['btnEdit'])) {
 			// check update result
 			if ($update_result == 1) {
 				
-			$error['update_neti_article'] = " <section class='content-header'><span class='label label-success'>Neti Articles updated Successfully</span></section>";
+			$error['update_neti_article'] = " <section class='content-header'><span class='label label-success'>Temple updated Successfully</span></section>";
 			} else {
 				$error['update_neti_article'] = " <span class='label label-danger'>Failed to update</span>";
 			}
@@ -82,7 +82,7 @@ if (isset($_POST['btnCancel'])) { ?>
 <?php } ?>
 <section class="content-header">
 	<h1>
-		Edit Neti Article<small><a href='neti_articles.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Neti Articles</a></small></h1>
+		Edit Temple<small><a href='neti_articles.php'><i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Neti Articles</a></small></h1>
 	<small><?php echo isset($error['update_neti_article']) ? $error['update_neti_article'] : ''; ?></small>
 	<ol class="breadcrumb">
 		<li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>

@@ -58,7 +58,7 @@ if (isset($_POST['btnAdd'])) {
             if ($result == 1) {
                 
                 $error['add_old_article'] = "<section class='content-header'>
-                                                <span class='label label-success'>Old Article Added Successfully</span> </section>";
+                                                <span class='label label-success'>Festivals Info Added Successfully</span> </section>";
             } else {
                 $error['add_old_article'] = " <span class='label label-danger'>Failed</span>";
             }
@@ -66,7 +66,7 @@ if (isset($_POST['btnAdd'])) {
         }
 ?>
 <section class="content-header">
-    <h1>Add Old Article <small><a href='old_articles.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Old Articles</a></small></h1>
+    <h1>Add Festivals Info <small><a href='old_articles.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Old Articles</a></small></h1>
 
     <?php echo isset($error['add_old_article']) ? $error['add_old_article'] : ''; ?>
     <ol class="breadcrumb">

@@ -58,7 +58,7 @@ if (isset($_POST['btnAdd'])) {
             if ($result == 1) {
                 
                 $error['add_neti_article'] = "<section class='content-header'>
-                                                <span class='label label-success'>Neti Article Added Successfully</span> </section>";
+                                                <span class='label label-success'>Temple Added Successfully</span> </section>";
             } else {
                 $error['add_neti_article'] = " <span class='label label-danger'>Failed</span>";
             }
@@ -66,7 +66,7 @@ if (isset($_POST['btnAdd'])) {
         }
 ?>
 <section class="content-header">
-    <h1>Add Neti Article <small><a href='neti_articles.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Neti Articles</a></small></h1>
+    <h1>Add Temple <small><a href='neti_articles.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Neti Articles</a></small></h1>
 
     <?php echo isset($error['add_neti_article']) ? $error['add_neti_article'] : ''; ?>
     <ol class="breadcrumb">
