@@ -36,8 +36,7 @@ if (isset($_POST['btnAdd'])) {
 
        
        
-       
-       if (!empty($title) && !empty($lyrics)) {
+        if (!empty($title) && !empty($lyrics)) {
 
             $result = $fn->validate_image($_FILES["god_image"]);
             // create random image file name
@@ -46,21 +45,22 @@ if (isset($_POST['btnAdd'])) {
             $menu_image = $function->get_random_string($string, 4) . "-" . date("Y-m-d") . "." . $extension;
 
             // upload new image
-            $upload = move_uploaded_file($_FILES['god_image']['tmp_name'], 'upload/other_music/' . $menu_image);
+            $upload = move_uploaded_file($_FILES['god_image']['tmp_name'], 'upload/audio/' . $menu_image);
 
             // insert new data to menu table
-            $upload_image = 'upload/other_music/' . $menu_image;
+            $upload_image = 'upload/audio/' . $menu_image;
 
 
-            $type = $_FILES["other_music"]["type"];
-            $size = $_FILES["other_music"]["size"];
+            $type = $_FILES["audio"]["type"];
+            $size = $_FILES["audio"]["size"];
             $menu_file = $function->get_random_string($string, 4) . "-" . date("Y-m-d") . "." . $extension2;
-            if(move_uploaded_file($_FILES['other_music']['tmp_name'], 'upload/mp3/'.$menu_file) ) {
+            if(move_uploaded_file($_FILES['audio']['tmp_name'], 'upload/mp3/'.$menu_file) ) {
                 $upload_file = 'upload/mp3/' . $menu_file;
                 $result1=1;
             }
          
-            $sql_query = "INSERT INTO other_music (title,image,lyrics,other_music)VALUES('$title','$upload_image','$lyrics','$upload_file')";
+         
+            $sql_query = "INSERT INTO other_music (title,image,lyrics,audio)VALUES('$title','$upload_image','$lyrics','$upload_file')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {

@@ -12,16 +12,16 @@ $db->connect();
 	}
 	$data = array();
 
-	$sql_query = "SELECT *  FROM audios WHERE id =" . $ID;
+	$sql_query = "SELECT *  FROM other_music WHERE id =" . $ID;
 	$db->sql($sql_query);
 	$res = $db->getResult();
 	$target_path = "".$res[0]['audio'];
 		if(unlink($target_path)){	
 
-			$sql_query = "DELETE  FROM audios WHERE id =" . $ID;
+			$sql_query = "DELETE  FROM other_music WHERE id =" . $ID;
 			$db->sql($sql_query);
 			$res = $db->getResult();
-			header("location:audio.php");
+			header("location:other_music.php");
 
 		}
 ?>
