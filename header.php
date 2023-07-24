@@ -326,6 +326,12 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="other_music.php">
+                        <i class="fa fa-music"></i>
+                        <span>Other Music</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="video.php">
                         <i class="fa fa-play"></i>
                         <span>Video</span>
