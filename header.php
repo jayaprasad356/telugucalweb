@@ -513,6 +513,12 @@ $fn = new custom_functions;
                     </a>
                 </li>   
                 <li class="treeview">
+                    <a href="app-update.php">
+                        <i class="fa fa-gear"></i>
+                        <span>App Update</span>
+                    </a>
+                </li> 
+                <li class="treeview">
                     <a href="sakuna_settings.php">
                         <i class="fa fa-image"></i>
                         <span>Sakuna Sasthram Images</span>
