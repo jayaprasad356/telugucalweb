@@ -283,6 +283,8 @@ foreach ($res as $row) {
     $temp['id'] = $row['id'];
     $temp['title'] = $row['title'];
     $temp['image'] = DOMAIN_URL . $row['image'];
+    $temp['lyrics'] = $row['lyrics'];
+    $temp['audio'] = DOMAIN_URL . $row['audio'];
     $rows[] = $temp;
 }
 $response['other_music'] = $rows;
