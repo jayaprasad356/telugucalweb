@@ -274,6 +274,19 @@ foreach ($res as $row) {
 }
 $response['audio_list'] = $rows;
 unset($temp);
+$sql = "SELECT * FROM `other_music`";
+$db->sql($sql);
+$res = $db->getResult();
+$rows = array();
+$temp = array();
+foreach ($res as $row) {
+    $temp['id'] = $row['id'];
+    $temp['title'] = $row['title'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
+    $rows[] = $temp;
+}
+$response['other_music'] = $rows;
+unset($temp);
 
 $sql = "SELECT * FROM `settings` WHERE id=1";
 $db->sql($sql);
