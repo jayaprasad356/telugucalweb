@@ -39,40 +39,35 @@ if (isset($_POST['sakunalu']) && $_POST['sakunalu'] == 1) {
 
 }
 
+
 if (isset($_POST['balli_sasthram']) && $_POST['balli_sasthram'] == 1) {
     $sql = "SELECT * FROM `balli_sasthram`";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
     if ($num >= 1) {
+        $rows = array();
+        foreach ($res as $row) {
+            $id = $row['id'];
+            $temp['id'] = $row['id'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
+
+            $sql_variant = "SELECT * FROM `balli_sasthram_variant` WHERE balli_sasthram_id = '$id'";
+            $db->sql($sql_variant);
+            $res_variant = $db->getResult();
+            $temp['balli_sasthram_variant'] = $res_variant;
+            $rows[] = $temp;
+        }
         $response['success'] = true;
         $response['message'] = "Balli Sasthram List Successfully";
-        $response['data'] = $res;
-        print_r(json_encode($response));
+        $response['data'] = $rows;
     } else {
         $response['success'] = false;
-        $response['message'] = "Not Found";
-        print_r(json_encode($response));
+        $response['message'] = "Data Not Found";
     }
+    print_r(json_encode($response));
 }
-
-$sql = "SELECT * FROM `balli_sasthram_variant`";
-$db->sql($sql);
-$res = $db->getResult();
-$rows = array();
-$temp = array();
-foreach ($res as $row) {
-    $temp['id'] = $row['id'];
-    $temp['balli_sasthram_id'] = $row['balli_sasthram_id'];
-    $temp['sub_title1'] = $row['sub_title1'];
-    $temp['sub_title2'] = $row['sub_title2'];
-    $temp['sub_description1'] = $row['sub_description1'];
-    $temp['sub_description2'] = $row['sub_description2'];
-    $rows[] = $temp;
-}
-$response['balli_sasthram_variant_list'] = $rows;
-unset($temp);
-
 
 if (isset($_POST['kaki_sasthram']) && $_POST['kaki_sasthram'] == 1) {
     $sql = "SELECT * FROM `kaki_sasthram`";
