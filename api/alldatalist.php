@@ -75,37 +75,6 @@ foreach ($res as $row) {
     $temp['description'] = $row['description'];
     $rows[] = $temp;
 }
-$sql = "SELECT * FROM `balli_sasthram`";
-$db->sql($sql);
-$res = $db->getResult();
-$rows = array();
-$temp = array();
-foreach ($res as $row) {
-    $temp['id'] = $row['id'];
-    $temp['title']= $row['title'];
-    $temp['description']= $row['description'];
-  
-    $rows[] = $temp;
-}
-$response['success'] = true;
-$response['message'] = "balli_sasthram Listed Successfullty";
-$response['balli_sasthram_list'] = $rows;
-
-unset($temp);
-$sql = "SELECT * FROM `balli_sasthram_variant`";
-$db->sql($sql);
-$res = $db->getResult();
-$rows = array();
-$temp = array();
-foreach ($res as $row) {
-    $temp['id'] = $row['id'];
-    $temp['balli_sasthram_id'] = $row['balli_sasthram_id'];
-    $temp['sub_title1'] = $row['sub_title1'];
-    $temp['sub_title2'] = $row['sub_title2'];
-    $temp['sub_description1'] = $row['sub_description1'];
-    $temp['sub_description2'] = $row['sub_description2'];
-    $rows[] = $temp;
-}
 $response['panchangam_tab_list'] = $rows;
 unset($temp);
 $sql = "SELECT * FROM `festivals`";
