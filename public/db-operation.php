@@ -22,6 +22,7 @@ if (isset($_POST['delete_variant'])) {
         echo 0;
     }
 }
+
 //yearly horoscope variant
 if (isset($_POST['delete_variant'])) {
     $yearly_horoscope_id = $db->escapeString(($_POST['id']));
@@ -72,6 +73,19 @@ if (isset($_POST['delete_variant'])) {
         echo 0;
     }
 }
+if (isset($_POST['delete_variant'])) {
+    $balli_sasthram_id = $db->escapeString($_POST['id']);
+    $sql = "DELETE FROM balli_sasthram_variant WHERE id = $balli_sasthram_id";
+    $db->sql($sql);
+    $result = $db->getResult();
+    if ($result) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+    exit; // Don't include any other output in the response, just return 1 or 0.
+}
+
 
 //Nakshatralu tab variant
 if (isset($_POST['delete_variant'])) {

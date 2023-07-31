@@ -2719,12 +2719,6 @@ if (isset($_GET['table']) && $_GET['table'] == 'ballisasthram') {
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
         $tempRow['description'] = $row['description'];
-        $tempRow['subtitle1'] = $row['subtitle1'];
-        $tempRow['subdescription1a'] = $row['subdescription1a'];
-        $tempRow['subdescription1b'] = $row['subdescription1b'];
-        $tempRow['subtitle2'] = $row['subtitle2'];
-        $tempRow['subdescription2a'] = $row['subdescription2a'];
-        $tempRow['subdescription2b'] = $row['subdescription2b'];
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }

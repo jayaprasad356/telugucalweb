@@ -9,12 +9,7 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
         $title= $db->escapeString($_POST['title']);
         $description= $db->escapeString($_POST['description']);
-        $subtitle1= $db->escapeString($_POST['subtitle1']);
-        $subdescription1a= $db->escapeString($_POST['subdescription1a']);
-        $subdescription1b= $db->escapeString($_POST['subdescription1b']);
-        $subtitle2= $db->escapeString($_POST['subtitle2']);
-        $subdescription2a= $db->escapeString($_POST['subdescription2a']);
-        $subdescription2b= $db->escapeString($_POST['subdescription2b']);
+      
 
 
         if (empty($title)) {
@@ -23,28 +18,9 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($subtitle1)) {
-            $error['subtitle1'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subdescription1a)) {
-            $error['subdescription1a'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subdescription1b)) {
-            $error['subdescription1b'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subtitle2)) {
-            $error['subtitle2'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subdescription2a)) {
-            $error['subdescription2a'] = " <span class='label label-danger'>Required!</span>";
-        }
-        if (empty($subdescription2b)) {
-            $error['subdescription2b'] = " <span class='label label-danger'>Required!</span>";
-        }
-
-       if (!empty($title) && !empty($description) && !empty($subtitle1) && !empty($subdescription1a) && !empty($subdescription1b) && !empty($subtitle2) && !empty($subdescription2a) && !empty($subdescription2b) ) {
+        if (!empty($title)&& !empty($description)) {
          
-            $sql_query = "INSERT INTO balli_sasthram (title,description,subtitle1,subdescription1a,subdescription1b,subtitle2,subdescription2a,subdescription2b)VALUES('$title','$description','$subtitle1','$subdescription1a','$subdescription1b','$subtitle2','$subdescription2a','$subdescription2b')";
+            $sql_query = "INSERT INTO balli_sasthram (title,description)VALUES('$title','$description')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -52,16 +28,33 @@ if (isset($_POST['btnAdd'])) {
             } else {
                 $result = 1;
             }
-
             if ($result == 1) {
+                $sql = "SELECT id FROM balli_sasthram ORDER BY id DESC LIMIT 1";
+                $db->sql($sql);
+                $res = $db->getResult();
+                $balli_sasthram_id = $res[0]['id'];
+                for ($i = 0; $i < count($_POST['sub_title1']); $i++) {
+
+                    $sub_title1 = $db->escapeString(($_POST['sub_title1'][$i]));
+                    $sub_description1 = $db->escapeString(($_POST['sub_description1'][$i]));
+                    $sub_description2 = $db->escapeString($_POST['sub_description2'][$i]);
+                    $sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_title1,sub_description1,sub_description2) VALUES('$balli_sasthram_id','$sub_title1','$sub_description1','$sub_description2')";
+                    $db->sql($sql);
+                    $tab_result = $db->getResult();
+                }
+                if (!empty($tab_result)) {
+                    $tab_result = 0;
+                } else {
+                    $tab_result = 1;
+                }
                 
                 $error['add_ballisasthram'] = "<section class='content-header'>
                                                 <span class='label label-success'>Balli Sasthram Added Successfully</span> </section>";
             } else {
                 $error['add_ballisasthram'] = " <span class='label label-danger'>Failed</span>";
             }
-            }
-        }
+    }
+    }
 ?>
 <section class="content-header">
     <h1>Add Balli Sasthram<small><a href='ballisasthram.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Balli Sasthram</a></small></h1>
@@ -98,51 +91,36 @@ if (isset($_POST['btnAdd'])) {
                                  </div>
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="form-group">
-                                     <div class="col-md-6">
-                                            <label for="exampleInputEmail1">Sub Title 1</label> <i class="text-danger asterik">*</i><?php echo isset($error['subtitle1']) ? $error['subtitle1'] : ''; ?>
-                                            <input type="text" class="form-control" name="subtitle1" id = "subtitle1" required>
-                                    </div>
-                                 </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                            <label for="exampleInputEmail1">Sub Description 1A</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription1a']) ? $error['subdescription1a'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="subdescription1a" required></textarea>
+                            <div id="packate_div"  >
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Sub Title1</label> <i class="text-danger asterik"></i>
+                                            <input type="text" class="form-control" name="sub_title1[]" />
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                            <label for="exampleInputEmail1">Sub Description 1B</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription1b']) ? $error['subdescription1b'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="subdescription1b" required></textarea>
-                                    </div>
-                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="form-group">
-                                     <div class="col-md-6">
-                                            <label for="exampleInputEmail1">Sub Title 2</label> <i class="text-danger asterik">*</i><?php echo isset($error['subtitle2']) ? $error['subtitle2'] : ''; ?>
-                                            <input type="text" class="form-control" name="subtitle2" id = "subtitle2" required>
-                                    </div>
-                                 </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                            <label for="exampleInputEmail1">Sub Description 2A</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription2a']) ? $error['subdescription2a'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="subdescription2a" required></textarea>
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Sub description1</label> <i class="text-danger asterik"></i>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                            <label for="exampleInputEmail1">Sub Description 2B</label> <i class="text-danger asterik">*</i><?php echo isset($error['subdescription2b']) ? $error['subdescription2b'] : ''; ?>
-                                            <textarea  type="text" rows="3" class="form-control" name="subdescription2b" required></textarea>
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Sub description2</label> <i class="text-danger asterik"></i>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description2[]"></textarea>
+                                        </div>
                                     </div>
-                                 </div>
+                                    <div class="col-md-1">
+                                        <label>Tab</label>
+                                        <a class="add_packate_variation" title="Add variation" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                    </div>
+                                    <div id="variations">
+                                    </div>
+                                </div>
                             </div>
-                    </div>
-                  
+         
+                    </div>  
                     <!-- /.box-body -->
 
                     <div class="box-footer">
@@ -181,6 +159,70 @@ if (isset($_POST['btnAdd'])) {
     function refreshPage(){
     window.location.reload();
 } 
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var max_fields = 8;
+        var wrapper = $("#packate_div");
+        var add_button = $(".add_packate_variation");
+
+        var x = 1;
+        $(add_button).click(function (e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                x++;
+                $(wrapper).append('<div class="row">' +
+    '<div class="col-md-4">' +
+    '<div class="form-group">' +
+    '<label for="sub_title">Sub Title1</label>' +
+    '<input type="text" class="form-control" name="sub_title1[]" />' +
+    '</div>' +
+    '</div>' +
+    '<div class="col-md-6">' +
+    '<div class="form-group">' +
+    '<label for="sub_description1">Sub description1</label>' +
+    '<textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>' +
+    '</div>' +
+    '</div>' +
+    '<div class="col-md-6">' + // Adding a new column for sub category
+    '<div class="form-group">' +
+    '<label for="sub_description2">Sub description2</label>' +
+    '<input type="text" class="form-control" name="sub_description2[]" />' +
+    '</div>' +
+    '</div>' +
+    '<div class="col-md-1" style="display: grid;">' +
+    '<label>Tab</label>' +
+    '<a class="remove" style="cursor:pointer;color:white;">' +
+    '<button class="btn btn-danger">Remove</button>' +
+    '</a>' +
+    '</div>' +
+    '</div>');
+
+            }
+            else{
+                alert('You Reached the limits')
+            }
+        });
+
+        $(wrapper).on("click", ".remove", function (e) {
+            e.preventDefault();
+            $(this).closest('.row').remove();
+            x--;
+        })
+    });
+</script>
+<script>
+     $(document).on('change', '#grahalu_id', function() {
+        $.ajax({
+            url: "public/db-operation.php",
+            data: "balli_sasthram_id=" + $('#balli_sasthram_id').val() + "&change_balli_sasthram=1",
+            method: "POST",
+            success: function(data) {
+                $('#subcategory_id').html("<option value=''>---Select Subcategory---</option>" + data);
+            }
+        });
+    });
 </script>
 
 <?php $db->disconnect(); ?>

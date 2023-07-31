@@ -25,12 +25,6 @@
                                     <th  data-field="id" data-sortable="true">ID</th>
                                     <th data-field="title" data-sortable="true">Title</th>
                                     <th data-field="description" data-sortable="true">Description</th>
-                                    <th data-field="subtitle1" data-sortable="true">Sub Title 1</th>
-                                    <th data-field="subdescription1a" data-sortable="true">Sub Description 1A</th>
-                                    <th data-field="subdescription1b" data-sortable="true">Sub Description 1B</th>
-                                    <th data-field="subtitle2" data-sortable="true">Sub Title 2</th>
-                                    <th data-field="subdescription2a" data-sortable="true">Sub Description 2A</th>
-                                    <th data-field="subdescription2b" data-sortable="true">Sub Description 2B</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>
