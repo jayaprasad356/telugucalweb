@@ -196,16 +196,16 @@ if (isset($_POST['btnCancel'])) {
                 x++;
                 $(wrapper).append('<div class="row">' +
                 
-                    '<div class="col-md-4">' +
+                    '<div class="col-md-5">' +
                     '<div class="form-group">' +
                     '<label for="insert_sub_description1">Sub description1</label>' +
-                    '<textarea type="text" rows="2" class="form-control" name="insert_sub_description1[]"></textarea>' +
+                    '<textarea type="text" rows="3" class="form-control" name="insert_sub_description1[]"></textarea>' +
                     '</div>' +
                     '</div>' +
-                    '<div class="col-md-4">' +
+                    '<div class="col-md-5">' +
                     '<div class="form-group">' +
                     '<label for="insert_sub_description2">Sub description2</label>' +
-                    '<textarea type="text" rows="2" class="form-control" name="insert_sub_description2[]"></textarea>' +
+                    '<textarea type="text" rows="3" class="form-control" name="insert_sub_description2[]"></textarea>' +
                     '</div>' +
                     '</div>' +
                     '<div class="col-md-1" style="display: grid;">' +
