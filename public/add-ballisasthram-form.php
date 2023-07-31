@@ -36,9 +36,10 @@ if (isset($_POST['btnAdd'])) {
                 for ($i = 0; $i < count($_POST['sub_title1']); $i++) {
 
                     $sub_title1 = $db->escapeString(($_POST['sub_title1'][$i]));
+                    $sub_title2 = $db->escapeString(($_POST['sub_title2'][$i]));
                     $sub_description1 = $db->escapeString(($_POST['sub_description1'][$i]));
                     $sub_description2 = $db->escapeString($_POST['sub_description2'][$i]);
-                    $sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_title1,sub_description1,sub_description2) VALUES('$balli_sasthram_id','$sub_title1','$sub_description1','$sub_description2')";
+                    $sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_title1,sub_title2,sub_description1,sub_description2) VALUES('$balli_sasthram_id','$sub_title1','$sub_title2','$sub_description1','$sub_description2')";
                     $db->sql($sql);
                     $tab_result = $db->getResult();
                 }
@@ -99,13 +100,19 @@ if (isset($_POST['btnAdd'])) {
                                             <input type="text" class="form-control" name="sub_title1[]" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Sub Title2</label> <i class="text-danger asterik"></i>
+                                            <input type="text" class="form-control" name="sub_title2[]" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Sub description1</label> <i class="text-danger asterik"></i>
                                             <textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Sub description2</label> <i class="text-danger asterik"></i>
                                             <textarea type="text" rows="2" class="form-control" name="sub_description2[]"></textarea>
@@ -179,15 +186,21 @@ if (isset($_POST['btnAdd'])) {
     '<input type="text" class="form-control" name="sub_title1[]" />' +
     '</div>' +
     '</div>' +
-    '<div class="col-md-6">' +
+    '<div class="col-md-4">' + // Adding a new column for sub category
     '<div class="form-group">' +
-    '<label for="sub_description1">Sub description1</label>' +
+    '<label for="sub_title2">Sub Title2</label>' +
+    '<input type="text" class="form-control" name="sub_title2[]" />' +
+    '</div>' +
+    '</div>' +
+    '<div class="col-md-4">' +
+    '<div class="form-group">' +
+    '<label for="sub_description1">Sub Description1</label>' +
     '<textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>' +
     '</div>' +
     '</div>' +
-    '<div class="col-md-6">' + // Adding a new column for sub category
+    '<div class="col-md-4">' + // Adding a new column for sub category
     '<div class="form-group">' +
-    '<label for="sub_description2">Sub description2</label>' +
+    '<label for="sub_description2">Sub Description2</label>' +
     '<input type="text" class="form-control" name="sub_description2[]" />' +
     '</div>' +
     '</div>' +

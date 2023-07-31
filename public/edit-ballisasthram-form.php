@@ -36,28 +36,30 @@ if (isset($_POST['btnUpdate'])) {
                 for ($i = 0; $i < count($_POST['balli_sasthram_variant_id']); $i++) {
                     $balli_sasthram_id = $db->escapeString($_POST['balli_sasthram_variant_id'][$i]);
                     $sub_title1 = $db->escapeString($_POST['sub_title1'][$i]);
+                    $sub_title2 = $db->escapeString($_POST['sub_title2'][$i]);
                     $sub_description1 = $db->escapeString($_POST['sub_description1'][$i]);
                     $sub_description2 = $db->escapeString($_POST['sub_description2'][$i]);
-                    $sql = "UPDATE balli_sasthram_variant SET sub_title1='$sub_title1',sub_description1='$sub_description1',sub_description2='$sub_description2' WHERE id = $balli_sasthram_id";
+                    $sql = "UPDATE balli_sasthram_variant SET sub_title1='$sub_title1',sub_title2='$sub_title2',sub_description1='$sub_description1',sub_description2='$sub_description2' WHERE id = $balli_sasthram_id";
                     $db->sql($sql);
                 }
             }
         
 				if (
-					isset($_POST['insert_sub_title1']) && isset($_POST['insert_sub_description1']) && isset($_POST['insert_sub_description2'])
+					isset($_POST['insert_sub_title1'])  && isset($_POST['insert_sub_title2']) && isset($_POST['insert_sub_description1']) && isset($_POST['insert_sub_description2'])
 				) {
 					for ($i = 0; $i < count($_POST['insert_sub_title1']); $i++) {
 						$sub_title1 = $db->escapeString(($_POST['insert_sub_title1'][$i]));
+                        $sub_title2 = $db->escapeString(($_POST['insert_sub_title2'][$i]));
 						$sub_description1 = $db->escapeString(($_POST['insert_sub_description1'][$i]));
                         $sub_description2 = $db->escapeString(($_POST['insert_sub_description2'][$i]));
 						if (!empty($sub_title1) || !empty($sub_description1) || !empty($sub_description2)) {
-							$sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_title1,sub_description1,sub_description2) VALUES('$ID','$sub_title1','$sub_description1','$sub_description2')";
+							$sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_title1,sub_title2,sub_description1,sub_description2) VALUES('$ID','$sub_title1','$sub_title2','$sub_description1','$sub_description2')";
 							$db->sql($sql);
 
 						}
 					}
 				}
-                        $error['update_ballisasthram'] = " <section class='content-header'><span class='label label-success'>Grahalu Tab updated Successfully</span></section>";
+                        $error['update_ballisasthram'] = " <section class='content-header'><span class='label label-success'>Billi sasthram Tab updated Successfully</span></section>";
                 } else {
                     $error['update_ballisasthram'] = " <span class='label label-danger'>Failed to update</span>";
                 }
@@ -130,13 +132,19 @@ if (isset($_POST['btnCancel'])) { ?>
 												<input type="text" class="form-control" name="sub_title1[]" value="<?php echo $row['sub_title1'] ?>" />
 											</div>
 										</div>
-										<div class="col-md-6">
+                                        <div class="col-md-4">
+											<div class="form-group packate_div">
+												<label for="exampleInputEmail1">sub title2</label> <i class="text-danger asterik">*</i>
+												<input type="text" class="form-control" name="sub_title2[]" value="<?php echo $row['sub_title2'] ?>" />
+											</div>
+										</div>
+										<div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description1</label> <i class="text-danger asterik">*</i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description1[]"><?php echo $row['sub_description1'] ?></textarea>
 											</div>
 										</div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description2</label> <i class="text-danger asterik">*</i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description2[]"><?php echo $row['sub_description2'] ?></textarea>
@@ -192,13 +200,19 @@ if (isset($_POST['btnCancel'])) { ?>
     '<input type="text" class="form-control" name="insert_sub_title1[]" />' +
     '</div>' +
     '</div>' +
-    '<div class="col-md-6">' +
+    '<div class="col-md-4">' +
+    '<div class="form-group">' +
+    '<label for="insert_sub_title1">Sub Title2</label>' +
+    '<input type="text" class="form-control" name="insert_sub_title2[]" />' +
+    '</div>' +
+    '</div>' +
+    '<div class="col-md-4">' +
     '<div class="form-group">' +
     '<label for="insert_sub_description1">Sub description1</label>' +
     '<textarea type="text" rows="2" class="form-control" name="insert_sub_description1[]"></textarea>' +
     '</div>' +
     '</div>' +
-    '<div class="col-md-6">' + // Adding a new column for sub category
+    '<div class="col-md-4">' + // Adding a new column for sub category
     '<div class="form-group">' +
     '<label for="insert_sub_description2">Sub description2</label>' +
     '<input type="text" class="form-control" name="insert_sub_description2[]" />' +
