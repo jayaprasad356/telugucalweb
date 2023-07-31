@@ -17,9 +17,11 @@ if (isset($_POST['btnUpdate'])) {
     $error = array();
     $title = $db->escapeString($_POST['title']);
     $description = $db->escapeString($_POST['description']);
+    $sub_title1 = $db->escapeString($_POST['sub_title1']);
+    $sub_title2 = $db->escapeString($_POST['sub_title2']);
 
     if (!empty($title) && !empty($description)) {
-        $sql_query = "UPDATE balli_sasthram SET title='$title',description='$description' WHERE id =$ID";
+        $sql_query = "UPDATE balli_sasthram SET title='$title',description='$description',sub_title1='$sub_title1',sub_title2='$sub_title2' WHERE id =$ID";
         $db->sql($sql_query);
         $res = $db->getResult();
         $update_result = $db->getResult();
@@ -30,29 +32,25 @@ if (isset($_POST['btnUpdate'])) {
             $update_result = 1;
         }
 
-       	// check update result
+       // check update result
 			if ($update_result == 1)
 			{
-				for ($i = 0; $i < count($_POST['sub_title1']); $i++) {
+				for ($i = 0; $i < count($_POST['sub_description1']); $i++) {
 					$balli_sasthram_id = $db->escapeString(($_POST['balli_sasthram_variant_id'][$i]));
-					$sub_title1 = $db->escapeString(($_POST['sub_title1'][$i]));
-                    $sub_title2 = $db->escapeString(($_POST['sub_title2'][$i]));
-					$sub_description1= $db->escapeString(($_POST['sub_description1'][$i]));
-                    $sub_description2 = $db->escapeString(($_POST['sub_description2'][$i]));
-					$sql = "UPDATE balli_sasthram_variant SET sub_title1='$sub_title1',sub_title2='$sub_title2',sub_description1='$sub_description1',sub_description2='$sub_description2' WHERE id =$balli_sasthram_id";
+					$sub_description1 = $db->escapeString(($_POST['sub_description1'][$i]));
+					$sub_description2 = $db->escapeString(($_POST['sub_description2'][$i]));
+					$sql = "UPDATE balli_sasthram_variant SET sub_description1='$sub_description1',sub_description2='$sub_description2' WHERE id =$balli_sasthram_id";
 					$db->sql($sql);
 
 				}
 				if (
-					isset($_POST['insert_sub_title1'])&& isset($_POST['insert_sub_title2']) && isset($_POST['insert_sub_description1']) && isset($_POST['insert_sub_description2'])
+					isset($_POST['insert_sub_description1']) && isset($_POST['insert_sub_description2'])
 				) {
-					for ($i = 0; $i < count($_POST['insert_sub_title']); $i++) {
-						$sub_title1 = $db->escapeString(($_POST['insert_sub_title1'][$i]));
-                        $sub_title2 = $db->escapeString(($_POST['insert_sub_title2'][$i]));
+					for ($i = 0; $i < count($_POST['insert_sub_description1']); $i++) {
 						$sub_description1 = $db->escapeString(($_POST['insert_sub_description1'][$i]));
-                        $sub_description2 = $db->escapeString(($_POST['insert_sub_description2'][$i]));
-						if (!empty($sub_title1) || !empty($sub_title2)|| !empty($sub_description1) || !empty($sub_description2)) {
-							$sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_title1,sub_title2,sub_description1,sub_description2) VALUES('$ID','$sub_title1','$sub_title2','$sub_description1','$sub_description2')";
+						$sub_description2 = $db->escapeString(($_POST['insert_sub_description2'][$i]));
+						if (!empty($sub_title) || !empty($sub_description)) {
+							$sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_description1,sub_description2) VALUES('$ID','$sub_description1','$sub_description2')";
 							$db->sql($sql);
 
 						}
@@ -114,7 +112,16 @@ if (isset($_POST['btnCancel'])) { ?>
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
                                             <textarea  type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description']?></textarea>
                                     </div>
-                                 </div>
+                                    <br>
+                                    <div class="col-md-5">
+                                            <label for="exampleInputEmail1">Sub Title1</label> <i class="text-danger asterik">*</i>
+                                            <textarea  type="text" rows="2" class="form-control" name="sub_title1"><?php echo $res[0]['sub_title1']?></textarea>
+                                    </div>
+                                    <div class="col-md-5">
+                                            <label for="exampleInputEmail1">Sub Title2</label> <i class="text-danger asterik">*</i>
+                                            <textarea  type="text" rows="2" class="form-control" name="sub_title2"><?php echo $res[0]['sub_title2']?></textarea>
+                                    </div>
+                                    </div>   
                             </div>
                             <br>
                             <div id="variations">
@@ -125,18 +132,6 @@ if (isset($_POST['btnCancel'])) { ?>
 								<div id="packate_div">
 									<div class="row">
 									    <input type="hidden" class="form-control" name="balli_sasthram_variant_id[]" id="balli_sasthram_id" value='<?= $row['id']; ?>' />
-									    <div class="col-md-5">
-											<div class="form-group packate_div">
-												<label for="exampleInputEmail1">sub title1</label> <i class="text-danger asterik">*</i>
-												<input type="text" class="form-control" name="sub_title1[]" value="<?php echo $row['sub_title1'] ?>" />
-											</div>
-										</div>
-                                        <div class="col-md-5">
-											<div class="form-group packate_div">
-												<label for="exampleInputEmail1">sub title2</label> <i class="text-danger asterik">*</i>
-												<input type="text" class="form-control" name="sub_title2[]" value="<?php echo $row['sub_title2'] ?>" />
-											</div>
-										</div>
 										<div class="col-md-5">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description1</label> <i class="text-danger asterik">*</i>
@@ -193,18 +188,6 @@ if (isset($_POST['btnCancel'])) { ?>
             if (x < max_fields) {
                 x++;
                 $(wrapper).append('<div class="row">' +
-    '<div class="col-md-5">' +
-    '<div class="form-group">' +
-    '<label for="sub_title1">Sub Title1</label>' +
-    '<input type="text" class="form-control" name="sub_title1[]" />' +
-    '</div>' +
-    '</div>' +
-    '<div class="col-md-5">' +
-    '<div class="form-group">' +
-    '<label for="sub_title2">Sub Title2</label>' +
-    '<input type="text" class="form-control" name="sub_title2[]" />' +
-    '</div>' +
-    '</div>' +
     '<div class="col-md-5">' +
     '<div class="form-group">' +
     '<label for="sub_description1">Sub description1</label>' +

@@ -9,6 +9,8 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
         $title= $db->escapeString($_POST['title']);
         $description= $db->escapeString($_POST['description']);
+        $sub_title1= $db->escapeString($_POST['sub_title1']);
+        $sub_title2= $db->escapeString($_POST['sub_title2']);
       
 
 
@@ -18,9 +20,15 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (!empty($title)&& !empty($description)) {
-         
-            $sql_query = "INSERT INTO balli_sasthram (title,description)VALUES('$title','$description')";
+        if (empty($sub_title1)) {
+            $error['sub_title1'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($sub_title2)) {
+            $error['sub_title2'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (!empty($title)&& !empty($description)&& !empty($sub_title1)&& !empty($sub_title2)) {
+
+            $sql_query = "INSERT INTO balli_sasthram (title,description,sub_title1,sub_title2)VALUES('$title','$description','$sub_title1','$sub_title2')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -33,13 +41,12 @@ if (isset($_POST['btnAdd'])) {
                 $db->sql($sql);
                 $res = $db->getResult();
                 $balli_sasthram_id = $res[0]['id'];
-                for ($i = 0; $i < count($_POST['sub_title1']); $i++) {
+                for ($i = 0; $i < count($_POST['sub_description1']); $i++) {
 
-                    $sub_title1 = $db->escapeString(($_POST['sub_title1'][$i]));
-                    $sub_title2 = $db->escapeString(($_POST['sub_title2'][$i]));
+                   
                     $sub_description1 = $db->escapeString(($_POST['sub_description1'][$i]));
                     $sub_description2 = $db->escapeString($_POST['sub_description2'][$i]);
-                    $sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_title1,sub_title2,sub_description1,sub_description2) VALUES('$balli_sasthram_id','$sub_title1','$sub_title2','$sub_description1','$sub_description2')";
+                    $sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_description1,sub_description2) VALUES('$balli_sasthram_id','$sub_description1','$sub_description2')";
                     $db->sql($sql);
                     $tab_result = $db->getResult();
                 }
@@ -89,23 +96,24 @@ if (isset($_POST['btnAdd'])) {
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                             <textarea  type="text" rows="3" class="form-control" name="description" required></textarea>
                                     </div>
+                                    <div class="col-md-4">
+                                      
+                                            <label for="exampleInputEmail1">Sub Title1</label> <i class="text-danger asterik"></i>
+                                            <input type="text" class="form-control" name="sub_title1" />
+  
+                                    </div>
+                                    <div class="col-md-4">
+                                        
+                                            <label for="exampleInputEmail1">Sub Title2</label> <i class="text-danger asterik"></i>
+                                            <input type="text" class="form-control" name="sub_title2" />
+                                        
+                                    </div>
                                  </div>
                             </div>
                             <hr>
                             <div id="packate_div"  >
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Title1</label> <i class="text-danger asterik"></i>
-                                            <input type="text" class="form-control" name="sub_title1[]" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Title2</label> <i class="text-danger asterik"></i>
-                                            <input type="text" class="form-control" name="sub_title2[]" />
-                                        </div>
-                                    </div>
+                                 
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Sub description1</label> <i class="text-danger asterik"></i>
@@ -179,42 +187,30 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row">' +
-    '<div class="col-md-4">' +
-    '<div class="form-group">' +
-    '<label for="sub_title">Sub Title1</label>' +
-    '<input type="text" class="form-control" name="sub_title1[]" />' +
-    '</div>' +
-    '</div>' +
-    '<div class="col-md-4">' + // Adding a new column for sub category
-    '<div class="form-group">' +
-    '<label for="sub_title2">Sub Title2</label>' +
-    '<input type="text" class="form-control" name="sub_title2[]" />' +
-    '</div>' +
-    '</div>' +
-    '<div class="col-md-4">' +
-    '<div class="form-group">' +
-    '<label for="sub_description1">Sub Description1</label>' +
-    '<textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>' +
-    '</div>' +
-    '</div>' +
-    '<div class="col-md-4">' + // Adding a new column for sub category
-    '<div class="form-group">' +
-    '<label for="sub_description2">Sub Description2</label>' +
-    '<input type="text" class="form-control" name="sub_description2[]" />' +
-    '</div>' +
-    '</div>' +
-    '<div class="col-md-1" style="display: grid;">' +
-    '<label>Tab</label>' +
-    '<a class="remove" style="cursor:pointer;color:white;">' +
-    '<button class="btn btn-danger">Remove</button>' +
-    '</a>' +
-    '</div>' +
-    '</div>');
-
-            }
-            else{
-                alert('You Reached the limits')
+                $(wrapper).append(
+                    '<div class="row">' +
+                    '<div class="col-md-4">' +
+                    '<div class="form-group">' +
+                    '<label for="sub_description1">Sub Description1</label>' +
+                    '<textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-4">' +
+                    '<div class="form-group">' +
+                    '<label for="sub_description2">Sub Description2</label>' +
+                    '<textarea type="text" rows="2" class="form-control" name="sub_description2[]"></textarea>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-1" style="display: grid;">' +
+                    '<label>Tab</label>' +
+                    '<a class="remove" style="cursor:pointer;color:white;">' +
+                    '<button class="btn btn-danger">Remove</button>' +
+                    '</a>' +
+                    '</div>' +
+                    '</div>'
+                );
+            } else {
+                alert('You Reached the limits');
             }
         });
 
@@ -222,9 +218,11 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             $(this).closest('.row').remove();
             x--;
-        })
+        });
     });
 </script>
+
+
 <script>
      $(document).on('change', '#grahalu_id', function() {
         $.ajax({
