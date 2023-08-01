@@ -242,6 +242,7 @@ foreach ($res as $row) {
     $temp['id'] = $row['id'];
     $temp['title'] = $row['title'];
     $temp['link'] = $row['link'];
+    $temp['image'] = DOMAIN_URL . $row['image'];
     $rows[] = $temp;
 }
 $response['video_list'] = $rows;
