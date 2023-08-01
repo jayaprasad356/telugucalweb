@@ -111,11 +111,11 @@ if (isset($_POST['btnCancel'])) { ?>
                                     </div>
                                     <br>
                                     <div class="col-md-5">
-                                            <label for="exampleInputEmail1">Sub Title1</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Sub Title1</label> <i class="text-danger asterik"></i>
                                             <textarea  type="text" rows="2" class="form-control" name="sub_title1"><?php echo $res[0]['sub_title1']?></textarea>
                                     </div>
                                     <div class="col-md-5">
-                                            <label for="exampleInputEmail1">Sub Title2</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Sub Title2</label> <i class="text-danger asterik"></i>
                                             <textarea  type="text" rows="2" class="form-control" name="sub_title2"><?php echo $res[0]['sub_title2']?></textarea>
                                     </div>
                                     </div>   
@@ -131,13 +131,13 @@ if (isset($_POST['btnCancel'])) { ?>
 									    <input type="hidden" class="form-control" name="balli_sasthram_variant_id[]" id="balli_sasthram_variant_id" value='<?= $row['id']; ?>' />
 										<div class="col-md-5">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1"> sub description1</label> <i class="text-danger asterik">*</i>
+												<label for="exampleInputEmail1"> sub description1</label> <i class="text-danger asterik"></i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description1[]"required><?php echo $row['sub_description1'] ?></textarea>
 											</div>
 										</div>
                                         <div class="col-md-5">
 											<div class="form-group packate_div">
-												<label for="exampleInputEmail1"> sub description2</label> <i class="text-danger asterik">*</i>
+												<label for="exampleInputEmail1"> sub description2</label> <i class="text-danger asterik"></i>
 												<textarea type="text" rows="2" class="form-control" name="sub_description2[]"required><?php echo $row['sub_description2'] ?></textarea>
 											</div>
 										</div>
