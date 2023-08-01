@@ -52,6 +52,8 @@ if (isset($_POST['balli_sasthram']) && $_POST['balli_sasthram'] == 1) {
             $temp['id'] = $row['id'];
             $temp['title'] = $row['title'];
             $temp['description'] = $row['description'];
+            $temp['sub_title1'] = $row['sub_title1'];
+            $temp['sub_title2'] = $row['sub_title2'];
 
             $sql_variant = "SELECT * FROM `balli_sasthram_variant` WHERE balli_sasthram_id = '$id'";
             $db->sql($sql_variant);
