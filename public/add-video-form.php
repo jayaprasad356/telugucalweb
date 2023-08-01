@@ -17,27 +17,44 @@ if (isset($_POST['btnAdd'])) {
             $error['link'] = " <span class='label label-danger'>Required!</span>";
         }
        
-       
-       if (!empty($title) && !empty($link)) {
-         
-            $sql_query = "INSERT INTO video (title,link)VALUES('$title','$link')";
-            $db->sql($sql_query);
-            $result = $db->getResult();
-            if (!empty($result)) {
-                $result = 0;
-            } else {
-                $result = 1;
-            }
+        // Validate and process the image upload
+    if ($_FILES['image']['size'] != 0 && $_FILES['image']['error'] == 0 && !empty($_FILES['image'])) {
+        $extension = pathinfo($_FILES["image"]["name"])['extension'];
 
-            if ($result == 1) {
-                
-                $error['add_video'] = "<section class='content-header'>
-                                                <span class='label label-success'>Video Added Successfully</span> </section>";
-            } else {
-                $error['add_video'] = " <span class='label label-danger'>Failed</span>";
-            }
-            }
+        $result = $fn->validate_image($_FILES["image"]);
+        $target_path = 'upload/images/';
+
+        $filename = microtime(true) . '.' . strtolower($extension);
+        $full_path = $target_path . "" . $filename;
+
+        if (!move_uploaded_file($_FILES["image"]["tmp_name"], $full_path)) {
+            echo '<p class="alert alert-danger">Can not upload image.</p>';
+            return false;
+            exit();
         }
+
+        $upload_image = 'upload/images/' . $filename;
+        $sql = "INSERT INTO video (title,link, image) VALUES ('$title','$link', '$upload_image')";
+        $db->sql($sql);
+    } else {
+        // Image is not uploaded or empty, insert only the title
+        $sql = "INSERT INTO video (title,link) VALUES ('$title','$link')";
+        $db->sql($sql);
+    }
+    $result = $db->getResult();
+    if (!empty($result)) {
+        $result = 0;
+    } else {
+        $result = 1;
+    }
+
+    if ($result == 1) {
+        $error['add_video'] = "<section class='content-header'>
+                                            <span class='label label-success'>video Added Successfully</span> </section>";
+    } else {
+        $error['add_video'] = " <span class='label label-danger'>Failed</span>";
+    }
+}
 ?>
 <section class="content-header">
     <h1>Add Video <small><a href='video.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to Video</a></small></h1>
@@ -78,6 +95,16 @@ if (isset($_POST['btnAdd'])) {
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <label for="exampleInputFile">Image</label> <i class="text-danger asterik">*</i><?php echo isset($error['image']) ? $error['image'] : ''; ?>
+                                        <input type="file" name="image" onchange="readURL(this);" accept="image/png,  image/jpeg" id="image" required/><br>
+                                        <img id="blah" src="#" alt="" />
+                                    </div>
+                                </div>
+                            </div> 
 
          
                     </div>
@@ -115,11 +142,27 @@ if (isset($_POST['btnAdd'])) {
     });
 </script>
 
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200)
+                    .css('display', 'block');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 <!--code for page clear-->
 <script>
     function refreshPage(){
     window.location.reload();
 } 
 </script>
-
 <?php $db->disconnect(); ?>

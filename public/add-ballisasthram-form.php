@@ -99,13 +99,13 @@ if (isset($_POST['btnAdd'])) {
                                     <div class="col-md-4">
                                       
                                             <label for="exampleInputEmail1">Sub Title1</label> <i class="text-danger asterik"></i>
-                                            <input type="text" class="form-control" name="sub_title1" />
+                                            <input type="text" class="form-control" name="sub_title1" required/>
   
                                     </div>
                                     <div class="col-md-4">
                                         
                                             <label for="exampleInputEmail1">Sub Title2</label> <i class="text-danger asterik"></i>
-                                            <input type="text" class="form-control" name="sub_title2" />
+                                            <input type="text" class="form-control" name="sub_title2" required/>
                                         
                                     </div>
                                  </div>
@@ -117,13 +117,13 @@ if (isset($_POST['btnAdd'])) {
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Sub description1</label> <i class="text-danger asterik"></i>
-                                            <textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description1[]"required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
                                             <label for="exampleInputEmail1">Sub description2</label> <i class="text-danger asterik"></i>
-                                            <textarea type="text" rows="2" class="form-control" name="sub_description2[]"></textarea>
+                                            <textarea type="text" rows="2" class="form-control" name="sub_description2[]" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -192,13 +192,13 @@ if (isset($_POST['btnAdd'])) {
                     '<div class="col-md-4">' +
                     '<div class="form-group">' +
                     '<label for="sub_description1">Sub Description1</label>' +
-                    '<textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>' +
+                    '<textarea type="text" rows="2" class="form-control" name="sub_description1[]"required></textarea>' +
                     '</div>' +
                     '</div>' +
                     '<div class="col-md-4">' +
                     '<div class="form-group">' +
                     '<label for="sub_description2">Sub Description2</label>' +
-                    '<textarea type="text" rows="2" class="form-control" name="sub_description2[]"></textarea>' +
+                    '<textarea type="text" rows="2" class="form-control" name="sub_description2[]"required></textarea>' +
                     '</div>' +
                     '</div>' +
                     '<div class="col-md-1" style="display: grid;">' +

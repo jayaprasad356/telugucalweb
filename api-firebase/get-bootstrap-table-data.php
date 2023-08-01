@@ -1755,7 +1755,14 @@ if (isset($_GET['table']) && $_GET['table'] == 'video') {
         $operate .= ' <a class="text text-danger" href="delete-video.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
-         $tempRow['link'] = $row['link'];
+        $tempRow['link'] = $row['link'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }

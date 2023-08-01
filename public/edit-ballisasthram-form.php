@@ -107,7 +107,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                     </div>
                                     <div class="col-md-8">
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i>
-                                            <textarea  type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description']?></textarea>
+                                            <textarea  type="text" rows="5" class="form-control" name="description"><?php echo $res[0]['description']?></textarea>
                                     </div>
                                     <br>
                                     <div class="col-md-5">
@@ -132,13 +132,13 @@ if (isset($_POST['btnCancel'])) { ?>
 										<div class="col-md-5">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description1</label> <i class="text-danger asterik">*</i>
-												<textarea type="text" rows="2" class="form-control" name="sub_description1[]"><?php echo $row['sub_description1'] ?></textarea>
+												<textarea type="text" rows="2" class="form-control" name="sub_description1[]"required><?php echo $row['sub_description1'] ?></textarea>
 											</div>
 										</div>
                                         <div class="col-md-5">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description2</label> <i class="text-danger asterik">*</i>
-												<textarea type="text" rows="2" class="form-control" name="sub_description2[]"><?php echo $row['sub_description2'] ?></textarea>
+												<textarea type="text" rows="2" class="form-control" name="sub_description2[]"required><?php echo $row['sub_description2'] ?></textarea>
 											</div>
 										</div>
 										<?php if ($i == 0) { ?>
@@ -188,13 +188,13 @@ if (isset($_POST['btnCancel'])) { ?>
     '<div class="col-md-5">' +
     '<div class="form-group">' +
     '<label for="sub_description1">sub_description1</label>' +
-    '<input type="text" class="form-control" name="insert_sub_description1[]" />' +
+    '<input type="text" class="form-control" name="insert_sub_description1[]" required/>' +
     '</div>' +
     '</div>' +
     '<div class="col-md-5">' +
     '<div class="form-group">' +
     '<label for="sub_description2">sub_description2</label>' +
-    '<textarea type="text" rows="2" class="form-control" name="insert_sub_description2[]"></textarea>' +
+    '<textarea type="text" rows="2" class="form-control" name="insert_sub_description2[]"required></textarea>' +
     '</div>' +
     '</div>' +
     '<div class="col-md-1" style="display: grid;">' +
