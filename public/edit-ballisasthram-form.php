@@ -1,61 +1,58 @@
 <?php
 include_once('includes/functions.php');
-date_default_timezone_set('Asia/Kolkata');
 $function = new functions;
 include_once('includes/custom-functions.php');
 $fn = new custom_functions;
 
 if (isset($_GET['id'])) {
-    $ID = $db->escapeString($fn->xss_clean($_GET['id']));
+    $ID = $db->escapeString($_GET['id']);
 } else {
-    // $ID = "";
     return false;
     exit(0);
 }
-
-if (isset($_POST['btnUpdate'])) {
-    $error = array();
+if (isset($_POST['btnEdit'])) {
     $title = $db->escapeString($_POST['title']);
     $description = $db->escapeString($_POST['description']);
     $sub_title1 = $db->escapeString($_POST['sub_title1']);
     $sub_title2 = $db->escapeString($_POST['sub_title2']);
+    $error = array();
 
-    if (!empty($title) && !empty($description)) {
-        $sql_query = "UPDATE balli_sasthram SET title='$title',description='$description',sub_title1='$sub_title1',sub_title2='$sub_title2' WHERE id =$ID";
+    if (!empty($title) && !empty($description)&& !empty($sub_title1)&& !empty($sub_title2)) {
+        $sql_query = "UPDATE balli_sasthram SET title='$title',description='$description',sub_title1='$sub_title1',sub_title2='$sub_title2' WHERE id = $ID";
         $db->sql($sql_query);
         $res = $db->getResult();
         $update_result = $db->getResult();
-
         if (!empty($update_result)) {
             $update_result = 0;
         } else {
             $update_result = 1;
         }
 
-       // check update result
-			if ($update_result == 1)
-			{
-				for ($i = 0; $i < count($_POST['sub_description1']); $i++) {
-					$balli_sasthram_id = $db->escapeString(($_POST['balli_sasthram_variant_id'][$i]));
-					$sub_description1 = $db->escapeString(($_POST['sub_description1'][$i]));
-					$sub_description2 = $db->escapeString(($_POST['sub_description2'][$i]));
-					$sql = "UPDATE balli_sasthram_variant SET sub_description1='$sub_description1',sub_description2='$sub_description2' WHERE id =$balli_sasthram_id";
-					$db->sql($sql);
+        // check update result
+        if ($update_result == 1) {
+            // Update existing variations
+            if (isset($_POST['sub_description1']) && is_array($_POST['sub_description2'])) {
+                for ($i = 0; $i < count($_POST['sub_description1']); $i++) {
+                    $balli_sasthram_id = $db->escapeString($_POST['balli_sasthram_variant_id'][$i]);
+                    $sub_description1 = $db->escapeString($_POST['sub_description1'][$i]);
+                    $sub_description2 = $db->escapeString($_POST['sub_description2'][$i]);
+                    $sql = "UPDATE balli_sasthram_variant SET sub_description1='$sub_description1', sub_description2='$sub_description2' WHERE id = $balli_sasthram_id";
+                    $db->sql($sql);
+                }
+            }
 
-				}
-				if (
-					isset($_POST['insert_sub_description1']) && isset($_POST['insert_sub_description2'])
-				) {
-					for ($i = 0; $i < count($_POST['insert_sub_description1']); $i++) {
-						$sub_description1 = $db->escapeString(($_POST['insert_sub_description1'][$i]));
-						$sub_description2 = $db->escapeString(($_POST['insert_sub_description2'][$i]));
-						if (!empty($sub_title) || !empty($sub_description)) {
-							$sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id,sub_description1,sub_description2) VALUES('$ID','$sub_description1','$sub_description2')";
-							$db->sql($sql);
+            // Add new variations
+            if (isset($_POST['insert_sub_description1']) && isset($_POST['insert_sub_description2'])) {
+                for ($i = 0; $i < count($_POST['insert_sub_description1']); $i++) {
+                    $sub_description1 = $db->escapeString($_POST['insert_sub_description1'][$i]);
+                    $sub_description2 = $db->escapeString($_POST['insert_sub_description2'][$i]);
+                    if (!empty($sub_description1) || !empty($sub_description2)) {
+                        $sql = "INSERT INTO balli_sasthram_variant (balli_sasthram_id, sub_description1, sub_description2) VALUES ('$ID', '$sub_description1', '$sub_description2')";
+                        $db->sql($sql);
+                    }
+                }
+            }
 
-						}
-					}
-				}
                         $error['update_ballisasthram'] = " <section class='content-header'><span class='label label-success'>Balli Sasthram updated Successfully</span></section>";
                 } else {
                     $error['update_ballisasthram'] = " <span class='label label-danger'>Failed to update</span>";
@@ -131,7 +128,7 @@ if (isset($_POST['btnCancel'])) { ?>
 								?>
 								<div id="packate_div">
 									<div class="row">
-									    <input type="hidden" class="form-control" name="balli_sasthram_variant_id[]" id="balli_sasthram_id" value='<?= $row['id']; ?>' />
+									    <input type="hidden" class="form-control" name="balli_sasthram_variant_id[]" id="balli_sasthram_variant_id" value='<?= $row['id']; ?>' />
 										<div class="col-md-5">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description1</label> <i class="text-danger asterik">*</i>
@@ -167,7 +164,7 @@ if (isset($_POST['btnCancel'])) { ?>
 						<!-- /.box-body -->
 
                     <div class="box-footer">
-                        <input type="submit" class="btn-primary btn" value="Update" name="btnUpdate" />&nbsp;
+                        <input type="submit" class="btn-primary btn" value="Update" name="btnEdit" />&nbsp;
                     </div>
 
                 </form>
@@ -179,7 +176,7 @@ if (isset($_POST['btnCancel'])) { ?>
 <script>
     $(document).ready(function () {
         var max_fields = 7;
-        var wrapper = $("#packate_div");
+        var wrapper = $("#variations");
         var add_button = $("#add_packate_variation");
 
         var x = 1;
@@ -187,17 +184,17 @@ if (isset($_POST['btnCancel'])) { ?>
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row">' +
+				$(wrapper).append('<div class="row">' +
     '<div class="col-md-5">' +
     '<div class="form-group">' +
-    '<label for="sub_description1">Sub description1</label>' +
-    '<textarea type="text" rows="2" class="form-control" name="sub_description1[]"></textarea>' +
+    '<label for="sub_description1">sub_description1</label>' +
+    '<input type="text" class="form-control" name="insert_sub_description1[]" />' +
     '</div>' +
     '</div>' +
-    '<div class="col-md-5">' + // Adding a new column for sub category
+    '<div class="col-md-5">' +
     '<div class="form-group">' +
-    '<label for="sub_description2">Sub description2</label>' +
-    '<input type="text" class="form-control" name="sub_description2[]" />' +
+    '<label for="sub_description2">sub_description2</label>' +
+    '<textarea type="text" rows="2" class="form-control" name="insert_sub_description2[]"></textarea>' +
     '</div>' +
     '</div>' +
     '<div class="col-md-1" style="display: grid;">' +
