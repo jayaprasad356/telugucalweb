@@ -17,7 +17,7 @@ if (isset($_POST['btnEdit'])) {
     $sub_title2 = $db->escapeString($_POST['sub_title2']);
     $error = array();
 
-    if (!empty($title) && !empty($description)&& !empty($sub_title1)&& !empty($sub_title2)) {
+    if (!empty($title) && !empty($description)) {
         $sql_query = "UPDATE balli_sasthram SET title='$title',description='$description',sub_title1='$sub_title1',sub_title2='$sub_title2' WHERE id = $ID";
         $db->sql($sql_query);
         $res = $db->getResult();
@@ -132,13 +132,13 @@ if (isset($_POST['btnCancel'])) { ?>
 										<div class="col-md-5">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description1</label> <i class="text-danger asterik"></i>
-												<textarea type="text" rows="2" class="form-control" name="sub_description1[]"required><?php echo $row['sub_description1'] ?></textarea>
+												<textarea type="text" rows="2" class="form-control" name="sub_description1[]"><?php echo $row['sub_description1'] ?></textarea>
 											</div>
 										</div>
                                         <div class="col-md-5">
 											<div class="form-group packate_div">
 												<label for="exampleInputEmail1"> sub description2</label> <i class="text-danger asterik"></i>
-												<textarea type="text" rows="2" class="form-control" name="sub_description2[]"required><?php echo $row['sub_description2'] ?></textarea>
+												<textarea type="text" rows="2" class="form-control" name="sub_description2[]"><?php echo $row['sub_description2'] ?></textarea>
 											</div>
 										</div>
 										<?php if ($i == 0) { ?>
@@ -188,13 +188,13 @@ if (isset($_POST['btnCancel'])) { ?>
     '<div class="col-md-5">' +
     '<div class="form-group">' +
     '<label for="sub_description1">sub_description1</label>' +
-    '<input type="text" class="form-control" name="insert_sub_description1[]" required/>' +
+    '<input type="text" class="form-control" name="insert_sub_description1[]" />' +
     '</div>' +
     '</div>' +
     '<div class="col-md-5">' +
     '<div class="form-group">' +
     '<label for="sub_description2">sub_description2</label>' +
-    '<textarea type="text" rows="2" class="form-control" name="insert_sub_description2[]"required></textarea>' +
+    '<textarea type="text" rows="2" class="form-control" name="insert_sub_description2[]"></textarea>' +
     '</div>' +
     '</div>' +
     '<div class="col-md-1" style="display: grid;">' +
