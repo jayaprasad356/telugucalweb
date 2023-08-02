@@ -10,12 +10,19 @@ if (isset($_POST['btnAdd'])) {
 
         $rasi= $db->escapeString($_POST['rasi']);
         $year= $db->escapeString($_POST['year']);
-        $description= $db->escapeString($_POST['description']);
-        $title= $db->escapeString($_POST['title']);
+        $main_description= $db->escapeString($_POST['main_description']);
+        $main_title= $db->escapeString($_POST['main_title']);
         $adhayam = $db->escapeString($_POST['adhayam']);
         $vyayam = $db->escapeString($_POST['vyayam']);
         $rajapujyam = $db->escapeString($_POST['rajapujyam']);
         $aavamanam= $db->escapeString($_POST['aavamanam']);
+        $janma_nama_nakshathram= $db->escapeString($_POST['janma_nama_nakshathram']);
+        $title= $db->escapeString($_POST['title']);
+        $description= $db->escapeString($_POST['description']);
+        $janma_nama_nakshathram_title= $db->escapeString($_POST['janma_nama_nakshathram_title']);
+        $janma_nama_nakshathram_description= $db->escapeString($_POST['janma_nama_nakshathram_description']);
+        $graha_dhashakalamu_title= $db->escapeString($_POST['graha_dhashakalamu_title']);
+        $graha_dhashakalamu_description= $db->escapeString($_POST['graha_dhashakalamu_description']);
         $error = array();
 
         
@@ -44,11 +51,32 @@ if (isset($_POST['btnAdd'])) {
         if (empty($aavamanam)) {
             $error['aavamanam'] = " <span class='label label-danger'>Required!</span>";
         }
+        if (empty($janma_nama_nakshathram)) {
+            $error['janma_nama_nakshathram'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($main_title)) {
+            $error['main_title'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($main_description)) {
+            $error['main_description'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($janma_nama_nakshathram_title)) {
+            $error['janma_nama_nakshathram_title'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($janma_nama_nakshathram_description)) {
+            $error['janma_nama_nakshathram_description'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($graha_dhashakalamu_title)) {
+            $error['graha_dhashakalamu_title'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($graha_dhashakalamu_description)) {
+            $error['graha_dhashakalamu_description'] = " <span class='label label-danger'>Required!</span>";
+        }
 
 
-        if ( !empty($rasi) && !empty($year) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam))
+        if (!empty($rasi) && !empty($year) && !empty($janma_nama_nakshathram)&& !empty($janma_nama_nakshathram_title) && !empty($janma_nama_nakshathram_description) && !empty($graha_dhashakalamu_title) && !empty($graha_dhashakalamu_description)  && !empty($main_title) && !empty($main_description) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam)) 
         {
-                $sql_query = "INSERT INTO yearly_horoscope (rasi,year,title,description,adhayam,vyayam,rajapujyam,aavamanam)VALUES('$rasi','$year','$title','$description','$adhayam','$vyayam','$rajapujyam','$aavamanam')";
+                $sql_query = "INSERT INTO yearly_horoscope (rasi,year,title,janma_nama_nakshathram,main_title,main_description,description,adhayam,vyayam,rajapujyam,aavamanam,janma_nama_nakshathram_title,janma_nama_nakshathram_description,graha_dhashakalamu_title,graha_dhashakalamu_description)VALUES('$rasi','$year','$janma_nama_nakshathram','$main_title','$main_description','$title','$description','$adhayam','$vyayam','$rajapujyam','$aavamanam','$janma_nama_nakshathram_title','$janma_nama_nakshathram_description','$graha_dhashakalamu_title','$graha_dhashakalamu_description')";
                 $db->sql($sql_query);
                 $result = $db->getResult();
                 if (!empty($result)) {
@@ -61,11 +89,10 @@ if (isset($_POST['btnAdd'])) {
                     $db->sql($sql);
                     $res = $db->getResult();
                     $yearly_horoscope_id = $res[0]['id'];
-                    for ($i = 0; $i < count($_POST['sub_title']); $i++) {
+                    for ($i = 0; $i < count($_POST['graha_dhashakalamu']); $i++) {
         
-                        $sub_title = $db->escapeString(($_POST['sub_title'][$i]));
-                        $sub_description = $db->escapeString(($_POST['sub_description'][$i]));
-                        $sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id,sub_title,sub_description) VALUES('$yearly_horoscope_id','$sub_title','$sub_description')";
+                        $graha_dhashakalamu = $db->escapeString(($_POST['graha_dhashakalamu'][$i]));
+                        $sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id,graha_dhashakalamu) VALUES('$yearly_horoscope_id','$graha_dhashakalamu')";
                         $db->sql($sql);
                         $yearly_horoscope_variant_result = $db->getResult();
                     }
@@ -142,17 +169,37 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        <label for="">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
-                                        <input type="text" class="form-control" name="title" required />
+                                        <label for="">Main Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['main_title']) ? $error['main_title'] : ''; ?>
+                                        <input type="text" class="form-control" name="main_title" required />
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                        <textarea type="text" rows="2" class="form-control" name="description" required></textarea>
+                                        <label for="">Main Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['main_description']) ? $error['description'] : ''; ?>
+                                        <textarea type="text" rows="2" class="form-control" name="main_description" required></textarea>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                        <div class="form-group packate_div">
+                                            <label for="exampleInputEmail1">Janma Nama Nakshathram</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="janma_nama_nakshathram" required>
+                                        </div>
+                                    </div>
                             </div>
                             <br>
-                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Title</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="janma_nama_nakshathram_title" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Description</label> <i class="text-danger asterik">*</i>
+                                            <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-3">
                                         <label for="">Adhayam </label> <i class="text-danger asterik">*</i><?php echo isset($error['adhayam']) ? $error['adhayam'] : ''; ?>
@@ -175,28 +222,47 @@ if (isset($_POST['btnAdd'])) {
                             <br>
                             <div id="packate_div"  >
                                 <div class="row">
+                                 
                                     <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Title</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="sub_title[]" required />
+                                            <label for="exampleInputEmail1">Graha Dhashakalamu</label> <i class="text-danger asterik"></i>
+                                            <textarea type="text" rows="2" class="form-control" name="graha_dhashakalamu[]"required></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Sub Description</label> <i class="text-danger asterik">*</i>
-                                            <textarea type="text" rows="2" class="form-control" name="sub_description[]" required></textarea>
-                                        </div>
-                                    </div>
-                                
                                     <div class="col-md-1">
                                         <label>Tab</label>
-                                        <a class="add_packate_variation" title="Add variation of yearly horoscope" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
+                                        <a class="add_packate_variation" title="Add variation" style="cursor: pointer;color:white;"><button class="btn btn-warning">Add more</button></a>
                                     </div>
                                     <div id="variations">
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Graha Dhoshakalamu Title</label> <i class="text-danger asterik">*</i>
+                                            <input type="text" class="form-control" name="graha_dhashakalamu_title" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Graha Dhoshakalamu Description</label> <i class="text-danger asterik">*</i>
+                                            <textarea type="text" rows="2" class="form-control" name="graha_dhashakalamu_description" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label for="">Title</label> <i class="text-danger asterik">*</i>
+                                        <input type="text" class="form-control" name="title" required />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Description</label> <i class="text-danger asterik">*</i>
+                                        <textarea type="text" rows="2" class="form-control" name="description" required></textarea>
+                                    </div>
+                                </div>
+                                                </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
@@ -244,7 +310,23 @@ if (isset($_POST['btnAdd'])) {
             e.preventDefault();
             if (x < max_fields) {
                 x++;
-                $(wrapper).append('<div class="row"><div class="col-md-4"><div class="form-group"><label for="sub_title">Sub title</label>' +'<input type="text" class="form-control" name="sub_title[]" /></div></div>' + '<div class="col-md-6"><div class="form-group"><label for="sub_description">Sub description</label>'+'<textarea type="text" row="2" class="form-control" name="sub_description[]"></textarea></div></div>'+'<div class="col-md-1" style="display: grid;"><label>Tab</label><a class="remove" style="cursor:pointer;color:white;"><button class="btn btn-danger">Remove</button></a></div>'+'</div>');
+                $(wrapper).append(
+                    '<div class="row">' +
+                    '<div class="col-md-4">' +
+                    '<div class="form-group">' +
+                    '<label for="graha_dhashakalamu">Graha Dhashakalamu</label>' +
+                    '<textarea type="text" rows="2" class="form-control" name="graha_dhashakalamu[]"required></textarea>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-1" style="display: grid;">' +
+                    '<label>Tab</label>' +
+                    '<a class="remove" style="cursor:pointer;color:white;">' +
+                    '<button class="btn btn-danger">Remove</button>' +
+                    '</a>' +
+                    '</div>' +
+                    '</div>'
+                );
+
             }
             else{
                 alert('You Reached the limits')
