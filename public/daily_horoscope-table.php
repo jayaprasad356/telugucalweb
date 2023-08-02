@@ -25,8 +25,8 @@
                                     <th  data-field="id" data-sortable="true">ID</th>
                                     <th data-field="date" data-sortable="true">Date</th>
                                     <th  data-field="rasi" data-sortable="true">Rasi</th>
-                                    <th  data-field="title" data-sortable="true">Title</th>
                                     <th  data-field="description" data-sortable="true">Description</th>
+                                    <th  data-field="title" data-sortable="true">Title</th>
                                     <!-- <th  data-field="lucky_number" data-sortable="true">Lucky Number</th>
                                     <th  data-field="lucky_color" data-sortable="true">Lucky Color</th>
                                     <th  data-field="treatment" data-sortable="true">Treatment</th>
