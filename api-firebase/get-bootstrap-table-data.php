@@ -567,6 +567,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'daily_horoscope') {
         $tempRow['id'] = $row['id'];
         $tempRow['date'] = $row['date'];
         $tempRow['rasi'] = $row['rasi'];
+        $tempRow['title'] = $row['title'];
         $tempRow['description'] = $row['description'];
         // $tempRow['lucky_number'] = $row['lucky_number'];
         // $tempRow['lucky_color'] = $row['lucky_color'];

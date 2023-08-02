@@ -18,6 +18,7 @@ if (isset($_POST['btnEdit'])) {
 
 	$date = $db->escapeString(($_POST['date']));
 	$rasi= $db->escapeString($_POST['rasi']);
+	$title= $db->escapeString($_POST['title']);
 	$description= $db->escapeString($_POST['description']);
 	// $lucky_number= $db->escapeString($_POST['lucky_number']);
 	// $lucky_color= $db->escapeString($_POST['lucky_color']);
@@ -37,6 +38,9 @@ if (isset($_POST['btnEdit'])) {
 	}
 	if (empty($description)) {
 		$error['description'] = " <span class='label label-danger'>Required!</span>";
+	}
+	if (empty($title)) {
+		$error['title'] = " <span class='label label-danger'>Required!</span>";
 	}
 	// if (empty($lucky_number)) {
 	// 	$error['lucky_number'] = " <span class='label label-danger'>Required!</span>";
@@ -68,10 +72,10 @@ if (isset($_POST['btnEdit'])) {
    
    
    
-	if (!empty($date) && !empty($rasi) && !empty($description) ) {
+	if (!empty($date) && !empty($rasi) && !empty($description)&& !empty($title) ) {
 
             //  $sql_query = "UPDATE daily_horoscope SET date='$date',rasi='$rasi',description='$description',lucky_number='$lucky_number',lucky_color='$lucky_color',treatment='$treatment',health='$health',wealth='$wealth',family='$family',things_love='$things_love',profession='$profession',married_life='$married_life' WHERE id =$ID";
-			$sql_query = "UPDATE daily_horoscope SET date='$date',rasi='$rasi',description='$description' WHERE id =$ID";
+			$sql_query = "UPDATE daily_horoscope SET date='$date',rasi='$rasi',description='$description',title='$title' WHERE id =$ID";
 			$db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -155,10 +159,16 @@ if (isset($_POST['btnCancel'])) { ?>
                             <br>
                             <div class="row">
                                 <div class="form-group">
-                                     <div class="col-md-12">
+                                     <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
+											<input type="title" class="form-control" name="title" value="<?php echo $res[0]['title']; ?>">
+                                    </div>
+									<div class="form-group">
+                                     <div class="col-md-6">
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                             <textarea type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description'] ?></textarea>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                             <hr>
