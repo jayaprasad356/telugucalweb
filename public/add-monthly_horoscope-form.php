@@ -9,6 +9,7 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
 
         $rasi= $db->escapeString($_POST['rasi']);
+        $title= $db->escapeString($_POST['title']);
         $year= $db->escapeString($_POST['year']);
         $month= $db->escapeString($_POST['month']);
         $description= $db->escapeString($_POST['description']);
@@ -16,6 +17,9 @@ if (isset($_POST['btnAdd'])) {
      
         if (empty($rasi)) {
             $error['rasi'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($title)) {
+            $error['title'] = " <span class='label label-danger'>Required!</span>";
         }
         if (empty($year)) {
             $error['year'] = " <span class='label label-danger'>Required!</span>";
@@ -28,9 +32,9 @@ if (isset($_POST['btnAdd'])) {
         }
        
        
-       if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month))
+       if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month)&& !empty($title))
         {
-            $sql_query = "INSERT INTO monthly_horoscope (rasi,description,year,month)VALUES('$rasi','$description','$year','$month')";
+            $sql_query = "INSERT INTO monthly_horoscope (rasi,description,year,month,title)VALUES('$rasi','$description','$year','$month','$title')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -86,6 +90,12 @@ if (isset($_POST['btnAdd'])) {
                                             <?php } ?>
                                             </select>
                                     </div>
+                                    <div class="form-group">
+                                     <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
+                                            <input type="text" class="form-control" name="title" required>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <br>

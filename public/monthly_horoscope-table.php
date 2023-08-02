@@ -27,6 +27,7 @@
                                     <th  data-field="year" data-sortable="true">year</th>
                                     <th  data-field="month" data-sortable="true">Month</th>
                                     <th  data-field="description" data-sortable="true">Description</th>
+                                    <th  data-field="title" data-sortable="true">Title</th>
                                     <th  data-field="operate" data-events="actionEvents">Action</th>
                                 </tr>
                             </thead>

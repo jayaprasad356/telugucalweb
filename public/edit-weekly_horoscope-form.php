@@ -21,6 +21,7 @@ if (isset($_POST['btnEdit'])) {
 	$year= $db->escapeString($_POST['year']);
 	$month= $db->escapeString($_POST['month']);
 	$week= $db->escapeString($_POST['week']);
+    $title= $db->escapeString($_POST['title']);
 	
 
 	if (empty($rasi)) {
@@ -35,12 +36,15 @@ if (isset($_POST['btnEdit'])) {
 	if (empty($description)) {
 		$error['description'] = " <span class='label label-danger'>Required!</span>";
 	}
+    if (empty($title)) {
+		$error['title'] = " <span class='label label-danger'>Required!</span>";
+	}
    
    
    
-	if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month))
+	if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month)&& !empty($title))
 	{
-             $sql_query = "UPDATE weekly_horoscope SET rasi='$rasi',description='$description',year='$year',month='$month',week='$week' WHERE id =$ID";
+             $sql_query = "UPDATE weekly_horoscope SET rasi='$rasi',description='$description',title='$title',year='$year',month='$month',week='$week' WHERE id =$ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -114,6 +118,12 @@ if (isset($_POST['btnCancel'])) { ?>
                                             <?php } ?>
                                             </select>
                                     </div>
+                                    <div class="form-group">
+                                     <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
+											<input type="title" class="form-control" name="title" value="<?php echo $res[0]['title']; ?>">
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <br>
@@ -153,9 +163,10 @@ if (isset($_POST['btnCancel'])) { ?>
 							<div class="row">
                                 <div class="form-group">
                                     <div class='col-md-6'>
-                                        <label for="">Week</label> <i class="text-danger asterik">*</i>
+                                        <label for="">Week</label> <i class="text-danger asterik">*</i><?php echo isset($error['week']) ? $error['week'] : ''; ?>
                                         <select id='week' name="week" class='form-control' required>
                                             <option value="">Select</option>
+                                            <option value="<?php echo $res[0]['week']; ?>"><?php echo $res[0]['week']; ?></option>
                                             </select>
                                     </div>
                                 </div>
@@ -167,7 +178,6 @@ if (isset($_POST['btnCancel'])) { ?>
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                             <textarea type="text" rows="3" class="form-control" name="description"><?php echo $res[0]['description'] ?></textarea>
                                     </div>
-                                </div>
                             </div>
 						
 						</div><!-- /.box-body -->

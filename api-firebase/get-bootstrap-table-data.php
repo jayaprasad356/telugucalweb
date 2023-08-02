@@ -631,6 +631,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'weekly_horoscope') {
         $operate .= ' <a class="text text-danger" href="delete-weekly_horoscope.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['rasi'] = $row['rasi'];
+        $tempRow['title'] = $row['title'];
         $tempRow['week'] = $row['week'];
         $tempRow['year'] = $row['year'];
         $tempRow['month'] = $row['month'];
@@ -690,6 +691,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'monthly_horoscope') {
         $operate .= ' <a class="text text-danger" href="delete-monthly_horoscope.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['rasi'] = $row['rasi'];
+        $tempRow['title'] = $row['title'];
         $tempRow['year'] = $row['year'];
         $tempRow['month'] = $row['month'];
         $tempRow['description'] = $row['description'];
