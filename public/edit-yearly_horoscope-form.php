@@ -268,19 +268,6 @@ if (isset($_POST['btnCancel'])) { ?>
                                 </div>
                             </div>
 												<br>
-						
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <label for="">Title</label> <i class="text-danger asterik">*</i>
-                                        <input type="text" class="form-control" name="title" value="<?php echo $res[0]['title']?>"  />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="">Description</label> <i class="text-danger asterik">*</i>
-                                        <textarea type="text" rows="2" class="form-control" name="description"  ><?php echo $res[0]['description']?></textarea>
-                                    </div>
-                                </div>
-								</div>
 								<div id="variations">
         <?php
         $i = 0;
@@ -319,6 +306,18 @@ if (isset($_POST['btnCancel'])) { ?>
         <?php $i++;
         } ?>
     </div>
+    <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label for="">Title</label> <i class="text-danger asterik">*</i>
+                                        <input type="text" class="form-control" name="title" value="<?php echo $res[0]['title']?>"  />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Description</label> <i class="text-danger asterik">*</i>
+                                        <textarea type="text" rows="2" class="form-control" name="description"  ><?php echo $res[0]['description']?></textarea>
+                                    </div>
+                                </div>
+								</div>
 </div>
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary" name="btnEdit">Update</button>					
