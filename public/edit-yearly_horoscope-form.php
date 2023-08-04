@@ -41,7 +41,7 @@ if (isset($_POST['btnEdit'])) {
 		if (!empty($rasi) && !empty($year) && !empty($janma_nama_nakshathram) && !empty($graha_dhashakalamu) && !empty($main_title) && !empty($main_description) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam) && !empty($janma_nama_nakshathram_title1) && !empty($janma_nama_nakshathram_title2) && !empty($janma_nama_nakshathram_title3) && !empty($janma_nama_nakshathram_title4) && !empty($janma_nama_nakshathram_description1) && !empty($janma_nama_nakshathram_description2) && !empty($janma_nama_nakshathram_description3) && !empty($janma_nama_nakshathram_description4)) 
         {
 
-             $sql_query = "UPDATE yearly_horoscope SET rasi='$rasi',year='$year',title='$title',description='$description',adhayam='$adhayam',vyayam='$vyayam',rajapujyam='$rajapujyam',aavamanam='$aavamanam',janma_nama_nakshathram='$janma_nama_nakshathram',main_title='$main_title',main_description='$main_description',janma_nama_nakshathram_title1='$janma_nama_nakshathram_title1',janma_nama_nakshathram_title2='$janma_nama_nakshathram_title2',janma_nama_nakshathram_title3='$janma_nama_nakshathram_title3',janma_nama_nakshathram_title4='$janma_nama_nakshathram_title4',janma_nama_nakshathram_description1='$janma_nama_nakshathram_description1',janma_nama_nakshathram_description2='$janma_nama_nakshathram_description2',janma_nama_nakshathram_description3='$janma_nama_nakshathram_description3',janma_nama_nakshathram_description4='$janma_nama_nakshathram_description4' WHERE id =$ID";
+             $sql_query = "UPDATE yearly_horoscope SET rasi='$rasi',year='$year',title='$title',description='$description',adhayam='$adhayam',vyayam='$vyayam',rajapujyam='$rajapujyam',aavamanam='$aavamanam',janma_nama_nakshathram='$janma_nama_nakshathram',main_title='$main_title',main_description='$main_description',janma_nama_nakshathram_title1='$janma_nama_nakshathram_title1',janma_nama_nakshathram_title2='$janma_nama_nakshathram_title2',janma_nama_nakshathram_title3='$janma_nama_nakshathram_title3',janma_nama_nakshathram_title4='$janma_nama_nakshathram_title4',janma_nama_nakshathram_description1='$janma_nama_nakshathram_description1',janma_nama_nakshathram_description2='$janma_nama_nakshathram_description2',janma_nama_nakshathram_description3='$janma_nama_nakshathram_description3',janma_nama_nakshathram_description4='$janma_nama_nakshathram_description4',graha_dhashakalamu='$graha_dhashakalamu' WHERE id =$ID";
 			 $db->sql($sql_query);
 	   		 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -140,7 +140,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                 <div class="form-group">
                                     <div class='col-md-4'>
                                         <label for="">Rasi</label> <i class="text-danger asterik">*</i>
-                                        <select id='rasi' name="rasi" class='form-control' required>
+                                        <select id="rasi" name="rasi" class='form-control' required>
                                             <option value="">Select</option>
                                                 <?php
                                                 $sql = "SELECT * FROM `rasi_names`";
@@ -154,7 +154,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                     </div>
                                     <div class='col-md-4'>
                                         <label for="">Year</label> <i class="text-danger asterik">*</i>
-                                        <select id='year' name="year" class='form-control'>
+                                        <select id="year" name="year" class='form-control'>
                                             <option value="">Select Year</option>
                                                 <?php
                                                 $sql = "SELECT * FROM `years`";
