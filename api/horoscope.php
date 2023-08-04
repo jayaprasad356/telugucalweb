@@ -14,7 +14,7 @@ $db->connect();
 if ($_POST['type'] == 'Daily'){
     $date = date('Y-m-d');
     $rasi = $db->escapeString($_POST['rasi']);
-    $sql = "SELECT * FROM `daily_horoscope` WHERE date = '$date' AND rasi = '$rasi' AND title = '$title' AND description = '$description'";
+    $sql = "SELECT * FROM `daily_horoscope` WHERE date = '$date' AND rasi = '$rasi'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
