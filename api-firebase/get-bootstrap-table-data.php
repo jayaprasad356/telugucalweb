@@ -5234,6 +5234,8 @@ if (isset($_GET['table']) && $_GET['table'] == 'notifications') {
         $tempRow['id'] = $row['id'];
         $tempRow['title'] = $row['title'];
         $tempRow['description'] = $row['description'];
+        $tempRow['date'] = $row['date'];
+        $tempRow['time'] = $row['time'];
         if(!empty($row['image'])){
             $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['image'] . "'><img src='" . $row['image'] . "' title='" . $row['image'] . "' height='50' /></a>";
 

@@ -37,8 +37,9 @@ if (isset($_POST['btnAdd'])) {
         $sql = "INSERT INTO notifications (title,description, image) VALUES ('$title','$description', '$upload_image')";
         $db->sql($sql);
     } else {
+    
         // Image is not uploaded or empty, insert only the title
-        $sql = "INSERT INTO notifications (title,description) VALUES ('$title','$description')";
+        $sql = "INSERT INTO notifications (title, description, date, time) VALUES ('$title', '$description', CURDATE(), CURTIME())";
         $db->sql($sql);
     }
     $result = $db->getResult();

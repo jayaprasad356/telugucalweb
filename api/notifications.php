@@ -25,9 +25,8 @@ if ($num >= 1) {
         $temp['title'] = $row['title'];
         $temp['description'] = $row['description'];
         $temp['image'] = DOMAIN_URL . $row['image'];
-        
-        // Add current date and time to the response
-        $temp['current_date'] = date("Y-m-d H:i:s");
+        $temp['date'] = $row['date'];
+        $temp['time'] = $row['time'];
         
         $rows[] = $temp;
 

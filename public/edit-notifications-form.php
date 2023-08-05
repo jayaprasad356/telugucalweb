@@ -16,8 +16,8 @@ if (isset($_POST['btnUpdate'])) {
     $error = array();
     $title = $db->escapeString($fn->xss_clean($_POST['title']));
     $description = $db->escapeString($fn->xss_clean($_POST['description']));
-
-    $sql = "UPDATE notifications SET title='$title',description='$description' WHERE id = '$ID'";
+  
+    $sql = "UPDATE notifications SET title='$title',description='$description', date=CURDATE(), time=CURTIME() WHERE id = '$ID'";
     $db->sql($sql);
     $categories_result = $db->getResult();
     if (!empty($categories_result)) {

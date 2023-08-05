@@ -63,6 +63,7 @@ if ($_POST['type'] == 'Monthly'){
 
 }
 if ($_POST['type'] == 'Yearly'){
+   
     $rasi = $db->escapeString($_POST['rasi']);
     $sql = "SELECT * FROM `yearly_horoscope` WHERE  rasi = '$rasi'";
     $db->sql($sql);
