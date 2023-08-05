@@ -63,9 +63,8 @@ if ($_POST['type'] == 'Monthly'){
 
 }
 if ($_POST['type'] == 'Yearly'){
-    $year = date('Y');
     $rasi = $db->escapeString($_POST['rasi']);
-    $sql = "SELECT * FROM `yearly_horoscope` WHERE year = '$year' AND rasi = '$rasi'";
+    $sql = "SELECT * FROM `yearly_horoscope` WHERE  rasi = '$rasi'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);

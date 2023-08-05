@@ -12,22 +12,25 @@ include_once('../includes/crud.php');
 $db = new Database();
 $db->connect();
 
-
-
 $sql = "SELECT * FROM `notifications`";
 $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
-if($num>=1){
-        $rows = array();
+
+if ($num >= 1) {
+    $rows = array();
+    foreach ($res as $row) {
         $temp = array();
-        foreach ($res as $row) {
-            $id = $row['id'];
-            $temp['id'] = $row['id'];
-            $temp['title'] = $row['title'];
-            $temp['description'] = $row['description'];
-            $temp['image'] = DOMAIN_URL . $row['image'];
-            $rows[] = $temp;
+        $temp['id'] = $row['id'];
+        $temp['title'] = $row['title'];
+        $temp['description'] = $row['description'];
+        $temp['image'] = DOMAIN_URL . $row['image'];
+        
+        // Add current date and time to the response
+        $temp['current_date'] = date("Y-m-d H:i:s");
+        
+        $rows[] = $temp;
+
         }
         $response['success'] = true;
         $response['message'] = "notifications Listed Successfully";
