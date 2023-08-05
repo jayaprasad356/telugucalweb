@@ -78,9 +78,7 @@ if (isset($_POST['btnAdd'])) {
         if (empty($janma_nama_nakshathram_title3)) {
             $error['janma_nama_nakshathram_title3'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($janma_nama_nakshathram_title4)) {
-            $error['janma_nama_nakshathram_title4'] = " <span class='label label-danger'>Required!</span>";
-        }
+        
         if (empty($janma_nama_nakshathram_description1)) {
             $error['janma_nama_nakshathram_description1'] = " <span class='label label-danger'>Required!</span>";
         }
@@ -90,13 +88,9 @@ if (isset($_POST['btnAdd'])) {
         if (empty($janma_nama_nakshathram_description3)) {
             $error['janma_nama_nakshathram_description3'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($janma_nama_nakshathram_description4)) {
-            $error['janma_nama_nakshathram_description4'] = " <span class='label label-danger'>Required!</span>";
-        }
+       
 
-
-
-        if (!empty($rasi) && !empty($year) && !empty($janma_nama_nakshathram) && !empty($graha_dhashakalamu) && !empty($main_title) && !empty($main_description) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam) && !empty($janma_nama_nakshathram_title1) && !empty($janma_nama_nakshathram_title2) && !empty($janma_nama_nakshathram_title3) && !empty($janma_nama_nakshathram_title4) && !empty($janma_nama_nakshathram_description1) && !empty($janma_nama_nakshathram_description2) && !empty($janma_nama_nakshathram_description3) && !empty($janma_nama_nakshathram_description4)) 
+        if (!empty($rasi) && !empty($year) && !empty($janma_nama_nakshathram) && !empty($graha_dhashakalamu) && !empty($main_title) && !empty($main_description) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam) && !empty($janma_nama_nakshathram_title1) && !empty($janma_nama_nakshathram_title2) && !empty($janma_nama_nakshathram_title3)  && !empty($janma_nama_nakshathram_description1) && !empty($janma_nama_nakshathram_description2) && !empty($janma_nama_nakshathram_description3) ) 
         {
                 $sql_query = "INSERT INTO yearly_horoscope (rasi,year,title,janma_nama_nakshathram,janma_nama_nakshathram_title1,janma_nama_nakshathram_title2,janma_nama_nakshathram_title3,janma_nama_nakshathram_title4,janma_nama_nakshathram_description1,janma_nama_nakshathram_description2,janma_nama_nakshathram_description3,janma_nama_nakshathram_description4,graha_dhashakalamu,main_title,main_description,description,adhayam,vyayam,rajapujyam,aavamanam)VALUES('$rasi','$year','$janma_nama_nakshathram','$janma_nama_nakshathram_title1','$janma_nama_nakshathram_title2','$janma_nama_nakshathram_title3','$janma_nama_nakshathram_title4','$janma_nama_nakshathram_description1','$janma_nama_nakshathram_description2','$janma_nama_nakshathram_description3','$janma_nama_nakshathram_description4','$graha_dhashakalamu','$main_title','$main_description','$title','$description','$adhayam','$vyayam','$rajapujyam','$aavamanam')";
                 $db->sql($sql_query);
@@ -247,14 +241,14 @@ if (isset($_POST['btnAdd'])) {
                                         </div>
                                         <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Title4</label> <i class="text-danger asterik">*</i>
-                                            <input type="text" class="form-control" name="janma_nama_nakshathram_title4" required />
+                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Title4</label> <i class="text-danger asterik"></i>
+                                            <input type="text" class="form-control" name="janma_nama_nakshathram_title4" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Description4</label> <i class="text-danger asterik">*</i>
-                                            <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description4" required></textarea>
+                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Description4</label> <i class="text-danger asterik"></i>
+                                            <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description4" ></textarea>
                                         </div>
                                         </div>
                                         </div>

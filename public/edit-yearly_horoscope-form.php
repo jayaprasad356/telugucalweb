@@ -38,7 +38,7 @@ if (isset($_POST['btnEdit'])) {
         $janma_nama_nakshathram_description4= $db->escapeString($_POST['janma_nama_nakshathram_description4']);
         $error = array();
           
-		if (!empty($rasi) && !empty($year) && !empty($janma_nama_nakshathram) && !empty($graha_dhashakalamu) && !empty($main_title) && !empty($main_description) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam) && !empty($janma_nama_nakshathram_title1) && !empty($janma_nama_nakshathram_title2) && !empty($janma_nama_nakshathram_title3) && !empty($janma_nama_nakshathram_title4) && !empty($janma_nama_nakshathram_description1) && !empty($janma_nama_nakshathram_description2) && !empty($janma_nama_nakshathram_description3) && !empty($janma_nama_nakshathram_description4)) 
+		if (!empty($rasi) && !empty($year) && !empty($janma_nama_nakshathram) && !empty($graha_dhashakalamu) && !empty($main_title) && !empty($main_description) && !empty($title) && !empty($description) && !empty($adhayam) && !empty($vyayam) && !empty($rajapujyam) && !empty($aavamanam) && !empty($janma_nama_nakshathram_title1) && !empty($janma_nama_nakshathram_title2) && !empty($janma_nama_nakshathram_title3)  && !empty($janma_nama_nakshathram_description1) && !empty($janma_nama_nakshathram_description2) && !empty($janma_nama_nakshathram_description3) ) 
         {
 
              $sql_query = "UPDATE yearly_horoscope SET rasi='$rasi',year='$year',title='$title',description='$description',adhayam='$adhayam',vyayam='$vyayam',rajapujyam='$rajapujyam',aavamanam='$aavamanam',janma_nama_nakshathram='$janma_nama_nakshathram',main_title='$main_title',main_description='$main_description',janma_nama_nakshathram_title1='$janma_nama_nakshathram_title1',janma_nama_nakshathram_title2='$janma_nama_nakshathram_title2',janma_nama_nakshathram_title3='$janma_nama_nakshathram_title3',janma_nama_nakshathram_title4='$janma_nama_nakshathram_title4',janma_nama_nakshathram_description1='$janma_nama_nakshathram_description1',janma_nama_nakshathram_description2='$janma_nama_nakshathram_description2',janma_nama_nakshathram_description3='$janma_nama_nakshathram_description3',janma_nama_nakshathram_description4='$janma_nama_nakshathram_description4',graha_dhashakalamu='$graha_dhashakalamu' WHERE id =$ID";
@@ -227,13 +227,13 @@ if (isset($_POST['btnCancel'])) { ?>
                                         </div>
                                         <div class="col-md-4">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Title4</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Title4</label> <i class="text-danger asterik"></i>
                                             <input type="text" class="form-control" name="janma_nama_nakshathram_title4" value="<?php echo $res[0]['janma_nama_nakshathram_title4']?>" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group packate_div">
-                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Description4</label> <i class="text-danger asterik">*</i>
+                                            <label for="exampleInputEmail1">Janma Nama Nakshathram Description4</label> <i class="text-danger asterik"></i>
                                             <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description4" ><?php echo $res[0]['janma_nama_nakshathram_description4']?></textarea>
                                         </div>
                                         </div>
