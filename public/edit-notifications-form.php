@@ -130,7 +130,7 @@ $data = $row;
                             <div class="form-group">
                                 <div class='col-md-8'>
                                     <label for="exampleInputEmail1"> Link</label> <i class="text-danger asterik">*</i><?php echo isset($error['link']) ? $error['link'] : ''; ?>
-                                    <input type="text" class="form-control" name="link" value="<?php echo $data['link']?>" required>
+                                    <input type="text" class="form-control" name="link" value="<?php echo $data['link']?>">
                                 </div>
                             </div>
                     </div>

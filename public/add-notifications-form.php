@@ -17,9 +17,7 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($link)) {
-            $error['link'] = " <span class='label label-danger'>Required!</span>";
-        }
+       
        
        
         // Validate and process the image upload
@@ -106,14 +104,14 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                     <div class="col-md-8">
                                         <label for="exampleInputFile">Image</label> <i class="text-danger asterik">*</i><?php echo isset($error['image']) ? $error['image'] : ''; ?>
-                                        <input type="file" name="image" onchange="readURL(this);" accept="image/png,  image/jpeg" id="image" required/><br>
+                                        <input type="file" name="image" onchange="readURL(this);" accept="image/png,  image/jpeg" id="image" /><br>
                                         <img id="blah" src="#" alt="" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class='col-md-8'>
                                         <label for="exampleInputEmail1"> Link</label> <i class="text-danger asterik">*</i><?php echo isset($error['link']) ? $error['link'] : ''; ?>
-                                        <input type="text" class="form-control" name="link" id = "link"required>
+                                        <input type="text" class="form-control" name="link" id = "link">
                                     </div>
                                 </div>
                             </div> 
