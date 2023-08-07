@@ -130,11 +130,11 @@ if (isset($_POST['btnCancel'])) { ?>
                             <div class="row">
                                 <div class="form-group">
                                     <div class='col-md-6'>
-                                        <label for="">Year</label> <i class="text-danger asterik">*</i>
+                                    <label for="">Year</label> <i class="text-danger asterik">*</i>
                                         <select id='year' name="year" class='form-control' required>
                                             <option value="">Select Year</option>
                                                 <?php
-                                                $sql = "SELECT * FROM `years`";
+                                                $sql = "SELECT * FROM `year_count`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
@@ -163,11 +163,8 @@ if (isset($_POST['btnCancel'])) { ?>
 							<div class="row">
                                 <div class="form-group">
                                     <div class='col-md-6'>
-                                        <label for="">Week</label> <i class="text-danger asterik">*</i><?php echo isset($error['week']) ? $error['week'] : ''; ?>
-                                        <select id='week' name="week" class='form-control' required>
-                                            <option value="">Select</option>
-                                            <option value="<?php echo $res[0]['week']; ?>"><?php echo $res[0]['week']; ?></option>
-                                            </select>
+                                    <label for="exampleInputEmail1">Week</label> <i class="text-danger asterik">*</i><?php echo isset($error['week']) ? $error['week'] : ''; ?>
+											<input type="text" class="form-control" name="week" value="<?php echo $res[0]['week']; ?>">
                                     </div>
                                 </div>
                             </div>

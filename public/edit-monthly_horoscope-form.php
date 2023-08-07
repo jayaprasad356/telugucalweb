@@ -139,7 +139,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
                                                 ?>
-													 <option value='<?= $value['year'] ?>' <?= $value['year']==$res[0]['year'] ? 'selected="selected"' : '';?>><?= $value['year'] ?></option>
+												 	 <option value='<?= $value['year'] ?>' <?= $value['year']==$res[0]['year'] ? 'selected="selected"' : '';?>><?= $value['year'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

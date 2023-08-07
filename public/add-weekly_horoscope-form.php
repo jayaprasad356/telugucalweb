@@ -109,7 +109,7 @@ if (isset($_POST['btnAdd'])) {
                                         <select id='year'  name="year" class='form-control' required>
                                             <option value="">Select Year</option>
                                                 <?php
-                                                $sql = "SELECT * FROM `years`";
+                                                $sql = "SELECT * FROM `year_count`";
                                                 $db->sql($sql);
                                                 $result = $db->getResult();
                                                 foreach ($result as $value) {
