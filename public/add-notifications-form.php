@@ -9,6 +9,7 @@ $fn = new custom_functions;
 if (isset($_POST['btnAdd'])) {
         $title= $db->escapeString($_POST['title']);
         $description= $db->escapeString($_POST['description']);
+        $link= $db->escapeString($_POST['link']);
 
         if (empty($title)) {
             $error['title'] = " <span class='label label-danger'>Required!</span>";
@@ -16,6 +17,10 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
+        if (empty($link)) {
+            $error['link'] = " <span class='label label-danger'>Required!</span>";
+        }
+       
        
         // Validate and process the image upload
     if ($_FILES['image']['size'] != 0 && $_FILES['image']['error'] == 0 && !empty($_FILES['image'])) {
@@ -34,12 +39,12 @@ if (isset($_POST['btnAdd'])) {
         }
 
         $upload_image = 'upload/images/' . $filename;
-        $sql = "INSERT INTO notifications (title,description, image) VALUES ('$title','$description', '$upload_image')";
+        $sql = "INSERT INTO notifications (title,description, image,link) VALUES ('$title','$description', '$upload_image','$link')";
         $db->sql($sql);
     } else {
     
         // Image is not uploaded or empty, insert only the title
-        $sql = "INSERT INTO notifications (title, description, date, time) VALUES ('$title', '$description', CURDATE(), CURTIME())";
+        $sql = "INSERT INTO notifications (title, description,link, date, time) VALUES ('$title', '$description', '$link', CURDATE(), CURTIME())";
         $db->sql($sql);
     }
     $result = $db->getResult();
@@ -103,6 +108,12 @@ if (isset($_POST['btnAdd'])) {
                                         <label for="exampleInputFile">Image</label> <i class="text-danger asterik">*</i><?php echo isset($error['image']) ? $error['image'] : ''; ?>
                                         <input type="file" name="image" onchange="readURL(this);" accept="image/png,  image/jpeg" id="image" required/><br>
                                         <img id="blah" src="#" alt="" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class='col-md-8'>
+                                        <label for="exampleInputEmail1"> Link</label> <i class="text-danger asterik">*</i><?php echo isset($error['link']) ? $error['link'] : ''; ?>
+                                        <input type="text" class="form-control" name="link" id = "link"required>
                                     </div>
                                 </div>
                             </div> 

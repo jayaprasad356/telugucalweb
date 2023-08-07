@@ -16,8 +16,9 @@ if (isset($_POST['btnUpdate'])) {
     $error = array();
     $title = $db->escapeString($fn->xss_clean($_POST['title']));
     $description = $db->escapeString($fn->xss_clean($_POST['description']));
+    $link = $db->escapeString($fn->xss_clean($_POST['link']));
   
-    $sql = "UPDATE notifications SET title='$title',description='$description', date=CURDATE(), time=CURTIME() WHERE id = '$ID'";
+    $sql = "UPDATE notifications SET title='$title',description='$description',link='$link', date=CURDATE(), time=CURTIME() WHERE id = '$ID'";
     $db->sql($sql);
     $categories_result = $db->getResult();
     if (!empty($categories_result)) {
@@ -125,14 +126,19 @@ $data = $row;
                                 </div>
                             </div>
                             </div>
+                            <br>
+                            <div class="form-group">
+                                <div class='col-md-8'>
+                                    <label for="exampleInputEmail1"> Link</label> <i class="text-danger asterik">*</i><?php echo isset($error['link']) ? $error['link'] : ''; ?>
+                                    <input type="text" class="form-control" name="link" value="<?php echo $data['link']?>" required>
+                                </div>
+                            </div>
                     </div>
                     <div class="box-footer">
-                    <input type="submit" class="btn-primary btn" value="Update" name="btnUpdate" />
-    <a class="btn btn-success" href="add-item.php?id=<?php echo $ID ?>"><i class="fa fa-plus-square"></i> Add Item</a>
- 
-</div>
-
-
+                        <input type="submit" class="btn-primary btn" value="Update" name="btnUpdate" />&nbsp;
+                        <!-- <input type="reset" class="btn-danger btn" value="Clear" id="btnClear" /> -->
+                        <!--<div  id="res"></div>-->
+                    </div>
                 </form>
             </div>
             <!-- /.box -->
