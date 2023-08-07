@@ -127,10 +127,12 @@ $data = $row;
                             </div>
                     </div>
                     <div class="box-footer">
-                        <input type="submit" class="btn-primary btn" value="Update" name="btnUpdate" />&nbsp;
-                        <!-- <input type="reset" class="btn-danger btn" value="Clear" id="btnClear" /> -->
-                        <!--<div  id="res"></div>-->
-                    </div>
+                    <input type="submit" class="btn-primary btn" value="Update" name="btnUpdate" />
+    <a class="btn btn-success" href="add-item.php?id=<?php echo $ID ?>"><i class="fa fa-plus-square"></i> Add Item</a>
+ 
+</div>
+
+
                 </form>
             </div>
             <!-- /.box -->

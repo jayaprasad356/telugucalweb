@@ -7,14 +7,18 @@ $fn = new custom_functions;
 ?>
 <?php
 if (isset($_POST['btnAdd'])) {
-        $title= $db->escapeString($_POST['title']);
-        $description= $db->escapeString($_POST['description']);
+        $add_title= $db->escapeString($_POST['add_title']);
+        $add_description= $db->escapeString($_POST['add_description']);
+        $add_linked_text= $db->escapeString($_POST['add_linked_text']);
 
-        if (empty($title)) {
-            $error['title'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($add_title)) {
+            $error['add_title'] = " <span class='label label-danger'>Required!</span>";
         }
-        if (empty($description)) {
-            $error['description'] = " <span class='label label-danger'>Required!</span>";
+        if (empty($add_description)) {
+            $error['add_description'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($add_linked_text)) {
+            $error['add_linked_text'] = " <span class='label label-danger'>Required!</span>";
         }
        
         // Validate and process the image upload
@@ -34,12 +38,12 @@ if (isset($_POST['btnAdd'])) {
         }
 
         $upload_image = 'upload/images/' . $filename;
-        $sql = "INSERT INTO notifications (title,description, image) VALUES ('$title','$description', '$upload_image')";
+        $sql = "INSERT INTO items (add_title,add_description,add_linked_text, image) VALUES ('$add_title','$add_description','$add_linked_text', '$upload_image')";
         $db->sql($sql);
     } else {
     
         // Image is not uploaded or empty, insert only the title
-        $sql = "INSERT INTO notifications (title, description, date, time) VALUES ('$title', '$description', CURDATE(), CURTIME())";
+        $sql = "INSERT INTO items (add_title,add_description,add_linked_text, image) VALUES ('$add_title','$add_description','$add_linked_text', '$upload_image')";
         $db->sql($sql);
     }
     $result = $db->getResult();
@@ -50,17 +54,17 @@ if (isset($_POST['btnAdd'])) {
     }
 
     if ($result == 1) {
-        $error['add_notifications'] = "<section class='content-header'>
-                                            <span class='label label-success'>notifications Added Successfully</span> </section>";
+        $error['add_items'] = "<section class='content-header'>
+                                            <span class='label label-success'>items Added Successfully</span> </section>";
     } else {
-        $error['add_notifications'] = " <span class='label label-danger'>Failed</span>";
+        $error['add_items'] = " <span class='label label-danger'>Failed</span>";
     }
 }
 ?>
 <section class="content-header">
-    <h1>Add notifications <small><a href='notifications.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to notifications</a></small></h1>
+    <h1>Add items <small><a href='notifications.php'> <i class='fa fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;Back to notifications</a></small></h1>
 
-    <?php echo isset($error['add_notifications']) ? $error['add_notifications'] : ''; ?>
+    <?php echo isset($error['add_items']) ? $error['add_items'] : ''; ?>
     <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
     </ol>
@@ -77,13 +81,13 @@ if (isset($_POST['btnAdd'])) {
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form name="add_notifications_form" method="post" enctype="multipart/form-data">
+                <form name="add_items_form" method="post" enctype="multipart/form-data">
                     <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
                                     <div class='col-md-8'>
-                                        <label for="exampleInputEmail1"> Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
-                                        <input type="text" class="form-control" name="title" id = "title"required>
+                                        <label for="exampleInputEmail1">Add Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['add_title']) ? $error['add_title'] : ''; ?>
+                                        <input type="text" class="form-control" name="add_title" id = "add_title"required>
                                     </div>
                                 </div>
                             </div>
@@ -91,8 +95,17 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class='col-md-8'>
-                                        <label for="exampleInputEmail1"> description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                        <input type="text" class="form-control" name="description" id="description" required>
+                                        <label for="exampleInputEmail1">Add description</label> <i class="text-danger asterik">*</i><?php echo isset($error['add_description']) ? $error['add_description'] : ''; ?>
+                                        <textarea row="2" type="text" class="form-control" name="add_description" id="add_description" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class='col-md-8'>
+                                        <label for="exampleInputEmail1">Add linked Text</label> <i class="text-danger asterik">*</i><?php echo isset($error['add_linked_text']) ? $error['add_linked_text'] : ''; ?>
+                                        <input type="text" class="form-control" name="add_linked_text" id="add_linked_text" required>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +113,7 @@ if (isset($_POST['btnAdd'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-8">
-                                        <label for="exampleInputFile">Image</label> <i class="text-danger asterik">*</i><?php echo isset($error['image']) ? $error['image'] : ''; ?>
+                                        <label for="exampleInputFile">Add Image</label> <i class="text-danger asterik">*</i><?php echo isset($error['image']) ? $error['image'] : ''; ?>
                                         <input type="file" name="image" onchange="readURL(this);" accept="image/png,  image/jpeg" id="image" required/><br>
                                         <img id="blah" src="#" alt="" />
                                     </div>
