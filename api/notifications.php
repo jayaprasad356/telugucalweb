@@ -24,23 +24,20 @@ if ($num >= 1) {
         $temp['id'] = $row['id'];
         $temp['title'] = $row['title'];
         $temp['description'] = $row['description'];
+        $temp['link'] = $row['link'];
         $temp['image'] = DOMAIN_URL . $row['image'];
-        $temp['date'] = $row['date'];
-        $temp['time'] = $row['time'];
-        
-        $rows[] = $temp;
+        $temp['date'] = date("d-m-Y", strtotime($row['date']));
+        $temp['time'] = date("h:i A", strtotime($row['time'])); 
 
-        }
-        $response['success'] = true;
-        $response['message'] = "notifications Listed Successfully";
-        $response['data'] = $rows;
-        print_r(json_encode($response));
-}
-else{
+        $rows[] = $temp;
+    }
+    $response['success'] = true;
+    $response['message'] = "notifications Listed Successfully";
+    $response['data'] = $rows;
+    print_r(json_encode($response));
+} else {
     $response['success'] = false;
     $response['message'] = "Data Not Found";
     print_r(json_encode($response));
 }
-
-
 ?>
