@@ -50,40 +50,31 @@ if (isset($_POST['btnEdit'])) {
 			} else {
 				$update_result = 1;
 			}
-
-			// check update result
-			if ($update_result == 1)
-		   {
-			
-			if (isset($_POST['graha_dhashakalamu_title'])) {
+            if ($update_result == 1)
+			{
 				for ($i = 0; $i < count($_POST['graha_dhashakalamu_title']); $i++) {
-					$yearly_horoscope_id = isset($_POST['yearly_horoscope_variant_id'][$i]) ? $db->escapeString($_POST['yearly_horoscope_variant_id'][$i]) : null;
-					$graha_dhashakalamu_title = isset($_POST['graha_dhashakalamu_title'][$i]) ? $db->escapeString($_POST['graha_dhashakalamu_title'][$i]) : null;
-					$graha_dhashakalamu_description = isset($_POST['graha_dhashakalamu_description'][$i]) ? $db->escapeString($_POST['graha_dhashakalamu_description'][$i]) : null;
-			
-					// Check if both title and description are not empty before updating
-					if ($yearly_horoscope_id !== null && !empty($graha_dhashakalamu_title) && !empty($graha_dhashakalamu_description)) {
-						$sql = "UPDATE yearly_horoscope_variant SET graha_dhashakalamu_title='$graha_dhashakalamu_title', graha_dhashakalamu_description='$graha_dhashakalamu_description' WHERE id = $yearly_horoscope_id";
-						$db->sql($sql);
-					}
+					$yearly_horoscope_id = $db->escapeString(($_POST['yearly_horoscope_variant_id'][$i]));
+					$graha_dhashakalamu_title = $db->escapeString(($_POST['graha_dhashakalamu_title'][$i]));
+					$graha_dhashakalamu_description = $db->escapeString(($_POST['graha_dhashakalamu_description'][$i]));
+					$sql = "UPDATE yearly_horoscope_variant SET graha_dhashakalamu_title='$graha_dhashakalamu_title',graha_dhashakalamu_description='$graha_dhashakalamu_description' WHERE id =$yearly_horoscope_id";
+					$db->sql($sql);
+
 				}
-			
-				// Insert new data
-				if (isset($_POST['insert_graha_dhashakalamu_title']) && isset($_POST['insert_graha_dhashakalamu_description'])) {
+				if (
+					isset($_POST['insert_graha_dhashakalamu_title']) && isset($_POST['insert_graha_dhashakalamu_description'])
+				) {
 					for ($i = 0; $i < count($_POST['insert_graha_dhashakalamu_title']); $i++) {
-						$insert_graha_dhashakalamu_title = isset($_POST['insert_graha_dhashakalamu_title'][$i]) ? $db->escapeString($_POST['insert_graha_dhashakalamu_title'][$i]) : null;
-						$insert_graha_dhashakalamu_description = isset($_POST['insert_graha_dhashakalamu_description'][$i]) ? $db->escapeString($_POST['insert_graha_dhashakalamu_description'][$i]) : null;
-			
-						// Check if both title and description are not empty before inserting
-						if (!empty($insert_graha_dhashakalamu_title) && !empty($insert_graha_dhashakalamu_description)) {
-							if ($ID !== null) {
-								$sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id, graha_dhashakalamu_title, graha_dhashakalamu_description) VALUES ('$ID', '$graha_dhashakalamu_title', '$graha_dhashakalamu_description')";
-								$db->sql($sql);
-							}
+						$graha_dhashakalamu_title = $db->escapeString(($_POST['insert_graha_dhashakalamu_title'][$i]));
+						$graha_dhashakalamu_description = $db->escapeString(($_POST['insert_graha_dhashakalamu_description'][$i]));
+						if (!empty($graha_dhashakalamu_title) || !empty($graha_dhashakalamu_description)) {
+							$sql = "INSERT INTO yearly_horoscope_variant (yearly_horoscope_id, graha_dhashakalamu_title, graha_dhashakalamu_description) VALUES ('$ID', '$graha_dhashakalamu_title', '$graha_dhashakalamu_description')";
+							$db->sql($sql);
+
 						}
 					}
 				}
-			}
+			// check update result
+		
 			
 			
                   $error['update_yearly_horoscope'] = " <section class='content-header'><span class='label label-success'>Yearly Horoscope updated Successfully</span></section>";
@@ -181,7 +172,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="janma_nama_nakshathram" value="<?php echo $res[0]['janma_nama_nakshathram']?>">
                                         </div>
@@ -190,49 +181,49 @@ if (isset($_POST['btnCancel'])) { ?>
                             <br>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group ">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Title1</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="janma_nama_nakshathram_title1" value="<?php echo $res[0]['janma_nama_nakshathram_title1']?>" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Description1</label> <i class="text-danger asterik">*</i>
                                             <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description1" ><?php echo $res[0]['janma_nama_nakshathram_description1']?></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Title2</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="janma_nama_nakshathram_title2" value="<?php echo $res[0]['janma_nama_nakshathram_title2']?>" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Description2</label> <i class="text-danger asterik">*</i>
                                             <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description2" ><?php echo $res[0]['janma_nama_nakshathram_description2']?></textarea>
                                         </div>
                                 </div>
                                 <div class="col-md-4">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group ">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Title3</label> <i class="text-danger asterik">*</i>
                                             <input type="text" class="form-control" name="janma_nama_nakshathram_title3" value="<?php echo $res[0]['janma_nama_nakshathram_title3']?>" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Description3</label> <i class="text-danger asterik">*</i>
                                             <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description3" ><?php echo $res[0]['janma_nama_nakshathram_description3']?></textarea>
                                         </div>
                                         </div>
                                         <div class="col-md-4">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Title4</label> <i class="text-danger asterik"></i>
                                             <input type="text" class="form-control" name="janma_nama_nakshathram_title4" value="<?php echo $res[0]['janma_nama_nakshathram_title4']?>" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group packate_div">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Janma Nama Nakshathram Description4</label> <i class="text-danger asterik"></i>
                                             <textarea type="text" rows="2" class="form-control" name="janma_nama_nakshathram_description4" ><?php echo $res[0]['janma_nama_nakshathram_description4']?></textarea>
                                         </div>
@@ -268,14 +259,15 @@ if (isset($_POST['btnCancel'])) { ?>
                                 </div>
                             </div>
 												<br>
-								<div id="variations">
-        <?php
-        $i = 0;
-        foreach ($resslot as $row) {
-        ?>
+                                                <div id="variations">
+							<?php
+							$i=0;
+							foreach ($resslot as $row) {
+								?>
+								
             <div id="packate_div">
                 <div class="row">
-                    <input type="hidden" class="form-control" name="yearly_horoscope_variant_id[]" value="<?= $row['id']; ?>" />
+                    <input type="hidden" class="form-control" name="yearly_horoscope_variant_id[]" id="yearly_horoscope_variant_id"  value="<?= $row['id']; ?>" />
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Graha Dhashakalamu Title</label> <i class="text-danger asterik">*</i>
@@ -307,7 +299,7 @@ if (isset($_POST['btnCancel'])) { ?>
         } ?>
     </div>
     <div class="row">
-                                <div class="form-group">
+                               <div class="form-group">
                                     <div class="col-md-4">
                                         <label for="">Title</label> <i class="text-danger asterik">*</i>
                                         <input type="text" class="form-control" name="title" value="<?php echo $res[0]['title']?>"  />

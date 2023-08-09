@@ -198,7 +198,6 @@ if (isset($_POST['btnCancel'])) { ?>
 								<?php $i++; 
 							} ?> 
 						
-						
 						</div>
 						<!-- /.box-body -->
                        
