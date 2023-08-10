@@ -80,7 +80,7 @@ $res = $db->getResult();
                                 <div class="form-group">
                                     <div class="col-md-6">
                                             <label for="exampleInputEmail1"> Admin Version</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                            <textarea type="text" rows="4" class="form-control" name="description" required><?php echo $res[0]['description']?></textarea>
+                                            <input type="text" class="form-control" name="description"  value="<?php echo $res[0]['description']?>" required>
                                     </div>
                                  </div>
                             </div>
