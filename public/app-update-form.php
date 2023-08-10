@@ -12,7 +12,7 @@ if (isset($_POST['btnUpdate'])) {
         $version = $db->escapeString($_POST['version']);
         $description = $db->escapeString($_POST['description']);
         
-       if (!empty($link) && !empty($version) && !empty($description)) {
+      
             $sql_query = "UPDATE `app_settings` SET `link` = '$link',`version` = '$version',`description` = '$description' WHERE `app_settings`.`id` = 1;";
             $db->sql($sql_query);
             $result = $db->getResult();
@@ -30,7 +30,7 @@ if (isset($_POST['btnUpdate'])) {
                 $error['add_staff'] = " <span class='label label-danger'>Failed</span>";
             }
         }
-}
+
 $sql_query = "SELECT * FROM app_settings WHERE id = 1";
 $db->sql($sql_query);
 $res = $db->getResult();
@@ -62,7 +62,7 @@ $res = $db->getResult();
                                 <div class="form-group">
                                     <div class="col-md-12">
                                             <label for="exampleInputEmail1">Playstore Link</label> <i class="text-danger asterik">*</i><?php echo isset($error['link']) ? $error['link'] : ''; ?>
-                                            <input type="text" class="form-control" name="link" value="<?php echo $res[0]['link']?>" required>
+                                            <input type="text" class="form-control" name="link" value="<?php echo $res[0]['link']?>" >
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@ $res = $db->getResult();
                                 <div class="form-group">
                                     <div class="col-md-6">
                                             <label for="exampleInputEmail1"> App Version</label> <i class="text-danger asterik">*</i><?php echo isset($error['version']) ? $error['version'] : ''; ?>
-                                            <input type="number" class="form-control" name="version" value="<?php echo  $res[0]['version']?>" required>
+                                            <input type="number" class="form-control" name="version" value="<?php echo  $res[0]['version']?>" >
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@ $res = $db->getResult();
                                 <div class="form-group">
                                     <div class="col-md-6">
                                             <label for="exampleInputEmail1"> Admin Version</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
-                                            <input type="text" class="form-control" name="description"  value="<?php echo $res[0]['description']?>" required>
+                                            <input type="text" class="form-control" name="description"  value="<?php echo $res[0]['description']?>">
                                     </div>
                                  </div>
                             </div>
