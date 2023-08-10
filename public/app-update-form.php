@@ -61,7 +61,7 @@ $res = $db->getResult();
                            <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                            <label for="exampleInputEmail1">Link</label> <i class="text-danger asterik">*</i><?php echo isset($error['link']) ? $error['link'] : ''; ?>
+                                            <label for="exampleInputEmail1">Playstore Link</label> <i class="text-danger asterik">*</i><?php echo isset($error['link']) ? $error['link'] : ''; ?>
                                             <input type="text" class="form-control" name="link" value="<?php echo $res[0]['link']?>" required>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@ $res = $db->getResult();
                             <div class="row">
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                            <label for="exampleInputEmail1"> Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
+                                            <label for="exampleInputEmail1"> Admin Version</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                             <textarea type="text" rows="4" class="form-control" name="description" required><?php echo $res[0]['description']?></textarea>
                                     </div>
                                  </div>
