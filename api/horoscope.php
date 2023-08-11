@@ -29,10 +29,8 @@ if ($_POST['type'] == 'Daily'){
 }
 if ($_POST['type'] == 'Weekly'){
     $year = date('Y');
-    $month = date('F');
-    $week = getStartAndEndDate(date("W", strtotime(date('Y-m-d'))),$year);
     $rasi = $db->escapeString($_POST['rasi']);
-    $sql = "SELECT * FROM `weekly_horoscope` WHERE week = '$week' AND rasi = '$rasi'";
+    $sql = "SELECT * FROM `weekly_horoscope` WHERE year = '$year' AND rasi = '$rasi'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
