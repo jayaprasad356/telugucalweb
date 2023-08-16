@@ -190,7 +190,7 @@ $fn = new custom_functions;
                         <i class="fa fa-angle-right pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                          <li><a href="festivals.php"><i class="fa fa-angle-right"></i>Festivals</a></li>
+                        
                           <li><a href="month_festivals.php"><i class="fa fa-angle-right"></i>Month Festivals</a></li>
 
                     </ul>
