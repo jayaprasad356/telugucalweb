@@ -13,6 +13,7 @@ if (isset($_POST['btnAdd'])) {
         $year= $db->escapeString($_POST['year']);
         $month= $db->escapeString($_POST['month']);
         $description= $db->escapeString($_POST['description']);
+        $title_description= $db->escapeString($_POST['title_description']);
         
      
         if (empty($rasi)) {
@@ -30,11 +31,14 @@ if (isset($_POST['btnAdd'])) {
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
         }
+        if (empty($title_description)) {
+            $error['title_description'] = " <span class='label label-danger'>Required!</span>";
+        }
        
        
-       if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month)&& !empty($title))
+       if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month)&& !empty($title)&& !empty($title_description))
         {
-            $sql_query = "INSERT INTO monthly_horoscope (rasi,description,year,month,title)VALUES('$rasi','$description','$year','$month','$title')";
+            $sql_query = "INSERT INTO monthly_horoscope (rasi,description,year,month,title,title_description)VALUES('$rasi','$description','$year','$month','$title','$title_description')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -137,6 +141,15 @@ if (isset($_POST['btnAdd'])) {
                                      <div class="col-md-8">
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                             <textarea type="text" rows="3" class="form-control" name="description" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-8">
+                                            <label for="exampleInputEmail1">Title Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['title_description']) ? $error['title_description'] : ''; ?>
+                                            <input type="text" class="form-control" name="title_description" required>
                                     </div>
                                 </div>
                             </div>

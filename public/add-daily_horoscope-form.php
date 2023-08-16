@@ -12,6 +12,7 @@ if (isset($_POST['btnAdd'])) {
         $rasi= $db->escapeString($_POST['rasi']);
         $title= $db->escapeString($_POST['title']);
         $description= $db->escapeString($_POST['description']);
+        $title_description= $db->escapeString($_POST['title_description']);
         // $lucky_number= $db->escapeString($_POST['lucky_number']);
         // $lucky_color= $db->escapeString($_POST['lucky_color']);
         // $treatment= $db->escapeString($_POST['treatment']);
@@ -33,6 +34,9 @@ if (isset($_POST['btnAdd'])) {
         }
         if (empty($description)) {
             $error['description'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($title_description)) {
+            $error['title_description'] = " <span class='label label-danger'>Required!</span>";
         }
         // if (empty($lucky_number)) {
         //     $error['lucky_number'] = " <span class='label label-danger'>Required!</span>";
@@ -63,10 +67,10 @@ if (isset($_POST['btnAdd'])) {
         // }
        
        
-       if (!empty($date) && !empty($rasi) && !empty($description)&& !empty($title) ) {
+       if (!empty($date) && !empty($rasi) && !empty($description)&& !empty($title)&& !empty($title_description) ) {
          
             // $sql_query = "INSERT INTO daily_horoscope (date,rasi,description,lucky_number,lucky_color,treatment,health,wealth,family,things_love,profession,married_life)VALUES('$date','$rasi','$description','$lucky_number','$lucky_color','$treatment','$health','$wealth','$family','$things_love','$profession','$married_life')";
-            $sql_query = "INSERT INTO daily_horoscope (date,rasi,description,title)VALUES('$date','$rasi','$description','$title')";
+            $sql_query = "INSERT INTO daily_horoscope (date,rasi,description,title,title_description)VALUES('$date','$rasi','$description','$title','$title_description')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -133,7 +137,7 @@ if (isset($_POST['btnAdd'])) {
                                 <div class="form-group">
                                      <div class="col-md-6">
                                             <label for="exampleInputEmail1">Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['title']) ? $error['title'] : ''; ?>
-                                            <input type="title" class="form-control" name="title" required>
+                                            <input type="text" class="form-control" name="title" required>
                                     </div>
                                     <div class="form-group">
                                      <div class="col-md-6">
@@ -144,6 +148,14 @@ if (isset($_POST['btnAdd'])) {
                                 </div>
                               
                             </div>
+                            <div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Title Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['title_description']) ? $error['title_description'] : ''; ?>
+                                            <input type="text" class="form-control" name="title_description" required>
+                                    </div>
+                                </div>
+                                </div>
                             <!-- <hr>
                             <h4>Lucky for Today</h4>
                             <div class="row">

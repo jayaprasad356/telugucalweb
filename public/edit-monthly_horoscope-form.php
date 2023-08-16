@@ -21,6 +21,7 @@ if (isset($_POST['btnEdit'])) {
 	$year= $db->escapeString($_POST['year']);
 	$month= $db->escapeString($_POST['month']);
 	$title= $db->escapeString($_POST['title']);
+	$title_description= $db->escapeString($_POST['title_description']);
 	
 
 	if (empty($rasi)) {
@@ -38,13 +39,15 @@ if (isset($_POST['btnEdit'])) {
 	if (empty($title)) {
 		$error['title'] = " <span class='label label-danger'>Required!</span>";
 	}
+	if (empty($title_description)) {
+		$error['title_description'] = " <span class='label label-danger'>Required!</span>";
+	}
    
    
    
-   
-	if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month)&& !empty($title))
+	if ( !empty($rasi) && !empty($description) && !empty($year) && !empty($month)&& !empty($title)&& !empty($title_description))
 	{
-             $sql_query = "UPDATE monthly_horoscope SET rasi='$rasi',description='$description',title='$title',year='$year',month='$month' WHERE id =$ID";
+             $sql_query = "UPDATE monthly_horoscope SET rasi='$rasi',description='$description',title='$title',year='$year',month='$month',title_description='$title_description' WHERE id =$ID";
 			 $db->sql($sql_query);
 			 $res = $db->getResult();
              $update_result = $db->getResult();
@@ -169,7 +172,16 @@ if (isset($_POST['btnCancel'])) { ?>
                             </div>
 						
 						</div><!-- /.box-body -->
-                       
+						<br>
+						<div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-8">
+                                            <label for="exampleInputEmail1">Title Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['title_description']) ? $error['title_description'] : ''; ?>
+                                            <input type="text" class="form-control" name="title_description" value="<?php echo $res[0]['title_description'] ?>">
+                                    </div>
+                            </div>
+												</div>
+												<br>
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary" name="btnEdit">Update</button>					
 					</div>
