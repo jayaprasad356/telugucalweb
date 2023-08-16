@@ -19,7 +19,9 @@ if (isset($_POST['btnUpdate'])) {
     $month= $db->escapeString($_POST['month']);
     $title= $db->escapeString($_POST['title']);
     $description= $db->escapeString($_POST['description']);
-    $sql = "UPDATE month_festivals SET year='$year',month='$month',title='$title',description='$description' WHERE id = '$ID'";
+    $title_description= $db->escapeString($_POST['title_description']);
+    
+    $sql = "UPDATE month_festivals SET year='$year',month='$month',title='$title',description='$description',title_description='$title_description' WHERE id = '$ID'";
     $db->sql($sql);
     $categories_result = $db->getResult();
     if (!empty($categories_result)) {
@@ -105,6 +107,15 @@ $res = $db->getResult();
                                     <div class="col-md-12">
                                             <label for="exampleInputEmail1">Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['description']) ? $error['description'] : ''; ?>
                                             <textarea  type="text" rows="3" class="form-control" name="description"  required><?php echo $res[0]['description']?></textarea>
+                                    </div>
+                                 </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                            <label for="exampleInputEmail1">Title Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['title_description']) ? $error['title_description'] : ''; ?>
+                                            <input  type="text" class="form-control" name="title_description" value="<?php echo $res[0]['title_description']?>">
                                     </div>
                                  </div>
                             </div>

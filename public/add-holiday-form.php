@@ -11,10 +11,11 @@ if (isset($_POST['btnAdd'])) {
         $month= $db->escapeString($_POST['month']);
         $title= $db->escapeString($_POST['title']);
         $description= $db->escapeString($_POST['description']);
+        $title_description= $db->escapeString($_POST['title_description']);
 
-       if (!empty($month) && !empty($year) && !empty($title) && !empty($description)) {
+       if (!empty($month) && !empty($year) && !empty($title) && !empty($description)&& !empty($title_description)) {
          
-            $sql_query = "INSERT INTO holidays (month,year,title,description)VALUES('$month','$year','$title','$description')";
+            $sql_query = "INSERT INTO holidays (month,year,title,description,title_description)VALUES('$month','$year','$title','$description','$title_description')";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
@@ -106,7 +107,14 @@ if (isset($_POST['btnAdd'])) {
                                  </div>
                             </div>
                             <br>
-
+                            <div class="row">
+                                <div class="form-group">
+                                     <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Title Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['title_description']) ? $error['title_description'] : ''; ?>
+                                            <input type="text" class="form-control" name="title_description" required>
+                                    </div>
+                                </div>
+                                </div>
          
                     </div>
                   
