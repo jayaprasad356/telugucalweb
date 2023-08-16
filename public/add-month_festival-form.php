@@ -109,7 +109,7 @@ if (isset($_POST['btnAdd'])) {
                             <br>
                             <div class="row">
                                 <div class="form-group">
-                                     <div class="col-md-6">
+                                     <div class="col-md-12">
                                             <label for="exampleInputEmail1">Title Description</label> <i class="text-danger asterik">*</i><?php echo isset($error['title_description']) ? $error['title_description'] : ''; ?>
                                             <input type="text" class="form-control" name="title_description" required>
                                     </div>
