@@ -11,6 +11,15 @@ date_default_timezone_set('Asia/Kolkata');
 include_once('../includes/crud.php');
 $db = new Database();
 $db->connect();
+
+$today = new DateTime(); // Get the current date and time
+$week_start = clone $today;
+$week_start->modify('this week'); // Set to the start of the current week
+$week_end = clone $week_start;
+$week_end->modify('+6 days'); // Set to the end of the current week
+
+$from_date = $week_start->format('Y-m-d');
+$to_date = $week_end->format('Y-m-d');
 if ($_POST['type'] == 'Daily'){
     $date = date('Y-m-d');
     $rasi = $db->escapeString($_POST['rasi']);
@@ -30,7 +39,8 @@ if ($_POST['type'] == 'Daily'){
 if ($_POST['type'] == 'Weekly'){
     $year = date('Y');
     $rasi = $db->escapeString($_POST['rasi']);
-    $sql = "SELECT * FROM `weekly_horoscope` WHERE year = '$year' AND rasi = '$rasi'";
+    $sql = "SELECT * FROM `weekly_horoscope` WHERE year = '$year' AND rasi = '$rasi' AND STR_TO_DATE(SUBSTRING_INDEX(week, '_', 1), '%b-%d,%Y') >= '$from_date'
+    AND STR_TO_DATE(SUBSTRING_INDEX(week, '_', -1), '%b-%d,%Y') <= '$to_date'";
     $db->sql($sql);
     $res = $db->getResult();
     $num = $db->numRows($res);
