@@ -18,8 +18,9 @@ $week_start->modify('this week'); // Set to the start of the current week
 $week_end = clone $week_start;
 $week_end->modify('+6 days'); // Set to the end of the current week
 
-$from_date = $week_start->format('Y-m-d');
+$from_date = $week_start->format('Y-m-d'); 
 $to_date = $week_end->format('Y-m-d');
+
 if ($_POST['type'] == 'Daily'){
     $date = date('Y-m-d');
     $rasi = $db->escapeString($_POST['rasi']);
