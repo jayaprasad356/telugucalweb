@@ -55,11 +55,9 @@ include "header.php";
                         
                         <a href="notifications.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
-              
-</div>
-
-            </div>
+                </div>  
+            </div>  
+         </div>
         </section>
     </div>
     <?php include "footer.php"; ?>
