@@ -331,7 +331,7 @@ foreach ($res as $row) {
     $temp['pilli_image'] = DOMAIN_URL . $row['pilli_image'];
     $rows[] = $temp;
 }
-$response['Sakuna_Sasthram_list'] = $rows;
+$response['Sakuna Sasthram _list'] = $rows;
 unset($temp);
 
 
@@ -346,7 +346,7 @@ foreach ($res as $row) {
     $temp['image'] = DOMAIN_URL . $row['image'];
     $rows[] = $temp;
 }
-$response['Telugu_Samkrutham_List'] = $rows;
+$response['Telugu Samkrutham List'] = $rows;
 unset($temp);
 print_r(json_encode($response));
 ?>
