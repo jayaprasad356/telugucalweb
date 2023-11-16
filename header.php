@@ -529,7 +529,13 @@ $fn = new custom_functions;
                         <i class="fa fa-image"></i>
                         <span>Telugu Samkrutham Images</span>
                     </a>
-                </li>   
+                </li> 
+                <li class="treeview">
+                    <a href="feedback.php">
+                        <i class="fa fa-bell"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>  
             </ul>
             </section>
             <!-- /.sidebar -->
