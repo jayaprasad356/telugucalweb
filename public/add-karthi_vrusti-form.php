@@ -208,8 +208,8 @@ if (isset($_POST['btnAdd'])) {
         debug: false,
         rules: {
             month: "required",
-            year="required",
-            date_month="required",
+            year:"required",
+            date_month:"required",
         }
     });
     $('#btnClear').on('click', function() {

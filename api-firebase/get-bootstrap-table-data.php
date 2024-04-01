@@ -1055,6 +1055,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'nava_graha_pravesham') {
         $operate .= ' <a class="text text-danger" href="delete-nava_graha_pravesham.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
+        $tempRow['year'] = $row['year'];
         $tempRow['title'] = $row['title'];
         $tempRow['description'] = $row['description'];
         $tempRow['operate'] = $operate;
@@ -2228,6 +2229,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'moudya_dhinam') {
         $operate = ' <a href="edit-moudya_dhinam.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-moudya_dhinam.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
+        $tempRow['year'] = $row['year'];
         $tempRow['title'] = $row['title'];
         $tempRow['description'] = $row['description'];
         $tempRow['operate'] = $operate;
@@ -2284,6 +2286,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'grahanam') {
         $operate = ' <a href="edit-grahanam.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $operate .= ' <a class="text text-danger" href="delete-grahanam.php?id=' . $row['id'] . '"><i class="fa fa-trash"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
+        $tempRow['year'] = $row['year'];
         $tempRow['title'] = $row['title'];
         $tempRow['description'] = $row['description'];
         $tempRow['operate'] = $operate;

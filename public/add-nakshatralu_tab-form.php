@@ -164,8 +164,8 @@ if (isset($_POST['btnAdd'])) {
         debug: false,
         rules: {
             nakshatralu_id:"required",
-            title="required",
-            description="required",
+            title:"required",
+            description:"required",
         }
     });
     $('#btnClear').on('click', function() {

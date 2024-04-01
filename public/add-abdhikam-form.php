@@ -169,8 +169,8 @@ if (isset($_POST['btnAdd'])) {
         debug: false,
         rules: {
             month: "required",
-            title="required",
-            description="required",
+            title:"required",
+            description:"required",
         }
     });
     $('#btnClear').on('click', function() {

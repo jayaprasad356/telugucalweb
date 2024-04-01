@@ -175,8 +175,8 @@ if (isset($_POST['btnAdd'])) {
         rules: {
             poojalu_id:"required",
             subcategory_id: "required",
-            title="required",
-            description="required",
+            title:"required",
+            description:"required",
         }
     });
     $('#btnClear').on('click', function() {
